@@ -2,6 +2,7 @@ import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
 import { EntityTable } from '@ferlab/ui/core/pages/EntityPage';
 import { INDEXES } from 'graphql/constants';
+import { useParticipantsAggFromField } from 'graphql/participants/actions';
 import { IParticipantEntity } from 'graphql/participants/models';
 import getDiagnosesColumns from 'views/ParticipantEntity/utils/getDiagnosesColumns';
 
@@ -29,6 +30,21 @@ const DiagnosesTable = ({ participant, id, loading }: IDiagnosesTableProps) => {
   const userCols = userInfo?.config?.participants?.tables?.diagnoses?.columns || [];
   const userColumns = userColumnPreferencesOrDefault(userCols, defaultCols);
 
+  const { data: buckets } = useParticipantsAggFromField({
+    parentField: 'diagnoses',
+    field: 'diagnosis_mondo_display',
+    values: diagnosesData.map((e) => e.diagnosis_mondo_display),
+  });
+
+  const diagnosesWithCounts = diagnosesData?.map((diag) => {
+    const countTerm =
+      buckets?.find((b: any) => b.key === diag.diagnosis_mondo_display)?.doc_count || 0;
+    return {
+      ...diag,
+      countTerm,
+    };
+  });
+
   return (
     <EntityTable
       id={id}
@@ -36,8 +52,8 @@ const DiagnosesTable = ({ participant, id, loading }: IDiagnosesTableProps) => {
       title={intl.get('entities.participant.diagnosis')}
       header={intl.get('entities.participant.diagnoses')}
       columns={getDiagnosesColumns()}
-      data={diagnosesData}
-      total={diagnosesData.length}
+      data={diagnosesWithCounts}
+      total={diagnosesWithCounts.length}
       initialColumnState={userColumns}
       dictionary={getProTableDictionary()}
       headerConfig={{
@@ -49,7 +65,7 @@ const DiagnosesTable = ({ participant, id, loading }: IDiagnosesTableProps) => {
               index: INDEXES.PARTICIPANT,
               headers: defaultCols,
               cols: userColumns,
-              rows: diagnosesData,
+              rows: diagnosesWithCounts,
             }),
           ),
         enableColumnSort: true,

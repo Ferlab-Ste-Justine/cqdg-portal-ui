@@ -237,3 +237,21 @@ export const GET_PARTICIPANT_BY_ID = gql`
     }
   }
 `;
+
+export const PARTICIPANT_AGG_QUERY = gql`
+  query ($sqon: JSON) {
+    Participant {
+      hits(filters: $sqon) {
+        total
+      }
+      aggregations(filters: $sqon, aggregations_filter_themselves: true, include_missing: true) {
+        diagnoses__diagnosis_mondo_display {
+          buckets {
+            key
+            doc_count
+          }
+        }
+      }
+    }
+  }
+`;

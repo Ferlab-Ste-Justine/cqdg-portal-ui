@@ -5,7 +5,7 @@ import { INDEXES } from 'graphql/constants';
 import useLazyResultQuery from 'hooks/graphql/useLazyResultQuery';
 
 import { IParticipantResultTree } from './models';
-import { GET_PARTICIPANTS, GET_PARTICIPANTS_COUNT } from './queries';
+import { GET_PARTICIPANTS, GET_PARTICIPANTS_COUNT, PARTICIPANT_AGG_QUERY } from './queries';
 
 export const useParticipants = (
   variables?: IQueryVariable,
@@ -41,6 +41,42 @@ export const useParticipantsFromField = ({ field, value }: { field: string; valu
     loading,
     data,
     total,
+  };
+};
+
+export const useParticipantsAggFromField = ({
+  parentField,
+  field,
+  values,
+}: {
+  parentField: string;
+  field: string;
+  values: string[];
+}) => {
+  const sqon = {
+    content: [
+      {
+        content: {
+          field: parentField ? `${parentField}.${field}` : field,
+          value: values,
+          index: INDEXES.PARTICIPANT,
+        },
+        op: 'in',
+      },
+    ],
+    op: 'and',
+  };
+
+  const { loading, result } = useLazyResultQuery(PARTICIPANT_AGG_QUERY, {
+    variables: { sqon },
+  });
+
+  const data =
+    result?.Participant?.aggregations?.[parentField ? `${parentField}__${field}` : field]?.buckets;
+
+  return {
+    loading,
+    data,
   };
 };
 

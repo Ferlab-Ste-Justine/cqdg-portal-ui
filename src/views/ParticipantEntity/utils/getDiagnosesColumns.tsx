@@ -6,8 +6,7 @@ import { addQuery } from '@ferlab/ui/core/components/QueryBuilder/utils/useQuery
 import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/utils';
 import { Tooltip } from 'antd';
 import { INDEXES } from 'graphql/constants';
-import { useParticipantsFromField } from 'graphql/participants/actions';
-import { ageCategories, IDiagnoses } from 'graphql/participants/models';
+import { ageCategories } from 'graphql/participants/models';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 import {
   extractIcdTitleAndCode,
@@ -22,15 +21,12 @@ import styles from '../index.module.scss';
 
 const ParticipantsMondoCount = ({
   diagnosis_mondo_display,
+  countTerm,
 }: {
   diagnosis_mondo_display: string;
-}) => {
-  const { loading, total } = useParticipantsFromField({
-    field: 'mondo.name',
-    value: diagnosis_mondo_display,
-  });
-  if (loading) return <>{TABLE_EMPTY_PLACE_HOLDER}</>;
-  return total ? (
+  countTerm: number;
+}) =>
+  countTerm ? (
     <Link
       to={STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
       onClick={() =>
@@ -49,13 +45,11 @@ const ParticipantsMondoCount = ({
         })
       }
     >
-      {total}
+      {countTerm}
     </Link>
   ) : (
     <>0</>
   );
-};
-
 const getDiagnosesColumns = (): IProColumnExport[] => [
   {
     key: 'diagnosis_mondo_display',
@@ -136,10 +130,14 @@ const getDiagnosesColumns = (): IProColumnExport[] => [
     key: 'mondo_term',
     title: intl.get('entities.participant.mondo_term'),
     tooltip: intl.get('entities.participant.mondo_term_tooltip'),
-    render: (diagnosis: IDiagnoses) => {
-      const { diagnosis_mondo_display, diagnosis_mondo_code } = diagnosis;
+    exportValue: (row) => row.countTerm,
+    render: (diagnosis: any) => {
+      const { diagnosis_mondo_display, diagnosis_mondo_code, countTerm } = diagnosis;
       return diagnosis_mondo_code && diagnosis_mondo_display ? (
-        <ParticipantsMondoCount diagnosis_mondo_display={diagnosis_mondo_display} />
+        <ParticipantsMondoCount
+          diagnosis_mondo_display={diagnosis_mondo_display}
+          countTerm={countTerm}
+        />
       ) : (
         TABLE_EMPTY_PLACE_HOLDER
       );

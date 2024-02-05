@@ -1,7 +1,7 @@
 export default class EnvironmentVariables {
+  // eslint-disable-next-line complexity
   static vars: Record<string, string | undefined> = {
     // GENERAL
-
     ENV: window._env_?.NODE_ENV || process.env.NODE_ENV,
     CQDG_WEB_APP: window._env_?.REACT_APP_CQDG_WEB_APP || process.env.REACT_APP_CQDG_WEB_APP,
     CQDG_WEB_SITE: window._env_?.REACT_APP_CQDG_WEB_SITE || process.env.REACT_APP_CQDG_WEB_SITE,
