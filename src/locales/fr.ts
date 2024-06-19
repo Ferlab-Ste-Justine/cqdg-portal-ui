@@ -824,9 +824,8 @@ const fr = {
   },
   screen: {
     loginPage: {
-      title: 'Portail de données',
-      resume:
-        "Le Centre Québécois de Données Génomiques est une plateforme d'harmonisation et de diffusion des données génomiques générées par les études cliniques et de recherche du Québec.",
+      title: 'The CHU Sainte-Justine and SickKids Data Sharing Platform',
+      resume: '',
       login: 'Connexion',
       signup: 'Créer compte',
       studies: {
@@ -865,7 +864,7 @@ const fr = {
       },
       cards: {
         stats: {
-          release: 'Données CQDG v1.0',
+          release: 'Données v1.0',
           genomes: 'Génomes',
           exomes: 'Exomes',
         },

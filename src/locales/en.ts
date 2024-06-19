@@ -820,9 +820,8 @@ const en = {
   },
   screen: {
     loginPage: {
-      title: 'Data Portal',
-      resume:
-        "The Quebec Genomic Data Center is a data harmonization and sharing platform for genomic datasets produced by Quebec's clinical and research studies.",
+      title: 'The CHU Sainte-Justine and SickKids Data Sharing Platform',
+      resume: '',
       login: 'Login',
       signup: 'Sign up',
       studies: {
@@ -860,7 +859,7 @@ const en = {
       },
       cards: {
         stats: {
-          release: 'Release v1.0',
+          release: 'Data Release',
           genomes: 'Genomes',
           exomes: 'Exomes',
         },
