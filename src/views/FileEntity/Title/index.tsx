@@ -10,6 +10,7 @@ import { generateSelectionSqon } from 'views/DataExploration/utils/selectionSqon
 
 import DownloadFileManifestModal from 'components/reports/DownloadFileManifestModal';
 
+import CavaticaButton from '../../../components/CavaticaButton';
 import EnvVariables from '../../../helpers/EnvVariables';
 
 import styles from './index.module.scss';
@@ -57,6 +58,7 @@ const FileEntityTitle = ({ file, loading }: IFileEntityTitleProps) => {
     extra: (
       <Space>
         <DownloadFileManifestModal sqon={getCurrentSqon()} type="primary" hasFamily={hasFamily} />
+        <CavaticaButton sqon={getCurrentSqon()} />
       </Space>
     ),
   };
