@@ -1,7 +1,6 @@
 import intl from 'react-intl-universal';
 import { IEntityDescriptionsItem } from '@ferlab/ui/core/pages/EntityPage';
 import { Tag } from 'antd';
-import { format } from 'date-fns';
 import { IFileEntity } from 'graphql/files/models';
 
 import { TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
@@ -35,9 +34,7 @@ const getExperimentalProcedureDescriptions = (file?: IFileEntity): IEntityDescri
   },
   {
     label: intl.get('entities.file.sequencing_experiment.run_date'),
-    value: file?.sequencing_experiment?.run_date
-      ? format(new Date(file.sequencing_experiment.run_date), 'yyyy-MM-dd')
-      : TABLE_EMPTY_PLACE_HOLDER,
+    value: file?.sequencing_experiment?.run_date || TABLE_EMPTY_PLACE_HOLDER,
   },
 ];
 
