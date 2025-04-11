@@ -63,7 +63,7 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(5).contains('C12434').should('exist');
   });
 
-  it('Panneau Experimental Procedure [CQDG-852]', () => {
+  it('Panneau Experimental Procedure', () => {
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(0).contains('Strategy').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(0).contains('WGS').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(0).find('[class*="FileEntity_tag"]').should('exist');

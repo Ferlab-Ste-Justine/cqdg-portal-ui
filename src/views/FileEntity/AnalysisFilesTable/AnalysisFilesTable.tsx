@@ -28,6 +28,7 @@ const AnalysisFilesTable = ({ file, id }: { file: IFileEntity; id: string }) => 
   const filesWithoutCurrentSorted =
     filesWithoutCurrent?.sort((a, b) => (a.file_id > b.file_id ? 1 : -1)) || [];
   const files: IFileEntity[] = [file, ...filesWithoutCurrentSorted];
+  const filesWithKey = files.map((e) => ({ key: e.file_id, ...e }));
 
   return (
     <EntityTable
@@ -35,8 +36,8 @@ const AnalysisFilesTable = ({ file, id }: { file: IFileEntity; id: string }) => 
       loading={loading}
       header={intl.get('entities.file.analysisFiles')}
       columns={getAnalysisFilesColumns()}
-      data={files}
-      total={files.length}
+      data={filesWithKey}
+      total={filesWithKey.length}
       initialColumnState={userInfo?.config.files?.tables?.files?.columns}
       dictionary={getProTableDictionary()}
       emptyMessage={intl.get('api.noDataAvailable')}
