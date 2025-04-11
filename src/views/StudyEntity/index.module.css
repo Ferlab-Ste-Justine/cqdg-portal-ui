@@ -20,8 +20,16 @@
   margin-right: 8px;
 }
 
-.titleIcon {
-  font-size: 20px;
+.cagLogo {
+  width: 200px;
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.spotIcon {
+  color: #BAE6FD;
 }
 
 .tooltip {
