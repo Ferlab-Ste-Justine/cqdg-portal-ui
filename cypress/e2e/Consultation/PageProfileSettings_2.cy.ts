@@ -33,6 +33,10 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Bouton Discard changes de la section Role & Affiliation', () => {
+    cy.wait(1000);
+    cy.get('input[id="no_affiliation"]').check({force: true});
+    cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(1).find('button[class*="ant-btn-primary"]').clickAndWait({force: true});
+
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(1).find('input[value="bioinformatician_software_developer"]').uncheck({force: true}).should('not.be.checked');
     cy.get('input[id="no_affiliation"]').uncheck({force: true}).should('not.be.checked');
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(1).find('button[class*="ant-btn-text"]').clickAndWait({force: true});
@@ -42,6 +46,11 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Bouton Discard changes de la section Research Domain', () => {
+    cy.wait(1000);
+    cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="aging"]').check({force: true});
+    cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="other"]').uncheck({force: true});
+    cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('button[class*="ant-btn-primary"]').clickAndWait({force: true});
+
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="other"]').check({force: true}).should('be.checked');
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('button[class*="ant-btn-text"]').clickAndWait({force: true});
 
