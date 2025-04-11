@@ -2,13 +2,13 @@ import React from 'react';
 import intl from 'react-intl-universal';
 import Studies from '@ferlab/ui/core/pages/LandingPage/Studies';
 
-import CartageneLogo from 'components/assets/cartagene.png';
+import CartageneLogo from 'components/assets/cartagene.svg';
 import { useGlobals } from 'store/global';
 
 import styles from './index.module.css';
 
 const studies = [
-  { code: 'cartagene', logo: CartageneLogo },
+  { code: 'cartagene', logo: CartageneLogo, className: styles.cartagene },
   { code: 'dee' },
   { code: 'bacq' },
   { code: 'pragmatiq' },
@@ -19,7 +19,7 @@ const formatStudies = () =>
   studies.map((study) => ({
     code: study.code,
     title: study.logo ? (
-      <img src={study.logo} alt="Study Logo" className={styles.logo} />
+      <img src={study.logo} alt={study.code + '-logo'} className={study.className || styles.logo} />
     ) : (
       intl.get(`screen.loginPage.studies.${study.code}.title`)
     ),
