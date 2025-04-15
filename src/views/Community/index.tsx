@@ -64,8 +64,6 @@ const CommunityPage = () => {
       </Title>
       <FiltersBox
         onMatchFilterChange={debounce((match) => onMatchFilterChange(match), 300)}
-        // onRoleFilterChange={onRoleFilterChange}
-        // onResearchDomainFilterChange={onResearchDomainFilterChange}
         onRoleFilterChange={setRoleFilter}
         onResearchDomainFilterChange={setResearchDomainFilter}
         onSortChange={onSortChange}
