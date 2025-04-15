@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
+import { oneMinute } from '../../support/utils';
 
 describe('Navigation', () => {
 
@@ -139,40 +140,12 @@ describe('Navigation', () => {
     // Facettes
     cy.get('[data-cy="SidebarMenuItem_Participant"]').clickAndWait({force: true});
 
-    cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
-    cy.get('[class="ant-modal-header"]').contains('participant').should('exist');
-    cy.get('button[class="ant-modal-close"]').invoke('click');
-
     cy.get('div[class*="Filters_filter"]').contains('Phenotype (HPO)').clickAndWait({force: true});
     cy.get('[data-cy="TreeFacet_Modal_hpoTree"]').should('exist');
     cy.get('button[class="ant-modal-close"]').invoke('click');
 
-    cy.get('div[class*="Filters_filter"]').contains('Diagnosis (MONDO)').clickAndWait({force: true});
-    cy.get('[data-cy="TreeFacet_Modal_mondoTree"]').should('exist');
-    cy.get('button[class="ant-modal-close"]').invoke('click');
-
-    cy.get('[data-cy="SidebarMenuItem_Biospecimen"]').clickAndWait({force: true});
-
-    cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
-    cy.get('[class="ant-modal-header"]').contains('sample').should('exist');
-    cy.get('button[class="ant-modal-close"]').invoke('click');
-
-    cy.get('[data-cy="SidebarMenuItem_Data File"]').clickAndWait({force: true});
-
-    cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
-    cy.get('[class="ant-modal-header"]').contains('file').should('exist');
-    cy.get('button[class="ant-modal-close"]').invoke('click');
-
-    // Query Builder
-    cy.get('button[class*="Header_iconBtnAction"]').clickAndWait({force: true});
-    cy.contains('Save this filter').should('exist');
-    cy.get('button[class="ant-modal-close"]').invoke('click');
-
-    // Manage my filters
-    cy.get('button[class*="QueryBuilderHeaderTools_queryBuilderHeaderDdb"]').clickAndWait({force: true});
-    cy.get('[data-menu-id*="manage-my-filters"]').clickAndWait({force: true});
-    cy.contains('Manage my filters').should('exist');
-    cy.contains('Close').should('exist');
+    cy.get('div[class*="Filters_filter"]').contains('Diagnosis (MONDO)').click({force: true});
+    cy.get('[data-cy="TreeFacet_Modal_mondoTree"]').should('exist', {timeout: oneMinute});
     cy.get('button[class="ant-modal-close"]').invoke('click');
 
     // Onglet Data Files

@@ -209,6 +209,7 @@ Cypress.Commands.add('resetColumns', (table_id?: string) => {
 
 Cypress.Commands.add('saveFilterAs', (filterName: string) => {
   cy.get('button[class*="Header_iconBtnAction"]').clickAndWait({force: true});
+  cy.contains('Save this filter').should('exist');
   cy.get('[class="ant-modal-content"] input').clear().type(filterName);
   cy.get(`[class="ant-modal-content"] input[value="`+filterName+`"]`).should('exist');
   cy.clickAndIntercept('[class="ant-modal-content"] button[class*="ant-btn-primary"]', 'POST', '**/saved-filters', 1);
