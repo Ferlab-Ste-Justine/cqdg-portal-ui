@@ -48,11 +48,13 @@ const FiltersBox = ({
     'researchDomainOptions',
   );
 
-  useEffect(() => onRoleFilterChange(roleFilter.join(',')), [onRoleFilterChange, roleFilter]);
-  useEffect(
-    () => onResearchDomainFilterChange(researchDomainFilter.join(',')),
-    [onResearchDomainFilterChange, researchDomainFilter],
-  );
+  useEffect(() => {
+    onRoleFilterChange(roleFilter.join(','));
+  }, [onRoleFilterChange, roleFilter]);
+
+  useEffect(() => {
+    onResearchDomainFilterChange(researchDomainFilter.join(','));
+  }, [onResearchDomainFilterChange, researchDomainFilter]);
 
   return (
     <Space direction="vertical" size={16} className={styles.filtersContainer}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import intl from 'react-intl-universal';
 import TableHeader from '@ferlab/ui/core/components/ProTable/Header';
 import { List, Space, Typography } from 'antd';
@@ -36,6 +36,15 @@ const CommunityPage = () => {
   const onSortChange = (sort: string) => setActiveFilter({ ...defaultActiveFilter, sort });
   const setCurrentPage = (pageIndex: number) => setActiveFilter({ ...activeFilter, pageIndex });
 
+  const onRoleFilterChange = useCallback((role: string) => {
+    setActiveFilter((prevState) => ({ ...prevState, pageIndex: 0 }));
+    setRoleFilter(role);
+  }, []);
+  const onResearchDomainFilterChange = useCallback((researchDomain: string) => {
+    setActiveFilter((prevState) => ({ ...prevState, pageIndex: 0 }));
+    setResearchDomainFilter(researchDomain);
+  }, []);
+
   useEffect(() => {
     setIsLoading(true);
     UserApi.search({
@@ -59,8 +68,8 @@ const CommunityPage = () => {
       </Title>
       <FiltersBox
         onMatchFilterChange={debounce((match) => onMatchFilterChange(match), 300)}
-        onRoleFilterChange={setRoleFilter}
-        onResearchDomainFilterChange={setResearchDomainFilter}
+        onRoleFilterChange={onRoleFilterChange}
+        onResearchDomainFilterChange={onResearchDomainFilterChange}
         onSortChange={onSortChange}
         hasFilters={!!(roleFilter || researchDomainFilter)}
       />
