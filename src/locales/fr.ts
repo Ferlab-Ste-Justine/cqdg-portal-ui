@@ -565,7 +565,10 @@ const fr = {
       },
       success: {
         titleCreate: 'Votre ensemble a été sauvegardé.',
-        messageCreate: 'Vous pouvez ajouter vos ensembles a une requête ou au tableau de bord.',
+        messageCreate:
+          'Vous pouvez ajouter vos ensembles a une requête à partir de la barre latérale ou du tableau de bord.',
+        messageCreateVariant:
+          'Vous pouvez ajouter vos ensembles a une requête à partir du tableau de bord.',
         titleUpdate: 'Succès',
         messageUpdate: 'Votre ensemble a été modifié.',
         titleDelete: 'Succès',

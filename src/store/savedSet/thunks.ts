@@ -4,6 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { SavedSetApi } from 'services/api/savedSet';
 import {
   IUserSetOutput,
+  SetType,
   TUserSavedSetInsert,
   TUserSavedSetUpdate,
 } from 'services/api/savedSet/models';
@@ -62,7 +63,10 @@ const createSavedSet = createAsyncThunk<
         globalActions.displayNotification({
           type: 'success',
           message: intl.get('api.savedSet.success.titleCreate'),
-          description: intl.get('api.savedSet.success.messageCreate'),
+          description:
+            set.type === SetType.VARIANT
+              ? intl.get('api.savedSet.success.messageCreateVariant')
+              : intl.get('api.savedSet.success.messageCreate'),
         }),
       ),
     onError: () =>
