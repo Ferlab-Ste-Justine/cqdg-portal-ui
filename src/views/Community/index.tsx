@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import intl from 'react-intl-universal';
 import TableHeader from '@ferlab/ui/core/components/ProTable/Header';
 import { List, Space, Typography } from 'antd';
@@ -36,15 +36,6 @@ const CommunityPage = () => {
   const onSortChange = (sort: string) => setActiveFilter({ ...defaultActiveFilter, sort });
   const setCurrentPage = (pageIndex: number) => setActiveFilter({ ...activeFilter, pageIndex });
 
-  const onRoleFilterChange = useCallback((role: string) => {
-    setActiveFilter((prevState) => ({ ...prevState, pageIndex: 0 }));
-    setRoleFilter(role);
-  }, []);
-  const onResearchDomainFilterChange = useCallback((researchDomain: string) => {
-    setActiveFilter((prevState) => ({ ...prevState, pageIndex: 0 }));
-    setResearchDomainFilter(researchDomain);
-  }, []);
-
   useEffect(() => {
     setIsLoading(true);
     UserApi.search({
@@ -61,6 +52,11 @@ const CommunityPage = () => {
     });
   }, [roleFilter, researchDomainFilter, activeFilter]);
 
+  /** Reset page index when research domain or role filter change */
+  useEffect(() => {
+    setActiveFilter((prevState) => ({ ...prevState, pageIndex: 0 }));
+  }, [researchDomainFilter, roleFilter]);
+
   return (
     <Space direction="vertical" size={24} className={styles.communityWrapper}>
       <Title className={styles.title} level={4} data-cy="Title_Community">
@@ -68,8 +64,10 @@ const CommunityPage = () => {
       </Title>
       <FiltersBox
         onMatchFilterChange={debounce((match) => onMatchFilterChange(match), 300)}
-        onRoleFilterChange={onRoleFilterChange}
-        onResearchDomainFilterChange={onResearchDomainFilterChange}
+        // onRoleFilterChange={onRoleFilterChange}
+        // onResearchDomainFilterChange={onResearchDomainFilterChange}
+        onRoleFilterChange={setRoleFilter}
+        onResearchDomainFilterChange={setResearchDomainFilter}
         onSortChange={onSortChange}
         hasFilters={!!(roleFilter || researchDomainFilter)}
       />
