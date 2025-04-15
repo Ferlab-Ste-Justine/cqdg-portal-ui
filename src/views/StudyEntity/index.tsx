@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import intl from 'react-intl-universal';
 import { useParams } from 'react-router-dom';
-import { ReadOutlined } from '@ant-design/icons';
 import { IAnchorLink } from '@ferlab/ui/core/components/AnchorMenu';
 import { addQuery } from '@ferlab/ui/core/components/QueryBuilder/utils/useQueryBuilderState';
 import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/utils';
-import EntityPage, { EntityDescriptions, EntityTitle } from '@ferlab/ui/core/pages/EntityPage';
+import EntityPage, { EntityDescriptions, EntityTitleLogo } from '@ferlab/ui/core/pages/EntityPage';
 import { Space } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import useFileResolvedSqon from 'graphql/files/useFileResolvedSqon';
@@ -20,11 +19,10 @@ import DownloadRequestAccessModal from 'components/reports/DownloadRequestAccess
 
 import getDataAccessDescriptions from './utils/getDataAccessDescriptions';
 import getSummaryDescriptions from './utils/getSummaryDescriptions';
+import { getLogoByStudyCode } from './utils/title';
 import Datasets from './Datasets';
 import FilesTable from './FilesTable';
 import SummaryHeader from './SummaryHeader';
-
-import styles from './index.module.css';
 
 const StudyEntity = () => {
   const { study_code = '' } = useParams<{ study_code: string }>();
@@ -87,9 +85,9 @@ const StudyEntity = () => {
 
   return (
     <EntityPage loading={loading} data={study} links={links} pageId={pageId}>
-      <EntityTitle
-        text={study?.name}
-        icon={<ReadOutlined className={styles.titleIcon} />}
+      <EntityTitleLogo
+        logo={getLogoByStudyCode(study?.study_code)}
+        title={study?.name}
         loading={loading}
         extra={
           <Space>

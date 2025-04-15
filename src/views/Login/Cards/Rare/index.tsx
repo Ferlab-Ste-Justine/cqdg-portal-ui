@@ -1,7 +1,7 @@
 import React from 'react';
 import intl from 'react-intl-universal';
 
-import rareLogo from 'components/assets/RARE.png';
+import rareLogo from 'components/assets/rare-logo.svg';
 
 import styles from './index.module.css';
 
