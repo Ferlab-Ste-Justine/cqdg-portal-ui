@@ -44,6 +44,7 @@ describe('Page Data Exploration - Filtres', () => {
   it('Renommer un filtre par le manager', () => {
     cy.get('button[class*="QueryBuilderHeaderTools_queryBuilderHeaderDdb"]').clickAndWait({force: true});
     cy.get('[data-menu-id*="manage-my-filters"]').clickAndWait({force: true});
+    cy.contains('Manage my filters').should('exist');
     cy.get('[class="ant-modal-content"]').contains(/^Cypress_F1$/).parentsUntil('li[class*="ListItemWithActions"]').parent().find('[data-icon="edit"]').clickAndWait({force: true});
     cy.get('[class="ant-modal-content"] input').clear().type('Cypress_Fedit1');
     cy.get(`[class="ant-modal-content"] input[value="Cypress_Fedit1"]`).should('exist');

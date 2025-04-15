@@ -6,6 +6,7 @@ beforeEach(() => {
   cy.visitDataExploration('biospecimens');
   cy.get('[data-cy="SidebarMenuItem_Biospecimen"]').clickAndWait({force: true});
   cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
+  cy.get('[class="ant-modal-header"]').contains('sample').should('exist');
   cy.get('[class*="UploadModal"] textarea').type('sr0000214,s03510 unknown');
 });
 

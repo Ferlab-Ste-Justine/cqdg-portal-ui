@@ -6,6 +6,7 @@ beforeEach(() => {
   cy.visitDataExploration('datafiles');
   cy.get('[data-cy="SidebarMenuItem_Data File"]').clickAndWait({force: true});
   cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
+  cy.get('[class="ant-modal-header"]').contains('file').should('exist');
   cy.get('[class*="UploadModal"] textarea').type('fi0000572,unknown');
 });
 

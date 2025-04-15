@@ -6,6 +6,7 @@ beforeEach(() => {
   cy.visitDataExploration('participants');
   cy.get('[data-cy="SidebarMenuItem_Participant"]').clickAndWait({force: true});
   cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
+  cy.get('[class="ant-modal-header"]').contains('participant').should('exist');
   cy.get('[class*="UploadModal"] textarea').type('pt0000010,hsj-1005-389 unknown');
 });
 
