@@ -52,6 +52,11 @@ const CommunityPage = () => {
     });
   }, [roleFilter, researchDomainFilter, activeFilter]);
 
+  /** Reset page index when research domain or role filter change */
+  useEffect(() => {
+    setActiveFilter((prevState) => ({ ...prevState, pageIndex: 0 }));
+  }, [researchDomainFilter, roleFilter]);
+
   return (
     <Space direction="vertical" size={24} className={styles.communityWrapper}>
       <Title className={styles.title} level={4} data-cy="Title_Community">
