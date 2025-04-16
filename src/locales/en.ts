@@ -709,6 +709,8 @@ const en = {
           values: 'comma, space, new line',
         },
         uploadFileFormats: 'Upload file formats',
+        maxNumberUploadItems: 'Maximum number of items per upload',
+        inputLimitErrorText: 'items allowed per upload',
       },
     },
     filterList: {

@@ -712,6 +712,8 @@ const fr = {
           values: 'virgule, espace, nouvelle ligne',
         },
         uploadFileFormats: 'Télécharger des formats de fichiers',
+        maxNumberUploadItems: "Nombre maximal d'éléments par téléversement",
+        inputLimitErrorText: 'éléments autorisés par téléversement',
       },
     },
     filterList: {
