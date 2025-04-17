@@ -6,6 +6,8 @@ import { Descriptions } from 'antd';
 
 import styles from './index.module.css';
 
+const MAX_ITEMS_UPLOAD = 1500;
+
 interface IEntityUploadIdsProps {
   entityId: string;
   entityIdTrans: string;
@@ -44,6 +46,7 @@ const EntityUploadIds = ({
       emptyTableDescription: intl.get('components.uploadIds.emptyTable'),
       modalOkText: intl.get('components.uploadIds.upload.btn'),
       modalCancelText: intl.get('components.uploadIds.cancelBtn'),
+      inputLimitErrorText: intl.get('components.uploadIds.popover.inputLimitErrorText'),
       collapseTitle: (matchCount, unMatchCount) =>
         intl.get('components.uploadIds.collapseTitle', {
           matchCount: numberFormat(matchCount),
@@ -81,12 +84,16 @@ const EntityUploadIds = ({
           <Descriptions.Item label={intl.get('components.uploadIds.popover.uploadFileFormats')}>
             .txt, .csv, .tsv
           </Descriptions.Item>
+          <Descriptions.Item label={intl.get('components.uploadIds.popover.maxNumberUploadItems')}>
+            {MAX_ITEMS_UPLOAD}
+          </Descriptions.Item>
         </Descriptions>
       ),
     }}
     placeHolder={placeHolder}
     fetchMatch={fetchMatch}
     onUpload={onUpload}
+    limitItem={MAX_ITEMS_UPLOAD}
   />
 );
 
