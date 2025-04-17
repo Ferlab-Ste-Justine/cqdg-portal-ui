@@ -32,7 +32,7 @@ describe('Page Variants - Bouton Save set', () => {
     cy.get('[class="ant-tooltip-inner"]').contains('Max. 2,000 items at a time. The first 2,000 will be processed.').should('exist');
   });
   
-  it('Valider les fonctionnalités du bouton - Save as new set [CQDG-772]', () => {
+  it('Valider les fonctionnalités du bouton - Save as new set', () => {
     cy.saveSetAs('Cypress_New_V', 0);
 
     cy.get('[class*="ant-notification"]').contains('Your set has been saved.').should('exist');
