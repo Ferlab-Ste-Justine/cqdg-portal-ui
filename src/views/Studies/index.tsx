@@ -98,6 +98,14 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
       family_count ? numberFormat(family_count) : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
+    key: 'sample_count',
+    title: intl.get('entities.biospecimen.biospecimens'),
+    dataIndex: 'sample_count',
+    defaultHidden: true,
+    render: (sample_count: number) =>
+      sample_count ? numberFormat(sample_count) : TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
     key: 'genomics',
     title: intl.get('screen.studies.genomics'),
     align: 'center',
