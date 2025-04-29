@@ -1119,6 +1119,11 @@ const en = {
         title: 'Search by study code, name, domain, principal investigator or keyword',
         placeholder: 'e.g. CAG, CARTaGENE, Rare Diseases, Epilepsy',
       },
+      summary_row: {
+        participants: 'Participants',
+        biospecimens: 'Biospecimens',
+        families: 'Families',
+      },
     },
     dataExploration: {
       title: 'Data Explorer',

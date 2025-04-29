@@ -100,10 +100,34 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
   {
     key: 'sample_count',
     title: intl.get('entities.biospecimen.biospecimens'),
-    dataIndex: 'sample_count',
     defaultHidden: true,
-    render: (sample_count: number) =>
-      sample_count ? numberFormat(sample_count) : TABLE_EMPTY_PLACE_HOLDER,
+    render: (study: IStudyEntity) => {
+      if (!study?.sample_count) return TABLE_EMPTY_PLACE_HOLDER;
+      const isRestricted = study ? study.security === 'R' : true;
+      if (isRestricted) return numberFormat(study.sample_count);
+      return (
+        <Link
+          to={STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS}
+          onClick={() =>
+            addQuery({
+              queryBuilderId: DATA_EXPLORATION_QB_ID,
+              query: generateQuery({
+                newFilters: [
+                  generateValueFilter({
+                    field: 'study_code',
+                    value: [study.study_code],
+                    index: INDEXES.STUDY,
+                  }),
+                ],
+              }),
+              setAsActive: true,
+            })
+          }
+        >
+          {numberFormat(study.sample_count)}
+        </Link>
+      );
+    },
   },
   {
     key: 'genomics',

@@ -1127,6 +1127,11 @@ const fr = {
         title: 'Recherche par code, nom, domaine, chercheur principal de l’étude ou mot-clé',
         placeholder: 'ex. CAG, CARTaGENE, Rare Diseases, Epilepsy',
       },
+      summary_row: {
+        participants: 'Participants ',
+        biospecimens: 'Biospécimens ',
+        families: 'Familles ',
+      },
     },
     dataExploration: {
       title: 'Explorateur de données',

@@ -85,21 +85,21 @@ const getSummaryColumns = (
     if (c.key === 'participant_count') {
       value = (
         <SummarySumCell
-          title={intl.get('screen.studies.participants')}
+          title={intl.get('screen.studies.summary_row.participants')}
           sum={data.reduce((accumulator, d) => accumulator + d.participant_count, 0)}
         />
       );
     } else if (c.key === 'family_count') {
       value = (
         <SummarySumCell
-          title={intl.get('screen.studies.families')}
+          title={intl.get('screen.studies.summary_row.families')}
           sum={data.reduce((accumulator, d) => accumulator + (d.family_count ?? 0), 0)}
         />
       );
     } else if (c.key === 'sample_count') {
       value = (
         <SummarySumCell
-          title={intl.get('entities.biospecimen.biospecimens')}
+          title={intl.get('screen.studies.summary_row.biospecimens')}
           sum={data.reduce((accumulator, d) => accumulator + d.sample_count, 0)}
         />
       );
