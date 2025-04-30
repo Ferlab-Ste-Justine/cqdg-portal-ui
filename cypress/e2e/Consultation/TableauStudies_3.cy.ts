@@ -5,6 +5,7 @@ beforeEach(() => {
   cy.login();
   cy.visitStudiesPage();
   cy.showColumn('Population');
+  cy.showColumn('Biospecimens');
   cy.showColumn('Access Limitation');
   cy.showColumn('Access Requirement');
   cy.showColumn('Overall Design');

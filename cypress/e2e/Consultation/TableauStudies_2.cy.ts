@@ -5,6 +5,7 @@ beforeEach(() => {
   cy.login();
   cy.visitStudiesPage();
   cy.showColumn('Population');
+  cy.showColumn('Biospecimens');
   cy.showColumn('Access Limitation');
   cy.showColumn('Access Requirement');
   cy.showColumn('Overall Design');
@@ -30,24 +31,31 @@ describe('Page des études - Valider les liens disponibles', () => {
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('T-DEE').should('exist');
   });
 
+  it('Lien Biospecimens du tableau', () => {
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(6).find('[href]').clickAndWait({force: true});
+    cy.get('[data-cy="ProTable_Biospecimens"]').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Study Code').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('T-DEE').should('exist');
+  });
+
   it('Lien Files du tableau', () => {
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(9).find('[href]').clickAndWait({force: true});
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(10).find('[href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Study Code').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('T-DEE').should('exist');
   });
 
   it('Lien Duo de l\'Access Limitation du tableau', () => {
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(10).find('[href]')
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).find('[href]')
       .should('have.attr', 'href', 'http://purl.obolibrary.org/obo/DUO_0000006');
   });
 
   it('Lien Duo de l\'Access Requirement du tableau', () => {
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).find('[href]')
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(12).find('[href]')
       .should('have.attr', 'href', 'http://purl.obolibrary.org/obo/DUO_0000016');
   });
   
   it('Lien \'See more\' de l\'Access Requirement du tableau', () => {
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).find('a[class*="ExpandableCell_fuiExpandableCellBtn"]').contains('See more').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(12).find('a[class*="ExpandableCell_fuiExpandableCellBtn"]').contains('See more').should('exist');
   });
 });
