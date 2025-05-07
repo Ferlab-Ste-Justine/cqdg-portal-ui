@@ -34,6 +34,7 @@ const ProfileSettings = loadable(() => import('views/ProfileSettings'), loadable
 const Community = loadable(() => import('views/Community'), loadableProps);
 const CommunityMember = loadable(() => import('views/Community/Member'), loadableProps);
 const StudyEntity = loadable(() => import('views/StudyEntity'), loadableProps);
+const Programs = loadable(() => import('views/Programs'), loadableProps);
 
 const App = () => {
   const lang = useLang();
@@ -147,6 +148,14 @@ const App = () => {
                     element={
                       <ProtectedRoute>
                         <StudyEntity />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path={STATIC_ROUTES.PROGRAMS}
+                    element={
+                      <ProtectedRoute>
+                        <Programs />
                       </ProtectedRoute>
                     }
                   />

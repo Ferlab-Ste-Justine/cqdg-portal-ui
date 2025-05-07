@@ -7,6 +7,7 @@ import {
   HomeOutlined,
   LogoutOutlined,
   MailOutlined,
+  ProfileOutlined,
   ReadOutlined,
   TeamOutlined,
   UserOutlined,
@@ -203,6 +204,12 @@ const Header = () => {
                 to={STATIC_ROUTES.STUDIES}
                 icon={<ReadOutlined />}
                 title={intl.get('layout.main.menu.studies')}
+                currentPathName={currentPathName}
+              />
+              <HeaderLink
+                to={STATIC_ROUTES.PROGRAMS}
+                icon={<ProfileOutlined />}
+                title={intl.get('layout.main.menu.programs')}
                 currentPathName={currentPathName}
               />
               <HeaderLink

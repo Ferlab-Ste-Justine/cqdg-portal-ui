@@ -1,0 +1,15 @@
+.pageWrapper {
+  min-width: 480px;
+  max-width: 1200px;
+  padding: var(--default-page-content-padding);
+  margin: auto;
+  display: flex;
+}
+
+.title {
+  margin-bottom: 0 !important;
+}
+
+.listWrapper {
+  background-color: unset;
+}
