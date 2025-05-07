@@ -58,6 +58,7 @@ const Header = () => {
     STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS,
     STATIC_ROUTES.DATA_EXPLORATION_DATAFILES,
   ];
+  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
   const handleChangeLang = () => {
     const targetLang = getTargetLang(lang);
@@ -206,12 +207,14 @@ const Header = () => {
                 title={intl.get('layout.main.menu.studies')}
                 currentPathName={currentPathName}
               />
-              <HeaderLink
-                to={STATIC_ROUTES.PROGRAMS}
-                icon={<ProfileOutlined />}
-                title={intl.get('layout.main.menu.programs')}
-                currentPathName={currentPathName}
-              />
+              {isProgramsEnabled && (
+                <HeaderLink
+                  to={STATIC_ROUTES.PROGRAMS}
+                  icon={<ProfileOutlined />}
+                  title={intl.get('layout.main.menu.programs')}
+                  currentPathName={currentPathName}
+                />
+              )}
               <HeaderLink
                 to={DATA_EXPLORATION_ROUTES}
                 icon={<FileSearchOutlined />}
