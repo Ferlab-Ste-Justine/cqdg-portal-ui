@@ -56,7 +56,16 @@ const ProgramCard = ({ program }: IProgramCardProps) => {
           {lang === LANG.FR ? program.description_fr : program.description_en}
         </Typography.Text>
 
-        <div className={styles.buttonsRow}>
+        <div className={styles.partnersRow}>
+          {program.partners.map(
+            (partner) =>
+              isUrl(partner.logo_url) && (
+                <img src={partner.logo_url} alt={partner.name} key={partner.name} />
+              ),
+          )}
+        </div>
+
+        <div className={styles.footerRow}>
           <Tag icon={<ReadOutlined width={16} height={16} />} className={styles.cardTag}>
             {`${studiesCount} ${intl.get('entities.study.studies_min')}`}
           </Tag>

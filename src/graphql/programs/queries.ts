@@ -26,7 +26,11 @@ export const GET_PROGRAMS = gql`
               role_en
               institution
             }
-            funding_sources
+            partners {
+              name
+              logo_url
+              rank
+            }
             study_codes
             logo_url
           }

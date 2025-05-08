@@ -18,6 +18,12 @@ export interface IManager {
   institution: string;
 }
 
+export interface IPartner {
+  name: string;
+  logo_url: string;
+  rank: string;
+}
+
 export interface IProgramEntity {
   id: string;
   program_id: string;
@@ -29,7 +35,7 @@ export interface IProgramEntity {
   citation_statement: string;
   contacts: IContact[];
   managers: IManager[];
-  funding_sources: string[];
+  partners: IPartner[];
   study_codes: string[];
   logo_url: string;
 

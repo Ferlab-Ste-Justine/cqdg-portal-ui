@@ -20,7 +20,13 @@
   text-overflow: ellipsis;
 }
 
-.buttonsRow {
+.partnersRow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.footerRow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

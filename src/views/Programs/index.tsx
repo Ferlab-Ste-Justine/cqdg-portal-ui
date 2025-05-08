@@ -1,8 +1,7 @@
 import intl from 'react-intl-universal';
 import { List, Space, Typography } from 'antd';
-
-import { usePrograms } from '../../graphql/programs/actions';
-import { IProgramEntity } from '../../graphql/programs/models';
+import { usePrograms } from 'graphql/programs/actions';
+import { IProgramEntity } from 'graphql/programs/models';
 
 import ProgramCard from './components/ProgramCard';
 
