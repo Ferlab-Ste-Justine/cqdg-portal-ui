@@ -7,6 +7,7 @@ const en = {
       study_code: 'Study Code',
       study: 'Study',
       studies: 'Studies',
+      studies_min: 'studies',
       studyAuto: '{count, plural, =0 {Study} =1 {Study} other {Studies}}',
       access_limitations: 'Access Limitations',
       access_limitation: 'Access Limitation',

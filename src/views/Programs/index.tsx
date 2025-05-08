@@ -10,11 +10,11 @@ import styles from './index.module.css';
 
 const { Title } = Typography;
 
-const CommunityPage = () => {
-  const { loading, data: programs } = usePrograms();
+const ProgramsPage = () => {
+  const { loading, data } = usePrograms();
 
   /** sort programs by study_codes length DESC, then participants_count DESC finally by program_name_en ASC */
-  const programsSorted = programs.sort((a, b) =>
+  const programsSorted: IProgramEntity[] = data.sort((a, b) =>
     a.study_codes.length > b.study_codes.length
       ? -1
       : a.study_codes.length < b.study_codes.length
@@ -23,16 +23,12 @@ const CommunityPage = () => {
       ? -1
       : a.participants_count < b.participants_count
       ? 1
-      : a.program_name_en > b.program_name_en
+      : a.name_en > b.name_en
       ? 1
-      : a.program_name_en < b.program_name_en
+      : a.name_en < b.name_en
       ? -1
       : 0,
   );
-
-  /** fakeAdCard on array is a way to add the ad card to the grid of List component */
-  const fakeAdCard = { ...programs[0], isAdCard: true };
-  const dataSource: IProgramEntity[] = loading ? programsSorted : [...programsSorted, fakeAdCard];
 
   return (
     <Space direction="vertical" size={24} className={styles.pageWrapper}>
@@ -51,11 +47,11 @@ const CommunityPage = () => {
           xl: 2,
           xxl: 2,
         }}
-        dataSource={dataSource}
+        dataSource={programsSorted}
         className={styles.listWrapper}
         loading={loading}
-        renderItem={(item, key) => (
-          <List.Item key={key} className={styles.listItem}>
+        renderItem={(item) => (
+          <List.Item className={styles.listItem}>
             <ProgramCard program={item} />
           </List.Item>
         )}
@@ -64,4 +60,4 @@ const CommunityPage = () => {
   );
 };
 
-export default CommunityPage;
+export default ProgramsPage;

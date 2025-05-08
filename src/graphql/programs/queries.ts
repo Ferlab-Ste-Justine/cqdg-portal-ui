@@ -8,13 +8,27 @@ export const GET_PROGRAMS = gql`
         edges {
           node {
             program_id
-            program_name_en
-            program_name_fr
+            name_en
+            name_fr
             description_en
             description_fr
-            contact_email
+            website
+            citation_statement
+            contacts {
+              name
+              email
+              institution
+            }
+            managers {
+              name
+              picture_url
+              role_fr
+              role_en
+              institution
+            }
+            funding_sources
             study_codes
-            participants_count
+            logo_url
           }
         }
       }

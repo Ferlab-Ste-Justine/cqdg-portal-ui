@@ -4,30 +4,35 @@ export interface IProgramResultTree {
   Program: ArrangerResultsTree<IProgramEntity>;
 }
 
+export interface IContact {
+  name: string;
+  email: string;
+  institution: string;
+}
+
+export interface IManager {
+  name: string;
+  picture_url: string;
+  role_fr: string;
+  role_en: string;
+  institution: string;
+}
+
 export interface IProgramEntity {
   id: string;
-  keyword: string[];
-  study_id: string;
-  study_code: string;
   program_id: string;
-  program_name_en: string;
-  program_name_fr: string;
+  name_en: string;
+  name_fr: string;
   description_en: string;
   description_fr: string;
   website: string;
   citation_statement: string;
-  contact_name: string;
-  contact_email: string;
-  contact_institution: string;
-  manager_name: string;
-  manager_picture: string;
-  manager_role: string;
-  manager_institution: string;
+  contacts: IContact[];
+  managers: IManager[];
   funding_sources: string[];
   study_codes: string[];
-  program_logo: string;
+  logo_url: string;
 
-  logoUrl?: string;
   participants_count: number;
   isAdCard?: boolean;
 }

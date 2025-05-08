@@ -7,6 +7,7 @@ const fr = {
       study_code: "Code de l'étude",
       study: 'Étude',
       studies: 'Études',
+      studies_min: 'études',
       studyAuto: '{count, plural, =0 {Étude} =1 {Étude} other {Études}}',
       access_limitations: 'Restrictions d’accès',
       access_limitation: "Restriction d'accès",
