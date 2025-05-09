@@ -1,0 +1,15 @@
+.pageWrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.title {
+  margin-bottom: 0 !important;
+}
