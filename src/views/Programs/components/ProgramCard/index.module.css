@@ -2,11 +2,6 @@
   min-width: 500px;
 }
 
-.cardWrapper:hover {
-  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.06);
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.06);
-}
-
 .cardLogo {
   color: var(--blue-8);
 }
@@ -18,12 +13,6 @@
   align-self: stretch;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.partnersRow {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
 }
 
 .footerRow {

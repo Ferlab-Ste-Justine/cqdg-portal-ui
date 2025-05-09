@@ -4,6 +4,7 @@ import { ReadOutlined } from '@ant-design/icons';
 import ScientificLiteratureIcon from '@ferlab/ui/core/components/Icons/Futuro/ScientificLiteratureIcon';
 import { Button, Card, Space, Tag, Typography } from 'antd';
 import { IProgramEntity } from 'graphql/programs/models';
+import EnvVariables from 'helpers/EnvVariables';
 
 import { LANG } from 'common/constants';
 import ExternalLinkIcon from 'components/Icons/ExternalLinkIcon';
@@ -37,14 +38,11 @@ const ProgramCard = ({ program }: IProgramCardProps) => {
 
   const studiesCount = program.study_codes?.length || 0;
 
-  //TODO: resolve the rules for the logo url
-  const isUrl = (url: string) => url.startsWith('https://');
-
   return (
     <Card className={styles.cardWrapper}>
       <Space direction="vertical" size={16}>
-        {isUrl(program.logo_url) ? (
-          <image href={program.logo_url} />
+        {program.logo_url ? (
+          <object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />
         ) : (
           <ScientificLiteratureIcon width={60} height={49} className={styles.cardLogo} />
         )}
@@ -55,15 +53,6 @@ const ProgramCard = ({ program }: IProgramCardProps) => {
         <Typography.Text className={styles.cardDescription}>
           {lang === LANG.FR ? program.description_fr : program.description_en}
         </Typography.Text>
-
-        <div className={styles.partnersRow}>
-          {program.partners.map(
-            (partner) =>
-              isUrl(partner.logo_url) && (
-                <img src={partner.logo_url} alt={partner.name} key={partner.name} />
-              ),
-          )}
-        </div>
 
         <div className={styles.footerRow}>
           <Tag icon={<ReadOutlined width={16} height={16} />} className={styles.cardTag}>
