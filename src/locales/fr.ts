@@ -444,10 +444,8 @@ const fr = {
       programs: 'Programmes',
       program: 'Programme',
       program_id: 'ID programme',
-      program_name_en: 'Nom du programme',
-      program_name_fr: 'Nom du programme',
-      description_en: 'Description',
-      description_fr: 'Description',
+      program_name: 'Nom du programme',
+      description: 'Description',
       website: 'Site web',
       citation_statement: 'Déclaration de citation',
       contact_name: 'Nom du contact',
@@ -455,6 +453,11 @@ const fr = {
       newProgramSoon: 'De nouveaux programmes arrivent bientôt',
       newProgramSoonDescription:
         'Rejoignez notre liste de diffusion pour recevoir des mises à jour et soyez parmi les premiers à découvrir les prochains programmes.',
+
+      allPrograms: 'Tous les programmes',
+      programStudies:
+        'Ce programme inclut les études suivantes et peut évoluer avec l’ajout de nouvelles études.',
+      viewStudy: 'Voir l’étude',
     },
   },
   global: {

@@ -1,4 +1,5 @@
 import { ArrangerResultsTree } from '../models';
+import { IStudyEntity } from '../studies/models';
 
 export interface IProgramResultTree {
   Program: ArrangerResultsTree<IProgramEntity>;
@@ -37,6 +38,7 @@ export interface IProgramEntity {
   managers: IManager[];
   partners: IPartner[];
   study_codes: string[];
+  studies: IStudyEntity[];
   logo_url: string;
 
   participants_count: number;

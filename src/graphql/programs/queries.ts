@@ -14,6 +14,7 @@ export const GET_PROGRAMS = gql`
             description_fr
             website
             citation_statement
+            logo_url
             contacts {
               name
               email
@@ -32,7 +33,12 @@ export const GET_PROGRAMS = gql`
               rank
             }
             study_codes
-            logo_url
+            studies {
+              study_code
+              name
+              description
+              participant_count
+            }
           }
         }
       }

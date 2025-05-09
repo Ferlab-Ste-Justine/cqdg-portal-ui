@@ -37,6 +37,7 @@ const Community = loadable(() => import('views/Community'), loadableProps);
 const CommunityMember = loadable(() => import('views/Community/Member'), loadableProps);
 const StudyEntity = loadable(() => import('views/StudyEntity'), loadableProps);
 const Programs = loadable(() => import('views/Programs'), loadableProps);
+const ProgramEntity = loadable(() => import('views/ProgramEntity'), loadableProps);
 
 const App = () => {
   const lang = useLang();
@@ -160,6 +161,16 @@ const App = () => {
                       element={
                         <ProtectedRoute>
                           <Programs />
+                        </ProtectedRoute>
+                      }
+                    />
+                  )}
+                  {isProgramsEnabled && (
+                    <Route
+                      path={DYNAMIC_ROUTES.PROGRAM_ENTITY}
+                      element={
+                        <ProtectedRoute>
+                          <ProgramEntity />
                         </ProtectedRoute>
                       }
                     />
