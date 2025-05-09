@@ -1,0 +1,48 @@
+.cardWrapper {
+  min-width: 500px;
+}
+
+.cardLogo {
+  color: var(--blue-8);
+}
+
+.cardDescription {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  align-self: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footerRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cardTag {
+  background-color: var(--gray-3);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.adCardWrapper {
+  background: linear-gradient(343deg, #008fc7 23.91%, #016195 102.01%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 308px;
+}
+
+.adCardDescription {
+  color: var(--gray-2);
+  text-align: center;
+  display: flex;
+}
+
+.gray2 {
+  color: var(--gray-2) !important;
+}

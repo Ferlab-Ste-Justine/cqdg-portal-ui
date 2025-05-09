@@ -21,6 +21,8 @@ import NotificationContextHolder from 'components/utils/NotificationContextHolde
 import { useLang } from 'store/global';
 import { DYNAMIC_ROUTES, STATIC_ROUTES } from 'utils/routes';
 
+import EnvVariables from './helpers/EnvVariables';
+
 const loadableProps = { fallback: <Spinner size="large" /> };
 const Dashboard = loadable(() => import('views/Dashboard'), loadableProps);
 const Studies = loadable(() => import('views/Studies'), loadableProps);
@@ -34,12 +36,14 @@ const ProfileSettings = loadable(() => import('views/ProfileSettings'), loadable
 const Community = loadable(() => import('views/Community'), loadableProps);
 const CommunityMember = loadable(() => import('views/Community/Member'), loadableProps);
 const StudyEntity = loadable(() => import('views/StudyEntity'), loadableProps);
+const Programs = loadable(() => import('views/Programs'), loadableProps);
 
 const App = () => {
   const lang = useLang();
   const { keycloak, initialized } = useKeycloak();
   const keycloakIsReady = keycloak && initialized;
   setDefaultOptions({ locale: lang === LANG.FR ? fr : enUS });
+  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
   return (
     <ConfigProvider
@@ -150,6 +154,16 @@ const App = () => {
                       </ProtectedRoute>
                     }
                   />
+                  {isProgramsEnabled && (
+                    <Route
+                      path={STATIC_ROUTES.PROGRAMS}
+                      element={
+                        <ProtectedRoute>
+                          <Programs />
+                        </ProtectedRoute>
+                      }
+                    />
+                  )}
                   <Route path="*" element={<Navigate to={STATIC_ROUTES.STUDIES} />} />
                 </Routes>
                 <NotificationContextHolder />

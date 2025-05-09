@@ -7,6 +7,7 @@ const en = {
       study_code: 'Study Code',
       study: 'Study',
       studies: 'Studies',
+      studies_min: 'studies',
       studyAuto: '{count, plural, =0 {Study} =1 {Study} other {Studies}}',
       access_limitations: 'Access Limitations',
       access_limitation: 'Access Limitation',
@@ -435,6 +436,22 @@ const en = {
         },
       },
     },
+    program: {
+      programs: 'Programs',
+      program: 'Program',
+      program_id: 'Program ID',
+      program_name_en: 'Program Name',
+      program_name_fr: 'Program Name',
+      description_en: 'Description',
+      description_fr: 'Description',
+      website: 'Website',
+      citation_statement: 'Citation Statement',
+      contact_name: 'Contact Name',
+      contact_email: 'Contact Email',
+      newProgramSoon: 'New programs coming soon',
+      newProgramSoonDescription:
+        'Join our mailing list to receive updates and be among the first to discover the next programs.',
+    },
   },
   global: {
     yes: 'Yes',
@@ -848,6 +865,7 @@ const en = {
       menu: {
         dashboard: 'Dashboard',
         studies: 'Studies',
+        programs: 'Programs',
         explore: 'Data Explorer',
         variants: 'Variants',
         website: 'Website',
