@@ -444,16 +444,17 @@ const en = {
       description: 'Description',
       website: 'Website',
       citation_statement: 'Citation statement',
+      citation: 'Citation',
       contact_name: 'Contact Name',
       contact_email: 'Contact Email',
       newProgramSoon: 'New programs coming soon',
       newProgramSoonDescription:
         'Join our mailing list to receive updates and be among the first to discover the next programs.',
-
       allPrograms: 'All programs',
       programStudies:
         'This program includes the following studies and may grow as new studies are added over time.',
       viewStudy: 'View study',
+      partners: 'Partners',
     },
   },
   global: {

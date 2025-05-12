@@ -1,48 +1,36 @@
 import intl from 'react-intl-universal';
+import { Link } from 'react-router-dom';
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import ExternalLinkIcon from '@ferlab/ui/core/components/ExternalLink/ExternalLinkIcon';
 import ScientificLiteratureIcon from '@ferlab/ui/core/components/Icons/Futuro/ScientificLiteratureIcon';
-import { Button, Card, Space, Typography } from 'antd';
+import { Button, Card, Space } from 'antd';
 import { IProgramEntity } from 'graphql/programs/models';
+import EnvVariables from 'helpers/EnvVariables';
 
-import { LANG } from 'common/constants';
-import { useLang } from 'store/global';
+import { STATIC_ROUTES } from 'utils/routes';
+
+import BottomSection from './BottomSection';
+import MainSection from './MainSection';
 
 import styles from './index.module.css';
 
-const { Title, Text } = Typography;
-
 const ProgramCard = ({ loading, program }: { loading: boolean; program?: IProgramEntity }) => {
-  const lang = useLang();
-
-  //TODO: resolve the rules for the logo url
-  const isUrl = (url?: string) => url?.startsWith('https://');
-
   return (
     <Card loading={loading}>
-      <Space direction="vertical" size={24} className={styles.cardWrapper}>
-        <Button type="text" icon={<ArrowLeftOutlined width={16} height={16} />}>
-          {intl.get('entities.program.allPrograms')}
-        </Button>
+      <Space direction="vertical" size={40} className={styles.cardWrapper}>
+        <Link to={STATIC_ROUTES.PROGRAMS}>
+          <Button type="text" icon={<ArrowLeftOutlined width={16} height={16} />}>
+            {intl.get('entities.program.allPrograms')}
+          </Button>
+        </Link>
 
-        {isUrl(program?.logo_url) ? (
-          <image href={program?.logo_url} />
+        {program?.logo_url ? (
+          <object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />
         ) : (
           <ScientificLiteratureIcon width={60} height={49} className={styles.cardLogo} />
         )}
 
-        <Title className={styles.title} level={4}>
-          {lang === LANG.FR ? program?.name_fr : program?.name_en}
-        </Title>
-
-        <Text className={styles.cardDescription}>
-          {lang === LANG.FR ? program?.description_fr : program?.description_en}
-        </Text>
-
-        <Button type="default">
-          {intl.get('global.website')}
-          <ExternalLinkIcon />
-        </Button>
+        <MainSection program={program} />
+        <BottomSection program={program} />
       </Space>
     </Card>
   );

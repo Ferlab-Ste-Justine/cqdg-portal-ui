@@ -11,7 +11,7 @@ const { Title, Text } = Typography;
 const StudiesList = ({ studies, loading }: { studies: IStudyEntity[]; loading: boolean }) => {
   return (
     <Space direction="vertical" size={24} className={styles.containerWrapper}>
-      <Space direction="vertical">
+      <Space direction="vertical" size={0}>
         <Title className={styles.title} level={4}>
           {intl.get('entities.study.studies')}
         </Title>
