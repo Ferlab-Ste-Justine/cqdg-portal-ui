@@ -7,6 +7,7 @@ const fr = {
       study_code: "Code de l'étude",
       study: 'Étude',
       studies: 'Études',
+      studies_min: 'études',
       studyAuto: '{count, plural, =0 {Étude} =1 {Étude} other {Études}}',
       access_limitations: 'Restrictions d’accès',
       access_limitation: "Restriction d'accès",
@@ -439,6 +440,22 @@ const fr = {
         },
       },
     },
+    program: {
+      programs: 'Programmes',
+      program: 'Programme',
+      program_id: 'ID programme',
+      program_name_en: 'Nom du programme',
+      program_name_fr: 'Nom du programme',
+      description_en: 'Description',
+      description_fr: 'Description',
+      website: 'Site web',
+      citation_statement: 'Déclaration de citation',
+      contact_name: 'Nom du contact',
+      contact_email: 'Email du contact',
+      newProgramSoon: 'De nouveaux programmes arrivent bientôt',
+      newProgramSoonDescription:
+        'Rejoignez notre liste de diffusion pour recevoir des mises à jour et soyez parmi les premiers à découvrir les prochains programmes.',
+    },
   },
   global: {
     yes: 'Oui',
@@ -854,6 +871,7 @@ const fr = {
       menu: {
         dashboard: 'Tableau de bord',
         studies: 'Études',
+        programs: 'Programmes',
         explore: 'Explorateur',
         variants: 'Variants',
         website: 'Site web',
