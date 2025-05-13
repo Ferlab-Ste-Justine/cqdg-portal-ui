@@ -1,0 +1,55 @@
+.cardWrapper {
+  min-width: 500px;
+}
+
+.cardWrapper:hover {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.06);
+}
+
+.cardLogo {
+  font-size: 80px;
+  color: var(--gray-4);
+}
+
+.cardDescription {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  align-self: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.divider {
+  margin: 0;
+}
+
+.footerRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statsWrapper {
+  display: flex;
+  gap: 4px;
+}
+
+.statsIcon {
+  font-size: 16px;
+  color: var(--gray-9);
+}
+
+.countWrapper {
+  display: flex;
+  align-items: end;
+  gap: 4px;
+}
+
+.count {
+  color: var(--gray-9);
+  font-size: 16px;
+  font-weight: 600;
+}
