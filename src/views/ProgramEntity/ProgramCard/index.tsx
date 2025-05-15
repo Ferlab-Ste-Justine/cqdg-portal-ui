@@ -9,6 +9,7 @@ import EnvVariables from 'helpers/EnvVariables';
 import { STATIC_ROUTES } from 'utils/routes';
 
 import BottomSection from './BottomSection';
+import FooterSection from './FooterSection';
 import MainSection from './MainSection';
 
 import styles from './index.module.css';
@@ -24,13 +25,20 @@ const ProgramCard = ({ loading, program }: { loading: boolean; program?: IProgra
         </Link>
 
         {program?.logo_url ? (
-          <object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />
+          <img
+            alt={program.name_en}
+            loading="eager"
+            src={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url}
+          >
+            {/*<object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />*/}
+          </img>
         ) : (
           <ScientificLiteratureIcon width={60} height={49} className={styles.cardLogo} />
         )}
 
         <MainSection program={program} />
         <BottomSection program={program} />
+        <FooterSection program={program} />
       </Space>
     </Card>
   );

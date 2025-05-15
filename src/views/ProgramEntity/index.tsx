@@ -14,7 +14,7 @@ const ProgramEntityPage = () => {
   return (
     <Space direction="vertical" size={48} className={styles.pageWrapper}>
       <ProgramCard loading={loading} program={program} />
-      <StudiesList loading={loading} studies={program?.studies || []} />
+      <StudiesList studies={program?.studies || []} />
     </Space>
   );
 };

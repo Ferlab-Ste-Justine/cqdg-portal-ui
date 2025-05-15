@@ -6,7 +6,7 @@ export interface IProgramResultTree {
 }
 
 export interface IContact {
-  name: string;
+  website: string;
   email: string;
   institution: string;
 }

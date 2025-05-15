@@ -442,9 +442,13 @@ const en = {
       program_id: 'Program ID',
       program_name: 'Program Name',
       description: 'Description',
+      contact: 'Contact',
+      affiliation: 'Affiliation',
       website: 'Website',
       citation_statement: 'Citation statement',
       citation: 'Citation',
+      citation_statement_info:
+        'When you publish an article using data from the {program_id} program, please ensure you comply with the program’s publication policies AND cite the program in your manuscript as shown.',
       contact_name: 'Contact Name',
       contact_email: 'Contact Email',
       newProgramSoon: 'New programs coming soon',

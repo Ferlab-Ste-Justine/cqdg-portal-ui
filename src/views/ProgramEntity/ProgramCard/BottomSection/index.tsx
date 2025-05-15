@@ -18,20 +18,27 @@ const BottomSection = ({ program }: { program?: IProgramEntity }) => {
         {program?.partners?.map(
           (p) =>
             p.logo_url && (
-              <object
-                key={p.name}
-                data={EnvVariables.configFor('S3_ASSETS_URL') + p.logo_url}
-                className={styles.managerPicture}
-              />
+              <div key={p.name}>
+                <object
+                  data={EnvVariables.configFor('S3_ASSETS_URL') + p.logo_url}
+                  className={styles.managerPicture}
+                />
+              </div>
             ),
         )}
       </div>
+
       <TitleDivider title={intl.get('entities.program.citation')} />
       <div className={styles.citationWrapper}>
         <Text className={styles.citation}>« {program?.citation_statement} »</Text>
         <Text type="secondary" className={styles.citationStatement}>
           {intl.get('entities.program.citation_statement')}
-          <Tooltip title={intl.get('entities.program.citation_statement')}>
+          <Tooltip
+            title={intl.get('entities.program.citation_statement_info', {
+              program_id: program?.program_id,
+            })}
+            overlayClassName={styles.citationStatementTooltip}
+          >
             <InfoCircleOutlined />
           </Tooltip>
         </Text>

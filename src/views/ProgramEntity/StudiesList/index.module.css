@@ -8,5 +8,8 @@
 }
 
 .listWrapper {
-  background-color: unset;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
 }

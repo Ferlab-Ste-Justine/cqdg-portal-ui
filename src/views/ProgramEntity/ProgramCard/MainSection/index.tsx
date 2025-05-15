@@ -21,11 +21,9 @@ const ProgramCard = ({ program }: { program?: IProgramEntity }) => {
         <Title className={styles.title} level={4}>
           {lang === LANG.FR ? program?.name_fr : program?.name_en}
         </Title>
-
         <Text className={styles.cardDescription}>
           {lang === LANG.FR ? program?.description_fr : program?.description_en}
         </Text>
-
         <Button type="default">
           {intl.get('entities.program.website')}
           <ExternalLinkIcon />

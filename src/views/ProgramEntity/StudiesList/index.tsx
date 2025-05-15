@@ -1,5 +1,5 @@
 import intl from 'react-intl-universal';
-import { List, Space, Typography } from 'antd';
+import { Space, Typography } from 'antd';
 import { IStudyEntity } from 'graphql/studies/models';
 
 import StudyCard from './StudyCard';
@@ -8,7 +8,7 @@ import styles from './index.module.css';
 
 const { Title, Text } = Typography;
 
-const StudiesList = ({ studies, loading }: { studies: IStudyEntity[]; loading: boolean }) => {
+const StudiesList = ({ studies }: { studies: IStudyEntity[] }) => {
   return (
     <Space direction="vertical" size={24} className={styles.containerWrapper}>
       <Space direction="vertical" size={0}>
@@ -17,25 +17,12 @@ const StudiesList = ({ studies, loading }: { studies: IStudyEntity[]; loading: b
         </Title>
         <Text>{intl.get('entities.program.programStudies')}</Text>
       </Space>
-      <List
-        grid={{
-          gutter: 16,
-          xs: 1,
-          sm: 1,
-          md: 1,
-          lg: 2,
-          xl: 2,
-          xxl: 2,
-        }}
-        dataSource={studies}
-        className={styles.listWrapper}
-        loading={loading}
-        renderItem={(item) => (
-          <List.Item className={styles.listItem}>
-            <StudyCard study={item} />
-          </List.Item>
-        )}
-      ></List>
+
+      <div className={styles.listWrapper}>
+        {studies.map((study) => (
+          <StudyCard key={study.study_code} study={study} />
+        ))}
+      </div>
     </Space>
   );
 };

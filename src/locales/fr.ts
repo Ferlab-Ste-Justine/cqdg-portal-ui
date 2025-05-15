@@ -446,9 +446,13 @@ const fr = {
       program_id: 'ID programme',
       program_name: 'Nom du programme',
       description: 'Description',
+      contact: 'Contact',
+      affiliation: 'Affiliation',
       website: 'Site web',
       citation_statement: 'Déclaration de citation',
       citation: 'Citation',
+      citation_statement_info:
+        'Lorsque vous publiez un article utilisant des données basées sur les données des études du programme {program_id}, veuillez vous assurer d’adhérer aux politiques de publication de chacune des études concernées ET veuillez citer l’utilisation des données du programme dans votre manuscrit tel qu’affiché.',
       contact_name: 'Nom du contact',
       contact_email: 'Email du contact',
       newProgramSoon: 'De nouveaux programmes arrivent bientôt',

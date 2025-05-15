@@ -85,4 +85,5 @@ export interface IStudyEntity {
   funding_sources: string[];
   citation_statement: string;
   selection_criteria: string;
+  logo_url?: string;
 }
