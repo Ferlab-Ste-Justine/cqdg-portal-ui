@@ -1,9 +1,8 @@
+import { INDEXES } from 'graphql/constants';
 import { hydrateResults } from 'graphql/models';
 import { QueryVariable } from 'graphql/queries';
 
 import useLazyResultQuery from 'hooks/graphql/useLazyResultQuery';
-
-import { INDEXES } from '../constants';
 
 import { IProgramResultTree } from './models';
 import { GET_PROGRAMS } from './queries';

@@ -39,7 +39,6 @@ const BottomSection = ({ program }: { program?: IProgramEntity }) => {
               program_id: program?.program_id,
             })}
             overlayClassName={styles.citationStatementTooltip}
-            // className={styles.citationStatementTooltip}
           >
             <InfoCircleOutlined />
           </Popover>

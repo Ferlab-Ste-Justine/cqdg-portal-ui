@@ -31,5 +31,5 @@
 }
 
 .citationStatementTooltip {
-  width: 495px;
+  max-width: 495px;
 }
