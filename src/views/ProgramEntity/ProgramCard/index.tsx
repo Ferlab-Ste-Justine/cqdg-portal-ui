@@ -24,17 +24,13 @@ const ProgramCard = ({ loading, program }: { loading: boolean; program?: IProgra
           </Button>
         </Link>
 
-        {program?.logo_url ? (
-          <img
-            alt={program.name_en}
-            loading="eager"
-            src={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url}
-          >
-            {/*<object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />*/}
-          </img>
-        ) : (
-          <ScientificLiteratureIcon width={60} height={49} className={styles.cardLogo} />
-        )}
+        <div className={styles.cardLogo}>
+          {program?.logo_url ? (
+            <object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />
+          ) : (
+            <ScientificLiteratureIcon height={80} width={80} />
+          )}
+        </div>
 
         <MainSection program={program} />
         <BottomSection program={program} />

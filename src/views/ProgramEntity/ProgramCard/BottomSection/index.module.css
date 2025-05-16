@@ -15,7 +15,6 @@
 
 .citationWrapper {
   display: flex;
-  max-width: 1088px;
   flex-direction: column;
   max-width: 960px;
   gap: 16px;
@@ -32,5 +31,5 @@
 }
 
 .citationStatementTooltip {
-  min-width: 600px;
+  width: 495px;
 }
