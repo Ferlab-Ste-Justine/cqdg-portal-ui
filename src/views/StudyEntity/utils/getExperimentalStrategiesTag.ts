@@ -1,13 +1,31 @@
 const getExperimentalStrategiesTag = (value: string) => {
   switch (value) {
-    case 'WGS':
-      return 'magenta';
-    case 'WXS':
+    //Targeted sequencing green
+    case 'TARS':
       return 'green';
-    case 'RNA-Seq':
-      return 'orange';
-    case 'Methyl-Seq':
+    //DNA Genome Sequencing blue
+    case 'WGS':
+      return 'blue';
+    //DNA Exome Sequencing cyan
+    case 'WXS':
       return 'cyan';
+    //RNA Sequencing purple
+    case 'RNAS':
+      return 'purple';
+    //Chromatin gold
+    case 'CHIPS':
+    case 'ATACS':
+      return 'gold';
+    //DNA Methylation geekblue
+    case 'BIS':
+    case 'TMS':
+    case 'MRES':
+    case 'MDIPS':
+    case 'MCCS':
+    case 'MBDS':
+    case 'EMS':
+    case 'DMS':
+      return 'geekblue';
     default:
       return '';
   }
