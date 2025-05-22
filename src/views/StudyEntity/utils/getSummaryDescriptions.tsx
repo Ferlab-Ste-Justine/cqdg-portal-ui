@@ -61,64 +61,44 @@ const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[]
   {
     label: intl.get('entities.study.keywords'),
     value: study?.keyword?.length
-      ? study?.keyword?.map((key) => (
-          <Tag key={key} className={styles.tag}>
-            {key
-              ?.split(' ')
+      ? study?.keyword
+          .map((key) =>
+            key
+              .split(' ')
               .map((word) => capitalize(word))
-              .join(' ')}
-          </Tag>
-        ))
+              .join(' '),
+          )
+          .join(', ')
       : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.study.data_categories'),
     value: study?.data_categories?.hits?.edges?.length
-      ? study.data_categories.hits.edges.map(({ node }) => (
-          <Tag key={node.data_category} className={styles.tag}>
-            {node.data_category}
-          </Tag>
-        ))
+      ? study.data_categories.hits.edges.map(({ node }) => node.data_category).join(', ')
       : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.study.data_collection_methods'),
     value: study?.data_collection_methods?.length
-      ? study.data_collection_methods.map((e) => (
-          <Tag key={e} className={styles.tag}>
-            {e}
-          </Tag>
-        ))
+      ? study.data_collection_methods.map((e) => e).join(', ')
       : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.study.principal_investigators'),
     value: study?.principal_investigators?.length
-      ? study?.principal_investigators?.map((e) => (
-          <Tag key={e} className={styles.tag}>
-            {e}
-          </Tag>
-        ))
+      ? study.principal_investigators.map((e) => e).join(', ')
       : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.study.contact_names'),
     value: study?.contact_names?.length
-      ? study.contact_names.map((e) => (
-          <Tag key={e} className={styles.tag}>
-            {e}
-          </Tag>
-        ))
+      ? study.contact_names.map((e) => e).join(', ')
       : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.study.contact_institutions'),
     value: study?.contact_institutions?.length
-      ? study.contact_institutions.map((e) => (
-          <Tag key={e} className={styles.tag}>
-            {e}
-          </Tag>
-        ))
+      ? study.contact_institutions.map((e) => e).join(', ')
       : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
@@ -134,11 +114,7 @@ const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[]
   {
     label: intl.get('entities.study.funding_sources'),
     value: study?.funding_sources?.length
-      ? study.funding_sources.map((e) => (
-          <Tag key={e} className={styles.tag}>
-            {e}
-          </Tag>
-        ))
+      ? study.funding_sources.map((e) => e).join(', ')
       : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
