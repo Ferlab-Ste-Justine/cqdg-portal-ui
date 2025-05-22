@@ -1,0 +1,17 @@
+.dividerWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.divider {
+  min-width: 30%;
+}
+
+.title {
+  text-align: center;
+  min-width: fit-content;
+}

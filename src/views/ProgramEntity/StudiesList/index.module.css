@@ -1,0 +1,15 @@
+.containerWrapper {
+  margin: auto;
+  display: flex;
+}
+
+.title {
+  margin-bottom: 0 !important;
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+}

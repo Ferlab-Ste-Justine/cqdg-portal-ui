@@ -1,0 +1,89 @@
+.cardWrapper {
+  min-width: 400px;
+  max-width: 588px;
+  width: 100%;
+
+  & > div[class$='-card-body'] {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  height: 80px;
+  margin-bottom: 16px;
+}
+
+.cardLogo {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardIcon {
+  font-size: 80px;
+  color: var(--gray-4);
+}
+
+.cardTitle {
+  margin-bottom: 0 !important;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.cardDescription {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  align-self: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.whiteSpace:not(:last-child) {
+  padding-bottom: 22px;
+}
+
+.divider {
+}
+
+.footerRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statsWrapper {
+  display: flex;
+  gap: 4px;
+}
+
+.statsIcon {
+  font-size: 16px;
+  color: var(--gray-9);
+}
+
+.countWrapper {
+  display: flex;
+  align-items: end;
+  gap: 4px;
+}
+
+.count {
+  color: var(--gray-9);
+  font-size: 16px;
+  font-weight: 600;
+}

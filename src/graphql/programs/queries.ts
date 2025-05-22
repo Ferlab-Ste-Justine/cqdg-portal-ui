@@ -14,8 +14,9 @@ export const GET_PROGRAMS = gql`
             description_fr
             website
             citation_statement
+            logo_url
             contacts {
-              name
+              website
               email
               institution
             }
@@ -32,7 +33,28 @@ export const GET_PROGRAMS = gql`
               rank
             }
             study_codes
-            logo_url
+            studies {
+              study_code
+              name
+              description
+              participant_count
+              logo_url
+              datasets {
+                hits {
+                  total
+                  edges {
+                    node {
+                      data_types
+                      description
+                      experimental_strategies
+                      file_count
+                      name
+                      participant_count
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

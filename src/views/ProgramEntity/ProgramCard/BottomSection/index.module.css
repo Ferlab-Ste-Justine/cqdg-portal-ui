@@ -1,0 +1,35 @@
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.logosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 80px;
+  justify-content: center;
+}
+
+.citationWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  gap: 16px;
+}
+
+.citation {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.citationStatement {
+  display: flex;
+  gap: 4px;
+}
+
+.citationStatementTooltip {
+  max-width: 495px;
+}
