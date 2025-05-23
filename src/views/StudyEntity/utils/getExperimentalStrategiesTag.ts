@@ -15,6 +15,7 @@ const getExperimentalStrategiesTag = (value: string) => {
     //Chromatin gold
     case 'CHIPS':
     case 'ATACS':
+    case 'HIC':
       return 'gold';
     //DNA Methylation geekblue
     case 'BIS':

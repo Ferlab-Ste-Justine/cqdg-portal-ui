@@ -1,4 +1,5 @@
 import intl from 'react-intl-universal';
+import { Link } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
 import ExternalLinkIcon from '@ferlab/ui/core/components/ExternalLink/ExternalLinkIcon';
 import { Button, Space, Typography } from 'antd';
@@ -24,10 +25,14 @@ const ProgramCard = ({ program }: { program?: IProgramEntity }) => {
         <Text className={styles.cardDescription}>
           {lang === LANG.FR ? program?.description_fr : program?.description_en}
         </Text>
-        <Button type="default">
-          {intl.get('entities.program.website')}
-          <ExternalLinkIcon />
-        </Button>
+        {program?.website && (
+          <Link to={program.website} target="_blank">
+            <Button type="default">
+              {intl.get('entities.program.website')}
+              <ExternalLinkIcon />
+            </Button>
+          </Link>
+        )}
       </Space>
       <div className={styles.managersWrapper}>
         {program?.managers?.map((manager) => (
