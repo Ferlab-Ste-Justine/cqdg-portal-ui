@@ -1,4 +1,5 @@
 import { ArrangerResultsTree } from 'graphql/models';
+import { IProgramEntity } from 'graphql/programs/models';
 
 export interface IStudyResultTree {
   Study: ArrangerResultsTree<IStudyEntity>;
@@ -86,4 +87,5 @@ export interface IStudyEntity {
   citation_statement: string;
   selection_criteria: string;
   logo_url?: string;
+  programs: ArrangerResultsTree<IProgramEntity>;
 }
