@@ -22,6 +22,9 @@ import useGetExtendedMappings from 'hooks/graphql/useGetExtendedMappings';
 import { STATIC_ROUTES } from 'utils/routes';
 import { truncateString } from 'utils/string';
 
+import { LANG } from '../../common/constants';
+import { useLang } from '../../store/global';
+
 import PageContent from './components/PageContent';
 import { SCROLL_WRAPPER_ID } from './utils/constant';
 
@@ -375,9 +378,11 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
 ];
 
 const Studies = () => {
+  const lang = useLang();
   const studyMappingResults = useGetExtendedMappings(INDEXES.STUDY);
   const filterInfo: FilterInfo = {
     defaultOpenFacets: [
+      lang === LANG.FR ? 'programs__name_fr' : 'programs__name_en',
       'domain',
       'population',
       'data_access_codes__access_limitations',
@@ -389,6 +394,7 @@ const Studies = () => {
     groups: [
       {
         facets: [
+          lang === LANG.FR ? 'programs__name_fr' : 'programs__name_en',
           'domain',
           'population',
           'data_access_codes__access_limitations',
