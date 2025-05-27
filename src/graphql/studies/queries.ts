@@ -20,6 +20,18 @@ export const GET_STUDIES = gql`
             file_count
             family_count
             security
+            programs {
+              hits {
+                total
+                edges {
+                  node {
+                    program_id
+                    name_en
+                    name_fr
+                  }
+                }
+              }
+            }
             access_authority {
               value
               type
