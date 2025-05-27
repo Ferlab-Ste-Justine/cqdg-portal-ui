@@ -58,9 +58,11 @@ import {
   TAB_IDS,
 } from 'views/DataExploration/utils/constant';
 
+import { LANG } from 'common/constants';
 import FilterList, { TCustomFilterMapper } from 'components/uiKit/FilterList';
 import useGetExtendedMappings from 'hooks/graphql/useGetExtendedMappings';
 import { WrapperApi } from 'services/api/wrapper';
+import getStoreConfig from 'store';
 import { remoteSliceActions } from 'store/remote/slice';
 import { RemoteComponentList } from 'store/remote/types';
 import {
@@ -85,6 +87,8 @@ import {
 
 import styles from './index.module.css';
 
+const { store } = getStoreConfig();
+
 enum FilterTypes {
   Participant,
   Biospecimen,
@@ -92,6 +96,8 @@ enum FilterTypes {
 }
 
 const getFilterGroups = (type: FilterTypes) => {
+  const lang = store.getState().global.lang;
+
   switch (type) {
     case FilterTypes.Participant:
       return {
@@ -104,6 +110,7 @@ const getFilterGroups = (type: FilterTypes) => {
           {
             facets: [
               'study__study_code',
+              lang === LANG.FR ? 'study__programs__name_fr' : 'study__programs__name_en',
               <TreeFacet
                 key="observed_phenotypes"
                 field="observed_phenotypes"

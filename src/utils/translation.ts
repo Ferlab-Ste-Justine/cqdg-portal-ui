@@ -305,6 +305,10 @@ export const getFacetsDictionary = () => ({
     study_code: intl.get('entities.study.study_code'),
     name: intl.get('entities.study.name'),
     external_id: 'dbGaP Accession Number',
+    programs: {
+      name_en: intl.get('entities.program.program_name'),
+      name_fr: intl.get('entities.program.program_name'),
+    },
   },
   studies: {
     study_code: intl.get('entities.study.study_code'),
