@@ -1142,8 +1142,8 @@ const en = {
       sampleAvailability: 'Sample Availability',
       description: 'Description',
       searchLabel: {
-        title: 'Search by study code, name, domain, principal investigator or keyword',
-        placeholder: 'e.g. CAG, CARTaGENE, Rare Diseases, Epilepsy',
+        title: 'Search by study code, name, program, domain, principal investigator or keyword',
+        placeholder: 'e.g. CAG, CARTaGENE, Rare Diseases, Epilepsy, RARE.Qc',
       },
       summary_row: {
         participants: 'Participants',
