@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ProLabel from '@ferlab/ui/core/components/ProLabel';
 import ProTable from '@ferlab/ui/core/components/ProTable';
 import SummarySumCell from '@ferlab/ui/core/components/ProTable/SummarySumCell';
@@ -21,10 +22,11 @@ import { generateQuery, isEmptySqon } from '@ferlab/ui/core/data/sqon/utils';
 import { SortDirection } from '@ferlab/ui/core/graphql/constants';
 import { IQueryConfig } from '@ferlab/ui/core/graphql/types';
 import GridCard from '@ferlab/ui/core/view/v2/GridCard';
-import { Input, Space, Typography } from 'antd';
+import { Button, Input, Space, Typography } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import { useStudies } from 'graphql/studies/actions';
 import { IStudyEntity } from 'graphql/studies/models';
+import EnvVariables from 'helpers/EnvVariables';
 import cloneDeep from 'lodash/cloneDeep';
 import {
   DEFAULT_PAGE_INDEX,
@@ -33,11 +35,13 @@ import {
   STUDIES_REPO_QB_ID,
 } from 'views/Studies/utils/constant';
 
+import ExternalLinkIcon from 'components/Icons/ExternalLinkIcon';
 import { fetchTsvReport } from 'store/report/thunks';
 import { useUser } from 'store/user';
 import { updateUserConfig } from 'store/user/thunks';
 import { formatQuerySortList } from 'utils/helper';
 import { resolveSyntheticSqonWithReferences } from 'utils/query';
+import { STATIC_ROUTES } from 'utils/routes';
 import { getProTableDictionary } from 'utils/translation';
 
 import styles from './index.module.css';
@@ -134,6 +138,7 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
     queryList,
     searchValue.length === 0 ? activeQuery : generateMultipleQuery(searchValue, activeQuery),
   );
+  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
   const { loading, total, data } = useStudies({
     first: PAGE_SIZE,
@@ -173,9 +178,19 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
 
   return (
     <Space direction="vertical" size={16} className={styles.pageContent}>
-      <Title className={styles.title} level={4} data-cy="Title_Studies">
-        {intl.get('screen.studies.title')}
-      </Title>
+      <div className={styles.rowHeader}>
+        <Title className={styles.title} level={4} data-cy="Title_Studies">
+          {intl.get('screen.studies.title')}
+        </Title>
+        {isProgramsEnabled && (
+          <Link to={STATIC_ROUTES.PROGRAMS}>
+            <Button type="link" className={styles.viewProgramsButton}>
+              {intl.get('entities.program.viewPrograms')}
+              <ExternalLinkIcon />
+            </Button>
+          </Link>
+        )}
+      </div>
       <div>
         <ProLabel className={styles.search} title={intl.get('screen.studies.searchLabel.title')} />
         <Input

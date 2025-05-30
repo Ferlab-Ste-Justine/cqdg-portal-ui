@@ -455,6 +455,7 @@ const en = {
       newProgramSoonDescription:
         'Join our mailing list to receive updates and be among the first to discover the next programs.',
       allPrograms: 'All programs',
+      viewPrograms: 'View programs',
       programStudies:
         'This program includes the following studies and may grow as new studies are added over time.',
       viewStudy: 'View study',
