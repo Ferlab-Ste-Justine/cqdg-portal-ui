@@ -4,6 +4,7 @@ import ExternalLink from '@ferlab/ui/core/components/ExternalLink/index';
 import { IEntityDescriptionsItem } from '@ferlab/ui/core/pages/EntityPage';
 import { Tag } from 'antd';
 import { IStudyEntity } from 'graphql/studies/models';
+import EnvVariables from 'helpers/EnvVariables';
 import capitalize from 'lodash/capitalize';
 
 import { LANG, TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
@@ -15,6 +16,7 @@ import styles from '../index.module.css';
 const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[] => {
   const { store } = getStoreConfig();
   const lang = store.getState().global.lang;
+  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
   const summaryDescriptions = [
     {
@@ -27,13 +29,15 @@ const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[]
     },
     {
       label: intl.get('entities.program.program'),
-      value: study?.programs?.hits?.edges?.map(({ node }) => (
-        <div key={node.program_id}>
-          <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>
-            {lang === LANG.FR ? node.name_fr : node.name_en}
-          </Link>
-        </div>
-      )),
+      value:
+        isProgramsEnabled &&
+        study?.programs?.hits?.edges?.map(({ node }) => (
+          <div key={node.program_id}>
+            <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>
+              {lang === LANG.FR ? node.name_fr : node.name_en}
+            </Link>
+          </div>
+        )),
     },
     {
       label: intl.get('entities.study.description'),
