@@ -459,6 +459,7 @@ const fr = {
       newProgramSoonDescription:
         'Rejoignez notre liste de diffusion pour recevoir des mises à jour et soyez parmi les premiers à découvrir les prochains programmes.',
       allPrograms: 'Tous les programmes',
+      viewPrograms: 'Répertoire des programmes',
       programStudies:
         'Ce programme inclut les études suivantes et peut évoluer avec l’ajout de nouvelles études.',
       viewStudy: 'Voir l’étude',
