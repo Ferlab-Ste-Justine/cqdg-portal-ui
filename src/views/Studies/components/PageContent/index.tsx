@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ProfileOutlined } from '@ant-design/icons';
 import ProLabel from '@ferlab/ui/core/components/ProLabel';
 import ProTable from '@ferlab/ui/core/components/ProTable';
 import SummarySumCell from '@ferlab/ui/core/components/ProTable/SummarySumCell';
@@ -35,7 +36,6 @@ import {
   STUDIES_REPO_QB_ID,
 } from 'views/Studies/utils/constant';
 
-import ExternalLinkIcon from 'components/Icons/ExternalLinkIcon';
 import { fetchTsvReport } from 'store/report/thunks';
 import { useUser } from 'store/user';
 import { updateUserConfig } from 'store/user/thunks';
@@ -184,9 +184,8 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
         </Title>
         {isProgramsEnabled && (
           <Link to={STATIC_ROUTES.PROGRAMS}>
-            <Button type="link" className={styles.viewProgramsButton}>
+            <Button type="default" icon={<ProfileOutlined />}>
               {intl.get('entities.program.viewPrograms')}
-              <ExternalLinkIcon />
             </Button>
           </Link>
         )}

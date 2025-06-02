@@ -18,8 +18,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-.viewProgramsButton {
-  display: flex;
-  align-items: center;
-}
