@@ -129,8 +129,12 @@ const getDefaultColumns = (): ProColumnType[] => [
     title: intl.get('entities.file.strategy'),
     dataIndex: 'sequencing_experiment',
     sorter: { multiple: 1 },
-    render: (sequencing_experiment) =>
-      sequencing_experiment?.experimental_strategy || TABLE_EMPTY_PLACE_HOLDER,
+    render: (sequencing_experiment) => {
+      if (sequencing_experiment?.experimental_strategy_1) {
+        return sequencing_experiment.experimental_strategy_1.display;
+      }
+      return sequencing_experiment?.experimental_strategy || TABLE_EMPTY_PLACE_HOLDER;
+    },
   },
   {
     key: 'file_format',

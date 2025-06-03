@@ -7,11 +7,17 @@ export interface IFileResultTree {
   File: ArrangerResultsTree<IFileEntity>;
 }
 
+export interface IExperimentalStrategy {
+  display: string;
+  code: string;
+}
+
 export interface IFileSequencingExperiment {
   alir: string;
   bio_informatic_analysis: string;
   capture_kit: string;
   experimental_strategy: string;
+  experimental_strategy_1: IExperimentalStrategy;
   gcnv: string;
   genome_build: string;
   gsv: string;
