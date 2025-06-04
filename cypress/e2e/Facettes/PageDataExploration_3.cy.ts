@@ -45,7 +45,7 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
   });
 
   it('Data Category - Genomics', () => {
-    cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,004$/);
+    cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,009$/);
     cy.validateFacetRank(1, 'Data Category');
   });
 
@@ -55,7 +55,7 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
   });
 
   it('Strategy - WGS', () => {
-    cy.validateFacetFilter('Strategy', 'WGS', 'WGS', /^3,004$/);
+    cy.validateFacetFilter('Strategy', 'WGS', 'WGS', /^3,009$/);
     cy.validateFacetRank(3, 'Strategy');
   });
 

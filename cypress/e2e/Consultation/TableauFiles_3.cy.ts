@@ -35,7 +35,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.sortTableAndWait('Data Type');
     cy.validateTableFirstRow('Aligned Reads', 7, true);
     cy.sortTableAndWait('Data Type');
-    cy.validateTableFirstRow('Supplement', 7, true);
+    cy.validateTableFirstRow('Unaligned Reads', 7, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Strategy', () => {
