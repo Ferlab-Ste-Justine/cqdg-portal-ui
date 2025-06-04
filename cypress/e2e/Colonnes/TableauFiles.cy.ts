@@ -19,7 +19,7 @@ describe('Page Data Exploration (Files) - Colonnes du tableau', () => {
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(2)
-      .should('have.class', 'ant-table-column-has-sorters')
+      .should('not.have.class', 'ant-table-column-has-sorters')
       .find('span[class*="anticon"]')
       .should('have.class', 'anticon-safety');
     cy.get('div[class="ant-popover-inner"]')

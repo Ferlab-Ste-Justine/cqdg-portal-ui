@@ -74,7 +74,6 @@ const getDefaultColumns = (): ProColumnType[] => [
     tooltip: intl.get('entities.file.data_access'),
     iconTitle: <SafetyOutlined />,
     dataIndex: 'data_access',
-    sorter: { multiple: 1 },
     align: 'center',
     render: (data_access: string) =>
       data_access === FileAccessType.REGISTERED ? (
