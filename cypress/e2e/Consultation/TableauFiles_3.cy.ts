@@ -40,9 +40,9 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
 
   it('Valider les fonctionnalités du tableau - Tri Strategy', () => {
     cy.sortTableAndWait('Strategy');
-    cy.validateTableFirstRow('WGS', 8, true);
+    cy.validateTableFirstRow('Whole Genome Sequencing', 8, true);
     cy.sortTableAndWait('Strategy');
-    cy.validateTableFirstRow('WGS', 8, true);
+    cy.validateTableFirstRow('Whole Genome Sequencing', 8, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Format', () => {

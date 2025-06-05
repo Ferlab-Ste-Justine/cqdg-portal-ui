@@ -56,6 +56,10 @@ export const GET_FILES = gql`
             dataset
             sequencing_experiment {
               experimental_strategy
+              experimental_strategy_1 {
+                code
+                display
+              }
               type_of_sequencing
               read_length
               platform
