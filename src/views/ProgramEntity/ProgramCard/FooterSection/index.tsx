@@ -1,4 +1,5 @@
 import intl from 'react-intl-universal';
+import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import EmailLetterIcon from '@ferlab/ui/core/components/Icons/Futuro/EmailLetterIcon';
 import OfficeBuildingIcon from '@ferlab/ui/core/components/Icons/Futuro/OfficeBuildingIcon';
 import WebNavigationIcon from '@ferlab/ui/core/components/Icons/Futuro/WebNavigationIcon';
@@ -17,9 +18,9 @@ const FooterSection = ({ program }: { program?: IProgramEntity }) => {
         <div className={styles.footerItem}>
           <Text className={styles.footerItemLabel}>{intl.get('entities.program.contact')}</Text>
           {program?.contacts?.map((contact) => (
-            <Text key={contact.email} className={styles.footerItemValues}>
-              {contact.email}
-            </Text>
+            <ExternalLink key={contact.email} href={`mailto:${contact.email}`}>
+              <Text className={styles.footerItemValues}>{contact.email}</Text>
+            </ExternalLink>
           ))}
         </div>
       </div>
@@ -41,9 +42,9 @@ const FooterSection = ({ program }: { program?: IProgramEntity }) => {
         <div className={styles.footerItem}>
           <Text className={styles.footerItemLabel}>{intl.get('entities.program.website')}</Text>
           {program?.contacts?.map((contact) => (
-            <Text key={contact.website} className={styles.footerItemValues}>
-              {contact.website}
-            </Text>
+            <ExternalLink key={contact.email} href={contact.website}>
+              <Text className={styles.footerItemValues}>{contact.website}</Text>
+            </ExternalLink>
           ))}
         </div>
       </div>
