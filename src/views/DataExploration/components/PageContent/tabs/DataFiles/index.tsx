@@ -125,7 +125,7 @@ const getDefaultColumns = (): ProColumnType[] => [
     render: (data_type) => data_type || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
-    key: 'sequencing_experiment.experimental_strategy',
+    key: 'sequencing_experiment.experimental_strategy_1.display',
     title: intl.get('entities.file.strategy'),
     dataIndex: 'sequencing_experiment',
     sorter: { multiple: 1 },
