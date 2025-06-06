@@ -29,7 +29,7 @@ describe('Page Data Exploration (Participants) - Vérifier les informations affi
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(6).contains('Proband').should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(7).contains('Case-parent trio').should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(8).contains('-').should('exist');
-    cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(9).contains(/^5$/).should('exist');
+    cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(9).contains(/^6$/).should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(10).contains(/^1$/).should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(11).contains('-').should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(12).contains('Generalized idiopathic epilepsy and epileptic syndromes, intractable').should('exist');

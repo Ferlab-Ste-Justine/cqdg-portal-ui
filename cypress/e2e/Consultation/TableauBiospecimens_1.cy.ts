@@ -23,6 +23,6 @@ describe('Page Data Exploration (Biospecimens) - Vérifier les informations affi
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(6).contains('NCIT:').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(6).contains('C12434').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(7).contains('-').should('exist');
-    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(8).contains(/^5$/).should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(8).contains(/^6$/).should('exist');
   });
 });

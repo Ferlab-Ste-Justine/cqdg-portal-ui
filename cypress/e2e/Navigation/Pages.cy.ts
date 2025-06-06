@@ -187,7 +187,7 @@ describe('Navigation', () => {
   });
  
   it('Modals de la page d\'un fichier', () => {
-    cy.visitFileEntity('FI0000981');
+    cy.visitFileEntity('FI0009813');
 
     cy.get('[data-cy="FileManifest_Button"]').clickAndWait({force: true});
     cy.get('[data-cy="FileManifest_Modal"]').should('exist');

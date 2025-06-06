@@ -9,7 +9,7 @@ beforeEach(() => {
 
   cy.login();
   cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
-  cy.get('div[role="tabpanel"] [class*="ant-table-row"]').eq(0).find('[type="checkbox"]').check({force: true});
+  cy.get('div[role="tabpanel"] [class*="ant-table-row"]').eq(4).find('[type="checkbox"]').check({force: true});
   cy.get('[data-cy="FileManifest_Button"]').click({force: true});
 });
 
@@ -22,10 +22,10 @@ describe('Page Data Exploration (Data Files) - Bouton Manifest', () => {
     cy.get('[class*="DownloadFileManifestModal_table"] thead th').eq(1).contains('Participants').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] thead th').eq(2).contains('Files').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] thead th').eq(3).contains('Size').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Supplement"] td').eq(0).contains('Supplement').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Supplement"] td').eq(1).contains(/^1$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Supplement"] td').eq(2).contains(/^1$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Supplement"] td').eq(3).contains(/^0 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(0).contains('Metrics').should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(1).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(2).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(3).contains(/^0 B$/).should('exist');
 
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"]').eq(0).find('[class*="anticon-copy"]').should('exist');
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"]').eq(0).contains('Copy manifest ID').should('exist');

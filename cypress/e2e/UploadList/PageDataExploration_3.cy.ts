@@ -7,7 +7,7 @@ beforeEach(() => {
   cy.get('[data-cy="SidebarMenuItem_Data File"]').clickAndWait({force: true});
   cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
   cy.get('[class="ant-modal-header"]').contains('file').should('exist');
-  cy.get('[class*="UploadModal"] textarea').type('fi0000572,unknown');
+  cy.get('[class*="UploadModal"] textarea').type('FI0009373,unknown');
 });
 
 describe('Page Data Exploration (Data Files) - Téléverser une liste d\'identifiants', () => {
@@ -25,10 +25,10 @@ describe('Page Data Exploration (Data Files) - Téléverser une liste d\'identif
   });
 
   it('Valider les fonctionnalités de la modal - Bouton Supprimer', () => {
-    cy.get('[class*="UploadModal"] textarea').contains('fi0000572').should('exist');
+    cy.get('[class*="UploadModal"] textarea').contains('FI0009373').should('exist');
     cy.get('[class*="UploadModal"] button[class*="ant-btn-text"]').clickAndWait({force: true});
 
-    cy.get('[class*="UploadModal"] textarea').contains('fi0000572').should('not.exist');
+    cy.get('[class*="UploadModal"] textarea').contains('FI0009373').should('not.exist');
     cy.get('[class*="UploadModal"] button[class*="ant-btn-text"]').should('not.exist');
   });
   
@@ -57,9 +57,9 @@ describe('Page Data Exploration (Data Files) - Téléverser une liste d\'identif
     cy.get('[id*="panel-matched"] thead').contains('Mapped to').should('exist');
     cy.get('[id*="panel-matched"] thead').contains('File ID').should('exist');
     cy.get('[id*="panel-matched"] thead').contains('Study Code').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="FI0000572:0"] td').eq(0).contains('fi0000572').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="FI0000572:0"] td').eq(1).contains('FI0000572').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="FI0000572:0"] td').eq(2).contains('T-DEE').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="FI0009373:0"] td').eq(0).contains('FI0009373').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="FI0009373:0"] td').eq(1).contains('FI0009373').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="FI0009373:0"] td').eq(2).contains('T-DEE').should('exist');
   });
 
   it('Vérifier les informations affichées - Section Résumé (onglet Inconnus) [CQDG-762]', () => {

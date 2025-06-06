@@ -18,7 +18,7 @@ describe('Page d\'une étude - Vérifier les informations affichées', () => {
     cy.get('[data-cy="SummaryHeader_Families_Button"]').contains('Families');
     cy.get('[data-cy="SummaryHeader_Biospecimens_Button"]').contains(/^588$/);
     cy.get('[data-cy="SummaryHeader_Biospecimens_Button"]').contains('Biospecimens');
-    cy.get('[data-cy="SummaryHeader_Files_Button"]').contains(/^2,940$/);
+    cy.get('[data-cy="SummaryHeader_Files_Button"]').contains(/^3,136$/);
     cy.get('[data-cy="SummaryHeader_Files_Button"]').contains('Files');
     cy.get('[id="summary"] [class="ant-collapse-header"]').contains('Summary').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(0).contains('Study Code').should('exist');
@@ -115,27 +115,29 @@ describe('Page d\'une étude - Vérifier les informations affichées', () => {
   it('Panneau Files', () => {
     cy.get('[id="data_file"] [class*="EntityTable_title"]').contains('Data File').should('exist');
     cy.get('[id="data_file"] [class="ant-collapse-header"]').contains('Data Files').should('exist');
-    cy.get('[id="data_file"] [class="ant-collapse-header"]').contains('(2,940)').should('exist');
+    cy.get('[id="data_file"] [class="ant-collapse-header"]').contains('(3,136)').should('exist');
     cy.get('[id="data_file"] [class*="EntityTable_subTitle"]').eq(0).contains('File counts by Data Type').should('exist');
     cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(0).find('thead th[class="ant-table-cell"]').eq(0).contains('Data Type').should('exist');
     cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(0).find('thead th[class="ant-table-cell"]').eq(1).contains('Files').should('exist');
-    cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(0).find('thead th[class="ant-table-cell"]').eq(2).contains('(n=2940)').should('exist');
+    cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(0).find('thead th[class="ant-table-cell"]').eq(2).contains('(n=3136)').should('exist');
     cy.get('[id="data_file"] [data-row-key="Germline Structural Variant"] td[class="ant-table-cell"]').eq(1).contains(/^588$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="Germline Structural Variant"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 20%"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Germline Structural Variant"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 18.75%"]').should('exist');
     cy.get('[id="data_file"] [data-row-key="Germline CNV"] td[class="ant-table-cell"]').eq(1).contains(/^588$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="Germline CNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 20%"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Germline CNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 18.75%"]').should('exist');
     cy.get('[id="data_file"] [data-row-key="SNV"] td[class="ant-table-cell"]').eq(1).contains(/^588$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="SNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 20%"]').should('exist');
-    cy.get('[id="data_file"] [data-row-key="Supplement"] td[class="ant-table-cell"]').eq(1).contains(/^588$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="Supplement"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 20%"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="SNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 18.75%"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Metrics"] td[class="ant-table-cell"]').eq(1).contains(/^588$/).should('exist');
+    cy.get('[id="data_file"] [data-row-key="Metrics"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 18.75%"]').should('exist');
     cy.get('[id="data_file"] [data-row-key="Aligned Reads"] td[class="ant-table-cell"]').eq(1).contains(/^588$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="Aligned Reads"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 20%"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Aligned Reads"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 18.75%"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Annotated SNV"] td[class="ant-table-cell"]').eq(1).contains(/^196$/).should('exist');
+    cy.get('[id="data_file"] [data-row-key="Annotated SNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 6.25%"]').should('exist');
 
     cy.get('[id="data_file"] [class*="EntityTable_subTitle"]').eq(1).contains('File counts by Strategy').should('exist');
     cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(1).find('thead th[class="ant-table-cell"]').eq(0).contains('Strategy').should('exist');
     cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(1).find('thead th[class="ant-table-cell"]').eq(1).contains('Files').should('exist');
-    cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(1).find('thead th[class="ant-table-cell"]').eq(2).contains('(n=2940)').should('exist');
-    cy.get('[id="data_file"] [data-row-key="WGS"] td[class="ant-table-cell"]').eq(1).contains(/^2940$/).should('exist');
+    cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(1).find('thead th[class="ant-table-cell"]').eq(2).contains('(n=3136)').should('exist');
+    cy.get('[id="data_file"] [data-row-key="WGS"] td[class="ant-table-cell"]').eq(1).contains(/^3136$/).should('exist');
     cy.get('[id="data_file"] [data-row-key="WGS"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 100%"]').should('exist');
   });
 });
