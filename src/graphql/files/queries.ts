@@ -65,14 +65,22 @@ export const GET_FILES = gql`
               platform
               capture_kit
               sequencer_id
-              run_date
               run_name
               labAliquotID
               bio_informatic_analysis
               workflow_name
-              workflow_version
               genome_build
               analysis_id
+              source {
+                code
+                display
+              }
+              selection {
+                code
+                display
+              }
+              target_loci
+              protocol
             }
           }
         }

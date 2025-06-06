@@ -7,9 +7,9 @@ export interface IFileResultTree {
   File: ArrangerResultsTree<IFileEntity>;
 }
 
-export interface IExperimentalStrategy {
-  display: string;
+export interface ICodeDisplay {
   code: string;
+  display: string;
 }
 
 export interface IFileSequencingExperiment {
@@ -17,7 +17,7 @@ export interface IFileSequencingExperiment {
   bio_informatic_analysis: string;
   capture_kit: string;
   experimental_strategy: string;
-  experimental_strategy_1: IExperimentalStrategy;
+  experimental_strategy_1: ICodeDisplay;
   gcnv: string;
   genome_build: string;
   gsv: string;
@@ -27,15 +27,17 @@ export interface IFileSequencingExperiment {
   platform: string;
   read_length: string;
   run_alias: string;
-  run_date: string;
   run_name: string;
   sequencer_id: string;
   snv: string;
   ssup: string;
   workflow_name: string;
-  workflow_version: string;
   type_of_sequencing: string;
   analysis_id: string;
+  source: ICodeDisplay;
+  selection: ICodeDisplay;
+  target_loci: string;
+  protocol: string;
 }
 
 export interface IFileEntity {
