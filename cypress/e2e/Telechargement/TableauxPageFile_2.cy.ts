@@ -6,7 +6,7 @@ const { strDate } = getDateTime();
 beforeEach(() => {
   cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
   cy.login();
-  cy.visitFileEntity('FI0000981');
+  cy.visitFileEntity('FI0009813');
   cy.resetColumns('analysis_files');
   cy.clickAndIntercept('div[id="content"] svg[data-icon="download"]', 'POST', '**/download', 1, 4);
   cy.waitUntilFile(oneMinute);

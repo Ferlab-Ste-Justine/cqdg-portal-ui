@@ -45,7 +45,7 @@ describe('Page Data Exploration (Participants) - Valider les liens disponibles',
     cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000010').should('exist');
-    cy.validateTableResultsCount(/^5$/);
+    cy.validateTableResultsCount(/^6$/);
   });
 
   it('Lien Biospecimens du tableau', () => {

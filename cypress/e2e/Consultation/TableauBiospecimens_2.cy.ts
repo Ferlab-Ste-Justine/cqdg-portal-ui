@@ -34,6 +34,6 @@ describe('Page Data Exploration (Biospecimens) - Valider les liens disponibles',
     cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Sample ID').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('SR0000214').should('exist');
-    cy.validateTableResultsCount(/^5$/);
+    cy.validateTableResultsCount(/^6$/);
   });
 });

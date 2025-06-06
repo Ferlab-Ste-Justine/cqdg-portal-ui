@@ -25,7 +25,7 @@ describe('Page d\'une étude - Bouton Request Access', () => {
     cy.get('[class*="DownloadRequestAccessModal_table"] thead th').eq(2).contains('Files').should('exist');
     cy.get('[class*="DownloadRequestAccessModal_table"] [data-row-key="T-DEE"] td').eq(0).contains('Developmental and epileptic encephalopathies').should('exist');
     cy.get('[class*="DownloadRequestAccessModal_table"] [data-row-key="T-DEE"] td').eq(1).contains('T-DEE').should('exist');
-    cy.get('[class*="DownloadRequestAccessModal_table"] [data-row-key="T-DEE"] td').eq(2).contains('2940').should('exist');
+    cy.get('[class*="DownloadRequestAccessModal_table"] [data-row-key="T-DEE"] td').eq(2).contains('3136').should('exist');
 
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').contains('Cancel').should('exist');
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"]').contains('Download').should('exist');

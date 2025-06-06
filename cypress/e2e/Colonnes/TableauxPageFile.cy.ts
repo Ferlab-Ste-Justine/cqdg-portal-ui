@@ -3,7 +3,7 @@ import '../../support/commands';
 
 beforeEach(() => {
   cy.login();
-  cy.visitFileEntity('FI0000981');
+  cy.visitFileEntity('FI0009813');
   cy.resetColumns('biospecimens');
 });
 

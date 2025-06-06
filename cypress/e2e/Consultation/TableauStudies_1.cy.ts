@@ -33,7 +33,7 @@ describe('Page des études - Vérifier les informations affichées', () => {
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(7).find('[data-icon="check"]').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(8).contains('-').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(9).contains('-').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(10).contains('2,940').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(10).contains('3,136').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).contains('health or medical or biomedical research').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).contains('DUO:').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).contains('0000006').should('exist');
