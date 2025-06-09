@@ -160,6 +160,13 @@ const getDefaultColumns = (): ProColumnType[] => [
     render: (relationship_to_proband) => relationship_to_proband || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
+    key: 'family_id',
+    title: intl.get('entities.participant.family'),
+    dataIndex: 'family_id',
+    defaultHidden: true,
+    render: (family_id) => family_id || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
     key: 'family_type',
     title: intl.get('entities.participant.family_type'),
     dataIndex: 'family_type',
