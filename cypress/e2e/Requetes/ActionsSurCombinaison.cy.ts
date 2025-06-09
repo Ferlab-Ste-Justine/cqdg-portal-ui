@@ -1,9 +1,10 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
+import { SharedFilters } from '../../pom/shared/Filters';
 
 beforeEach(() => {
   cy.login();
-  cy.visitVariantsPage('?sharedFilterId=f61a3a36-d3de-4ac5-852b-fab8f79c1834');
+  cy.visitVariantsPage(SharedFilters.variant.combineQueries);
 
   cy.get('[data-cy="SidebarMenuItem_Variant"]').clickAndWait({force: true});
   cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
