@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
-import { getDateTime } from '../../support/utils';
-import { oneMinute } from '../../support/utils';
+import { getDateTime } from '../../pom/shared/Utils';
+import { oneMinute } from '../../pom/shared/Utils';
 
 const { strDate } = getDateTime();
 

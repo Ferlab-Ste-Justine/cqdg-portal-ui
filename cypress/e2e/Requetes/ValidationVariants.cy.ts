@@ -1,9 +1,10 @@
 /// <reference types="cypress"/>
+import { SharedFilters } from '../../pom/shared/Filters';
 import '../../support/commands';
 
 beforeEach(() => {
   cy.login();
-  cy.visitVariantsPage('?sharedFilterId=d85b8a94-ac84-4112-8dd1-a2adf312fc69');
+  cy.visitVariantsPage(SharedFilters.variant.predefinedQueries);
 });
 
 describe('Page Data Exploration - Requêtes', () => {

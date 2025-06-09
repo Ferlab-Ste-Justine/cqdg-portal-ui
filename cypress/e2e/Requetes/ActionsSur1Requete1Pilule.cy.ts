@@ -1,10 +1,11 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
+import { SharedFilters } from '../../pom/shared/Filters';
 
 beforeEach(() => {
   cy.login();
-  cy.visitVariantsPage('?sharedFilterId=782f8a5e-f7b7-42e7-9061-49411ead5f79');
-
+  cy.visitVariantsPage(SharedFilters.variant.onePill);
+cy.wait(5*60*1000);
   cy.get('[data-cy="SidebarMenuItem_Variant"]').clickAndWait({force: true});
   cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
   cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
