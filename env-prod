@@ -19,3 +19,8 @@ REACT_APP_MANIFEST_API_URL=https://cavatica-manifest-api.cqdg.ca
 REACT_APP_CAVATICA_ENABLED=false
 REACT_APP_PROGRAMS_ENABLED=false
 REACT_APP_S3_ASSETS_URL=https://objets.juno.calculquebec.ca/swift/v1/AUTH_266bf865f1fe46b88f51933e0e2e6bd3/cqdg-prod-assets-public
+
+REACT_APP_FT_SITE_WIDE_BANNER=true
+REACT_APP_FT_SITE_WIDE_BANNER_TYPE=warning
+REACT_APP_FT_SITE_WIDE_BANNER_MSG_FR="Veuillez noter que des travaux de maintenance sont prévus avec Calcul Québec du 13 au 16 juin. Nous ne prévoyons pas d'interruptions significatives, mais vous pourriez rencontrer certains ralentissements ou une instabilité au niveau du système. Merci de votre compréhension."
+REACT_APP_FT_SITE_WIDE_BANNER_MSG_EN="Please note that maintenance work is scheduled with Calcul Québec from June 13 to 16. We do not anticipate any major interruptions, but you may experience some slowdowns or system instability. Thank you for your understanding."
