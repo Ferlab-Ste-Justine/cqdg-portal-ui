@@ -69,7 +69,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
   });
 
   it('Diagnosis (ICD-10) - Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', () => {
-    cy.validateFacetFilter('Diagnosis (ICD-10)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', /^205$/);
+    cy.validateFacetFilter('Diagnosis (ICD-10)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', /^206$/);
     cy.validateFacetRank(1, 'Diagnosis (ICD-10)');
   });
 
@@ -84,7 +84,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
   });
 
   it('Sex - Female', () => {
-    cy.validateFacetFilter('Sex', 'Female', 'female', /^287$/);
+    cy.validateFacetFilter('Sex', 'Female', 'female', /^286$/);
     cy.validateFacetRank(4, 'Sex');
   });
 

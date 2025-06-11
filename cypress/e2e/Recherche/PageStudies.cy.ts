@@ -35,9 +35,9 @@ describe('Page des études - Rechercher des études', () => {
   });
 
   it('Par chercheur principal', () => {
-    cy.typeAndIntercept('[class*="PageContent_search"]', 'batman', 'POST', '**/graphql', 6);
+    cy.typeAndIntercept('[class*="PageContent_search"]', 'batman2', 'POST', '**/graphql', 6);
     cy.validateTableResultsCount(/1 Result/);
-    cy.validateTableFirstRow('STUDY1', 0);
+    cy.validateTableFirstRow('STUDY2', 0);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
     cy.validateTableResultsCount(/\d{1} Results/);
