@@ -31,8 +31,8 @@ describe('Page d\'une étude - Bouton Manifest', () => {
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Germline Structural Variant"] td').eq(3).contains(/^0 B$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(0).contains('Annotated SNV').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(1).contains(/^3$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(2).contains(/^3$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(3).contains(/^238.9 MB$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(2).contains(/^6$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(3).contains(/^477.79 MB$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(0).contains('Aligned Reads').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(1).contains(/^9$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(2).contains(/^9$/).should('exist');

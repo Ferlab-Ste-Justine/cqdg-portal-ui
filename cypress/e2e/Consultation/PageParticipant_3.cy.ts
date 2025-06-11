@@ -62,7 +62,7 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.get('[data-cy="ProTable_Participants"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Diagnosis (MONDO)').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('Epilepsy (MONDO:0005027)').should('exist');
-    cy.validateTableResultsCount(/^205$/);
+    cy.validateTableResultsCount(/^206$/);
   });
 
   it('Lien HPO du panneau Phenotypes', () => {
@@ -75,7 +75,7 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.get('[data-cy="ProTable_Participants"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Phenotype').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('Seizure (HP:0001250)').should('exist');
-    cy.validateTableResultsCount(/^202$/);
+    cy.validateTableResultsCount(/^203$/);
   });
 
   it('Lien DataExploration du panneau Biospecimens', () => {
