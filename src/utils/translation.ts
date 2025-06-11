@@ -371,6 +371,13 @@ export const getFacetsDictionary = () => ({
   sequencing_experiment: {
     experimental_strategy: intl.get('entities.file.strategy'),
     analysis_id: intl.get('entities.file.sequencing_experiment.analysis_id'),
+    experimental_strategy_1: {
+      display: intl.get('entities.file.strategy'),
+    },
+    platform: intl.get('entities.file.sequencing_experiment.platform'),
+    selection: {
+      display: intl.get('entities.file.sequencing_experiment.selection'),
+    },
   },
   variant_class: intl.get('entities.variant.variant_class'),
   variant_external_reference: intl.get('entities.variant.variant_external_reference'),

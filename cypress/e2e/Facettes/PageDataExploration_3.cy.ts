@@ -54,13 +54,23 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
     cy.validateFacetRank(2, 'Data Type');
   });
 
-  it('Strategy - WGS', () => {
-    cy.validateFacetFilter('Strategy', 'WGS', 'WGS', /^3,207$/);
+  it('Strategy - Whole Genome Sequencing', () => {
+    cy.validateFacetFilter('Strategy', 'Whole Genome Sequencing', 'Whole Genome Sequencing', /^3,207$/);
     cy.validateFacetRank(3, 'Strategy');
+  });
+
+  it('Platform - Illumina HiSeq 2500 PE125', () => {
+    cy.validateFacetFilter('Platform', 'Illumina HiSeq 2500 PE125', 'Illumina HiSeq 2500 PE125', /^2,369$/);
+    cy.validateFacetRank(4, 'Platform');
+  });
+
+  it('Library Selection - Reduced Representation', () => {
+    cy.validateFacetFilter('Library Selection', 'Reduced Representation', 'Reduced Representation', /^3,207$/);
+    cy.validateFacetRank(5, 'Library Selection');
   });
 
   it('Format - gVCF', () => {
     cy.validateFacetFilter('Format', 'GVCF', 'gVCF', /^597$/);
-    cy.validateFacetRank(4, 'Format');
+    cy.validateFacetRank(6, 'Format');
   });
 });
