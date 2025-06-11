@@ -31,7 +31,8 @@ const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[]
       label: intl.get('entities.program.program'),
       value:
         isProgramsEnabled &&
-        study?.programs?.hits?.edges?.map(({ node }) => (
+        study?.programs?.hits?.edges?.length &&
+        study.programs.hits.edges.map(({ node }) => (
           <div key={node.program_id}>
             <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>
               {lang === LANG.FR ? node.name_fr : node.name_en}
@@ -49,11 +50,13 @@ const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[]
     },
     {
       label: intl.get('entities.study.design'),
-      value: study?.study_designs?.map((e) => (
-        <Tag key={e} className={styles.tag}>
-          {e}
-        </Tag>
-      )),
+      value:
+        study?.study_designs?.length &&
+        study.study_designs.map((e) => (
+          <Tag key={e} className={styles.tag}>
+            {e}
+          </Tag>
+        )),
     },
     {
       label: intl.get('entities.study.population'),
@@ -100,11 +103,13 @@ const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[]
     },
     {
       label: intl.get('entities.study.website'),
-      value: study?.websites?.map((website, i) => (
-        <ExternalLink key={i} href={website} className={styles.marginRight}>
-          {website}
-        </ExternalLink>
-      )),
+      value:
+        study?.websites?.length &&
+        study.websites.map((website, i) => (
+          <ExternalLink key={i} href={website} className={styles.marginRight}>
+            {website}
+          </ExternalLink>
+        )),
     },
     {
       label: intl.get('entities.study.funding_sources'),
