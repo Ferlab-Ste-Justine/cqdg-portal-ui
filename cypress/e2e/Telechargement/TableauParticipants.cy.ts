@@ -9,6 +9,7 @@ beforeEach(() => {
 
   cy.login();
   cy.visitDataExploration('participants', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+  cy.showColumn(/^Family$/);
   cy.showColumn('Ethnicity');
   cy.showColumn('Diagnosis (ICD)');
   cy.showColumn('Diagnosis (Source Text)');
