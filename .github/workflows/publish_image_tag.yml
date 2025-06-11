@@ -8,9 +8,9 @@ on:
 jobs:
   build_prod:
     name: Publish Prod Image
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set the Prod configuration file
         run: mv env-prod .env
       - name: Push the image on the docker registry
