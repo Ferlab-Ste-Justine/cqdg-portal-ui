@@ -308,6 +308,7 @@ export const getFacetsDictionary = () => ({
     programs: {
       name_en: intl.get('entities.program.program_name'),
       name_fr: intl.get('entities.program.program_name'),
+      program_id: intl.get('entities.program.program'),
     },
   },
   studies: {
