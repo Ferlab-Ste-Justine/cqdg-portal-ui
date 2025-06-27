@@ -1153,8 +1153,9 @@ const fr = {
       sampleAvailability: 'Disponibilité des échantillons',
       description: 'Description',
       searchLabel: {
-        title: 'Recherche par code, nom, domaine, chercheur principal de l’étude ou mot-clé',
-        placeholder: 'ex. CAG, CARTaGENE, Rare Diseases, Epilepsy',
+        title:
+          'Recherche par code, nom, programme, domaine, chercheur principal de l’étude ou mot-clé',
+        placeholder: 'ex. CAG, CARTaGENE, Rare Diseases, Epilepsy, RARE.Qc',
       },
       summary_row: {
         participants: 'Participants ',

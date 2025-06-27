@@ -12,6 +12,8 @@ import ScrollContent from '@ferlab/ui/core/layout/ScrollContent';
 import { numberFormat } from '@ferlab/ui/core/utils/numberUtils';
 import { Popover } from 'antd';
 import { INDEXES } from 'graphql/constants';
+import { ArrangerResultsTree } from 'graphql/models';
+import { IProgramEntity } from 'graphql/programs/models';
 import { IStudyDataAccessCodes, IStudyEntity, ITableStudyEntity } from 'graphql/studies/models';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 import { extractDuoTitleAndCode } from 'views/DataExploration/utils/helper';
@@ -43,6 +45,18 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
     title: intl.get('screen.studies.name'),
     sorter: { multiple: 1 },
     render: (name: string) => name || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
+    key: 'programs.program_id',
+    dataIndex: 'programs',
+    title: intl.get('entities.program.program'),
+    render: (programs: ArrangerResultsTree<IProgramEntity>) => {
+      return programs?.hits?.edges?.map(({ node }) => (
+        <div key={node.program_id}>
+          <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
+        </div>
+      ));
+    },
   },
   {
     dataIndex: 'domain',
