@@ -61,6 +61,7 @@ import {
 import FilterList, { TCustomFilterMapper } from 'components/uiKit/FilterList';
 import useGetExtendedMappings from 'hooks/graphql/useGetExtendedMappings';
 import { WrapperApi } from 'services/api/wrapper';
+import { useLang } from 'store/global';
 import { remoteSliceActions } from 'store/remote/slice';
 import { RemoteComponentList } from 'store/remote/types';
 import {
@@ -104,6 +105,7 @@ const getFilterGroups = (type: FilterTypes) => {
           {
             facets: [
               'study__study_code',
+              'study__programs__program_id',
               <TreeFacet
                 key="observed_phenotypes"
                 field="observed_phenotypes"
@@ -200,6 +202,8 @@ const DataExploration = () => {
   const [quickFilterData, setQuickFilterData] = useState<{ Participant: { aggregations: any } }>();
   const [forceClose, setForceClose] = useState<boolean>(false);
 
+  const lang = useLang();
+
   const quickfilterOpenRemote = (field: string): boolean => {
     if (field === 'observed_phenotypes__name') {
       dispatch(
@@ -231,14 +235,14 @@ const DataExploration = () => {
     const { data } = await WrapperApi.graphqlRequest<{
       data: { Participant: { aggregations: any } };
     }>({
-      query: GET_QUICK_FILTER_EXPLO.loc?.source.body,
+      query: GET_QUICK_FILTER_EXPLO(lang).loc?.source.body,
       variables: {
         sqon: getSqonForQuickFilterFacetValue(activeQuery),
       },
     });
     if (data) setQuickFilterData(data?.data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(activeQuery)]);
+  }, [JSON.stringify(activeQuery), lang]);
 
   useEffect(() => {
     fetchFacets();
