@@ -9,7 +9,7 @@ beforeEach(() => {
 describe('Page d\'une étude - Valider les liens disponibles', () => {
   it('Lien du Program du panneau Summary', () => {
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(2).find('[href]').eq(0).clickAndWait({force: true});
-    cy.get('[class*="ProgramEntity"]').contains('RARE.Qc – The Network to Advance Rare Disease Research in Quebec');
+    cy.get('[class*="ProgramEntity"]').contains(/RARE.Qc (2|3) – The Network to Advance Rare Disease Research in Quebec/);
   });
   
   it('Lien du Website du panneau Summary', () => {
