@@ -26,7 +26,8 @@ describe('Page d\'une étude - Vérifier les informations affichées', () => {
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(1).contains('Name').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(1).contains('Developmental and epileptic encephalopathies').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(2).contains('Program').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(2).contains('RARE.Qc – The Network to Advance Rare Disease Research in Quebec').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(2).contains('RARE.Qc 2 – The Network to Advance Rare Disease Research in Quebec').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(2).contains('RARE.Qc 3 – The Network to Advance Rare Disease Research in Quebec').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(3).contains('Description').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(3).contains('Case-parent trio study on developmental and epileptic encephalopaties (DEE)').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(3).contains('Description en francais, Case-parent trio study on developmental and epileptic encephalopaties (DEE)').should('exist');
