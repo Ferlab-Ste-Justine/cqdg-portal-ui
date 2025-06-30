@@ -75,7 +75,7 @@ const DownloadFileManifestModal = ({
       intl.get('screen.dataExploration.youMustSelect')
     ) : (
       <>
-        {intl.get('api.report.fileManifest.tooltip')}
+        {intl.get('api.report.fileManifest.tooltipHead')}
         <ExternalLink
           className={styles.externalLinkFerload}
           hasIcon
@@ -85,6 +85,7 @@ const DownloadFileManifestModal = ({
         >
           {intl.get('global.ferload')}
         </ExternalLink>
+        {intl.get('api.report.fileManifest.tooltipTail')}
       </>
     );
 
