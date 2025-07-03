@@ -574,7 +574,7 @@ const fr = {
     },
     seeLess: 'Voir moins',
     seeMore: 'Voir plus',
-    ferload: 'Ferload',
+    ferload: 'ferload',
   },
   api: {
     savedFilter: {
@@ -642,7 +642,8 @@ const fr = {
         textCheckbox: `Inclure les fichiers de données de même type des membres de la famille des participants représentés dans les fichiers sélectionnés.`,
         textCheckboxSet:
           'Inclure tous les fichiers de même type sur les membres des familles représentées dans cet ensemble.',
-        tooltip: 'Manifeste de fichiers pour l’outil ',
+        tooltipHead: 'Manifeste de fichiers pour l’outil ',
+        tooltipTail: '',
         manifestIdButton: 'Copier l’identifiant',
         manifestIdButtonTooltip: "Copiez l'identifiant du manifeste à utiliser avec ",
         manifestIdCopySuccess: 'Identifiant copié dans le presse-papiers',

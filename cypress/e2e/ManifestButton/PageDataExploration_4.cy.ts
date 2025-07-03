@@ -50,7 +50,7 @@ describe('Page Data Exploration (Data Files) - Bouton Manifest', () => {
   it('Vérifier les informations affichées - Tooltip du bouton Copy manifest ID', () => {
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"] [class*="anticon-copy"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
     cy.get('div[class="ant-tooltip-inner"]').contains('Copy the manifest ID for use in ').should('exist');
-    cy.get('div[class="ant-tooltip-inner"]').contains('Ferload').should('exist');
+    cy.get('div[class="ant-tooltip-inner"]').contains('ferload').should('exist');
     cy.get('div[class="ant-tooltip-inner"] [class="anticon"]').should('exist');
   });
 

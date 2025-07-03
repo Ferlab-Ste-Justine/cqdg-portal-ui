@@ -573,7 +573,7 @@ const en = {
     },
     seeLess: 'See less',
     seeMore: 'See more',
-    ferload: 'Ferload',
+    ferload: 'ferload',
   },
   api: {
     savedFilter: {
@@ -638,7 +638,8 @@ const en = {
         textCheckbox: `Include data files of the same type for the participants' related family members for this selection.`,
         textCheckboxSet:
           'Include the files of the same type for related family members in this set.',
-        tooltip: 'File manifest for the tool ',
+        tooltipHead: 'File manifest for the ',
+        tooltipTail: ' tool',
         manifestIdButton: 'Copy manifest ID',
         manifestIdButtonTooltip: 'Copy the manifest ID for use in ',
         manifestIdCopySuccess: 'ID copied to clipboard',
