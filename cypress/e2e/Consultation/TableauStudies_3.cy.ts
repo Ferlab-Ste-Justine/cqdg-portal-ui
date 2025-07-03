@@ -34,21 +34,21 @@ describe('Page des études - Valider les fonctionnalités du tableau', () => {
     
   it('Tri Domain', () => {
     cy.sortTableAndWait('Domain');
-    cy.validateTableFirstRow('Neurodevelopmental Conditions', 2);
+    cy.validateTableFirstRow('Neurodevelopmental Conditions', 3);
     cy.sortTableAndWait('Domain');
-    cy.validateTableFirstRow('Rare Diseases', 2);
+    cy.validateTableFirstRow('Rare Diseases', 3);
   });
     
   it('Tri Population', () => {
     cy.sortTableAndWait('Population');
-    cy.validateTableFirstRow('Pediatric and adult', 3);
+    cy.validateTableFirstRow('Pediatric and adult', 4);
     cy.sortTableAndWait('Population');
-    cy.validateTableFirstRow('Pediatric and adult', 3);
+    cy.validateTableFirstRow('Pediatric and adult', 4);
   });
 
   it('Tri multiple', () => {
     cy.sortTableAndWait('Population');
     cy.sortTableAndWait('Domain');
-    cy.validateTableFirstRow('Neurodevelopmental Conditions', 2);
+    cy.validateTableFirstRow('Neurodevelopmental Conditions', 3);
   });
 });

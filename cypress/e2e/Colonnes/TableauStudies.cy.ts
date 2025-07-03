@@ -20,103 +20,108 @@ describe('Page des études - Colonnes du tableau', () => {
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(2)
+      .should('not.have.class', 'ant-table-column-has-sorters')
+      .contains('Program').should('exist');
+
+    cy.get('thead[class="ant-table-thead"]')
+      .find('th[class*="ant-table-cell"]').eq(3)
       .should('have.class', 'ant-table-column-has-sorters')
       .contains('Domain').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Population').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(4)
+      .find('div[class="ant-space-item"]').eq(5)
       .contains('Population').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
-      .find('th[class*="ant-table-cell"]').eq(3)
+      .find('th[class*="ant-table-cell"]').eq(4)
       .should('not.have.class', 'ant-table-column-has-sorters')
       .contains('Participants').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
-      .find('th[class*="ant-table-cell"]').eq(4)
+      .find('th[class*="ant-table-cell"]').eq(5)
       .should('not.have.class', 'ant-table-column-has-sorters')
       .contains('Families').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Biospecimens').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(7)
+      .find('div[class="ant-space-item"]').eq(8)
       .contains('Biospecimens').should('exist');
-
-    cy.get('thead[class="ant-table-thead"]')
-      .find('th[class*="ant-table-cell"]').eq(5)
-      .should('not.have.class', 'ant-table-column-has-sorters')
-      .contains('Genomics').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(6)
       .should('not.have.class', 'ant-table-column-has-sorters')
-      .contains('Transcriptomics').should('exist');
+      .contains('Genomics').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(7)
       .should('not.have.class', 'ant-table-column-has-sorters')
-      .contains('Imaging').should('exist');
+      .contains('Transcriptomics').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(8)
+      .should('not.have.class', 'ant-table-column-has-sorters')
+      .contains('Imaging').should('exist');
+
+    cy.get('thead[class="ant-table-thead"]')
+      .find('th[class*="ant-table-cell"]').eq(9)
       .should('not.have.class', 'ant-table-column-has-sorters')
       .contains('Files').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Access Limitation').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(12)
+      .find('div[class="ant-space-item"]').eq(13)
       .contains('Access Limitation').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Access Requirement').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(13)
+      .find('div[class="ant-space-item"]').eq(14)
       .contains('Access Requirement').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Description').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(14)
+      .find('div[class="ant-space-item"]').eq(15)
       .contains('Description').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Overall Design').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(15)
+      .find('div[class="ant-space-item"]').eq(16)
       .contains('Overall Design').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Data Collection Method').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(16)
+      .find('div[class="ant-space-item"]').eq(17)
       .contains('Data Collection Method').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Principal Investigators').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(17)
+      .find('div[class="ant-space-item"]').eq(18)
       .contains('Principal Investigators').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Contact Persons').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(18)
+      .find('div[class="ant-space-item"]').eq(19)
       .contains('Contact Persons').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Affiliated Institutions').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(19)
+      .find('div[class="ant-space-item"]').eq(20)
       .contains('Affiliated Institutions').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Inclusion and Exclusion Criteria').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(20)
+      .find('div[class="ant-space-item"]').eq(21)
       .contains('Inclusion and Exclusion Criteria').should('exist');
   });
 
