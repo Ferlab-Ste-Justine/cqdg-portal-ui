@@ -376,8 +376,10 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
 
 const Studies = () => {
   const studyMappingResults = useGetExtendedMappings(INDEXES.STUDY);
+
   const filterInfo: FilterInfo = {
     defaultOpenFacets: [
+      'programs__program_id',
       'domain',
       'population',
       'data_access_codes__access_limitations',
@@ -389,6 +391,7 @@ const Studies = () => {
     groups: [
       {
         facets: [
+          'programs__program_id',
           'domain',
           'population',
           'data_access_codes__access_limitations',
