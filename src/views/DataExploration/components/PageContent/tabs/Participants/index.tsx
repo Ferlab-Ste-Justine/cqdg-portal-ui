@@ -349,6 +349,7 @@ const getDefaultColumns = (): ProColumnType[] => [
     key: 'study.programs.program_id',
     dataIndex: 'study',
     title: intl.get('entities.program.program'),
+    defaultHidden: true,
     render: (study: IStudyEntity) => {
       const programs: ArrangerResultsTree<IProgramEntity> = study?.programs;
       return programs?.hits?.edges?.map(({ node }) => (
