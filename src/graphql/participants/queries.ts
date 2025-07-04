@@ -84,6 +84,15 @@ export const GET_PARTICIPANTS = gql`
                 type
                 value
               }
+              programs {
+                hits {
+                  edges {
+                    node {
+                      program_id
+                    }
+                  }
+                }
+              }
             }
             icd_tagged {
               hits {

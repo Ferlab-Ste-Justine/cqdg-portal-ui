@@ -9,6 +9,7 @@ beforeEach(() => {
   cy.showColumn('Diagnosis (Source Text)');
   cy.showColumn('External Participant');
   cy.showColumn('Vital Status');
+  cy.showColumn('Program');
 });
 
 describe('Page Data Exploration (Participants) - Vérifier les informations affichées', () => {
@@ -37,5 +38,7 @@ describe('Page Data Exploration (Participants) - Vérifier les informations affi
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(13).contains('Intractable Epilepsy').should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(14).contains('HSJ-1005-389').should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(15).contains('Unknown').should('exist');
+    cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(16).contains('RARE-QC2').should('exist');
+    cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(16).contains('RARE-QC3').should('exist');
   });
 });

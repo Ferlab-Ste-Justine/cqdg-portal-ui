@@ -58,6 +58,11 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.validateFacetRank(0, 'Study Code');
   });
 
+  it('Program - RARE-QC2', () => {
+    cy.validateFacetFilter('Program', 'RARE-QC2', 'RARE-QC2', /^597$/);
+    cy.validateFacetRank(1, 'Program');
+  });
+
   it('Phenotype (HPO)', () => {
     cy.get('div[class*="CollapsePlaceHolderFacet_collapseLikeFacet"]').eq(0).contains('Phenotype (HPO)').should('exist');
     // TODO Filtrer
@@ -70,37 +75,37 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Diagnosis (ICD-10) - Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', () => {
     cy.validateFacetFilter('Diagnosis (ICD-10)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', /^206$/);
-    cy.validateFacetRank(1, 'Diagnosis (ICD-10)');
+    cy.validateFacetRank(2, 'Diagnosis (ICD-10)');
   });
 
   it('Family Position - Proband', () => {
     cy.validateFacetFilter('Family Position', 'Proband', 'Proband', /^201$/);
-    cy.validateFacetRank(2, 'Family Position');
+    cy.validateFacetRank(3, 'Family Position');
   });
 
   it('Family Type - Case-parent trio', () => {
     cy.validateFacetFilter('Family Type', 'Case-parent trio', 'Case-parent trio', /^594$/);
-    cy.validateFacetRank(3, 'Family Type');
+    cy.validateFacetRank(4, 'Family Type');
   });
 
   it('Sex - Female', () => {
     cy.validateFacetFilter('Sex', 'Female', 'female', /^286$/);
-    cy.validateFacetRank(4, 'Sex');
+    cy.validateFacetRank(5, 'Sex');
   });
 
   it('Age at Recruitment - Congenital', () => {
     cy.validateFacetFilter('Age at Recruitment', 'Congenital', 'B-congenital', /^2$/);
-    cy.validateFacetRank(5, 'Age at Recruitment');
+    cy.validateFacetRank(6, 'Age at Recruitment');
   });
 
   it('Age at Diagnosis - Congenital', () => {
     cy.validateFacetFilter('Age at Diagnosis', 'Congenital', 'B-congenital', /^3$/);
-    cy.validateFacetRank(6, 'Age at Diagnosis');
+    cy.validateFacetRank(7, 'Age at Diagnosis');
   });
 
   it('Ethnicity - French Canadian', () => {
     cy.get('[data-cy="FilterContainer_Ethnicity"]').should('exist');
-    cy.validateFacetRank(7, 'Ethnicity');
+    cy.validateFacetRank(8, 'Ethnicity');
     /* Pas de données
     cy.validateFacetFilter('Ethnicity', 'French Canadian', 'French Canadian', /^1750$/);
     */
@@ -108,11 +113,11 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Phenotype (Source Text) - Intractable Seizures', () => {
     cy.validateFacetFilter('Phenotype (Source Text)', 'Intractable Seizures', 'Intractable Seizures', /^203$/);
-    cy.validateFacetRank(8, 'Phenotype (Source Text)');
+    cy.validateFacetRank(9, 'Phenotype (Source Text)');
   });
 
   it('Diagnosis (Source Text) - Intractable Epilepsy', () => {
     cy.validateFacetFilter('Diagnosis (Source Text)', 'Intractable Epilepsy', 'Intractable Epilepsy', /\d{1}/);
-    cy.validateFacetRank(9, 'Diagnosis (Source Text)');
+    cy.validateFacetRank(10, 'Diagnosis (Source Text)');
   });
 });
