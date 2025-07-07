@@ -311,6 +311,11 @@ export const getFacetsDictionary = () => ({
       program_id: intl.get('entities.program.program'),
     },
   },
+  programs: {
+    name_en: intl.get('entities.program.program_name'),
+    name_fr: intl.get('entities.program.program_name'),
+    program_id: intl.get('entities.program.program'),
+  },
   studies: {
     study_code: intl.get('entities.study.study_code'),
     zygosity: intl.get('entities.variant.zygosity'),
