@@ -93,6 +93,12 @@ describe('Page Data Exploration (Participants) - Colonnes du tableau', () => {
     cy.get('div[class="ant-popover-inner"]')
       .find('div[class="ant-space-item"]').eq(16)
       .contains('Vital Status').should('exist');
+  
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Program').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(17)
+      .contains('Program').should('exist');
   });
 
   it('Masquer une colonne affichée', () => {
