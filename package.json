@@ -102,7 +102,7 @@
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "@testquality/cli": "^1.2.3",
+    "@testquality/cli": "^1.2.4",
     "@types/d3": "^7.1.0",
     "@types/file-saver": "^2.0.2",
     "@types/http-errors": "^1.8.2",
