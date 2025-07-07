@@ -15,8 +15,9 @@ beforeEach(() => {
 
 describe('Page Data Exploration (Data Files) - Bouton Manifest', () => {
   it('Vérifier les informations affichées - Tooltip', () => {
-    cy.get('div[class="ant-tooltip-inner"]').contains('File manifest for the tool ').should('exist');
-    cy.get('div[class="ant-tooltip-inner"]').contains('Ferload').should('exist');
+    cy.get('div[class="ant-tooltip-inner"]').contains('File manifest for the ').should('exist');
+    cy.get('div[class="ant-tooltip-inner"]').contains('ferload').should('exist');
+    cy.get('div[class="ant-tooltip-inner"]').contains(' tool').should('exist');
     cy.get('div[class="ant-tooltip-inner"] [class="anticon"]').should('exist');
   });
 
