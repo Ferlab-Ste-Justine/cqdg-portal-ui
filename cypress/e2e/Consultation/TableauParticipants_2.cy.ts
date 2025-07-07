@@ -5,6 +5,7 @@ beforeEach(() => {
   cy.login();
   cy.visitDataExploration('participants', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
   cy.showColumn('Diagnosis (ICD)');
+  cy.showColumn('Program');
 });
 
 describe('Page Data Exploration (Participants) - Valider les liens disponibles', () => { 
@@ -59,5 +60,10 @@ describe('Page Data Exploration (Participants) - Valider les liens disponibles',
   it('Lien ICD de Diagnosis (ICD) du tableau', () => {
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(11).find('[href]')
       .should('have.attr', 'href', 'http://purl.bioontology.org/ontology/ICD10CM/G40.31');
+  });
+
+  it('Lien Program du tableau', () => {
+    cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(12).find('[href]').eq(0).clickAndWait({force: true});
+    cy.get('[class*="ProgramCard"]').contains(/RARE.Qc (2|3)/);
   });
 });
