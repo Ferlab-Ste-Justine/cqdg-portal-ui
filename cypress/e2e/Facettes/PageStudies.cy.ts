@@ -23,38 +23,43 @@ describe('Page des études - Filtrer avec les facettes', () => {
     cy.get('section[class*="Filters"] [aria-expanded="false"]').should('not.exist');
   });
 
+  it('Program - RARE-QC2', () => {
+    cy.validateFacetFilter('Program', 'RARE-QC2', 'RARE-QC2', /^3 Results$/, false);
+    cy.validateFacetRank(0, 'Program');
+  });
+
   it('Domain - Rare Diseases', () => {
     cy.validateFacetFilter('Domain', 'Rare diseases', 'rare diseases', /^1 Result$/, false);
-    cy.validateFacetRank(0, 'Domain');
+    cy.validateFacetRank(1, 'Domain');
   });
 
   it('Population - Pediatric and adult', () => {
     cy.validateFacetFilter('Population', 'Pediatric and adult', 'Pediatric and adult', /\d{1} Results/, false);
-    cy.validateFacetRank(1, 'Population');
+    cy.validateFacetRank(2, 'Population');
   });
 
   it('Access Limitation - Health or medical or biomedical research (DUO:0000006)', () => {
     cy.validateFacetFilter('Access Limitation', 'Health or medical or biomedical research (DUO:0000006)', 'health or medical or biomedical research (DUO:0000006)', /\d{1} Results/, false);
-    cy.validateFacetRank(2, 'Access Limitation');
+    cy.validateFacetRank(3, 'Access Limitation');
   });
 
   it('Access Requirement - Genetic studies only (DUO:0000016)', () => {
     cy.validateFacetFilter('Access Requirement', 'Genetic studies only (DUO:0000016)', 'genetic studies only (DUO:0000016)', /\d{1} Results/, false);
-    cy.validateFacetRank(3, 'Access Requirement');
+    cy.validateFacetRank(4, 'Access Requirement');
   });
 
   it('Data Category - Genomics', () => {
     cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /\d{1} Results/, false);
-    cy.validateFacetRank(4, 'Data Category');
+    cy.validateFacetRank(5, 'Data Category');
   });
 
   it('Overall Design - Case only', () => {
     cy.validateFacetFilter('Overall Design', 'Case only', 'Case only', /\d{1} Results/, false);
-    cy.validateFacetRank(5, 'Overall Design');
+    cy.validateFacetRank(6, 'Overall Design');
   });
 
   it('Data Collection Method - Medical Records', () => {
     cy.validateFacetFilter('Data Collection Method', 'Medical Records', 'Medical Records', /\d{1} Results/, false);
-    cy.validateFacetRank(6, 'Data Collection Method');
+    cy.validateFacetRank(7, 'Data Collection Method');
   });
 });
