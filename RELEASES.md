@@ -1,4 +1,4 @@
-## VERSION 0.20.0 (2025-07-08)
+## VERSION 0.20.2 (2025-07-08)
 
 ### Features:
 - [CQDG-842](https://ferlab-crsj.atlassian.net/browse/CQDG-842) Feature: [Data Exploration] Extracted the ontology NCIt term directly from the obo file
