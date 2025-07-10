@@ -18,3 +18,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+.pageContent .summaryTotal {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  width: max-content;
+}

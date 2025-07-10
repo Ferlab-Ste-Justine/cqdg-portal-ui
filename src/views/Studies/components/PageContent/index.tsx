@@ -117,6 +117,10 @@ const getSummaryColumns = (
           sum={data.reduce((accumulator, d) => accumulator + d.sample_count, 0)}
         />
       );
+    } else if (c.key === 'study_code') {
+      value = (
+        <div className={styles.summaryTotal}>{intl.get('screen.studies.summary_row.total')}</div>
+      );
     }
 
     if (columnsState) {

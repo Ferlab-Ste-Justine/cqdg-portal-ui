@@ -1153,6 +1153,7 @@ const en = {
         participants: 'Participants',
         biospecimens: 'Biospecimens',
         families: 'Families',
+        total: 'Total',
       },
     },
     dataExploration: {

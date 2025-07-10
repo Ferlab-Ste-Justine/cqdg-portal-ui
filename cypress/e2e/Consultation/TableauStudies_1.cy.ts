@@ -52,6 +52,7 @@ describe('Page des études - Vérifier les informations affichées', () => {
   });
 
   it('Summary', () => {
+    cy.get('tfoot [class*="summaryTotal"]').contains('Total').should('exist');
     cy.get('tfoot [class*="summaryTitle"]').eq(0).contains('Participants').should('exist');
     cy.get('tfoot [class*="summarySum"]').eq(0).contains(/\d{1}/).should('exist');
     cy.get('tfoot [class*="summaryTitle"]').eq(1).contains('Families').should('exist');
