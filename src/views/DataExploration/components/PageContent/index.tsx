@@ -91,6 +91,7 @@ interface IPageContentProps {
   participantMapping: IExtendedMappingResults;
   studyMapping: IExtendedMappingResults;
   tabId?: string;
+  hasProgram: boolean;
 }
 
 const PageContent = ({
@@ -99,6 +100,7 @@ const PageContent = ({
   biospecimenMapping,
   studyMapping,
   tabId = TAB_IDS.SUMMARY,
+  hasProgram,
 }: IPageContentProps) => {
   const dispatch = useDispatch<any>();
   const location = useLocation();
@@ -192,7 +194,7 @@ const PageContent = ({
         </span>
       ),
       key: TAB_IDS.PARTICIPANTS,
-      children: <ParticipantsTab sqon={participantResolvedSqon} />,
+      children: <ParticipantsTab sqon={participantResolvedSqon} hasProgram={hasProgram} />,
     },
     {
       label: (

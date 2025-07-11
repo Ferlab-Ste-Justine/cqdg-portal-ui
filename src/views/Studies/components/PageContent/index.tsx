@@ -50,6 +50,7 @@ const { Title } = Typography;
 
 type OwnProps = {
   defaultColumns: ProColumnType<any>[];
+  setHasProgram: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const PAGE_SIZE = 50;
@@ -135,7 +136,7 @@ const getSummaryColumns = (
   return [];
 };
 
-const PageContent = ({ defaultColumns = [] }: OwnProps) => {
+const PageContent = ({ defaultColumns = [], setHasProgram }: OwnProps) => {
   const dispatch = useDispatch();
   const { userInfo } = useUser();
   const [searchValue, setSearchValue] = useState('');
@@ -164,6 +165,11 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
       order: queryConfig.operations?.previous ? SortDirection.Desc : SortDirection.Asc,
     }),
   });
+
+  useEffect(() => {
+    const found = data.some((row) => row.programs?.hits?.edges?.length > 0);
+    setHasProgram(found);
+  }, [data, setHasProgram]);
 
   useEffect(() => {
     setQueryConfig((prevQueryConfig) => ({

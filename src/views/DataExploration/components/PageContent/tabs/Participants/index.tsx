@@ -63,7 +63,7 @@ import { IProgramEntity } from '../../../../../../graphql/programs/models';
 
 import styles from './index.module.css';
 
-const getDefaultColumns = (): ProColumnType[] => [
+const getDefaultColumns = (hasProgram: boolean): ProColumnType[] => [
   {
     key: 'participant_id',
     title: intl.get('entities.participant.participant_id'),
@@ -345,27 +345,32 @@ const getDefaultColumns = (): ProColumnType[] => [
     sorter: { multiple: 1 },
     render: (vital_status) => vital_status || TABLE_EMPTY_PLACE_HOLDER,
   },
-  {
-    key: 'study.programs.program_id',
-    dataIndex: 'study',
-    title: intl.get('entities.program.program'),
-    defaultHidden: true,
-    render: (study: IStudyEntity) => {
-      const programs: ArrangerResultsTree<IProgramEntity> = study?.programs;
-      return programs?.hits?.edges?.map(({ node }) => (
-        <div key={node.program_id}>
-          <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
-        </div>
-      ));
-    },
-  },
+  ...(hasProgram
+    ? [
+        {
+          key: 'study.programs.program_id',
+          dataIndex: 'study',
+          title: intl.get('entities.program.program'),
+          defaultHidden: true,
+          render: (study: IStudyEntity) => {
+            const programs: ArrangerResultsTree<IProgramEntity> = study?.programs;
+            return programs?.hits?.edges?.map(({ node }) => (
+              <div key={node.program_id}>
+                <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
+              </div>
+            ));
+          },
+        },
+      ]
+    : []),
 ];
 
 interface IParticipantsTabProps {
   sqon?: ISqonGroupFilter;
+  hasProgram: boolean;
 }
 
-const ParticipantsTab = ({ sqon }: IParticipantsTabProps) => {
+const ParticipantsTab = ({ sqon, hasProgram }: IParticipantsTabProps) => {
   const dispatch = useDispatch();
   const { userInfo } = useUser();
   const [pageIndex, setPageIndex] = useState(DEFAULT_PAGE_INDEX);
@@ -395,7 +400,7 @@ const ParticipantsTab = ({ sqon }: IParticipantsTabProps) => {
     queryConfig.operations,
   );
 
-  const defaultCols = getDefaultColumns();
+  const defaultCols = getDefaultColumns(hasProgram);
   const userCols = userInfo?.config.data_exploration?.tables?.participants?.columns || [];
   const userColumns = userColumnPreferencesOrDefault(userCols, defaultCols);
 
@@ -446,7 +451,7 @@ const ParticipantsTab = ({ sqon }: IParticipantsTabProps) => {
     <ProTable<ITableParticipantEntity>
       data-cy="ProTable_Participants"
       tableId="participants_table"
-      columns={getDefaultColumns()}
+      columns={getDefaultColumns(hasProgram)}
       wrapperClassName={styles.participantTabWrapper}
       loading={results.loading}
       initialColumnState={userInfo?.config.data_exploration?.tables?.participants?.columns}

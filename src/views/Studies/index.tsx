@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import intl from 'react-intl-universal';
 import { Link } from 'react-router-dom';
 import { CheckOutlined } from '@ant-design/icons';
@@ -29,7 +29,7 @@ import { SCROLL_WRAPPER_ID } from './utils/constant';
 
 import styles from './index.module.css';
 
-const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
+const getDefaultColumns = (hasProgram: boolean): ProColumnType<ITableStudyEntity>[] => [
   {
     key: 'study_code',
     dataIndex: 'study_code',
@@ -46,18 +46,22 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
     sorter: { multiple: 1 },
     render: (name: string) => name || TABLE_EMPTY_PLACE_HOLDER,
   },
-  {
-    key: 'programs.program_id',
-    dataIndex: 'programs',
-    title: intl.get('entities.program.program'),
-    render: (programs: ArrangerResultsTree<IProgramEntity>) => {
-      return programs?.hits?.edges?.map(({ node }) => (
-        <div key={node.program_id}>
-          <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
-        </div>
-      ));
-    },
-  },
+  ...(hasProgram
+    ? [
+        {
+          key: 'programs.program_id',
+          dataIndex: 'programs',
+          title: intl.get('entities.program.program'),
+          render: (programs: ArrangerResultsTree<IProgramEntity>) => {
+            return programs?.hits?.edges?.map(({ node }) => (
+              <div key={node.program_id}>
+                <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
+              </div>
+            ));
+          },
+        },
+      ]
+    : []),
   {
     dataIndex: 'domain',
     key: 'domain',
@@ -389,6 +393,7 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
 ];
 
 const Studies = () => {
+  const [hasProgram, setHasProgram] = useState(false);
   const studyMappingResults = useGetExtendedMappings(INDEXES.STUDY);
 
   const filterInfo: FilterInfo = {
@@ -405,7 +410,7 @@ const Studies = () => {
     groups: [
       {
         facets: [
-          'programs__program_id',
+          hasProgram ? 'programs__program_id' : [],
           'domain',
           'population',
           'data_access_codes__access_limitations',
@@ -423,7 +428,7 @@ const Studies = () => {
     <div className={styles.studiesPage}>
       <SideBarFacet extendedMappingResults={studyMappingResults} filterInfo={filterInfo} />
       <ScrollContent id={SCROLL_WRAPPER_ID} className={styles.scrollContent}>
-        <PageContent defaultColumns={getDefaultColumns()} />
+        <PageContent defaultColumns={getDefaultColumns(hasProgram)} setHasProgram={setHasProgram} />
       </ScrollContent>
     </div>
   );

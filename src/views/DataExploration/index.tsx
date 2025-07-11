@@ -75,6 +75,8 @@ import {
   getQueryBuilderDictionary,
 } from 'utils/translation';
 
+import { usePrograms } from '../../graphql/programs/actions';
+
 import { formatHpoTitleAndCode, formatMondoTitleAndCode } from './utils/helper';
 import {
   getFieldWithoutPrefix,
@@ -92,7 +94,7 @@ enum FilterTypes {
   Datafiles,
 }
 
-const getFilterGroups = (type: FilterTypes) => {
+const getFilterGroups = (type: FilterTypes, hasProgram: boolean) => {
   switch (type) {
     case FilterTypes.Participant:
       return {
@@ -105,7 +107,7 @@ const getFilterGroups = (type: FilterTypes) => {
           {
             facets: [
               'study__study_code',
-              'study__programs__program_id',
+              hasProgram ? 'study__programs__program_id' : [],
               <TreeFacet
                 key="observed_phenotypes"
                 field="observed_phenotypes"
@@ -173,6 +175,7 @@ const filtersContainer = (
   type: FilterTypes,
   index: string,
   filterMapper: TCustomFilterMapper,
+  hasProgram: boolean = false,
 ) => {
   if (mappingResults.loading) {
     return <Spin className={styles.filterLoader} spinning />;
@@ -184,7 +187,7 @@ const filtersContainer = (
       index={index}
       queryBuilderId={DATA_EXPLORATION_QB_ID}
       extendedMappingResults={mappingResults}
-      filterInfo={getFilterGroups(type)}
+      filterInfo={getFilterGroups(type, hasProgram)}
       filterMapper={filterMapper}
     />
   );
@@ -201,6 +204,7 @@ const DataExploration = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [quickFilterData, setQuickFilterData] = useState<{ Participant: { aggregations: any } }>();
   const [forceClose, setForceClose] = useState<boolean>(false);
+  const [hasProgram, setHasProgram] = useState(false);
 
   const lang = useLang();
 
@@ -243,6 +247,15 @@ const DataExploration = () => {
     if (data) setQuickFilterData(data?.data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(activeQuery), lang]);
+
+  const { loading, data: programs } = usePrograms();
+
+  useEffect(() => {
+    if (!loading) {
+      const found = programs.some((row) => row.studies?.length > 0);
+      setHasProgram(found);
+    }
+  }, [loading, programs]);
 
   useEffect(() => {
     fetchFacets();
@@ -426,6 +439,7 @@ const DataExploration = () => {
         FilterTypes.Participant,
         INDEXES.PARTICIPANT,
         mapFilterForParticipant,
+        hasProgram,
       ),
     },
     {
@@ -488,6 +502,7 @@ const DataExploration = () => {
           studyMapping={studyMappingResults}
           biospecimenMapping={biospecimenMappingResults}
           tabId={tab}
+          hasProgram={hasProgram}
         />
       </ScrollContent>
     </div>
