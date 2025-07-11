@@ -157,7 +157,7 @@ const getFilterGroups = (type: FilterTypes) => {
               'dataset',
               'data_category',
               'data_type',
-              'sequencing_experiment__experimental_strategy_1__display',
+              'sequencing_experiment__experimental_strategy',
               'sequencing_experiment__platform',
               'sequencing_experiment__selection__display',
               'file_format',
