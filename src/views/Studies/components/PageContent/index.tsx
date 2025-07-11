@@ -165,6 +165,12 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
     }),
   });
 
+  const hasAnyProgramId = data.some((row) => row.programs?.hits?.edges?.length > 0);
+
+  const filteredColumns = hasAnyProgramId
+    ? defaultColumns
+    : defaultColumns.filter((col) => col.key !== 'programs.program_id');
+
   useEffect(() => {
     setQueryConfig((prevQueryConfig) => ({
       ...prevQueryConfig,
@@ -216,7 +222,7 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
         content={
           <ProTable
             tableId={STUDIES_REPO_QB_ID}
-            columns={defaultColumns}
+            columns={filteredColumns}
             initialColumnState={userInfo?.config.studies?.tables?.studies?.columns}
             wrapperClassName={styles.tableWrapper}
             loading={loading}
