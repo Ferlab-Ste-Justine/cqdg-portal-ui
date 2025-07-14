@@ -38,6 +38,8 @@
 .managerPicture {
   margin-bottom: 8px;
   border-radius: 50%;
+  height: 104px;
+  width: 104px;
 }
 
 .defaultPicture {
