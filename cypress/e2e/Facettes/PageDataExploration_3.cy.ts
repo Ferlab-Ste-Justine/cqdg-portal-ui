@@ -55,7 +55,7 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
   });
 
   it('Strategy - Whole Genome Sequencing', () => {
-    cy.validateFacetFilter('Strategy', 'Whole Genome Sequencing', 'Whole Genome Sequencing', /^3,207$/);
+    cy.validateFacetFilter('Strategy', 'WGS', 'WGS', /^3,207$/);
     cy.validateFacetRank(3, 'Strategy');
   });
 
