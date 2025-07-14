@@ -1,13 +1,13 @@
 import intl from 'react-intl-universal';
 import { Link } from 'react-router-dom';
-import { UserOutlined } from '@ant-design/icons';
 import ExternalLinkIcon from '@ferlab/ui/core/components/ExternalLink/ExternalLinkIcon';
 import { Button, Space, Typography } from 'antd';
 import { IProgramEntity } from 'graphql/programs/models';
-import EnvVariables from 'helpers/EnvVariables';
 
 import { LANG } from 'common/constants';
 import { useLang } from 'store/global';
+
+import ManagerPicture from './ManagerPicture';
 
 import styles from './index.module.css';
 
@@ -37,15 +37,7 @@ const ProgramCard = ({ program }: { program?: IProgramEntity }) => {
       <div className={styles.managersWrapper}>
         {program?.managers?.map((manager) => (
           <div className={styles.managerWrapper} key={manager.name}>
-            {manager?.picture_url ? (
-              <object
-                data={EnvVariables.configFor('S3_ASSETS_URL') + manager.picture_url}
-                className={styles.managerPicture}
-              />
-            ) : (
-              <UserOutlined className={styles.defaultPicture} />
-            )}
-
+            <ManagerPicture pictureUrl={manager.picture_url} />
             <Text className={styles.managerText}>{manager.name}</Text>
             <Text className={styles.managerText}>
               {lang === LANG.FR ? manager.role_fr : manager.role_en}
