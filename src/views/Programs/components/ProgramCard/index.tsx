@@ -55,11 +55,16 @@ const ProgramCard = ({ program }: IProgramCardProps) => {
         </Typography.Text>
 
         <div className={styles.footerRow}>
-          <Tag icon={<ReadOutlined width={16} height={16} />} className={styles.cardTag}>
-            {`${studiesCount} ${intl.get('entities.study.studies_min')}`}
-          </Tag>
-          <Link to={`${STATIC_ROUTES.PROGRAMS}/${program.program_id}`}>
-            <Button type="default" className={styles.programCardButton}>
+          {!!studiesCount && (
+            <Tag icon={<ReadOutlined width={16} height={16} />} className={styles.cardTag}>
+              {`${studiesCount} ${intl.get('entities.study.studies_min')}`}
+            </Tag>
+          )}
+          <Link
+            to={`${STATIC_ROUTES.PROGRAMS}/${program.program_id}`}
+            className={styles.programCardButton}
+          >
+            <Button type="default">
               {intl.get('screen.dashboard.cards.learnMore')}
               <ExternalLinkIcon />
             </Button>
