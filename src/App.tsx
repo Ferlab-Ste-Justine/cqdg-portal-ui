@@ -44,7 +44,7 @@ const App = () => {
   const { keycloak, initialized } = useKeycloak();
   const keycloakIsReady = keycloak && initialized;
   setDefaultOptions({ locale: lang === LANG.FR ? fr : enUS });
-  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
+  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_PAGES_ENABLED') === 'true';
 
   return (
     <ConfigProvider
