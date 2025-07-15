@@ -15,6 +15,7 @@ import { INDEXES } from 'graphql/constants';
 import { ArrangerResultsTree } from 'graphql/models';
 import { IProgramEntity } from 'graphql/programs/models';
 import { IStudyDataAccessCodes, IStudyEntity, ITableStudyEntity } from 'graphql/studies/models';
+import EnvVariables from 'helpers/EnvVariables';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 import { extractDuoTitleAndCode } from 'views/DataExploration/utils/helper';
 import SideBarFacet from 'views/Studies/components/SideBarFacet';
@@ -28,6 +29,7 @@ import PageContent from './components/PageContent';
 import { SCROLL_WRAPPER_ID } from './utils/constant';
 
 import styles from './index.module.css';
+const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
 const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
   {
@@ -46,18 +48,22 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
     sorter: { multiple: 1 },
     render: (name: string) => name || TABLE_EMPTY_PLACE_HOLDER,
   },
-  {
-    key: 'programs.program_id',
-    dataIndex: 'programs',
-    title: intl.get('entities.program.program'),
-    render: (programs: ArrangerResultsTree<IProgramEntity>) => {
-      return programs?.hits?.edges?.map(({ node }) => (
-        <div key={node.program_id}>
-          <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
-        </div>
-      ));
-    },
-  },
+  ...(isProgramsEnabled
+    ? [
+        {
+          key: 'programs.program_id',
+          dataIndex: 'programs',
+          title: intl.get('entities.program.program'),
+          render: (programs: ArrangerResultsTree<IProgramEntity>) => {
+            return programs?.hits?.edges?.map(({ node }) => (
+              <div key={node.program_id}>
+                <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
+              </div>
+            ));
+          },
+        },
+      ]
+    : []),
   {
     dataIndex: 'domain',
     key: 'domain',
@@ -405,7 +411,7 @@ const Studies = () => {
     groups: [
       {
         facets: [
-          'programs__program_id',
+          isProgramsEnabled && 'programs__program_id',
           'domain',
           'population',
           'data_access_codes__access_limitations',
