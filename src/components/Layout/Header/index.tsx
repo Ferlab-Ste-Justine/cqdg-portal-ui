@@ -58,7 +58,7 @@ const Header = () => {
     STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS,
     STATIC_ROUTES.DATA_EXPLORATION_DATAFILES,
   ];
-  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
+  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_PAGES_ENABLED') === 'true';
 
   const handleChangeLang = () => {
     const targetLang = getTargetLang(lang);

@@ -40,6 +40,9 @@ export default class EnvironmentVariables {
       window._env_?.REACT_APP_CAVATICA_ENABLED || process.env.REACT_APP_CAVATICA_ENABLED || 'false',
     PROGRAMS_ENABLED:
       window._env_?.REACT_APP_PROGRAMS_ENABLED || process.env.REACT_APP_PROGRAMS_ENABLED,
+    PROGRAMS_PAGES_ENABLED:
+      window._env_?.REACT_APP_PROGRAMS_PAGES_ENABLED ||
+      process.env.REACT_APP_PROGRAMS_PAGES_ENABLED,
     S3_ASSETS_URL: window._env_?.REACT_APP_S3_ASSETS_URL || process.env.REACT_APP_S3_ASSETS_URL,
     // Sentry
     SENTRY_API: process.env.REACT_APP_SENTRY_API,

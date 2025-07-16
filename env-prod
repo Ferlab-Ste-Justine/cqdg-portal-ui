@@ -17,5 +17,6 @@ REACT_APP_SUPPORT_EMAIL=support@cqdg.ca
 REACT_APP_FERLOAD_GITHUB_URL=https://github.com/Ferlab-Ste-Justine/ferload-client-cli
 REACT_APP_MANIFEST_API_URL=https://cavatica-manifest-api.cqdg.ca
 REACT_APP_CAVATICA_ENABLED=false
-REACT_APP_PROGRAMS_ENABLED=true
+REACT_APP_PROGRAMS_ENABLED=false
+REACT_APP_PROGRAMS_PAGES_ENABLED=true
 REACT_APP_S3_ASSETS_URL=https://objets.juno.calculquebec.ca/swift/v1/AUTH_266bf865f1fe46b88f51933e0e2e6bd3/cqdg-prod-assets-public
