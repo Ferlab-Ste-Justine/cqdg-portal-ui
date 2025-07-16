@@ -42,7 +42,9 @@ const ProgramCard = ({ program }: { program?: IProgramEntity }) => {
             <Text className={styles.managerText}>
               {lang === LANG.FR ? manager.role_fr : manager.role_en}
             </Text>
-            <Text type="secondary">{manager.institution}</Text>
+            <Text type="secondary" className={styles.managerInstitution}>
+              {manager.institution}
+            </Text>
           </div>
         ))}
       </div>
