@@ -38,6 +38,7 @@ import { ExtendedMappingResults } from 'graphql/models';
 import { AGGREGATION_QUERY } from 'graphql/queries';
 import { GET_QUICK_FILTER_EXPLO } from 'graphql/quickFilter/queries';
 import { getFilters } from 'graphql/utils/Filters';
+import EnvVariables from 'helpers/EnvVariables';
 import capitalize from 'lodash/capitalize';
 import get from 'lodash/get';
 import PageContent from 'views/DataExploration/components/PageContent';
@@ -93,6 +94,8 @@ enum FilterTypes {
 }
 
 const getFilterGroups = (type: FilterTypes) => {
+  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
+
   switch (type) {
     case FilterTypes.Participant:
       return {
@@ -105,7 +108,7 @@ const getFilterGroups = (type: FilterTypes) => {
           {
             facets: [
               'study__study_code',
-              'study__programs__program_id',
+              isProgramsEnabled && 'study__programs__program_id',
               <TreeFacet
                 key="observed_phenotypes"
                 field="observed_phenotypes"

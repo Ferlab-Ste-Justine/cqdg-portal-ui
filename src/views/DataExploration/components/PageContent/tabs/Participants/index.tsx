@@ -29,7 +29,9 @@ import {
   IPhenotype,
   ITableParticipantEntity,
 } from 'graphql/participants/models';
+import { IProgramEntity } from 'graphql/programs/models';
 import { IStudyEntity } from 'graphql/studies/models';
+import EnvVariables from 'helpers/EnvVariables';
 import capitalize from 'lodash/capitalize';
 import {
   DATA_EXPLORATION_QB_ID,
@@ -59,9 +61,9 @@ import { STATIC_ROUTES } from 'utils/routes';
 import { userColumnPreferencesOrDefault } from 'utils/tables';
 import { getProTableDictionary } from 'utils/translation';
 
-import { IProgramEntity } from '../../../../../../graphql/programs/models';
-
 import styles from './index.module.css';
+
+const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
 const getDefaultColumns = (): ProColumnType[] => [
   {
@@ -345,20 +347,24 @@ const getDefaultColumns = (): ProColumnType[] => [
     sorter: { multiple: 1 },
     render: (vital_status) => vital_status || TABLE_EMPTY_PLACE_HOLDER,
   },
-  {
-    key: 'study.programs.program_id',
-    dataIndex: 'study',
-    title: intl.get('entities.program.program'),
-    defaultHidden: true,
-    render: (study: IStudyEntity) => {
-      const programs: ArrangerResultsTree<IProgramEntity> = study?.programs;
-      return programs?.hits?.edges?.map(({ node }) => (
-        <div key={node.program_id}>
-          <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
-        </div>
-      ));
-    },
-  },
+  ...(isProgramsEnabled
+    ? [
+        {
+          key: 'study.programs.program_id',
+          dataIndex: 'study',
+          title: intl.get('entities.program.program'),
+          defaultHidden: true,
+          render: (study: IStudyEntity) => {
+            const programs: ArrangerResultsTree<IProgramEntity> = study?.programs;
+            return programs?.hits?.edges?.map(({ node }) => (
+              <div key={node.program_id}>
+                <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
+              </div>
+            ));
+          },
+        },
+      ]
+    : []),
 ];
 
 interface IParticipantsTabProps {
