@@ -939,7 +939,7 @@ const en = {
       },
       cards: {
         stats: {
-          release: 'Release v1.0',
+          release: 'Release v2.0',
           genomes: 'Genomes',
           exomes: 'Exomes',
         },
