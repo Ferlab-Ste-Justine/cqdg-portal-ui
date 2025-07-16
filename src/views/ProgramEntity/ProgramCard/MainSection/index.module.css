@@ -33,6 +33,11 @@
 
 .managerText {
   font-weight: 600;
+  text-align: center;
+}
+
+.managerInstitution {
+  text-align: center;
 }
 
 .managerPicture {
