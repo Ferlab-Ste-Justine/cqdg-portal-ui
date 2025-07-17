@@ -17,10 +17,12 @@ const ProgramEntityPage = () => {
     return <Navigate to={STATIC_ROUTES.PROGRAMS} />;
   }
 
+  const programStudies = program?.studies || [];
+
   return (
     <Space direction="vertical" size={48} className={styles.pageWrapper}>
       <ProgramCard loading={loading} program={program} />
-      <StudiesList studies={program?.studies || []} />
+      {programStudies.length > 0 && <StudiesList studies={programStudies} />}
     </Space>
   );
 };
