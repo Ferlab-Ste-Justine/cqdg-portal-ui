@@ -45,7 +45,7 @@ const DataExplorationLinks = () => {
             <ExternalLink
               href={`${EnvVariables.configFor(
                 'CQDG_DOCUMENTATION',
-              )}/changelog/data-release-1${getDocLang()}`}
+              )}/changelog/données-cqdg-version-20${getDocLang()}`}
               key="data-release"
               data-cy="ExternalLink_DataRelease"
             >

@@ -874,7 +874,7 @@ const fr = {
     },
     dataRelease: {
       title: 'Données disponibles',
-      dataReleaseLink: 'Version 1.0',
+      dataReleaseLink: 'Version 2.0',
       dataExploration: 'Exploration des données',
     },
   },

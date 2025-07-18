@@ -868,7 +868,7 @@ const en = {
     },
     dataRelease: {
       title: 'Available Data',
-      dataReleaseLink: 'Version 1.0',
+      dataReleaseLink: 'Version 2.0',
       dataExploration: 'Data Exploration',
     },
   },
