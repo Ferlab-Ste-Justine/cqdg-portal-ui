@@ -868,7 +868,7 @@ const en = {
     },
     dataRelease: {
       title: 'Available Data',
-      dataReleaseLink: 'Version 1.0',
+      dataReleaseLink: 'Version 2.0',
       dataExploration: 'Data Exploration',
     },
   },
@@ -939,7 +939,7 @@ const en = {
       },
       cards: {
         stats: {
-          release: 'Release v1.0',
+          release: 'Release v2.0',
           genomes: 'Genomes',
           exomes: 'Exomes',
         },

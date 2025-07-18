@@ -874,7 +874,7 @@ const fr = {
     },
     dataRelease: {
       title: 'Données disponibles',
-      dataReleaseLink: 'Version 1.0',
+      dataReleaseLink: 'Version 2.0',
       dataExploration: 'Exploration des données',
     },
   },
@@ -946,7 +946,7 @@ const fr = {
       },
       cards: {
         stats: {
-          release: 'Données CQDG v1.0',
+          release: 'Données CQDG v2.0',
           genomes: 'Génomes',
           exomes: 'Exomes',
         },
