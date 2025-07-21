@@ -121,6 +121,13 @@ const getSummaryColumns = (
       value = (
         <div className={styles.summaryTotal}>{intl.get('screen.studies.summary_row.total')}</div>
       );
+    } else if (c.key === 'file_count') {
+      value = (
+        <SummarySumCell
+          title={intl.get('screen.studies.summary_row.files')}
+          sum={data.reduce((accumulator, d) => accumulator + d.file_count, 0)}
+        />
+      );
     }
 
     if (columnsState) {

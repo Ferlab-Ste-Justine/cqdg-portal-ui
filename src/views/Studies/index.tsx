@@ -118,6 +118,37 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
       family_count ? numberFormat(family_count) : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
+    key: 'file_count',
+    title: intl.get('screen.studies.files'),
+    render: (study: IStudyEntity) => {
+      if (!study?.file_count) return TABLE_EMPTY_PLACE_HOLDER;
+      const isRestricted = study ? study.security === 'R' : true;
+      if (isRestricted) return numberFormat(study.file_count);
+      return (
+        <Link
+          to={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
+          onClick={() =>
+            addQuery({
+              queryBuilderId: DATA_EXPLORATION_QB_ID,
+              query: generateQuery({
+                newFilters: [
+                  generateValueFilter({
+                    field: 'study_code',
+                    value: [study.study_code],
+                    index: INDEXES.STUDY,
+                  }),
+                ],
+              }),
+              setAsActive: true,
+            })
+          }
+        >
+          {numberFormat(study.file_count)}
+        </Link>
+      );
+    },
+  },
+  {
     key: 'sample_count',
     title: intl.get('entities.biospecimen.biospecimens'),
     defaultHidden: true,
@@ -180,37 +211,6 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
         (item: any) => item.node.data_category === 'Imaging',
       );
       return elem?.node?.participant_count ? <CheckOutlined /> : TABLE_EMPTY_PLACE_HOLDER;
-    },
-  },
-  {
-    key: 'file_count',
-    title: intl.get('screen.studies.files'),
-    render: (study: IStudyEntity) => {
-      if (!study?.file_count) return TABLE_EMPTY_PLACE_HOLDER;
-      const isRestricted = study ? study.security === 'R' : true;
-      if (isRestricted) return numberFormat(study.file_count);
-      return (
-        <Link
-          to={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
-          onClick={() =>
-            addQuery({
-              queryBuilderId: DATA_EXPLORATION_QB_ID,
-              query: generateQuery({
-                newFilters: [
-                  generateValueFilter({
-                    field: 'study_code',
-                    value: [study.study_code],
-                    index: INDEXES.STUDY,
-                  }),
-                ],
-              }),
-              setAsActive: true,
-            })
-          }
-        >
-          {numberFormat(study.file_count)}
-        </Link>
-      );
     },
   },
   {
