@@ -14,7 +14,7 @@ import { SET_FILTER_NAME_REGEX } from '../common/constants';
 export const getEntityConsequenceDictionary = () => ({
   consequence: intl.get('entities.variant.consequences.consequence'),
   impactTag: {
-    modifier: intl.get('entities.variant.consequences.impactTag.modifier'),
+    // modifier: intl.get('entities.variant.consequences.impactTag.modifier'),
     low: intl.get('entities.variant.consequences.impactTag.low'),
     moderate: intl.get('entities.variant.consequences.impactTag.moderate'),
     high: intl.get('entities.variant.consequences.impactTag.high'),
@@ -24,6 +24,17 @@ export const getEntityConsequenceDictionary = () => ({
   cdnaChangeColumn: intl.get('entities.variant.consequences.cdnaChangeColumn'),
   strand: intl.get('entities.variant.consequences.strand'),
   vep: intl.get('entities.variant.consequences.vep'),
+  'clinvar.clin_sig': {
+    Conflicting_classifications_of_pathogenicity: intl.get(
+      'entities.variant.pathogenicity.clinVarLabel.conflicting_classifications_of_pathogenicity',
+    ),
+    Conflicting_interpretations_of_pathogenicity: intl.get(
+      'entities.variant.pathogenicity.clinVarLabel.conflicting_interpretations_of_pathogenicity',
+    ),
+    no_classification_for_the_single_variant: intl.get(
+      'entities.variant.pathogenicity.clinVarLabel.no_classification_for_the_single_variant',
+    ),
+  },
   predictions: {
     predictions: intl.get('entities.variant.consequences.predictions.predictions'),
     sift: intl.get('entities.variant.consequences.predictions.sift'),
@@ -250,6 +261,17 @@ export const getQueryBuilderDictionary = (
         N: intl.get('facets.options.genes__consequences__predictions__lrt_pred.N'),
         D: intl.get('facets.options.genes__consequences__predictions__lrt_pred.D'),
         U: intl.get('facets.options.genes__consequences__predictions__lrt_pred.U'),
+      },
+      'clinvar.clin_sig': {
+        Conflicting_classifications_of_pathogenicity: intl.get(
+          'entities.variant.pathogenicity.clinVarLabel.conflicting_classifications_of_pathogenicity',
+        ),
+        Conflicting_interpretations_of_pathogenicity: intl.get(
+          'entities.variant.pathogenicity.clinVarLabel.conflicting_interpretations_of_pathogenicity',
+        ),
+        no_classification_for_the_single_variant: intl.get(
+          'entities.variant.pathogenicity.clinVarLabel.no_classification_for_the_single_variant',
+        ),
       },
       'studies.zygosity': {
         HET: intl.get('facets.options.studies__zygosity.HET'),
