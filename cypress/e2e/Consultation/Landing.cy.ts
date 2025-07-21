@@ -51,7 +51,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Released Data Stats', () => {
-    cy.get('[class*="Stats_wrapper"] [class*="ant-card-head"]').contains(/(Données CQDG|Release) v1.0/).should('exist');
+    cy.get('[class*="Stats_wrapper"] [class*="ant-card-head"]').contains(/(Données CQDG|Release) v2.0/).should('exist');
 
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(0).find('[id="study"]').should('exist');
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(0).contains('4').should('exist');
