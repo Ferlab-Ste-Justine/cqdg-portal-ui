@@ -14,7 +14,6 @@ import { SET_FILTER_NAME_REGEX } from '../common/constants';
 export const getEntityConsequenceDictionary = () => ({
   consequence: intl.get('entities.variant.consequences.consequence'),
   impactTag: {
-    // modifier: intl.get('entities.variant.consequences.impactTag.modifier'),
     low: intl.get('entities.variant.consequences.impactTag.low'),
     moderate: intl.get('entities.variant.consequences.impactTag.moderate'),
     high: intl.get('entities.variant.consequences.impactTag.high'),
