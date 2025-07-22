@@ -25,6 +25,11 @@ export type Suggestion = {
   ensembl_gene_id?: string;
 };
 
+export interface IParticipantsPerStudy {
+  study_code: string;
+  participant_count: number;
+}
+
 export interface IStatistics {
   families: number;
   fileSize: string;
@@ -32,6 +37,7 @@ export interface IStatistics {
   participants: number;
   samples: number;
   studies: number;
+  participantsPerStudies: IParticipantsPerStudy[];
   variants: number;
   exomes: number;
   genomes: number;

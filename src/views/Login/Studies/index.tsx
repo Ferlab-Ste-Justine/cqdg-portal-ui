@@ -1,21 +1,21 @@
-import React from 'react';
 import intl from 'react-intl-universal';
 import Studies from '@ferlab/ui/core/pages/LandingPage/Studies';
 
 import CartageneLogo from 'components/assets/cartagene.svg';
+import { IParticipantsPerStudy } from 'services/api/wrapper/models';
 import { useGlobals } from 'store/global';
 
 import styles from './index.module.css';
 
 const studies = [
-  { code: 'cartagene', logo: CartageneLogo, className: styles.cartagene },
-  { code: 'dee' },
-  { code: 'bacq' },
-  { code: 'pragmatiq' },
-  { code: 'neurodev' },
+  { code: 'cartagene', logo: CartageneLogo, className: styles.cartagene, qaCode: 'STUDY1' },
+  { code: 'dee', qaCode: 'T-DEE' },
+  { code: 'bacq', qaCode: 'STUDY3' },
+  { code: 'pragmatiq', qaCode: 'STUDY4' },
+  { code: 'neurodev', qaCode: 'STUDY5' },
 ];
 
-const formatStudies = () =>
+const formatStudies = (participantsPerStudies: IParticipantsPerStudy[]) =>
   studies.map((study) => ({
     code: study.code,
     title: study.logo ? (
@@ -25,17 +25,22 @@ const formatStudies = () =>
     ),
     subtitle: intl.get(`screen.loginPage.studies.${study.code}.subtitle`),
     description: intl.getHTML(`screen.loginPage.studies.${study.code}.description`),
+    participantCount:
+      participantsPerStudies.find((studyPart) => studyPart.study_code === study.code)
+        ?.participant_count ||
+      participantsPerStudies.find((studyPart) => studyPart.study_code === study.qaCode)
+        ?.participant_count,
   }));
 
 const StudiesSection = () => {
   const { stats } = useGlobals();
-  const { studies = 0 } = stats || {};
-  const formattedStudies = formatStudies();
+  const { participantsPerStudies = [], studies: studiesCount = 0 } = stats || {};
+  const formattedStudies = formatStudies(participantsPerStudies);
 
   return (
     <div className={styles.container}>
       <Studies
-        studiesCount={studies}
+        studiesCount={studiesCount}
         studies={formattedStudies}
         dictionary={{
           title: intl.get('screen.loginPage.studies.title'),
@@ -45,4 +50,5 @@ const StudiesSection = () => {
     </div>
   );
 };
+
 export default StudiesSection;
