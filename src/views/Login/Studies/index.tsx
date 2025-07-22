@@ -10,9 +10,9 @@ import styles from './index.module.css';
 const studies = [
   { code: 'cartagene', logo: CartageneLogo, className: styles.cartagene, qaCode: 'STUDY1' },
   { code: 'dee', qaCode: 'T-DEE' },
-  { code: 'bacq', qaCode: 'STUDY3' },
-  { code: 'pragmatiq', qaCode: 'STUDY4' },
-  { code: 'neurodev', qaCode: 'STUDY5' },
+  { code: 'bacq', qaCode: 'STUDY2' },
+  { code: 'pragmatiq', qaCode: 'STUDY3' },
+  { code: 'neurodev', qaCode: 'STUDY4' },
 ];
 
 const formatStudies = (participantsPerStudies: IParticipantsPerStudy[]) =>
