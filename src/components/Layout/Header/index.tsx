@@ -32,7 +32,7 @@ import { useUser } from 'store/user';
 import { userActions } from 'store/user/slice';
 import { updateUser } from 'store/user/thunks';
 import { getDocLang } from 'utils/doc';
-import { STATIC_ROUTES } from 'utils/routes';
+import { PUBLIC_ROUTES, STATIC_ROUTES } from 'utils/routes';
 
 import styles from './index.module.css';
 
@@ -59,6 +59,7 @@ const Header = () => {
     STATIC_ROUTES.DATA_EXPLORATION_DATAFILES,
   ];
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_PAGES_ENABLED') === 'true';
+  const isPublicRoutePage = PUBLIC_ROUTES.some((route) => currentPathName.includes(route));
 
   const handleChangeLang = () => {
     const targetLang = getTargetLang(lang);
@@ -153,7 +154,7 @@ const Header = () => {
         label: (
           <span className={styles.titleUserDropdown}>
             {intl.get('layout.user.menu.signedWith') + ' '}
-            <b>{tokenParsed.email || tokenParsed.identity_provider_identity}</b>
+            <b>{tokenParsed?.email || tokenParsed?.identity_provider_identity}</b>
           </span>
         ),
       },
@@ -252,20 +253,22 @@ const Header = () => {
                 <DownOutlined />
               </div>
             </Dropdown>
-            <Dropdown trigger={['click']} menu={userMenu}>
-              <div className={styles.menuTrigger}>
-                <UserAvatar
-                  src={userInfo?.profile_image_key}
-                  userName={`${userInfo?.first_name} ${userInfo?.last_name}`}
-                  size={24}
-                  className={styles.userAvatar}
-                />
-                <span className={styles.userName} data-cy="UserName">
-                  {userInfo?.first_name}
-                </span>
-                <DownOutlined />
-              </div>
-            </Dropdown>
+            {!isPublicRoutePage && (
+              <Dropdown trigger={['click']} menu={userMenu}>
+                <div className={styles.menuTrigger}>
+                  <UserAvatar
+                    src={userInfo?.profile_image_key}
+                    userName={`${userInfo?.first_name} ${userInfo?.last_name}`}
+                    size={24}
+                    className={styles.userAvatar}
+                  />
+                  <span className={styles.userName} data-cy="UserName">
+                    {userInfo?.first_name}
+                  </span>
+                  <DownOutlined />
+                </div>
+              </Dropdown>
+            )}
             <Button
               shape="circle"
               className={styles.langButton}

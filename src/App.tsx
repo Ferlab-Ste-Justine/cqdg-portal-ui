@@ -16,6 +16,7 @@ import Login from 'views/Login';
 
 import { LANG } from 'common/constants';
 import ErrorBoundary from 'components/ErrorBoundary';
+import PageLayout from 'components/Layout';
 import Spinner from 'components/uiKit/Spinner';
 import NotificationContextHolder from 'components/utils/NotificationContextHolder';
 import { useLang } from 'store/global';
@@ -57,6 +58,14 @@ const App = () => {
             <AuthMiddleware>
               <>
                 <Routes>
+                  <Route
+                    path={STATIC_ROUTES.PUBLIC_STUDIES}
+                    element={
+                      <PageLayout>
+                        <Studies />
+                      </PageLayout>
+                    }
+                  />
                   <Route path={STATIC_ROUTES.LOGIN} element={<Login />} />
                   <Route path={DYNAMIC_ROUTES.ERROR} element={<ErrorPage />} />
                   <Route
