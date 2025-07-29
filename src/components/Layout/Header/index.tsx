@@ -5,6 +5,7 @@ import {
   DownOutlined,
   FileSearchOutlined,
   HomeOutlined,
+  LoginOutlined,
   LogoutOutlined,
   MailOutlined,
   ProfileOutlined,
@@ -18,7 +19,7 @@ import { useKeycloak } from '@react-keycloak/web';
 import { Button, Dropdown, MenuProps, PageHeader, Space, Tag } from 'antd';
 import EnvVariables, { getFTEnvVarByKey } from 'helpers/EnvVariables';
 
-import { LANG } from 'common/constants';
+import { LANG, REDIRECT_URI_KEY } from 'common/constants';
 import { IncludeKeycloakTokenParsed } from 'common/tokenTypes';
 import { AlterTypes } from 'common/types';
 import CQDGLogo from 'components/assets/cqdg-logo.svg';
@@ -26,6 +27,7 @@ import NotificationBanner from 'components/featureToggle/NotificationBanner';
 import ExternalLinkIcon from 'components/Icons/ExternalLinkIcon';
 import LineStyleIcon from 'components/Icons/LineStyleIcon';
 import HeaderLink from 'components/Layout/Header/HeaderLink';
+import useQueryParams from 'hooks/useQueryParams';
 import { globalActions, useLang } from 'store/global';
 import { SUPPORT_EMAIL } from 'store/report/thunks';
 import { useUser } from 'store/user';
@@ -51,6 +53,7 @@ const Header = () => {
   const location = useLocation();
   const currentPathName = location.pathname;
   const tokenParsed = keycloak.tokenParsed as IncludeKeycloakTokenParsed;
+  const query = useQueryParams();
   const DATA_EXPLORATION_ROUTES = [
     STATIC_ROUTES.DATA_EXPLORATION,
     STATIC_ROUTES.DATA_EXPLORATION_SUMMARY,
@@ -72,6 +75,16 @@ const Header = () => {
       }),
     );
     dispatch(globalActions.changeLang(targetLang));
+  };
+
+  const handleSignin = async () => {
+    const url = keycloak.createLoginUrl({
+      redirectUri: `${window.location.origin}/${
+        query.get(REDIRECT_URI_KEY) || STATIC_ROUTES.STUDIES
+      }`,
+      locale: intl.getInitOptions().currentLocale,
+    });
+    window.location.assign(url);
   };
 
   const resourcesMenu: MenuProps = {
@@ -268,6 +281,17 @@ const Header = () => {
                   <DownOutlined />
                 </div>
               </Dropdown>
+            )}
+            {isPublicRoutePage && (
+              <>
+                <div className={styles.separator} />
+                <Button icon={<LoginOutlined />} onClick={handleSignin} type="text">
+                  {intl.get('screen.loginPage.login')}
+                </Button>
+                <Button onClick={handleSignin} type="primary">
+                  {intl.get('screen.loginPage.signup')}
+                </Button>
+              </>
             )}
             <Button
               shape="circle"
