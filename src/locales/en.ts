@@ -496,6 +496,7 @@ const en = {
     no: 'No',
     other: 'Other',
     delete: 'Delete',
+    close: 'Close',
     unknown: 'Unknown',
     summary: 'Summary',
     copyToClipboard: 'Copy to clipboard',

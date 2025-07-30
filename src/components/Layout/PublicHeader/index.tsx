@@ -1,38 +1,37 @@
+import { useState } from 'react';
 import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   DownOutlined,
   FileSearchOutlined,
   HomeOutlined,
-  LogoutOutlined,
+  LoginOutlined,
   MailOutlined,
   ProfileOutlined,
   ReadOutlined,
   TeamOutlined,
-  UserOutlined,
 } from '@ant-design/icons';
 import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
-import UserAvatar from '@ferlab/ui/core/components/UserAvatar';
 import { useKeycloak } from '@react-keycloak/web';
 import { Button, Dropdown, MenuProps, PageHeader, Space, Tag } from 'antd';
 import EnvVariables, { getFTEnvVarByKey } from 'helpers/EnvVariables';
 
-import { LANG } from 'common/constants';
-import { IncludeKeycloakTokenParsed } from 'common/tokenTypes';
+import { LANG, REDIRECT_URI_KEY } from 'common/constants';
 import { AlterTypes } from 'common/types';
 import CQDGLogo from 'components/assets/cqdg-logo.svg';
 import NotificationBanner from 'components/featureToggle/NotificationBanner';
 import ExternalLinkIcon from 'components/Icons/ExternalLinkIcon';
 import LineStyleIcon from 'components/Icons/LineStyleIcon';
-import HeaderLink from 'components/Layout/Header/HeaderLink';
+import useQueryParams from 'hooks/useQueryParams';
 import { globalActions, useLang } from 'store/global';
 import { SUPPORT_EMAIL } from 'store/report/thunks';
-import { useUser } from 'store/user';
-import { userActions } from 'store/user/slice';
 import { updateUser } from 'store/user/thunks';
 import { getDocLang } from 'utils/doc';
 import { STATIC_ROUTES } from 'utils/routes';
+
+import HeaderButton from './HeaderButton';
+import LoginModal from './LoginModal';
 
 import styles from './index.module.css';
 
@@ -43,21 +42,16 @@ const BANNER_MSG_KEY = FT_FLAG_KEY + '_MSG';
 
 export const getTargetLang = (lang: LANG) => (lang === LANG.FR ? LANG.EN : LANG.FR);
 
-const Header = () => {
+const PublicHeader = () => {
   const lang = useLang();
-  const { userInfo } = useUser();
   const dispatch = useDispatch();
   const { keycloak } = useKeycloak();
   const location = useLocation();
   const currentPathName = location.pathname;
-  const tokenParsed = keycloak.tokenParsed as IncludeKeycloakTokenParsed;
-  const DATA_EXPLORATION_ROUTES = [
-    STATIC_ROUTES.DATA_EXPLORATION,
-    STATIC_ROUTES.DATA_EXPLORATION_SUMMARY,
-    STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS,
-    STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS,
-    STATIC_ROUTES.DATA_EXPLORATION_DATAFILES,
-  ];
+  const query = useQueryParams();
+  const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [redirectUri, setRedirectUri] = useState<string>();
+
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_PAGES_ENABLED') === 'true';
 
   const handleChangeLang = () => {
@@ -71,6 +65,16 @@ const Header = () => {
       }),
     );
     dispatch(globalActions.changeLang(targetLang));
+  };
+
+  const handleSignin = async () => {
+    const url = keycloak.createLoginUrl({
+      redirectUri: `${window.location.origin}/${
+        query.get(REDIRECT_URI_KEY) || STATIC_ROUTES.STUDIES
+      }`,
+      locale: intl.getInitOptions().currentLocale,
+    });
+    window.location.assign(url);
   };
 
   const resourcesMenu: MenuProps = {
@@ -145,41 +149,6 @@ const Header = () => {
     ],
   };
 
-  const userMenu: MenuProps = {
-    items: [
-      {
-        key: 'title',
-        type: 'group',
-        label: (
-          <span className={styles.titleUserDropdown}>
-            {intl.get('layout.user.menu.signedWith') + ' '}
-            <b>{tokenParsed.email || tokenParsed.identity_provider_identity}</b>
-          </span>
-        ),
-      },
-      {
-        type: 'divider',
-      },
-      {
-        key: 'profile_settings',
-        label: (
-          <Link to={STATIC_ROUTES.PROFILE_SETTINGS}>
-            <Space>
-              <UserOutlined />
-              {intl.get('layout.user.menu.settings')}
-            </Space>
-          </Link>
-        ),
-      },
-      {
-        key: 'logout',
-        label: intl.get('layout.user.menu.logout'),
-        onClick: () => dispatch(userActions.cleanLogout()),
-        icon: <LogoutOutlined />,
-      },
-    ],
-  };
-
   return (
     <>
       <NotificationBanner
@@ -201,48 +170,68 @@ const Header = () => {
               </Tag>
             )}
             <nav className={styles.headerNavList}>
-              <HeaderLink
-                to={STATIC_ROUTES.STUDIES}
+              <HeaderButton
+                to={STATIC_ROUTES.PUBLIC_STUDIES}
                 icon={<ReadOutlined />}
                 title={intl.get('layout.main.menu.studies')}
                 currentPathName={currentPathName}
               />
               {isProgramsEnabled && (
-                <HeaderLink
+                <HeaderButton
                   to={STATIC_ROUTES.PROGRAMS}
                   icon={<ProfileOutlined />}
                   title={intl.get('layout.main.menu.programs')}
                   currentPathName={currentPathName}
+                  onClick={() => {
+                    setOpenLoginModal(true);
+                    setRedirectUri(STATIC_ROUTES.PROGRAMS);
+                  }}
                 />
               )}
-              <HeaderLink
-                to={DATA_EXPLORATION_ROUTES}
+              <HeaderButton
+                to={STATIC_ROUTES.DATA_EXPLORATION}
                 icon={<FileSearchOutlined />}
                 title={intl.get('layout.main.menu.explore')}
                 currentPathName={currentPathName}
+                onClick={() => {
+                  setOpenLoginModal(true);
+                  setRedirectUri(STATIC_ROUTES.DATA_EXPLORATION);
+                }}
               />
-              <HeaderLink
+              <HeaderButton
                 to={[STATIC_ROUTES.VARIANTS]}
                 icon={<LineStyleIcon height={16} width={16} className={styles.iconSvg} />}
                 title={intl.get('layout.main.menu.variants')}
                 currentPathName={currentPathName}
+                onClick={() => {
+                  setOpenLoginModal(true);
+                  setRedirectUri(STATIC_ROUTES.VARIANTS);
+                }}
               />
-              <HeaderLink
+              <HeaderButton
                 to={STATIC_ROUTES.DASHBOARD}
                 icon={<HomeOutlined />}
                 title={intl.get('layout.main.menu.dashboard')}
                 currentPathName={currentPathName}
+                onClick={() => {
+                  setOpenLoginModal(true);
+                  setRedirectUri(STATIC_ROUTES.DASHBOARD);
+                }}
               />
             </nav>
           </div>
         }
         extra={
           <Space size={16}>
-            <HeaderLink
+            <HeaderButton
               currentPathName={currentPathName}
               to={STATIC_ROUTES.COMMUNITY}
               icon={<TeamOutlined />}
               title={intl.get('layout.main.menu.community')}
+              onClick={() => {
+                setOpenLoginModal(true);
+                setRedirectUri(STATIC_ROUTES.COMMUNITY);
+              }}
             />
             <Dropdown trigger={['click']} menu={resourcesMenu}>
               <div className={styles.menuTrigger}>
@@ -252,20 +241,13 @@ const Header = () => {
                 <DownOutlined />
               </div>
             </Dropdown>
-            <Dropdown trigger={['click']} menu={userMenu}>
-              <div className={styles.menuTrigger}>
-                <UserAvatar
-                  src={userInfo?.profile_image_key}
-                  userName={`${userInfo?.first_name} ${userInfo?.last_name}`}
-                  size={24}
-                  className={styles.userAvatar}
-                />
-                <span className={styles.userName} data-cy="UserName">
-                  {userInfo?.first_name}
-                </span>
-                <DownOutlined />
-              </div>
-            </Dropdown>
+            <div className={styles.separator} />
+            <Button icon={<LoginOutlined />} onClick={handleSignin} type="text">
+              {intl.get('screen.loginPage.login')}
+            </Button>
+            <Button onClick={handleSignin} type="primary">
+              {intl.get('screen.loginPage.signup')}
+            </Button>
             <Button
               shape="circle"
               className={styles.langButton}
@@ -277,8 +259,15 @@ const Header = () => {
           </Space>
         }
       />
+      {openLoginModal && (
+        <LoginModal
+          isOpen={openLoginModal}
+          onClose={() => setOpenLoginModal(false)}
+          redirectUri={redirectUri}
+        />
+      )}
     </>
   );
 };
 
-export default Header;
+export default PublicHeader;

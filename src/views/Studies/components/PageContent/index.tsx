@@ -199,7 +199,7 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
         <Title className={styles.title} level={4} data-cy="Title_Studies">
           {intl.get('screen.studies.title')}
         </Title>
-        {isProgramsEnabled && (
+        {!isPublicStudiesPage && isProgramsEnabled && (
           <Link to={STATIC_ROUTES.PROGRAMS}>
             <Button type="default" icon={<ProfileOutlined />}>
               {intl.get('entities.program.viewPrograms')}

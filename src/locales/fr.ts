@@ -500,6 +500,7 @@ const fr = {
     no: 'Non',
     other: 'Autre',
     delete: 'Supprimer',
+    close: 'Fermer',
     unknown: 'Inconnu',
     summary: 'Résumé',
     viewInDataExploration: 'Voir sur la page Explorateur',
