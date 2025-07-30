@@ -10,6 +10,7 @@ beforeEach(() => {
   cy.login();
   cy.visitStudiesPage();
   cy.showColumn('Population');
+  cy.showColumn('Files');
   cy.showColumn('Biospecimens');
   cy.showColumn('Access Limitation');
   cy.showColumn('Access Requirement');

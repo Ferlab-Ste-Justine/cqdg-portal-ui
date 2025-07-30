@@ -5,6 +5,7 @@ beforeEach(() => {
   cy.login();
   cy.visitStudiesPage();
   cy.showColumn('Population');
+  cy.showColumn('Files');
   cy.showColumn('Biospecimens');
   cy.showColumn('Access Limitation');
   cy.showColumn('Access Requirement');
@@ -31,11 +32,11 @@ describe('Page des études - Vérifier les informations affichées', () => {
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(4).contains('Pediatric and adult').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(5).contains('588').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(6).contains('196').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(7).contains('588').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(8).find('[data-icon="check"]').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(9).contains('-').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(7).contains('3,136').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(8).contains('588').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(9).find('[data-icon="check"]').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(10).contains('-').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).contains('3,136').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).contains('-').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(12).contains('health or medical or biomedical research').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(12).contains('DUO:').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(12).contains('0000006').should('exist');
@@ -57,7 +58,9 @@ describe('Page des études - Vérifier les informations affichées', () => {
     cy.get('tfoot [class*="summarySum"]').eq(0).contains(/\d{1}/).should('exist');
     cy.get('tfoot [class*="summaryTitle"]').eq(1).contains('Families').should('exist');
     cy.get('tfoot [class*="summarySum"]').eq(1).contains(/\d{1}/).should('exist');
-    cy.get('tfoot [class*="summaryTitle"]').eq(2).contains('Biospecimens').should('exist');
+    cy.get('tfoot [class*="summaryTitle"]').eq(2).contains('Files').should('exist');
     cy.get('tfoot [class*="summarySum"]').eq(2).contains(/\d{1}/).should('exist');
+    cy.get('tfoot [class*="summaryTitle"]').eq(3).contains('Biospecimens').should('exist');
+    cy.get('tfoot [class*="summarySum"]').eq(3).contains(/\d{1}/).should('exist');
   });
 });
