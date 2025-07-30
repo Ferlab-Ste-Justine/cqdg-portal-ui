@@ -3,31 +3,31 @@ import { Link } from 'react-router-dom';
 import { CheckOutlined } from '@ant-design/icons';
 import { TABLE_EMPTY_PLACE_HOLDER } from '@ferlab/ui/core/common/constants';
 import { ProColumnType } from '@ferlab/ui/core/components/ProTable/types';
-import { addQuery } from '@ferlab/ui/core/components/QueryBuilder/utils/useQueryBuilderState';
 import ExpandableCell from '@ferlab/ui/core/components/tables/ExpandableCell';
-import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/utils';
 import { numberFormat } from '@ferlab/ui/core/utils/numberUtils';
 import { Popover } from 'antd';
-import { INDEXES } from 'graphql/constants';
 import { ArrangerResultsTree } from 'graphql/models';
 import { IProgramEntity } from 'graphql/programs/models';
 import { IStudyEntity, ITableStudyEntity } from 'graphql/studies/models';
 import EnvVariables from 'helpers/EnvVariables';
-import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 
 import { STATIC_ROUTES } from 'utils/routes';
 import { truncateString } from 'utils/string';
 
 const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
-const getPublicDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
+const getPublicDefaultColumns = (
+  setLoginModalUri: (value: string) => void,
+): ProColumnType<ITableStudyEntity>[] => [
   {
     key: 'study_code',
     dataIndex: 'study_code',
     title: intl.get('screen.studies.code'),
     sorter: { multiple: 1 },
     render: (study_code: string) => (
-      <Link to={`${STATIC_ROUTES.STUDIES}/${study_code}`}>{study_code}</Link>
+      <Link to={''} onClick={() => setLoginModalUri(`${STATIC_ROUTES.STUDIES}/${study_code}`)}>
+        {study_code}
+      </Link>
     ),
   },
   {
@@ -46,7 +46,12 @@ const getPublicDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
           render: (programs: ArrangerResultsTree<IProgramEntity>) => {
             return programs?.hits?.edges?.map(({ node }) => (
               <div key={node.program_id}>
-                <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
+                <Link
+                  to={''}
+                  onClick={() => setLoginModalUri(`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`)}
+                >
+                  {node.program_id}
+                </Link>
               </div>
             ));
           },
@@ -94,24 +99,7 @@ const getPublicDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
       const isRestricted = study ? study.security === 'R' : true;
       if (isRestricted) return numberFormat(study.participant_count);
       return (
-        <Link
-          to={STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
-          onClick={() =>
-            addQuery({
-              queryBuilderId: DATA_EXPLORATION_QB_ID,
-              query: generateQuery({
-                newFilters: [
-                  generateValueFilter({
-                    field: 'study_code',
-                    value: [study.study_code],
-                    index: INDEXES.STUDY,
-                  }),
-                ],
-              }),
-              setAsActive: true,
-            })
-          }
-        >
+        <Link to={''} onClick={() => setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS)}>
           {numberFormat(study.participant_count)}
         </Link>
       );

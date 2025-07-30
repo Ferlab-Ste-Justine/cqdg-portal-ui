@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ScrollContent from '@ferlab/ui/core/layout/ScrollContent';
 import { INDEXES } from 'graphql/constants';
 import EnvVariables from 'helpers/EnvVariables';
 import SideBarFacet from 'views/Studies/components/SideBarFacet';
 
+import LoginModal from 'components/Layout/PublicHeader/LoginModal';
 import { FilterInfo } from 'components/uiKit/FilterList/types';
 import useGetExtendedMappings from 'hooks/graphql/useGetExtendedMappings';
 import { STATIC_ROUTES } from 'utils/routes';
@@ -22,7 +23,10 @@ const Studies = () => {
   const studyMappingResults = useGetExtendedMappings(INDEXES.STUDY);
   const location = useLocation();
   const isPublicStudiesPage = location.pathname === STATIC_ROUTES.PUBLIC_STUDIES;
-  const defaultColumns = isPublicStudiesPage ? getPublicDefaultColumns() : getDefaultColumns();
+  const [loginModalUri, setLoginModalUri] = useState('');
+  const defaultColumns = isPublicStudiesPage
+    ? getPublicDefaultColumns(setLoginModalUri)
+    : getDefaultColumns();
 
   const filterInfo: FilterInfo = {
     defaultOpenFacets: [
@@ -60,6 +64,13 @@ const Studies = () => {
       <ScrollContent id={SCROLL_WRAPPER_ID} className={styles.scrollContent}>
         <PageContent defaultColumns={defaultColumns} />
       </ScrollContent>
+      {loginModalUri && (
+        <LoginModal
+          isOpen={!!loginModalUri}
+          onClose={() => setLoginModalUri('')}
+          redirectUri={loginModalUri}
+        />
+      )}
     </div>
   );
 };
