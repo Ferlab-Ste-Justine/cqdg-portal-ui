@@ -3,7 +3,6 @@ import { TABLE_EMPTY_PLACE_HOLDER } from '@ferlab/ui/core/common/constants';
 import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import { IArrangerResultsTree } from '@ferlab/ui/core/graphql/types';
 import StackLayout from '@ferlab/ui/core/layout/StackLayout';
-import { removeUnderscoreAndCapitalize } from '@ferlab/ui/core/utils/stringUtils';
 import { Space, Tag, Tooltip } from 'antd';
 import cx from 'classnames';
 import { IClinVar, IGeneEntity } from 'graphql/variants/models';
@@ -90,7 +89,11 @@ export const renderClinvar = (clinVar: IClinVar) => {
   });
 
   return clinVarSigKey.map((clinvarKey) => (
-    <Tooltip key={clinvarKey} placement="topLeft" title={removeUnderscoreAndCapitalize(clinvarKey)}>
+    <Tooltip
+      key={clinvarKey}
+      placement="topLeft"
+      title={intl.get(`entities.variant.pathogenicity.clinVarTooltip.${clinvarKey}`)}
+    >
       <Tag color={ClinvarColorMap[clinvarKey]}>
         <ExternalLink
           className={styles.externalLinkInTag}
