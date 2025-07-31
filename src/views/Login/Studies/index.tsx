@@ -35,6 +35,7 @@ const formatStudies = (participantsPerStudies: IParticipantsPerStudy[]) =>
 const StudiesSection = () => {
   const { stats } = useGlobals();
   const { participantsPerStudies = [], studies: studiesCount = 0 } = stats || {};
+
   const formattedStudies = formatStudies(participantsPerStudies);
 
   return (
