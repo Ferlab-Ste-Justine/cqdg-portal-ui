@@ -934,6 +934,7 @@ const en = {
       studies: {
         title: 'Studies',
         summary: 'Explore harmonized data from studies in both pediatric and adult populations.',
+        viewAllBtn: 'View all studies',
         cartagene: {
           subtitle: 'CARTaGENE',
           description:

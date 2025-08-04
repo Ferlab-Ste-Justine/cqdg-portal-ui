@@ -58,14 +58,6 @@ const App = () => {
             <AuthMiddleware>
               <>
                 <Routes>
-                  <Route
-                    path={STATIC_ROUTES.PUBLIC_STUDIES}
-                    element={
-                      <PageLayout>
-                        <Studies />
-                      </PageLayout>
-                    }
-                  />
                   <Route path={STATIC_ROUTES.LOGIN} element={<Login />} />
                   <Route path={DYNAMIC_ROUTES.ERROR} element={<ErrorPage />} />
                   <Route
@@ -114,6 +106,14 @@ const App = () => {
                       <ProtectedRoute>
                         <Studies />
                       </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path={STATIC_ROUTES.PUBLIC_STUDIES}
+                    element={
+                      <PageLayout>
+                        <Studies />
+                      </PageLayout>
                     }
                   />
                   <Route

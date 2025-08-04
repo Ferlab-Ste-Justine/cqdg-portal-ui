@@ -939,6 +939,7 @@ const fr = {
       signup: 'Créer compte',
       studies: {
         title: 'Études',
+        viewAllBtn: 'Voir toutes les études',
         summary:
           'Explorez les données harmonisées d’études dans les populations pédiatriques et adultes.',
         cartagene: {

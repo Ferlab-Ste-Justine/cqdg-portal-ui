@@ -12,6 +12,7 @@ import { STATIC_ROUTES } from 'utils/routes';
 import PageContent from './components/PageContent';
 import { SCROLL_WRAPPER_ID } from './utils/constant';
 import getDefaultColumns from './utils/getDefaultColumns';
+import getPublicDefaultColumns from './utils/getPublicDefaultColumns';
 
 import styles from './index.module.css';
 
@@ -21,6 +22,7 @@ const Studies = () => {
   const studyMappingResults = useGetExtendedMappings(INDEXES.STUDY);
   const location = useLocation();
   const isPublicStudiesPage = location.pathname === STATIC_ROUTES.PUBLIC_STUDIES;
+  const defaultColumns = isPublicStudiesPage ? getPublicDefaultColumns() : getDefaultColumns();
 
   const filterInfo: FilterInfo = {
     defaultOpenFacets: [
@@ -56,7 +58,7 @@ const Studies = () => {
         <SideBarFacet extendedMappingResults={studyMappingResults} filterInfo={filterInfo} />
       )}
       <ScrollContent id={SCROLL_WRAPPER_ID} className={styles.scrollContent}>
-        <PageContent defaultColumns={getDefaultColumns()} />
+        <PageContent defaultColumns={defaultColumns} />
       </ScrollContent>
     </div>
   );

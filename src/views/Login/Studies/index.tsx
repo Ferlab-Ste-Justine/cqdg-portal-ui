@@ -1,9 +1,11 @@
 import intl from 'react-intl-universal';
+import { useNavigate } from 'react-router-dom';
 import Studies from '@ferlab/ui/core/pages/LandingPage/Studies';
 
 import CartageneLogo from 'components/assets/cartagene.svg';
 import { IParticipantsPerStudy } from 'services/api/wrapper/models';
 import { useGlobals } from 'store/global';
+import { STATIC_ROUTES } from 'utils/routes';
 
 import styles from './index.module.css';
 
@@ -35,8 +37,8 @@ const formatStudies = (participantsPerStudies: IParticipantsPerStudy[]) =>
 const StudiesSection = () => {
   const { stats } = useGlobals();
   const { participantsPerStudies = [], studies: studiesCount = 0 } = stats || {};
-
   const formattedStudies = formatStudies(participantsPerStudies);
+  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
@@ -46,7 +48,9 @@ const StudiesSection = () => {
         dictionary={{
           title: intl.get('screen.loginPage.studies.title'),
           summary: intl.get('screen.loginPage.studies.summary'),
+          viewAllBtn: intl.get('screen.loginPage.studies.viewAllBtn'),
         }}
+        studiesBtnOnClick={() => navigate(STATIC_ROUTES.PUBLIC_STUDIES)}
       />
     </div>
   );
