@@ -937,31 +937,31 @@ const en = {
         cartagene: {
           subtitle: 'CARTaGENE',
           description:
-            '<p>CARTaGENE is a public research platform of the CHU Sainte-Justine created to accelerate health research. CARTaGENE consists of both biological samples and health data from 43,000 Quebec residents aged between 40 to 69 years.</p><p>The dataset currently available in the CQDG contains whole genome sequencing (WGS) data for 2,179 individuals.</p>',
+            '<p>CARTaGENE is a public research platform of the CHU Sainte-Justine created to accelerate health research. CARTaGENE consists of both biological samples and health data from 43,000 Quebec residents aged between 40 to 69 years.</p>',
         },
         dee: {
           title: 'DEE',
           subtitle: 'Investigating the genetic causes of epileptogenic encephalopathies',
           description:
-            '<p>Whole Genome Sequencing (WGS) study in children with epileptogenic encephalopathies.</p><p>The dataset currently available in the CQDG contains whole genome sequencing data for 588 individuals belonging to 196 families.</p>',
+            '<p>Whole Genome Sequencing (WGS) study in children with epileptogenic encephalopathies.</p>',
         },
         bacq: {
           title: 'BACQ',
           subtitle: 'Quebec congenital malformation biobank',
           description:
-            '<p>Biobank of well-characterized affected cases as well as their parents allowing molecular genetic studies to be carried out to identify the genes associated with these malformations.</p><p>The dataset currently available in the CQDG contains whole exome sequencing (WXS) data for 386 individuals belonging to 124 families.</p>',
+            '<p>Biobank of well-characterized affected cases as well as their parents allowing molecular genetic studies to be carried out to identify the genes associated with these malformations.</p>',
         },
         pragmatiq: {
           title: 'PRAGMatIQ',
           subtitle: 'Applying rapid pediatric genomics in Quebec',
           description:
-            '<p>The objective of the project is to offer rapid clinical Whole Genome Sequencing (WGS) to all critically ill newborns and infants who could benefit from this test in Quebec.</p><p>Data for 257 individuals has been submitted to the CQDG. The dataset currently available in the CQDG contains whole genome sequencing data for 110 individuals belonging to 38 families.</p>',
+            '<p>The objective of the project is to offer rapid clinical Whole Genome Sequencing (WGS) to all critically ill newborns and infants who could benefit from this test in Quebec.</p>',
         },
         neurodev: {
           title: 'NeuroDev',
           subtitle: 'Neurodevelopmental disorders',
           description:
-            '<p>The main objective of this project is to constitute a bank of samples and data from children and adults with global developmental delay, epilepsy and/or malformations and members of their family to supply various research projects which aim to identify the genes involved in these conditions.</p><p>Data for 382 individuals has been submitted to the CQDG. The dataset currently available in the CQDG contains whole genome sequencing data for 67 individuals belonging to 22 families.</p>',
+            '<p>The main objective of this project is to constitute a bank of samples and data from children and adults with global developmental delay, epilepsy and/or malformations and members of their family to supply various research projects which aim to identify the genes involved in these conditions.</p>',
         },
       },
       cards: {
