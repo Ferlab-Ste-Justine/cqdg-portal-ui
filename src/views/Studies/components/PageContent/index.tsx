@@ -237,6 +237,7 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
               } as IQueryConfig);
             }}
             headerConfig={{
+              hideItemsCount: isPublicStudiesPage,
               itemCount: {
                 pageIndex: queryConfig.pageIndex,
                 pageSize: PAGE_SIZE,
