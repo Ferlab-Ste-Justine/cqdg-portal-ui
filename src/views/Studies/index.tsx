@@ -120,6 +120,7 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
   {
     key: 'file_count',
     title: intl.get('screen.studies.files'),
+    defaultHidden: true,
     render: (study: IStudyEntity) => {
       if (!study?.file_count) return TABLE_EMPTY_PLACE_HOLDER;
       const isRestricted = study ? study.security === 'R' : true;
