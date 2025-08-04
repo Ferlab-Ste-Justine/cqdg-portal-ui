@@ -364,6 +364,8 @@ const fr = {
         clinVar: 'ClinVar',
         clinvarAbrv: {
           conflicting_interpretations_of_pathogenicity: 'CI',
+          conflicting_classifications_of_pathogenicity: 'CC',
+          no_classification_for_the_single_variant: 'NC',
           benign: 'B',
           likely_benign: 'LB',
           uncertain_significance: 'VUS',
@@ -389,7 +391,10 @@ const fr = {
           benign: 'Benign',
           confers_sensitivity: 'Confers Sensitivity',
           conflicting_interpretations_of_pathogenicity:
-            'Conflicting Interpretations Of Pathogenicity',
+            'Conflicting Interpretations of Pathogenicity',
+          conflicting_classifications_of_pathogenicity:
+            'Conflicting Classifications of Pathogenicity',
+          no_classification_for_the_single_variant: 'No Classification for the Single Variant',
           drug_response: 'Drug Response',
           likely_benign: 'Likely Benign',
           likely_pathogenic: 'Likely Pathogenic',
@@ -398,6 +403,28 @@ const fr = {
           not_provided: 'Not Provided',
           null: 'Aucune donnée',
           other: 'Autre',
+          pathogenic: 'Pathogenic',
+          protective: 'Protective',
+          risk_factor: 'Risk Factor',
+          uncertain_risk_allele: 'Uncertain Risk Allele',
+          uncertain_significance: 'Uncertain Significance',
+        },
+        clinVarTooltip: {
+          affects: 'Affects',
+          association: 'Association',
+          association_not_found: 'Association Not Found',
+          benign: 'Benign',
+          confers_sensitivity: 'Confers Sensitivity',
+          conflicting_classifications_of_pathogenicity: 'Conflicting Classifications',
+          conflicting_interpretations_of_pathogenicity: 'Conflicting Interpretations',
+          drug_response: 'Drug Response',
+          likely_benign: 'Likely Benign',
+          likely_pathogenic: 'Likely Pathogenic',
+          likely_risk_allele: 'Likely Risk Allele',
+          low_penetrance: 'Low Penetrance',
+          no_classification_for_the_single_variant: 'No Classification',
+          not_provided: 'Not Provided',
+          other: 'Other',
           pathogenic: 'Pathogenic',
           protective: 'Protective',
           risk_factor: 'Risk Factor',
@@ -1371,6 +1398,12 @@ const fr = {
         N: 'Neutral',
         D: 'Deleterious',
         U: 'Unknown',
+      },
+      clinvar__clin_sig: {
+        Conflicting_classifications_of_pathogenicity:
+          'Conflicting Classifications of Pathogenicity',
+        Conflicting_interpretations_of_pathogenicity:
+          'Conflicting Interpretations of Pathogenicity',
       },
       studies__zygosity: {
         HET: 'Heterozygote',
