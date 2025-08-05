@@ -496,6 +496,7 @@ const en = {
     no: 'No',
     other: 'Other',
     delete: 'Delete',
+    close: 'Close',
     unknown: 'Unknown',
     summary: 'Summary',
     copyToClipboard: 'Copy to clipboard',
@@ -934,6 +935,7 @@ const en = {
       studies: {
         title: 'Studies',
         summary: 'Explore harmonized data from studies in both pediatric and adult populations.',
+        viewAllBtn: 'View all studies',
         cartagene: {
           subtitle: 'CARTaGENE',
           description:

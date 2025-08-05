@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ProfileOutlined } from '@ant-design/icons';
 import ProLabel from '@ferlab/ui/core/components/ProLabel';
 import ProTable from '@ferlab/ui/core/components/ProTable';
@@ -161,6 +161,9 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
   );
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
+  const location = useLocation();
+  const isPublicStudiesPage = location.pathname === STATIC_ROUTES.PUBLIC_STUDIES;
+
   const { loading, total, data } = useStudies({
     first: PAGE_SIZE,
     offset: PAGE_SIZE * (queryConfig.pageIndex - 1),
@@ -203,7 +206,7 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
         <Title className={styles.title} level={4} data-cy="Title_Studies">
           {intl.get('screen.studies.title')}
         </Title>
-        {isProgramsEnabled && (
+        {!isPublicStudiesPage && isProgramsEnabled && (
           <Link to={STATIC_ROUTES.PROGRAMS}>
             <Button type="default" icon={<ProfileOutlined />}>
               {intl.get('entities.program.viewPrograms')}
@@ -241,17 +244,18 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
               } as IQueryConfig);
             }}
             headerConfig={{
+              hideItemsCount: isPublicStudiesPage,
               itemCount: {
                 pageIndex: queryConfig.pageIndex,
                 pageSize: PAGE_SIZE,
                 total,
               },
-              enableColumnSort: true,
+              enableColumnSort: !isPublicStudiesPage,
               onColumnSortChange: (newState) =>
                 dispatch(
                   updateUserConfig({ studies: { tables: { studies: { columns: newState } } } }),
                 ),
-              enableTableExport: true,
+              enableTableExport: !isPublicStudiesPage,
               onTableExportClick: () => {
                 dispatch(
                   fetchTsvReport({
