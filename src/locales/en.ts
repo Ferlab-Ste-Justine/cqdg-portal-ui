@@ -1182,6 +1182,7 @@ const en = {
         participants: 'Participants',
         biospecimens: 'Biospecimens',
         families: 'Families',
+        files: 'Files',
         total: 'Total',
       },
     },

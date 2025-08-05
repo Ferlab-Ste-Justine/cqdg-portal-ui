@@ -45,9 +45,15 @@ describe('Page des études - Colonnes du tableau', () => {
       .contains('Families').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
-      .contains('Biospecimens').should('not.exist');
+      .contains('Files').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
       .find('div[class="ant-space-item"]').eq(8)
+      .contains('Files').should('exist');
+
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Biospecimens').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(9)
       .contains('Biospecimens').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
@@ -64,11 +70,6 @@ describe('Page des études - Colonnes du tableau', () => {
       .find('th[class*="ant-table-cell"]').eq(8)
       .should('not.have.class', 'ant-table-column-has-sorters')
       .contains('Imaging').should('exist');
-
-    cy.get('thead[class="ant-table-thead"]')
-      .find('th[class*="ant-table-cell"]').eq(9)
-      .should('not.have.class', 'ant-table-column-has-sorters')
-      .contains('Files').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Access Limitation').should('not.exist');

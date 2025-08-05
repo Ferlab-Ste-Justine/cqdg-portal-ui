@@ -17,8 +17,6 @@ import getPublicDefaultColumns from './utils/getPublicDefaultColumns';
 
 import styles from './index.module.css';
 
-const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
-
 const Studies = () => {
   const studyMappingResults = useGetExtendedMappings(INDEXES.STUDY);
   const location = useLocation();
@@ -27,6 +25,7 @@ const Studies = () => {
   const defaultColumns = isPublicStudiesPage
     ? getPublicDefaultColumns(setLoginModalUri)
     : getDefaultColumns();
+  const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
   const filterInfo: FilterInfo = {
     defaultOpenFacets: [

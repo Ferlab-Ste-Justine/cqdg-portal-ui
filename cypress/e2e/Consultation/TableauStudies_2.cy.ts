@@ -5,6 +5,7 @@ beforeEach(() => {
   cy.login();
   cy.visitStudiesPage();
   cy.showColumn('Population');
+  cy.showColumn('Files');
   cy.showColumn('Biospecimens');
   cy.showColumn('Access Limitation');
   cy.showColumn('Access Requirement');
@@ -36,16 +37,16 @@ describe('Page des études - Valider les liens disponibles', () => {
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('T-DEE').should('exist');
   });
 
-  it('Lien Biospecimens du tableau', () => {
+  it('Lien Files du tableau', () => {
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(7).find('[href]').clickAndWait({force: true});
-    cy.get('[data-cy="ProTable_Biospecimens"]').should('exist');
+    cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Study Code').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('T-DEE').should('exist');
   });
 
-  it('Lien Files du tableau', () => {
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(11).find('[href]').clickAndWait({force: true});
-    cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
+  it('Lien Biospecimens du tableau', () => {
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(8).find('[href]').clickAndWait({force: true});
+    cy.get('[data-cy="ProTable_Biospecimens"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Study Code').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('T-DEE').should('exist');
   });

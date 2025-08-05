@@ -1191,6 +1191,7 @@ const fr = {
         participants: 'Participants ',
         biospecimens: 'Biospécimens ',
         families: 'Familles ',
+        files: 'Fichiers ',
         total: 'Total',
       },
     },
