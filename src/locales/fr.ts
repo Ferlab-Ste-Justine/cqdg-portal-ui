@@ -500,6 +500,7 @@ const fr = {
     no: 'Non',
     other: 'Autre',
     delete: 'Supprimer',
+    close: 'Fermer',
     unknown: 'Inconnu',
     summary: 'Résumé',
     viewInDataExploration: 'Voir sur la page Explorateur',
@@ -939,6 +940,7 @@ const fr = {
       signup: 'Créer compte',
       studies: {
         title: 'Études',
+        viewAllBtn: 'Voir toutes les études',
         summary:
           'Explorez les données harmonisées d’études dans les populations pédiatriques et adultes.',
         cartagene: {
