@@ -15,7 +15,6 @@ import styles from '../index.module.css';
 
 const getSummaryDescriptions = (
   study?: IStudyEntity,
-  isPublicStudyPage?: boolean,
   setLoginModalUri?: (uri: string) => void,
 ): IEntityDescriptionsItem[] => {
   const { store } = getStoreConfig();
@@ -39,10 +38,9 @@ const getSummaryDescriptions = (
         study.programs.hits.edges.map(({ node }) => (
           <div key={node.program_id}>
             <Link
-              to={isPublicStudyPage ? '' : `${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}
+              to={setLoginModalUri ? '' : `${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}
               onClick={() =>
-                isPublicStudyPage &&
-                setLoginModalUri?.(`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`)
+                setLoginModalUri && setLoginModalUri(`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`)
               }
             >
               {lang === LANG.FR ? node.name_fr : node.name_en}

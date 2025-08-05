@@ -122,7 +122,10 @@ const StudyEntity = () => {
       <EntityDescriptions
         id={SectionId.SUMMARY}
         loading={loading}
-        descriptions={getSummaryDescriptions(study, isPublicStudyPage, setLoginModalUri)}
+        descriptions={getSummaryDescriptions(
+          study,
+          isPublicStudyPage ? setLoginModalUri : undefined,
+        )}
         header={intl.get('global.summary')}
         subheader={
           <SummaryHeader
