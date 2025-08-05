@@ -21,9 +21,10 @@ import styles from './index.module.css';
 interface ISummaryBarProps {
   study?: IStudyEntity;
   isRestricted?: boolean;
+  setLoginModalUri?: (uri: string) => void; //setLoginModalUri exists when the user is on a public page
 }
 
-const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
+const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarProps) => (
   <div className={styles.buttonGroup}>
     <Button
       className={`${styles.button} ${isRestricted && styles.buttonDisabled}`}
@@ -38,8 +39,12 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
       >
         <Link
           className={styles.link}
-          to={STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
+          to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
           onClick={(e) => {
+            if (setLoginModalUri) {
+              setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS);
+              return;
+            }
             if (isRestricted) {
               e.preventDefault();
               return;
@@ -105,8 +110,12 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
       >
         <Link
           className={styles.link}
-          to={STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS}
+          to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS}
           onClick={(e) => {
+            if (setLoginModalUri) {
+              setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS);
+              return;
+            }
             if (isRestricted) {
               e.preventDefault();
               return;
@@ -154,8 +163,12 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
       >
         <Link
           className={styles.link}
-          to={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
+          to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
           onClick={(e) => {
+            if (setLoginModalUri) {
+              setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
+              return;
+            }
             if (isRestricted) {
               e.preventDefault();
               return;

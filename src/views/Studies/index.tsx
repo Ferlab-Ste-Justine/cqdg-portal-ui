@@ -63,7 +63,7 @@ const Studies = () => {
       <ScrollContent id={SCROLL_WRAPPER_ID} className={styles.scrollContent}>
         <PageContent defaultColumns={defaultColumns} />
       </ScrollContent>
-      {loginModalUri && (
+      {isPublicStudiesPage && (
         <LoginModal
           isOpen={!!loginModalUri}
           onClose={() => setLoginModalUri('')}
