@@ -38,11 +38,7 @@ export const getExperimentalStrategyColumns = (
         <Link
           to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
           onClick={() => {
-            if (setLoginModalUri) {
-              setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
-              return;
-            }
-            return addQuery({
+            addQuery({
               queryBuilderId: DATA_EXPLORATION_QB_ID,
               query: generateQuery({
                 newFilters: [
@@ -60,6 +56,7 @@ export const getExperimentalStrategyColumns = (
               }),
               setAsActive: true,
             });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
           }}
         >
           {filesInfo.nb_files}
@@ -97,11 +94,7 @@ export const getDataTypeColumns = (
         <Link
           to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
           onClick={() => {
-            if (setLoginModalUri) {
-              setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
-              return;
-            }
-            return addQuery({
+            addQuery({
               queryBuilderId: DATA_EXPLORATION_QB_ID,
               query: generateQuery({
                 newFilters: [
@@ -119,6 +112,7 @@ export const getDataTypeColumns = (
               }),
               setAsActive: true,
             });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
           }}
         >
           {filesInfo.nb_files}
