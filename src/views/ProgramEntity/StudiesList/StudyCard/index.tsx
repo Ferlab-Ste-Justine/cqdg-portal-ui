@@ -1,14 +1,15 @@
 import intl from 'react-intl-universal';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ReadOutlined, UserOutlined } from '@ant-design/icons';
 import { numberFormat } from '@ferlab/ui/core/utils/numberUtils';
+import { useKeycloak } from '@react-keycloak/web';
 import { Button, Card, Divider, Tag, Typography } from 'antd';
 import { IStudyEntity } from 'graphql/studies/models';
 import EnvVariables from 'helpers/EnvVariables';
 import getExperimentalStrategiesTag from 'views/StudyEntity/utils/getExperimentalStrategiesTag';
 
 import ExternalLinkIcon from 'components/Icons/ExternalLinkIcon';
-import { STATIC_ROUTES } from 'utils/routes';
+import { PUBLIC_ROUTES, STATIC_ROUTES } from 'utils/routes';
 
 import styles from './index.module.css';
 
@@ -17,6 +18,15 @@ const { Text, Title } = Typography;
 const StudyCard = ({ study }: { study: IStudyEntity }) => {
   const strategies = study.datasets?.hits?.edges?.map((d) => d.node.experimental_strategies);
   const strategiesUniqValues = [...new Set(strategies?.flatMap((d) => d))];
+
+  const location = useLocation();
+  const isPublicRoute = PUBLIC_ROUTES.some((route) => location.pathname.includes(route));
+  const { keycloak } = useKeycloak();
+  const isAuthenticated = keycloak.authenticated;
+  const isPublicProgramEntityPage = isPublicRoute && !isAuthenticated;
+  const linkTo = isPublicProgramEntityPage
+    ? `${STATIC_ROUTES.PUBLIC_STUDIES}/${study.study_code}`
+    : `${STATIC_ROUTES.STUDIES}/${study.study_code}`;
 
   return (
     <Card className={styles.cardWrapper}>
@@ -59,7 +69,7 @@ const StudyCard = ({ study }: { study: IStudyEntity }) => {
               <Text>{intl.get('entities.participant.participants')}</Text>
             </div>
           </div>
-          <Link to={`${STATIC_ROUTES.STUDIES}/${study.study_code}`}>
+          <Link to={linkTo}>
             <Button type="default" className={styles.programCardButton}>
               {intl.get('entities.program.viewStudy')}
               <ExternalLinkIcon />

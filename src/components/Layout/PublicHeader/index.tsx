@@ -30,10 +30,12 @@ import { updateUser } from 'store/user/thunks';
 import { getDocLang } from 'utils/doc';
 import { STATIC_ROUTES } from 'utils/routes';
 
+import HeaderLink from '../Header/HeaderLink';
+
 import HeaderButton from './HeaderButton';
 import LoginModal from './LoginModal';
 
-import styles from './index.module.css';
+import styles from '../Header/index.module.css';
 
 const iconSize = { width: 14, height: 14 };
 const FT_FLAG_KEY = 'SITE_WIDE_BANNER';
@@ -170,22 +172,18 @@ const PublicHeader = () => {
               </Tag>
             )}
             <nav className={styles.headerNavList}>
-              <HeaderButton
+              <HeaderLink
                 to={STATIC_ROUTES.PUBLIC_STUDIES}
                 icon={<ReadOutlined />}
                 title={intl.get('layout.main.menu.studies')}
                 currentPathName={currentPathName}
               />
               {isProgramsEnabled && (
-                <HeaderButton
+                <HeaderLink
                   to={STATIC_ROUTES.PROGRAMS}
                   icon={<ProfileOutlined />}
                   title={intl.get('layout.main.menu.programs')}
                   currentPathName={currentPathName}
-                  onClick={() => {
-                    setOpenLoginModal(true);
-                    setRedirectUri(STATIC_ROUTES.PROGRAMS);
-                  }}
                 />
               )}
               <HeaderButton
