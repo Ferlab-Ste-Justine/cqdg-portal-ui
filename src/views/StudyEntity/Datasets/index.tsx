@@ -97,7 +97,22 @@ const Datasets = ({
                 <Link
                   to={''}
                   className={styles.link}
-                  onClick={() => setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES)}
+                  onClick={() => {
+                    addQuery({
+                      queryBuilderId: DATA_EXPLORATION_QB_ID,
+                      query: generateQuery({
+                        newFilters: [
+                          generateValueFilter({
+                            field: 'dataset',
+                            value: dataset?.name ? [dataset.name] : [],
+                            index: INDEXES.FILE,
+                          }),
+                        ],
+                      }),
+                      setAsActive: true,
+                    });
+                    setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
+                  }}
                 >
                   {intl.get('global.viewInDataExploration')}
                   <ExternalLinkIcon width="14" className={styles.linkIcon} />

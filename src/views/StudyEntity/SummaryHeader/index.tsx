@@ -41,10 +41,6 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
           className={styles.link}
           to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
           onClick={(e) => {
-            if (setLoginModalUri) {
-              setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS);
-              return;
-            }
             if (isRestricted) {
               e.preventDefault();
               return;
@@ -63,6 +59,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
                 }),
                 setAsActive: true,
               });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS);
           }}
         >
           <UserOutlined className={styles.icon} />
@@ -112,10 +109,6 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
           className={styles.link}
           to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS}
           onClick={(e) => {
-            if (setLoginModalUri) {
-              setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS);
-              return;
-            }
             if (isRestricted) {
               e.preventDefault();
               return;
@@ -134,6 +127,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
                 }),
                 setAsActive: true,
               });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS);
           }}
         >
           <ExperimentOutlined className={styles.icon} />
@@ -165,10 +159,6 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
           className={styles.link}
           to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
           onClick={(e) => {
-            if (setLoginModalUri) {
-              setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
-              return;
-            }
             if (isRestricted) {
               e.preventDefault();
               return;
@@ -187,6 +177,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
                 }),
                 setAsActive: true,
               });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
           }}
         >
           <FileTextOutlined className={styles.icon} />
