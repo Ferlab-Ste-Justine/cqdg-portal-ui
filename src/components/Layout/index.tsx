@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import ScrollContent from '@ferlab/ui/core/layout/ScrollContent';
+import { useKeycloak } from '@react-keycloak/web';
 import { Layout as AntLayout } from 'antd';
 
 import { MAIN_SCROLL_WRAPPER_ID } from 'common/constants';
@@ -17,7 +18,10 @@ interface ILayoutProps {
 
 const Layout = ({ children }: ILayoutProps) => {
   const location = useLocation();
-  const isPublicRoute = PUBLIC_ROUTES.some((route) => location.pathname.includes(route));
+  const { keycloak } = useKeycloak();
+  const isAuthenticated = keycloak.authenticated;
+  const isPublicRoute =
+    !isAuthenticated && PUBLIC_ROUTES.some((route) => location.pathname.includes(route));
 
   return (
     <AntLayout className={styles.mainLayout}>

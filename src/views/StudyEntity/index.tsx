@@ -5,6 +5,7 @@ import { IAnchorLink } from '@ferlab/ui/core/components/AnchorMenu';
 import { addQuery } from '@ferlab/ui/core/components/QueryBuilder/utils/useQueryBuilderState';
 import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/utils';
 import EntityPage, { EntityDescriptions, EntityTitleLogo } from '@ferlab/ui/core/pages/EntityPage';
+import { useKeycloak } from '@react-keycloak/web';
 import { Space } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import useFileResolvedSqon from 'graphql/files/useFileResolvedSqon';
@@ -17,7 +18,7 @@ import LoginModal from 'components/Layout/PublicHeader/LoginModal';
 import DownloadClinicalDataButton from 'components/reports/DownloadClinicalDataButton';
 import DownloadFileManifestModal from 'components/reports/DownloadFileManifestModal';
 import DownloadRequestAccessModal from 'components/reports/DownloadRequestAccessModal';
-import { STATIC_ROUTES } from 'utils/routes';
+import { PUBLIC_ROUTES } from 'utils/routes';
 
 import getDataAccessDescriptions from './utils/getDataAccessDescriptions';
 import getSummaryDescriptions from './utils/getSummaryDescriptions';
@@ -30,8 +31,13 @@ const StudyEntity = () => {
   const { study_code = '' } = useParams<{ study_code: string }>();
   const participantSqon = useParticipantResolvedSqon(queryId);
   const fileSqon = useFileResolvedSqon(queryId);
+
   const location = useLocation();
-  const isPublicStudyPage = location.pathname === `${STATIC_ROUTES.PUBLIC_STUDIES}/${study_code}`;
+  const { keycloak } = useKeycloak();
+  const isAuthenticated = keycloak.authenticated;
+  const isPublicStudyPage =
+    !isAuthenticated && PUBLIC_ROUTES.some((route) => location.pathname.includes(route));
+
   const [loginModalUri, setLoginModalUri] = useState('');
 
   const { data: study, loading } = useStudy({

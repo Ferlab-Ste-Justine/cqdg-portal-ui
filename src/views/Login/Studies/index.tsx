@@ -50,7 +50,7 @@ const StudiesSection = () => {
           summary: intl.get('screen.loginPage.studies.summary'),
           viewAllBtn: intl.get('screen.loginPage.studies.viewAllBtn'),
         }}
-        studiesBtnOnClick={() => navigate(STATIC_ROUTES.PUBLIC_STUDIES)}
+        studiesBtnOnClick={() => navigate(STATIC_ROUTES.STUDIES)}
       />
     </div>
   );
