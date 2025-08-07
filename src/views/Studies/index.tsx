@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ScrollContent from '@ferlab/ui/core/layout/ScrollContent';
+import { useKeycloak } from '@react-keycloak/web';
 import { INDEXES } from 'graphql/constants';
 import EnvVariables from 'helpers/EnvVariables';
 import SideBarFacet from 'views/Studies/components/SideBarFacet';
@@ -8,7 +9,7 @@ import SideBarFacet from 'views/Studies/components/SideBarFacet';
 import LoginModal from 'components/Layout/PublicHeader/LoginModal';
 import { FilterInfo } from 'components/uiKit/FilterList/types';
 import useGetExtendedMappings from 'hooks/graphql/useGetExtendedMappings';
-import { STATIC_ROUTES } from 'utils/routes';
+import { PUBLIC_ROUTES } from 'utils/routes';
 
 import PageContent from './components/PageContent';
 import { SCROLL_WRAPPER_ID } from './utils/constant';
@@ -20,7 +21,11 @@ import styles from './index.module.css';
 const Studies = () => {
   const studyMappingResults = useGetExtendedMappings(INDEXES.STUDY);
   const location = useLocation();
-  const isPublicStudiesPage = location.pathname === STATIC_ROUTES.PUBLIC_STUDIES;
+  const { keycloak } = useKeycloak();
+  const isAuthenticated = keycloak.authenticated;
+  const isPublicStudiesPage =
+    !isAuthenticated && PUBLIC_ROUTES.some((route) => location.pathname.includes(route));
+
   const [loginModalUri, setLoginModalUri] = useState('');
   const defaultColumns = isPublicStudiesPage
     ? getPublicDefaultColumns(setLoginModalUri)

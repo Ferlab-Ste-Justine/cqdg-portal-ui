@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import cx from 'classnames';
 
-import styles from '../index.module.css';
+import styles from '../../Header/index.module.css';
 
 interface IHeaderLinkProps {
   className?: string;

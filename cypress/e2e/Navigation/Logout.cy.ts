@@ -5,7 +5,6 @@ describe('Page Logout', () => {
 
   beforeEach(() => {
     cy.login();
-    cy.visit('/');
   });
 
   it('Vérifier les informations affichées', () => {

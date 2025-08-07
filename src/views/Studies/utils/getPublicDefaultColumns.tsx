@@ -25,7 +25,7 @@ const getPublicDefaultColumns = (
     title: intl.get('screen.studies.code'),
     sorter: { multiple: 1 },
     render: (study_code: string) => (
-      <Link to={`${STATIC_ROUTES.PUBLIC_STUDIES}/${study_code}`}>{study_code}</Link>
+      <Link to={`${STATIC_ROUTES.STUDIES}/${study_code}`}>{study_code}</Link>
     ),
   },
   {
