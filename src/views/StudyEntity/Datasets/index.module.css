@@ -19,3 +19,13 @@
 .titleExtra > * {
   margin-left: 8px;
 }
+
+.link {
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.linkIcon {
+  color: var(--link-base-color);
+  margin-left: 4px;
+}

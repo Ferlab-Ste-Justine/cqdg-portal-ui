@@ -13,7 +13,10 @@ import { STATIC_ROUTES } from 'utils/routes';
 
 import styles from '../index.module.css';
 
-const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[] => {
+const getSummaryDescriptions = (
+  study?: IStudyEntity,
+  setLoginModalUri?: (uri: string) => void,
+): IEntityDescriptionsItem[] => {
   const { store } = getStoreConfig();
   const lang = store.getState().global.lang;
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
@@ -34,7 +37,12 @@ const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[]
         study?.programs?.hits?.edges?.length &&
         study.programs.hits.edges.map(({ node }) => (
           <div key={node.program_id}>
-            <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>
+            <Link
+              to={setLoginModalUri ? '' : `${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}
+              onClick={() =>
+                setLoginModalUri && setLoginModalUri(`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`)
+              }
+            >
               {lang === LANG.FR ? node.name_fr : node.name_en}
             </Link>
           </div>

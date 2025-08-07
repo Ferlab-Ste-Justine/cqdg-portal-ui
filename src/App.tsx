@@ -164,6 +164,14 @@ const App = () => {
                       </ProtectedRoute>
                     }
                   />
+                  <Route
+                    path={DYNAMIC_ROUTES.PUBLIC_STUDY_ENTITY}
+                    element={
+                      <PageLayout>
+                        <StudyEntity />
+                      </PageLayout>
+                    }
+                  />
                   {isProgramsEnabled && (
                     <Route
                       path={STATIC_ROUTES.PROGRAMS}

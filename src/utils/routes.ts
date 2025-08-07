@@ -31,6 +31,7 @@ export enum DYNAMIC_ROUTES {
   ERROR = '/error/:status?',
   COMMUNITY_MEMBER = '/member/:id',
   STUDY_ENTITY = '/studies/:study_code?',
+  PUBLIC_STUDY_ENTITY = '/public-studies/:study_code?',
   PROGRAM_ENTITY = '/programs/:program_id',
 }
 

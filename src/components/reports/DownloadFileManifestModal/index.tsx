@@ -16,6 +16,7 @@ import { PROJECT_ID, useSavedSet } from 'store/savedSet';
 import { createSavedSetPhantomManifest } from 'store/savedSet/thunks';
 import { getDocLang } from 'utils/doc';
 import { getIdFieldByType } from 'utils/fieldMapper';
+import { STATIC_ROUTES } from 'utils/routes';
 
 import FilesTable from './FilesTable';
 
@@ -34,6 +35,7 @@ interface IDownloadFileManifestProps {
   fileName?: string;
   isIconButton?: boolean;
   setId?: string;
+  setLoginModalUri?: (uri: string) => void;
 }
 
 const DownloadFileManifestModal = ({
@@ -47,6 +49,7 @@ const DownloadFileManifestModal = ({
   fileName = '',
   isIconButton = false,
   setId = '' /** setId exists when the user has selected a set from the dashboard since CQDG-835 */,
+  setLoginModalUri /** setLoginModalUri exists when the user is on a public page*/,
 }: IDownloadFileManifestProps) => {
   const dispatch = useDispatch();
 
@@ -137,7 +140,13 @@ const DownloadFileManifestModal = ({
     <Tooltip title={getTooltipTitle()} open={isModalVisible ? false : undefined}>
       <Button
         icon={<DownloadOutlined />}
-        onClick={() => setIsModalVisible(true)}
+        onClick={() => {
+          if (setLoginModalUri) {
+            setLoginModalUri(`${STATIC_ROUTES.STUDIES}`);
+            return;
+          }
+          setIsModalVisible(true);
+        }}
         type={isIconButton ? 'text' : type}
         size={isIconButton ? 'small' : undefined}
         disabled={isDisabled}
