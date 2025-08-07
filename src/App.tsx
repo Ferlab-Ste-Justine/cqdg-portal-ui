@@ -176,7 +176,7 @@ const App = () => {
                       }
                     />
                   )}
-                  <Route path="*" element={<Navigate to={STATIC_ROUTES.STUDIES} />} />
+                  <Route path="*" element={<Navigate to={STATIC_ROUTES.LOGIN} />} />
                 </Routes>
                 <NotificationContextHolder />
               </>
