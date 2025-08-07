@@ -175,7 +175,7 @@ Cypress.Commands.add('login', () => {
 });
 
 Cypress.Commands.add('logout', () => {
-  cy.visit('/');
+  cy.visitDashboard();
   cy.wait(5000);
 
   cy.get('div').then(($div) => {
