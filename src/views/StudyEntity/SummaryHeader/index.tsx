@@ -21,9 +21,10 @@ import styles from './index.module.css';
 interface ISummaryBarProps {
   study?: IStudyEntity;
   isRestricted?: boolean;
+  setLoginModalUri?: (uri: string) => void; //setLoginModalUri exists when the user is on a public page
 }
 
-const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
+const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarProps) => (
   <div className={styles.buttonGroup}>
     <Button
       className={`${styles.button} ${isRestricted && styles.buttonDisabled}`}
@@ -38,7 +39,7 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
       >
         <Link
           className={styles.link}
-          to={STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
+          to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
           onClick={(e) => {
             if (isRestricted) {
               e.preventDefault();
@@ -58,6 +59,7 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
                 }),
                 setAsActive: true,
               });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS);
           }}
         >
           <UserOutlined className={styles.icon} />
@@ -105,7 +107,7 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
       >
         <Link
           className={styles.link}
-          to={STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS}
+          to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS}
           onClick={(e) => {
             if (isRestricted) {
               e.preventDefault();
@@ -125,6 +127,7 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
                 }),
                 setAsActive: true,
               });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS);
           }}
         >
           <ExperimentOutlined className={styles.icon} />
@@ -154,7 +157,7 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
       >
         <Link
           className={styles.link}
-          to={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
+          to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
           onClick={(e) => {
             if (isRestricted) {
               e.preventDefault();
@@ -174,6 +177,7 @@ const SummaryHeader = ({ study, isRestricted }: ISummaryBarProps) => (
                 }),
                 setAsActive: true,
               });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
           }}
         >
           <FileTextOutlined className={styles.icon} />

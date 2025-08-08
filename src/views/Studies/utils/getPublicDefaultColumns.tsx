@@ -24,7 +24,9 @@ const getPublicDefaultColumns = (
     dataIndex: 'study_code',
     title: intl.get('screen.studies.code'),
     sorter: { multiple: 1 },
-    render: (study_code: string) => study_code,
+    render: (study_code: string) => (
+      <Link to={`${STATIC_ROUTES.STUDIES}/${study_code}`}>{study_code}</Link>
+    ),
   },
   {
     dataIndex: 'name',

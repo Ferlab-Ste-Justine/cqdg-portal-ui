@@ -8,9 +8,10 @@ interface IFilesTableProps {
   id: string;
   study?: IStudyEntity;
   loading: boolean;
+  setLoginModalUri?: (uri: string) => void; //setLoginModalUri exists when the user is on a public page
 }
 
-const FilesTable = ({ id, study, loading }: IFilesTableProps) => {
+const FilesTable = ({ id, study, loading, setLoginModalUri }: IFilesTableProps) => {
   const total = study?.file_count || 0;
   const data_types =
     study?.data_types?.hits?.edges?.map(({ node }) => ({
@@ -38,12 +39,14 @@ const FilesTable = ({ id, study, loading }: IFilesTableProps) => {
       total={total}
       tables={[
         {
-          columns: study ? getDataTypeColumns(total, study.study_code) : [],
+          columns: study ? getDataTypeColumns(total, study.study_code, setLoginModalUri) : [],
           data: data_types,
           subTitle: intl.get('entities.file.numberByDataTypes'),
         },
         {
-          columns: study ? getExperimentalStrategyColumns(total, study.study_code) : [],
+          columns: study
+            ? getExperimentalStrategyColumns(total, study.study_code, setLoginModalUri)
+            : [],
           data: experimental_strategies,
           subTitle: intl.get('entities.file.numberByExperimentalStrategy'),
         },

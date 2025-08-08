@@ -103,14 +103,6 @@ const App = () => {
                   <Route
                     path={STATIC_ROUTES.STUDIES}
                     element={
-                      <ProtectedRoute>
-                        <Studies />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route
-                    path={STATIC_ROUTES.PUBLIC_STUDIES}
-                    element={
                       <PageLayout>
                         <Studies />
                       </PageLayout>
@@ -159,9 +151,9 @@ const App = () => {
                   <Route
                     path={DYNAMIC_ROUTES.STUDY_ENTITY}
                     element={
-                      <ProtectedRoute>
+                      <PageLayout>
                         <StudyEntity />
-                      </ProtectedRoute>
+                      </PageLayout>
                     }
                   />
                   {isProgramsEnabled && (
@@ -184,7 +176,7 @@ const App = () => {
                       }
                     />
                   )}
-                  <Route path="*" element={<Navigate to={STATIC_ROUTES.STUDIES} />} />
+                  <Route path="*" element={<Navigate to={STATIC_ROUTES.LOGIN} />} />
                 </Routes>
                 <NotificationContextHolder />
               </>

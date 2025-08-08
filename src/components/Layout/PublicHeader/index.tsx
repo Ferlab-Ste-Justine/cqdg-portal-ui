@@ -173,7 +173,7 @@ const PublicHeader = () => {
             )}
             <nav className={styles.headerNavList}>
               <HeaderLink
-                to={STATIC_ROUTES.PUBLIC_STUDIES}
+                to={STATIC_ROUTES.STUDIES}
                 icon={<ReadOutlined />}
                 title={intl.get('layout.main.menu.studies')}
                 currentPathName={currentPathName}

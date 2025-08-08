@@ -22,6 +22,7 @@ interface IFileInfoByType {
 export const getExperimentalStrategyColumns = (
   files_nb: number,
   study_code: string,
+  setLoginModalUri?: (uri: string) => void,
 ): ProColumnType<any>[] => [
   {
     key: 'value',
@@ -35,8 +36,8 @@ export const getExperimentalStrategyColumns = (
     render: (filesInfo: IFileInfoByType) =>
       (
         <Link
-          to={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
-          onClick={() =>
+          to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
+          onClick={() => {
             addQuery({
               queryBuilderId: DATA_EXPLORATION_QB_ID,
               query: generateQuery({
@@ -54,8 +55,9 @@ export const getExperimentalStrategyColumns = (
                 ],
               }),
               setAsActive: true,
-            })
-          }
+            });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
+          }}
         >
           {filesInfo.nb_files}
         </Link>
@@ -72,7 +74,11 @@ export const getExperimentalStrategyColumns = (
   },
 ];
 
-export const getDataTypeColumns = (files_nb: number, study_code: string): ProColumnType<any>[] => [
+export const getDataTypeColumns = (
+  files_nb: number,
+  study_code: string,
+  setLoginModalUri?: (uri: string) => void,
+): ProColumnType<any>[] => [
   {
     key: 'value',
     dataIndex: 'value',
@@ -86,8 +92,8 @@ export const getDataTypeColumns = (files_nb: number, study_code: string): ProCol
     render: (filesInfo: IFileInfoByType) =>
       (
         <Link
-          to={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
-          onClick={() =>
+          to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
+          onClick={() => {
             addQuery({
               queryBuilderId: DATA_EXPLORATION_QB_ID,
               query: generateQuery({
@@ -105,8 +111,9 @@ export const getDataTypeColumns = (files_nb: number, study_code: string): ProCol
                 ],
               }),
               setAsActive: true,
-            })
-          }
+            });
+            setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
+          }}
         >
           {filesInfo.nb_files}
         </Link>

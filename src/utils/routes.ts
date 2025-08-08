@@ -4,7 +4,6 @@ export enum STATIC_ROUTES {
   AUTH_REDIRECT = '/auth-redirect',
   DASHBOARD = '/dashboard',
   STUDIES = '/studies',
-  PUBLIC_STUDIES = '/public-studies',
   MY_PROFILE = '/profile',
   SETTINGS = '/settings',
   COMMUNITY = '/community',
@@ -35,7 +34,8 @@ export enum DYNAMIC_ROUTES {
 }
 
 export const PUBLIC_ROUTES = [
-  STATIC_ROUTES.PUBLIC_STUDIES,
+  STATIC_ROUTES.STUDIES,
+  DYNAMIC_ROUTES.STUDY_ENTITY,
   STATIC_ROUTES.PROGRAMS,
   DYNAMIC_ROUTES.PROGRAM_ENTITY,
 ];

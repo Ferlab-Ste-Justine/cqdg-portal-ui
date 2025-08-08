@@ -23,6 +23,7 @@ import { generateQuery, isEmptySqon } from '@ferlab/ui/core/data/sqon/utils';
 import { SortDirection } from '@ferlab/ui/core/graphql/constants';
 import { IQueryConfig } from '@ferlab/ui/core/graphql/types';
 import GridCard from '@ferlab/ui/core/view/v2/GridCard';
+import { useKeycloak } from '@react-keycloak/web';
 import { Button, Input, Space, Typography } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import { useStudies } from 'graphql/studies/actions';
@@ -41,7 +42,7 @@ import { useUser } from 'store/user';
 import { updateUserConfig } from 'store/user/thunks';
 import { formatQuerySortList } from 'utils/helper';
 import { resolveSyntheticSqonWithReferences } from 'utils/query';
-import { STATIC_ROUTES } from 'utils/routes';
+import { PUBLIC_ROUTES, STATIC_ROUTES } from 'utils/routes';
 import { getProTableDictionary } from 'utils/translation';
 
 import styles from './index.module.css';
@@ -162,7 +163,10 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
   const location = useLocation();
-  const isPublicStudiesPage = location.pathname === STATIC_ROUTES.PUBLIC_STUDIES;
+  const { keycloak } = useKeycloak();
+  const isAuthenticated = keycloak.authenticated;
+  const isPublicStudiesPage =
+    !isAuthenticated && PUBLIC_ROUTES.some((route) => location.pathname.includes(route));
 
   const { loading, total, data } = useStudies({
     first: PAGE_SIZE,

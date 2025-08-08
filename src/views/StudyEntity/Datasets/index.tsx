@@ -1,4 +1,5 @@
 import intl from 'react-intl-universal';
+import { Link } from 'react-router-dom';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import ExternalLinkIcon from '@ferlab/ui/core/components/ExternalLink/ExternalLinkIcon';
 import { addQuery } from '@ferlab/ui/core/components/QueryBuilder/utils/useQueryBuilderState';
@@ -25,9 +26,17 @@ interface IDatasetsProps {
   title: string;
   datasets?: ArrangerResultsTree<IDataSet>;
   study_code?: string;
+  setLoginModalUri?: (uri: string) => void;
 }
 
-const Datasets = ({ id, loading, title, datasets, study_code = '' }: IDatasetsProps) => {
+const Datasets = ({
+  id,
+  loading,
+  title,
+  datasets,
+  study_code = '',
+  setLoginModalUri,
+}: IDatasetsProps) => {
   const getSqon = (dataset: string): ISyntheticSqon => ({
     content: [
       {
@@ -82,29 +91,56 @@ const Datasets = ({ id, loading, title, datasets, study_code = '' }: IDatasetsPr
                 isStudy
                 isDataset
                 fileName={`${dataset.name}_manifest`}
+                setLoginModalUri={setLoginModalUri}
               />
-              <EntityTableRedirectLink
-                to={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
-                icon={<ExternalLinkIcon width="14" />}
-                data-cy="Dataset_RedirectLink"
-                onClick={() =>
-                  addQuery({
-                    queryBuilderId: DATA_EXPLORATION_QB_ID,
-                    query: generateQuery({
-                      newFilters: [
-                        generateValueFilter({
-                          field: 'dataset',
-                          value: dataset?.name ? [dataset.name] : [],
-                          index: INDEXES.FILE,
-                        }),
-                      ],
-                    }),
-                    setAsActive: true,
-                  })
-                }
-              >
-                {intl.get('global.viewInDataExploration')}
-              </EntityTableRedirectLink>
+              {setLoginModalUri ? (
+                <Link
+                  to={''}
+                  className={styles.link}
+                  onClick={() => {
+                    addQuery({
+                      queryBuilderId: DATA_EXPLORATION_QB_ID,
+                      query: generateQuery({
+                        newFilters: [
+                          generateValueFilter({
+                            field: 'dataset',
+                            value: dataset?.name ? [dataset.name] : [],
+                            index: INDEXES.FILE,
+                          }),
+                        ],
+                      }),
+                      setAsActive: true,
+                    });
+                    setLoginModalUri?.(STATIC_ROUTES.DATA_EXPLORATION_DATAFILES);
+                  }}
+                >
+                  {intl.get('global.viewInDataExploration')}
+                  <ExternalLinkIcon width="14" className={styles.linkIcon} />
+                </Link>
+              ) : (
+                <EntityTableRedirectLink
+                  to={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
+                  icon={<ExternalLinkIcon width="14" />}
+                  data-cy="Dataset_RedirectLink"
+                  onClick={() =>
+                    addQuery({
+                      queryBuilderId: DATA_EXPLORATION_QB_ID,
+                      query: generateQuery({
+                        newFilters: [
+                          generateValueFilter({
+                            field: 'dataset',
+                            value: dataset?.name ? [dataset.name] : [],
+                            index: INDEXES.FILE,
+                          }),
+                        ],
+                      }),
+                      setAsActive: true,
+                    })
+                  }
+                >
+                  {intl.get('global.viewInDataExploration')}
+                </EntityTableRedirectLink>
+              )}
             </div>,
           ]}
         />
