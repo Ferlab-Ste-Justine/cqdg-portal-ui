@@ -51,6 +51,7 @@ const StudiesSection = () => {
           viewAllBtn: intl.get('screen.loginPage.studies.viewAllBtn'),
         }}
         studiesBtnOnClick={() => navigate(STATIC_ROUTES.STUDIES)}
+        studiesBtnGhost
       />
     </div>
   );
