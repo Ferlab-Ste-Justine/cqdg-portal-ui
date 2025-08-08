@@ -44,12 +44,7 @@ const getPublicDefaultColumns = (
           render: (programs: ArrangerResultsTree<IProgramEntity>) => {
             return programs?.hits?.edges?.map(({ node }) => (
               <div key={node.program_id}>
-                <Link
-                  to={''}
-                  onClick={() => setLoginModalUri(`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`)}
-                >
-                  {node.program_id}
-                </Link>
+                <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
               </div>
             ));
           },

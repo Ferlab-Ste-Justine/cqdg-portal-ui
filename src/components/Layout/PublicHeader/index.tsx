@@ -179,15 +179,11 @@ const PublicHeader = () => {
                 currentPathName={currentPathName}
               />
               {isProgramsEnabled && (
-                <HeaderButton
+                <HeaderLink
                   to={STATIC_ROUTES.PROGRAMS}
                   icon={<ProfileOutlined />}
                   title={intl.get('layout.main.menu.programs')}
                   currentPathName={currentPathName}
-                  onClick={() => {
-                    setOpenLoginModal(true);
-                    setRedirectUri(STATIC_ROUTES.PROGRAMS);
-                  }}
                 />
               )}
               <HeaderButton
