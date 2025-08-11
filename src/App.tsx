@@ -160,9 +160,9 @@ const App = () => {
                     <Route
                       path={STATIC_ROUTES.PROGRAMS}
                       element={
-                        <ProtectedRoute>
+                        <PageLayout>
                           <Programs />
-                        </ProtectedRoute>
+                        </PageLayout>
                       }
                     />
                   )}
@@ -170,9 +170,9 @@ const App = () => {
                     <Route
                       path={DYNAMIC_ROUTES.PROGRAM_ENTITY}
                       element={
-                        <ProtectedRoute>
+                        <PageLayout>
                           <ProgramEntity />
-                        </ProtectedRoute>
+                        </PageLayout>
                       }
                     />
                   )}
