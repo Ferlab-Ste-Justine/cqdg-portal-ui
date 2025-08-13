@@ -17,20 +17,16 @@ const getExperimentalProcedureDescriptions = (file?: IFileEntity): IEntityDescri
     ),
   },
   {
-    label: intl.get('entities.file.sequencing_experiment.type_of_sequencing'),
-    value: file?.sequencing_experiment?.type_of_sequencing || TABLE_EMPTY_PLACE_HOLDER,
-  },
-  {
-    label: intl.get('entities.file.sequencing_experiment.read_length'),
-    value: file?.sequencing_experiment?.read_length || TABLE_EMPTY_PLACE_HOLDER,
-  },
-  {
     label: intl.get('entities.file.sequencing_experiment.source'),
     value: file?.sequencing_experiment?.source?.display || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.file.sequencing_experiment.platform'),
     value: file?.sequencing_experiment?.platform || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
+    label: intl.get('entities.file.sequencing_experiment.type_of_sequencing'),
+    value: file?.sequencing_experiment?.type_of_sequencing || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.file.sequencing_experiment.selection'),
@@ -43,6 +39,10 @@ const getExperimentalProcedureDescriptions = (file?: IFileEntity): IEntityDescri
   {
     label: intl.get('entities.file.sequencing_experiment.target_loci'),
     value: file?.sequencing_experiment?.target_loci || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
+    label: intl.get('entities.file.sequencing_experiment.read_length'),
+    value: file?.sequencing_experiment?.read_length || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.file.sequencing_experiment.protocol'),
