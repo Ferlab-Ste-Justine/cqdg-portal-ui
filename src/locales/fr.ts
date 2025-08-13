@@ -909,6 +909,7 @@ const fr = {
   layout: {
     main: {
       menu: {
+        analytics: 'Analytique',
         dashboard: 'Tableau de bord',
         studies: 'Études',
         programs: 'Programmes',
@@ -1008,6 +1009,103 @@ const fr = {
         description:
           'Le CQDG offre aux chercheurs une plateforme idéale pour entreposer et diffuser les données génomiques générées par les études cliniques et de recherche.',
         button: 'Soumettre vos données',
+      },
+    },
+    analytics: {
+      title: 'Analytique',
+      subtitle:
+        'Visualisez et interprétez rapidement les données Kids First avec nos outils conviviaux.',
+      setOperations: {
+        title: 'Opérations d’ensembles',
+        description:
+          "Visualisez les intersections entre les cohortes virtuelles enregistrées sous forme d'ensembles à l'aide d'un diagramme de Venn interactif.",
+        tags: {
+          clinical: 'Clinique',
+          genomics: 'Génomique',
+        },
+        launch: 'Lancement',
+        noSet: {
+          title: 'Aucun ensemble à comparer',
+          description:
+            'Pour utiliser cet outil, vous devez enregistrer au moins deux ensembles d\'identifiants d\'entité (par exemple, deux ensembles de participants). Vous pouvez créer des ensembles enregistrés en haut du tableau des résultats dans les pages <a href="{dataExploration}" style="text-decoration: underline;">Exploration des données</a> et <a href="{variantExploration}" style="text-decoration: underline;">Exploration des variants</a>.',
+        },
+        selectSet: {
+          title: 'Sélectionnez deux ou trois ensembles pour commencer',
+          descriptionVenn:
+            'Visualisez les intersections entre les ensembles enregistrés à l’aide d’un diagramme de Venn interactif.',
+          descriptionSet:
+            'Affichez vos ensembles enregistrés dans le <a href="{dashboard}" style="text-decoration: underline;">tableau de bord</a>.',
+          entityType: {
+            label: "Type d'entité",
+            placeholder: 'Sélectionner',
+            participants: 'Participants',
+            biospecimens: 'Biospécimens',
+            files: 'Fichiers',
+            variantsGermline: 'Variants (Germline)',
+            variantsSomatic: 'Variants (Somatic)',
+            disabledTooltip: 'Aucun ensemble à comparer',
+          },
+          sets: {
+            label: 'Ensembles',
+            placeholder: 'Sélectionner',
+          },
+          compare: 'Comparer',
+          compareDisabledTooltip: 'Disponible avec 2 ou 3 requêtes sélectionnées',
+          resetTooltip: 'Réinitialiser',
+        },
+      },
+      venn: {
+        query: {
+          title: 'Ensembles sélectionnés',
+          column: 'Définitions d’ensembles',
+        },
+        set: {
+          title: 'Définitions d’ensembles',
+          column: 'Définitions d’ensembles',
+          footer: 'Union d’ensembles sélectionnés :',
+          tooltipDataExplo: 'Voir sur la page explorateur',
+          tooltipVariantExplo: 'Voir sur la page variants explorateur',
+          max: 'Max 10 000 à la fois',
+        },
+        save: {
+          nameTemplate: 'Ensemble combiné',
+          cancel: 'Annuler',
+          checkbox: {
+            label: 'Enregistrer cet ensemble pour une utilisation ultérieure',
+            tooltips:
+              'Un ensemble enregistré est une collection d’un ou plusieurs identifiants d’entités pouvant être sauvegardés et consultés ultérieurement',
+          },
+          label: "Nom de l'ensemble",
+          alreadyExist: 'Un ensemble avec ce nom existe déjà',
+          ok: 'Voir l’ensemble',
+          entity: {
+            participants:
+              'Vous avez sélectionné {count, plural, =0 {# participant} =1 {# participant} other {# participants}}',
+            biospecimens:
+              'Vous avez sélectionné {count, plural, =0 {# biospecimen} =1 {# biospecimen} other {# biospecimens}}',
+            files:
+              'Vous avez sélectionné {count, plural, =0 {# fichier de données} =1 {# fichier de données} other {# fichiers de données}}',
+            variants:
+              'Vous avez sélectionné {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Germline)',
+            somatics:
+              'Vous avez sélectionné {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Somatique)',
+          },
+          titleData: 'Voir sur la page explorateur',
+          titleVariant: 'Voir sur la page variants explorateur',
+        },
+        count: 'Compte :',
+        biospecimens: 'Biospécimens',
+        files: 'Fichiers',
+        participants: 'Participants',
+        variants: 'Variants',
+        somatics: 'Somatic Variants',
+        title: 'Opérations d’ensembles',
+        ok: 'Ferner',
+        download: {
+          png: 'Télécharger le PNG',
+          fileNameTemplate: 'cqdg-%name-%type-%date%extension',
+          fileNameDateFormat: 'yyyy-MM-dd',
+        },
       },
     },
     memberProfile: {

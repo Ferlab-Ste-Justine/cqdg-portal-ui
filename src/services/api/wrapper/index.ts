@@ -1,4 +1,6 @@
+import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
 import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/utils';
+import { INDEXES } from 'graphql/constants';
 import { IParticipantResultTree } from 'graphql/participants/models';
 import { MATCH_PARTICIPANTS } from 'graphql/participants/queries';
 import EnvironmentVariables from 'helpers/EnvVariables';
@@ -87,6 +89,17 @@ const searchSuggestions = (type: SuggestionType, value: string) =>
     url: `${WRAPPER_API}/${type}Feature/suggestions/${value}`,
   });
 
+const fetchVenn = (qbSqons: ISyntheticSqon[], entitySqons: ISyntheticSqon[], index: INDEXES) =>
+  sendRequest<any>({
+    method: 'POST',
+    url: `${WRAPPER_API}/venn`,
+    data: {
+      qbSqons,
+      entitySqons,
+      index,
+    },
+  });
+
 export const WrapperApi = {
   fetchStatistics,
   graphqlRequest,
@@ -95,4 +108,5 @@ export const WrapperApi = {
   columnStates,
   fetchMatchParticipant,
   searchSuggestions,
+  fetchVenn,
 };

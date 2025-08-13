@@ -4,6 +4,7 @@ export type TUserSavedSet = ISavedSet & {
   keycloak_id: string;
   creation_date: string;
   updated_date: string;
+  is_invisible: boolean;
 };
 
 export type TUpdateSet = ISavedSet & {
@@ -20,6 +21,7 @@ export type IUserSetOutput = {
   ids: string[];
   is_phantom_manifest?: boolean;
   withFamily?: boolean;
+  is_invisible: boolean;
 };
 
 export type TUserSavedSetInsert = Omit<
@@ -30,6 +32,7 @@ export type TUserSavedSetInsert = Omit<
 export type TUserSavedSetUpdate = Partial<ISavedSet> & { subAction: string; newTag?: string };
 
 export enum SetType {
+  BIOSPECIMEN_REQUEST = 'biospecimen-request',
   PARTICIPANT = 'Participant',
   FILE = 'File',
   BIOSPECIMEN = 'Biospecimen',

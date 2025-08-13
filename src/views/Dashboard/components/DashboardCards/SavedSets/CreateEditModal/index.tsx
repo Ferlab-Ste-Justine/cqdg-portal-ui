@@ -5,10 +5,13 @@ import { WarningFilled } from '@ant-design/icons';
 import { ISqonGroupFilter } from '@ferlab/ui/core/data/sqon/types';
 import { Checkbox, Form, Input, Modal } from 'antd';
 import { Store } from 'antd/lib/form/interface';
+import {
+  SetActionType,
+  singularizeSetTypeIfNeeded,
+} from 'views/DataExploration/components/SetsManagementDropdown';
 
 import { MAX_TITLE_LENGTH, SET_FILTER_NAME_REGEX } from 'common/constants';
 import filtersToName from 'common/sqonToName';
-import { SetActionType } from 'components/uiKit/SetsManagementDropdown';
 import { IUserSetOutput, SetType } from 'services/api/savedSet/models';
 import { PROJECT_ID, useSavedSet } from 'store/savedSet';
 import { createSavedSet, updateSavedSet } from 'store/savedSet/thunks';
@@ -95,6 +98,7 @@ const CreateEditModal = ({
             type: setType,
             onCompleteCb: onSuccessCreateCb,
             withFamily: familyCheckbox,
+            is_invisible: false,
           }),
         );
       }
@@ -123,7 +127,10 @@ const CreateEditModal = ({
     }
 
     if (hasSelectedKeys) {
-      const newName = `${setType.charAt(0).toUpperCase() + setType.slice(1)} Set`;
+      //legacy cqdg:
+      // const newName = `${setType.charAt(0).toUpperCase() + setType.slice(1)} Set`;
+      //KF singularizeSetTypeIfNeeded:
+      const newName = `${singularizeSetTypeIfNeeded(setType)} Set`;
       return resolveConflictNames(newName);
     }
 

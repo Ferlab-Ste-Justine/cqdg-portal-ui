@@ -43,6 +43,9 @@ export default class EnvironmentVariables {
     PROGRAMS_PAGES_ENABLED:
       window._env_?.REACT_APP_PROGRAMS_PAGES_ENABLED ||
       process.env.REACT_APP_PROGRAMS_PAGES_ENABLED,
+    ANALYTICS_PAGE_ENABLED:
+      window._env_?.REACT_APP_ANALYTICS_PAGE_ENABLED ||
+      process.env.REACT_APP_ANALYTICS_PAGE_ENABLED,
     S3_ASSETS_URL: window._env_?.REACT_APP_S3_ASSETS_URL || process.env.REACT_APP_S3_ASSETS_URL,
     // Sentry
     SENTRY_API: process.env.REACT_APP_SENTRY_API,

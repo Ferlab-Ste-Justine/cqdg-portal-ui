@@ -3,6 +3,7 @@ import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
+  DotChartOutlined,
   DownOutlined,
   FileSearchOutlined,
   HomeOutlined,
@@ -214,6 +215,16 @@ const PublicHeader = () => {
                 onClick={() => {
                   setOpenLoginModal(true);
                   setRedirectUri(STATIC_ROUTES.DASHBOARD);
+                }}
+              />
+              <HeaderButton
+                to={STATIC_ROUTES.ANALYTICS}
+                icon={<DotChartOutlined />}
+                title={intl.get('layout.main.menu.analytics')}
+                currentPathName={currentPathName}
+                onClick={() => {
+                  setOpenLoginModal(true);
+                  setRedirectUri(STATIC_ROUTES.ANALYTICS);
                 }}
               />
             </nav>
