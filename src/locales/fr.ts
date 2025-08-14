@@ -1051,24 +1051,26 @@ const fr = {
           },
           compare: 'Comparer',
           compareDisabledTooltip: 'Disponible avec 2 ou 3 requêtes sélectionnées',
+          compareLessTooltips: 'Sélectionner 2 ou 3 requêtes pour générer un graphique de Venn',
+          compareGreaterTooltips: 'Seulement disponible avec 2 ou 3 requêtes sélectionnées',
           resetTooltip: 'Réinitialiser',
         },
       },
       venn: {
         query: {
-          title: 'Ensembles sélectionnés',
-          column: 'Définitions d’ensembles',
+          title: 'Requêtes sélectionnées',
+          column: 'Définition de requête',
         },
         set: {
           title: 'Définitions d’ensembles',
-          column: 'Définitions d’ensembles',
+          column: 'Définition d’ensemble',
           footer: 'Union d’ensembles sélectionnés :',
           tooltipDataExplo: 'Voir sur la page explorateur',
           tooltipVariantExplo: 'Voir sur la page variants explorateur',
           max: 'Max 10 000 à la fois',
         },
         save: {
-          nameTemplate: 'Ensemble combiné',
+          nameTemplate: 'Combined set',
           cancel: 'Annuler',
           checkbox: {
             label: 'Enregistrer cet ensemble pour une utilisation ultérieure',

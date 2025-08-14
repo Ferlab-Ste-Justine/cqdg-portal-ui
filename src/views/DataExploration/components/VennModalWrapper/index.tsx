@@ -81,8 +81,6 @@ const VennModalWrapper = ({ vennOpen, setVennOpen, facetTransResolver }: VennMod
     if (!location.pathname.includes(newTabId)) {
       navigate(`${STATIC_ROUTES.DATA_EXPLORATION}/${newTabId}${window.location.search}`);
     }
-
-    // setTabId(newTabId as TAB_IDS);
   };
 
   return (
@@ -144,7 +142,7 @@ const VennModalWrapper = ({ vennOpen, setVennOpen, facetTransResolver }: VennMod
           column: intl.get('screen.analytics.venn.set.column'),
           title: intl.get('screen.analytics.venn.set.title'),
           footer: intl.get('screen.analytics.venn.set.footer'),
-          tooltipDataExplo: intl.get('screen.analytics.venn.set.tooltips'),
+          tooltipDataExplo: intl.get('screen.analytics.venn.set.tooltipDataExplo'),
           max: intl.get('screen.analytics.venn.set.max'),
         },
         save: {
@@ -153,7 +151,7 @@ const VennModalWrapper = ({ vennOpen, setVennOpen, facetTransResolver }: VennMod
           permittedCharacters: intl.get('components.savedSets.modal.errors.permittedCharacters'),
           alreadyExist: intl.get('screen.analytics.venn.save.alreadyExist'),
           requiredField: intl.get('global.forms.errors.requiredField'),
-          titleData: intl.get('screen.analytics.venn.save.title'),
+          titleData: intl.get('screen.analytics.venn.save.titleData'),
           getEntityText: (index: string, entityCount: number) => {
             if (index === INDEXES.BIOSPECIMEN) {
               return intl.get('screen.analytics.venn.save.entity.biospecimens', {

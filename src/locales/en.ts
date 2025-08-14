@@ -1043,13 +1043,15 @@ const en = {
           },
           compare: 'Compare',
           compareDisabledTooltip: 'Available with 2 or 3 sets selected',
+          compareLessTooltips: 'Select 2 or 3 queries to generate a Venn diagram comparison',
+          compareGreaterTooltips: 'Only available with 2 or 3 queries selected',
           resetTooltip: 'Reset',
         },
       },
       venn: {
         query: {
-          title: 'Selected Sets',
-          column: 'Set definition',
+          title: 'Selected Queries',
+          column: 'Query definition',
         },
         set: {
           title: 'Set Definitions',
