@@ -1051,8 +1051,10 @@ const fr = {
           },
           compare: 'Comparer',
           compareDisabledTooltip: 'Disponible avec 2 ou 3 requêtes sélectionnées',
-          compareLessTooltips: 'Sélectionner 2 ou 3 requêtes pour générer un graphique de Venn',
-          compareGreaterTooltips: 'Seulement disponible avec 2 ou 3 requêtes sélectionnées',
+          compareLessTooltips:
+            'Sélectionnez 2 ou 3 requêtes pour générer une comparaison sous forme de diagramme de Venn',
+          compareGreaterTooltips:
+            'Disponible uniquement lorsque 2 ou 3 requêtes sont sélectionnées',
           resetTooltip: 'Réinitialiser',
         },
       },
@@ -1070,7 +1072,7 @@ const fr = {
           max: 'Max 10 000 à la fois',
         },
         save: {
-          nameTemplate: 'Combined set',
+          nameTemplate: 'Ensemble commun',
           cancel: 'Annuler',
           checkbox: {
             label: 'Enregistrer cet ensemble pour une utilisation ultérieure',
