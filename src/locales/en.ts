@@ -614,12 +614,14 @@ const en = {
     savedSet: {
       error: {
         title: 'Error',
+        temporary: 'Unable to add set to data exploration',
         messageUpdate: 'Unable to update set',
         messageDelete: 'Unable to delete set',
         messageCreate: 'Unable to create set',
       },
       success: {
         titleCreate: 'Your set has been saved.',
+        temporary: 'Set added to data exploration.',
         messageCreate: 'You can add your sets to a query from the sidebar or the dashboard.',
         messageCreateVariant: 'You can add your sets to a query from the dashboard.',
         titleUpdate: 'Success',
@@ -1006,7 +1008,7 @@ const en = {
     },
     analytics: {
       title: 'Analytics',
-      subtitle: 'Quickly visualize and interpret Kids First Data with our user-friendly tools.',
+      subtitle: 'Quickly visualize and interpret CQDG Data with our user-friendly tools.',
       setOperations: {
         title: 'Set Operations',
         description:

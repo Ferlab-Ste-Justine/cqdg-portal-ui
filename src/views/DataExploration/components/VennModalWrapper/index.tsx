@@ -12,16 +12,15 @@ import {
   resolveSyntheticSqon,
 } from '@ferlab/ui/core/data/sqon/utils';
 import { INDEXES } from 'graphql/constants';
+import { DATA_EXPLORATION_QB_ID, TAB_IDS } from 'views/DataExploration/utils/constant';
 
-import { getSetFieldId, PROJECT_ID, useSavedSet } from 'store/savedSet';
+import { PROJECT_ID, useSavedSet } from 'store/savedSet';
 import { createSavedSet } from 'store/savedSet/thunks';
 import { useVennData } from 'store/venn';
 import { fetchVennData } from 'store/venn/thunks';
 import { getIdFieldByType } from 'utils/fieldMapper';
 import { STATIC_ROUTES } from 'utils/routes';
 import { getQueryBuilderDictionary } from 'utils/translation';
-
-import { DATA_EXPLORATION_QB_ID, TAB_IDS } from '../../utils/constant';
 
 interface VennModalWrapperProps {
   vennOpen: boolean;
@@ -60,7 +59,7 @@ const VennModalWrapper = ({ vennOpen, setVennOpen, facetTransResolver }: VennMod
             query: generateQuery({
               newFilters: [
                 generateValueFilter({
-                  field: getSetFieldId(data.setType),
+                  field: getIdFieldByType(data.setType),
                   value: [setValue],
                   index: data.setType,
                 }),

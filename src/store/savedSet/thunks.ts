@@ -52,7 +52,7 @@ const createSavedSet = createAsyncThunk<
   { rejectValue: string }
 >('savedsets/create', async (set, thunkAPI) => {
   const { data, error } = await SavedSetApi.create(set);
-  set.onCompleteCb();
+  set.onCompleteCb(data);
 
   return handleThunkApiReponse({
     error,
@@ -80,14 +80,25 @@ const createSavedSet = createAsyncThunk<
         }),
       );
     },
-    onError: () =>
+    onError: () => {
+      if (set?.is_invisible) {
+        thunkAPI.dispatch(
+          globalActions.displayNotification({
+            type: 'error',
+            message: '',
+            description: intl.get('api.savedSet.error.temporary'),
+          }),
+        );
+        return;
+      }
       thunkAPI.dispatch(
         globalActions.displayNotification({
           type: 'error',
           message: intl.get('api.savedSet.error.title'),
           description: intl.get('api.savedSet.error.messageCreate'),
         }),
-      ),
+      );
+    },
   });
 });
 

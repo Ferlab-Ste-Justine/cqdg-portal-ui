@@ -615,12 +615,14 @@ const fr = {
     savedSet: {
       error: {
         title: 'Erreur',
+        temporary: 'Impossible d’ajouter l’ensemble à l’explorateur',
         messageUpdate: "Impossible de modifier l'ensemble",
         messageDelete: "Impossible de supprimer l'ensemble",
         messageCreate: "Impossible de créer l'ensemble",
       },
       success: {
         titleCreate: 'Votre ensemble a été sauvegardé.',
+        temporary: 'Ensemble ajouté à l’explorateur.',
         messageCreate:
           'Vous pouvez ajouter vos ensembles a une requête à partir de la barre latérale ou du tableau de bord.',
         messageCreateVariant:
@@ -1013,8 +1015,7 @@ const fr = {
     },
     analytics: {
       title: 'Analytique',
-      subtitle:
-        'Visualisez et interprétez rapidement les données Kids First avec nos outils conviviaux.',
+      subtitle: 'Visualisez et interprétez rapidement les données CQDG avec nos outils conviviaux.',
       setOperations: {
         title: 'Opérations d’ensembles',
         description:

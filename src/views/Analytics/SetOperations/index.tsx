@@ -24,11 +24,11 @@ import { VARIANT_REPO_QB_ID, VARIANT_SAVED_SETS_FIELD } from 'views/Variants/uti
 import LineStyleIcon from 'components/Icons/LineStyleIcon';
 import useGetExtendedMappings from 'hooks/graphql/useGetExtendedMappings';
 import { SetType } from 'services/api/savedSet/models';
-import { getSetFieldId, PROJECT_ID, useSavedSet } from 'store/savedSet';
+import { PROJECT_ID, useSavedSet } from 'store/savedSet';
 import { createSavedSet } from 'store/savedSet/thunks';
 import { useVennData } from 'store/venn';
 import { fetchVennData } from 'store/venn/thunks';
-import { combineExtendedMappings } from 'utils/fieldMapper';
+import { combineExtendedMappings, getIdFieldByType } from 'utils/fieldMapper';
 import { STATIC_ROUTES } from 'utils/routes';
 import { getQueryBuilderDictionary } from 'utils/translation';
 
@@ -101,7 +101,7 @@ const SetOperations = () => {
         generateQuery({
           newFilters: [
             generateValueFilter({
-              field: getSetFieldId(set.setType),
+              field: getIdFieldByType(set.setType),
               value: [setValue],
               index: set.setType,
             }),
@@ -245,7 +245,7 @@ const SetOperations = () => {
                         query: generateQuery({
                           newFilters: [
                             generateValueFilter({
-                              field: getSetFieldId(data.setType),
+                              field: getIdFieldByType(data.setType),
                               value: [setValue],
                               index: data.setType,
                             }),
