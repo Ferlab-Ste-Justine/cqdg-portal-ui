@@ -1099,7 +1099,7 @@ const en = {
         ok: 'Close',
         download: {
           png: 'Download PNG',
-          fileNameTemplate: 'include-%name-%type-%date%extension',
+          fileNameTemplate: 'cqdg-%name-%type-%date%extension',
           fileNameDateFormat: 'yyyy-MM-dd',
         },
       },
