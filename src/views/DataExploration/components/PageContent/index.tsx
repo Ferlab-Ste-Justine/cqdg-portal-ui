@@ -50,6 +50,7 @@ import {
   updateSavedFilter,
 } from 'store/savedFilter/thunks';
 import { useSavedSet } from 'store/savedSet';
+import { fetchVennData } from 'store/venn/thunks';
 import { getDocLang } from 'utils/doc';
 import {
   combineExtendedMappings,
@@ -61,6 +62,8 @@ import {
 import { getCurrentUrl } from 'utils/helper';
 import { STATIC_ROUTES } from 'utils/routes';
 import { getFacetsDictionary, getQueryBuilderDictionary } from 'utils/translation';
+
+import VennModalWrapper from '../VennModalWrapper';
 
 import BiospecimensTab from './tabs/Biospecimens';
 
@@ -171,6 +174,12 @@ const PageContent = ({
     );
   };
 
+  const [vennOpen, setVennOpen] = useState<boolean>(false);
+  const handleCompare = (queries: ISyntheticSqon[]) => {
+    setVennOpen(true);
+    dispatch(fetchVennData({ qbSqons: queries }));
+  };
+
   const items = [
     {
       label: (
@@ -242,6 +251,7 @@ const PageContent = ({
       <QueryBuilder
         id={DATA_EXPLORATION_QB_ID}
         className="data-exploration-repo__query-builder"
+        handleCompare={handleCompare}
         headerConfig={{
           showHeader: true,
           showTools: true,
@@ -318,6 +328,11 @@ const PageContent = ({
           }
         }}
         items={items}
+      />
+      <VennModalWrapper
+        vennOpen={vennOpen}
+        setVennOpen={setVennOpen}
+        facetTransResolver={facetTransResolver}
       />
     </Space>
   );

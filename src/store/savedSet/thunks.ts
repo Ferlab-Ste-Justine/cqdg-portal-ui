@@ -48,17 +48,27 @@ const createSavedSetPhantomManifest = createAsyncThunk<
 
 const createSavedSet = createAsyncThunk<
   IUserSetOutput,
-  TUserSavedSetInsert & { onCompleteCb: () => void },
+  TUserSavedSetInsert & { onCompleteCb: (data?: IUserSetOutput) => void },
   { rejectValue: string }
 >('savedsets/create', async (set, thunkAPI) => {
   const { data, error } = await SavedSetApi.create(set);
-  set.onCompleteCb();
+  set.onCompleteCb(data);
 
   return handleThunkApiReponse({
     error,
     data: data!,
     reject: thunkAPI.rejectWithValue,
-    onSuccess: () =>
+    onSuccess: () => {
+      if (data?.is_invisible) {
+        thunkAPI.dispatch(
+          globalActions.displayNotification({
+            type: 'success',
+            message: '',
+            description: intl.get('api.savedSet.success.temporary'),
+          }),
+        );
+        return;
+      }
       thunkAPI.dispatch(
         globalActions.displayNotification({
           type: 'success',
@@ -68,15 +78,27 @@ const createSavedSet = createAsyncThunk<
               ? intl.get('api.savedSet.success.messageCreateVariant')
               : intl.get('api.savedSet.success.messageCreate'),
         }),
-      ),
-    onError: () =>
+      );
+    },
+    onError: () => {
+      if (set?.is_invisible) {
+        thunkAPI.dispatch(
+          globalActions.displayNotification({
+            type: 'error',
+            message: '',
+            description: intl.get('api.savedSet.error.temporary'),
+          }),
+        );
+        return;
+      }
       thunkAPI.dispatch(
         globalActions.displayNotification({
           type: 'error',
           message: intl.get('api.savedSet.error.title'),
           description: intl.get('api.savedSet.error.messageCreate'),
         }),
-      ),
+      );
+    },
   });
 });
 

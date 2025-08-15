@@ -2,6 +2,7 @@ import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import {
+  DotChartOutlined,
   DownOutlined,
   FileSearchOutlined,
   HomeOutlined,
@@ -59,6 +60,7 @@ const Header = () => {
     STATIC_ROUTES.DATA_EXPLORATION_DATAFILES,
   ];
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_PAGES_ENABLED') === 'true';
+  const isAnalyticsEnabled: boolean = EnvVariables.configFor('ANALYTICS_PAGE_ENABLED') === 'true';
 
   const handleChangeLang = () => {
     const targetLang = getTargetLang(lang);
@@ -233,6 +235,14 @@ const Header = () => {
                 title={intl.get('layout.main.menu.dashboard')}
                 currentPathName={currentPathName}
               />
+              {isAnalyticsEnabled && (
+                <HeaderLink
+                  currentPathName={currentPathName}
+                  to={STATIC_ROUTES.ANALYTICS}
+                  icon={<DotChartOutlined />}
+                  title={intl.get('layout.main.menu.analytics')}
+                />
+              )}
             </nav>
           </div>
         }

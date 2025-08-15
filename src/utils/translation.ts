@@ -284,6 +284,11 @@ export const getQueryBuilderDictionary = (
   actions: {
     new: intl.get('components.querybuilder.actions.new'),
     addQuery: intl.get('components.querybuilder.actions.addQuery'),
+    compare: intl.get('screen.analytics.setOperations.selectSet.compare'),
+    compareLessTooltips: intl.get('screen.analytics.setOperations.selectSet.compareLessTooltips'),
+    compareGreaterTooltips: intl.get(
+      'screen.analytics.setOperations.selectSet.compareGreaterTooltips',
+    ),
     combine: intl.get('components.querybuilder.actions.combine'),
     labels: intl.get('components.querybuilder.actions.labels'),
     changeOperatorTo: intl.get('components.querybuilder.actions.changeOperatorTo'),
