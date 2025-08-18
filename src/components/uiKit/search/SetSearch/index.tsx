@@ -59,7 +59,8 @@ const SetSearch = ({
   const [values, setValues] = useState<string[]>(getDefaultValues(getIdFieldByType(type), sqon));
   const [options, setOptions] = useState<OptionsType[]>([]);
 
-  const getTypedSets = () => savedSets.filter((set) => set.setType === type);
+  const getTypedSets = () =>
+    savedSets.filter((s) => !s.is_phantom_manifest && !s.is_invisible && s.setType === type);
 
   const getSetName = (setId: string) => getTypedSets().find(({ id }) => id === setId)?.tag;
 
