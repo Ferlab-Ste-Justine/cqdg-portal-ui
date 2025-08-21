@@ -614,12 +614,14 @@ const en = {
     savedSet: {
       error: {
         title: 'Error',
+        temporary: 'Unable to add set to data exploration',
         messageUpdate: 'Unable to update set',
         messageDelete: 'Unable to delete set',
         messageCreate: 'Unable to create set',
       },
       success: {
         titleCreate: 'Your set has been saved.',
+        temporary: 'Set added to data exploration.',
         messageCreate: 'You can add your sets to a query from the sidebar or the dashboard.',
         messageCreateVariant: 'You can add your sets to a query from the dashboard.',
         titleUpdate: 'Success',
@@ -903,6 +905,7 @@ const en = {
   layout: {
     main: {
       menu: {
+        analytics: 'Analysis',
         dashboard: 'Dashboard',
         studies: 'Studies',
         programs: 'Programs',
@@ -1001,6 +1004,104 @@ const en = {
         description:
           'The CQDG offers an ideal platform for researchers to store and share genomic data produced by clinical and research studies.',
         button: 'Submit your data',
+      },
+    },
+    analytics: {
+      title: 'Analytics',
+      subtitle: 'Quickly visualize and interpret CQDG Data with our user-friendly tools.',
+      setOperations: {
+        title: 'Set Operations',
+        description:
+          'Visualize intersections between virtual cohorts saved as sets using an interactive Venn diagram.',
+        tags: {
+          clinical: 'Clinical',
+          genomics: 'Genomics',
+        },
+        launch: 'Launch',
+        noSet: {
+          title: 'No sets to compare',
+          description:
+            'You need at least two saved sets of entity IDs (e.g. two sets of participants) in order to use this tool. You can create saved sets at the top of the table of results in the <a href="{dataExploration}" style="text-decoration: underline;">Data Exploration</a> and <a href="{variantExploration}" style="text-decoration: underline;">Variants Exploration</a> pages.',
+        },
+        selectSet: {
+          title: 'Select two or three sets to get started',
+          descriptionVenn:
+            'Visualize intersections between saved sets using an interactive Venn diagram.',
+          descriptionSet:
+            'View your saved sets in the <a href="{dashboard}" style="text-decoration: underline;">Dashboard</a>.',
+          entityType: {
+            label: 'Entity type',
+            placeholder: 'Select',
+            participants: 'Participants',
+            biospecimens: 'Biospecimens',
+            files: 'Data Files',
+            variantsGermline: 'Variants (Germline)',
+            variantsSomatic: 'Variants (Somatic)',
+            disabledTooltip: 'No set to compare',
+          },
+          sets: {
+            label: 'Sets',
+            placeholder: 'Select',
+          },
+          compare: 'Compare',
+          compareDisabledTooltip: 'Available with 2 or 3 sets selected',
+          compareLessTooltips: 'Select 2 or 3 queries to generate a Venn diagram comparison',
+          compareGreaterTooltips: 'Only available with 2 or 3 queries selected',
+          resetTooltip: 'Reset',
+        },
+      },
+      venn: {
+        query: {
+          title: 'Selected Queries',
+          column: 'Query definition',
+        },
+        set: {
+          title: 'Set Definitions',
+          column: 'Set definition',
+          footer: 'Union of selected sets:',
+          tooltipDataExplo: 'View in data exploration',
+          tooltipVariantExplo: 'View in variant exploration',
+          max: 'Max 10,000 at a time',
+        },
+        save: {
+          nameTemplate: 'Combined set',
+          cancel: 'Cancel',
+          checkbox: {
+            label: 'Save this set for future reference',
+            tooltips:
+              'A saved set is a collection of one or more entity IDs which can be saved and revisited for later use',
+          },
+          label: 'Set name',
+          alreadyExist: 'A set with this name already exists',
+          ok: 'View set',
+          entity: {
+            participants:
+              'You have selected {count, plural, =0 {# participant} =1 {# participant} other {# participants}}',
+            biospecimens:
+              'You have selected {count, plural, =0 {# biospecimen} =1 {# biospecimen} other {# biospecimens}}',
+            files:
+              'You have selected {count, plural, =0 {# data file} =1 {# data file} other {# data files}}',
+            variants:
+              'You have selected {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Germline)',
+            somatics:
+              'You have selected {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Somatic)',
+          },
+          titleData: 'View in data exploration',
+          titleVariant: 'View in variant exploration',
+        },
+        count: 'Count :',
+        biospecimens: 'Biospecimens',
+        files: 'Data Files',
+        participants: 'Participants',
+        variants: 'Variants',
+        somatics: 'Somatic Variants',
+        title: 'Set operations',
+        ok: 'Close',
+        download: {
+          png: 'Download PNG',
+          fileNameTemplate: 'cqdg-%name-%type-%date%extension',
+          fileNameDateFormat: 'yyyy-MM-dd',
+        },
       },
     },
     memberProfile: {

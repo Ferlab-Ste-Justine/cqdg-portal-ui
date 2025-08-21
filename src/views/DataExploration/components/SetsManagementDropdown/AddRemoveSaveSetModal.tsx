@@ -5,15 +5,17 @@ import { ISqonGroupFilter } from '@ferlab/ui/core/data/sqon/types';
 import { Form, Modal } from 'antd';
 import { Store } from 'antd/lib/form/interface';
 
-import { SetActionType } from 'components/uiKit/SetsManagementDropdown';
-import UserSetsForm from 'components/uiKit/SetsManagementDropdown/UserSetForm';
 import { IUserSetOutput, SetType } from 'services/api/savedSet/models';
 import { PROJECT_ID, useSavedSet } from 'store/savedSet';
 import { updateSavedSet } from 'store/savedSet/thunks';
 
+import { SetActionType, singularizeSetTypeIfNeeded } from './index';
+import UserSetsForm from './UserSetForm';
+
 const FORM_NAME = 'add-remove-set';
 
 type OwnProps = {
+  idField: string;
   hideModalCb: Function;
   userSets: IUserSetOutput[];
   sqon?: ISqonGroupFilter;
@@ -24,34 +26,42 @@ type OwnProps = {
 const finishButtonText = (type: string) => {
   switch (type) {
     case SetActionType.ADD_IDS:
-      return intl.get('screen.dataExploration.addToSet');
+      return 'Add to set';
     case SetActionType.REMOVE_IDS:
-      return intl.get('screen.dataExploration.removeFromSet');
+      return 'Remove from set';
     default:
       break;
   }
 };
 
-const formTitle = (setActionType: string, type: SetType): string => {
+const formTitle = (setActionType: string, type: SetType) => {
   switch (setActionType) {
     case SetActionType.ADD_IDS:
-      return intl.get('screen.dataExploration.addTypeSet', { type: type.toLowerCase() });
+      return intl.get('components.savedSets.modal.add.title', {
+        type: singularizeSetTypeIfNeeded(type).toLocaleLowerCase(),
+      });
     case SetActionType.REMOVE_IDS:
-      return intl.get('screen.dataExploration.removeTypeSet', { type: type.toLowerCase() });
+      return intl.get('components.savedSets.modal.remove.title', {
+        type: singularizeSetTypeIfNeeded(type).toLocaleLowerCase(),
+      });
     default:
-      return '';
+      break;
   }
 };
 
-const AddRemoveSaveSetModal = ({ hideModalCb, userSets, setActionType, sqon, type }: OwnProps) => {
+const AddRemoveSaveSetModal = ({
+  idField,
+  hideModalCb,
+  userSets,
+  setActionType,
+  sqon,
+  type,
+}: OwnProps) => {
   const [form] = Form.useForm();
   const [isVisible, setIsVisible] = useState(true);
   const [hasSetSelection, setHasSetSelection] = useState(false);
   const { isUpdating } = useSavedSet();
   const dispatch = useDispatch();
-  const userSetsVisibles = userSets.filter(
-    (s) => !s.is_phantom_manifest && !s.is_invisible && s.setType === type,
-  );
 
   const onSuccessCreateCb = () => {
     setIsVisible(false);
@@ -71,6 +81,7 @@ const AddRemoveSaveSetModal = ({ hideModalCb, userSets, setActionType, sqon, typ
           updateSavedSet({
             id: setId,
             subAction: setActionType,
+            idField,
             projectId: PROJECT_ID,
             sqon: sqon!,
             onCompleteCb: onSuccessCreateCb,
@@ -99,7 +110,7 @@ const AddRemoveSaveSetModal = ({ hideModalCb, userSets, setActionType, sqon, typ
       okButtonProps={{ disabled: !hasSetSelection, loading: isUpdating }}
     >
       <UserSetsForm
-        userSets={userSetsVisibles}
+        userSets={userSets.filter((s) => s.setType === type)}
         form={form}
         formName={FORM_NAME}
         onFinish={onFinish}

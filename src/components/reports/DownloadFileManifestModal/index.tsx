@@ -132,6 +132,7 @@ const DownloadFileManifestModal = ({
         onCompleteCb: handleManifestIdCopy,
         tag: 'manifest_phantom_set',
         withFamily: isFamilyChecked,
+        is_invisible: false,
       }),
     );
   };

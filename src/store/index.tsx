@@ -15,6 +15,7 @@ import SavedFilterReducer from 'store/savedFilter';
 import SavedSetReducer from 'store/savedSet';
 import { RootState } from 'store/types';
 import UserReducer from 'store/user';
+import VennReducer from 'store/venn';
 
 const isDevMode = EnvVariables.configFor('ENV') === 'development';
 const isReduxLog = EnvVariables.configFor('REDUX_LOG') === 'true';
@@ -34,6 +35,7 @@ const rootReducer = combineReducers<RootState>({
   savedFilter: SavedFilterReducer,
   savedSet: SavedSetReducer,
   remote: RemoteReducer,
+  venn: VennReducer,
 });
 
 const store = configureStore({
