@@ -1,6 +1,7 @@
 import intl from 'react-intl-universal';
 import { Typography } from 'antd';
 
+import NewsletterWidget from './NewsletterWidget';
 import SetOperationsWidget from './SetOperationsWidget';
 
 import styles from './index.module.css';
@@ -16,6 +17,7 @@ const Analytics = () => (
       <Paragraph className={styles.subtitle}>{intl.get('screen.analytics.subtitle')}</Paragraph>
       <div className={styles.widgetsWrapper}>
         <SetOperationsWidget />
+        <NewsletterWidget />
       </div>
     </div>
   </div>
