@@ -1007,8 +1007,11 @@ const en = {
       },
     },
     analytics: {
-      title: 'Analytics',
+      title: 'Data Analysis',
       subtitle: 'Quickly visualize and interpret CQDG Data with our user-friendly tools.',
+      newsletter: {
+        title: 'New Analysis Tools Coming Soon!',
+      },
       setOperations: {
         title: 'Set Operations',
         description:
