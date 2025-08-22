@@ -178,24 +178,22 @@ const App = () => {
                       }
                     />
                   )}
-                  <>
-                    <Route
-                      path={STATIC_ROUTES.ANALYTICS}
-                      element={
-                        <ProtectedRoute>
-                          <Analytics />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path={STATIC_ROUTES.ANALYTICS_SET_OPERATIONS}
-                      element={
-                        <ProtectedRoute>
-                          <SetOperations />
-                        </ProtectedRoute>
-                      }
-                    />
-                  </>
+                  <Route
+                    path={STATIC_ROUTES.ANALYTICS}
+                    element={
+                      <ProtectedRoute>
+                        <Analytics />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path={STATIC_ROUTES.ANALYTICS_SET_OPERATIONS}
+                    element={
+                      <ProtectedRoute>
+                        <SetOperations />
+                      </ProtectedRoute>
+                    }
+                  />
                   <Route path="*" element={<Navigate to={STATIC_ROUTES.LOGIN} />} />
                 </Routes>
                 <NotificationContextHolder />
