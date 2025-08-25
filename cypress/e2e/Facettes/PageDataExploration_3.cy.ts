@@ -20,32 +20,32 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
     cy.get('section[class*="Filters"] [aria-expanded="true"]').should('not.exist');
   });
 
-  it('Search by file ID - FI0009373', () => {
+  it('Search by file ID - FI0011224', () => {
     cy.get('[data-cy="SearchLabel_Title"]').contains('Search by IDs').should('exist');
 
     cy.get('[class*="SearchLabel_tooltipIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true}); //data-cy="SearchLabel_InfoCircleOutlined"
     cy.get('div[class="ant-tooltip-inner"]').contains('Search by file ID').should('exist');
 
-    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'FI0009373', 'POST', '*/grapgql', 1);
-    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('FI0009373').should('exist');
+    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'FI0011224', 'POST', '*/grapgql', 1);
+    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('FI0011224').should('exist');
     cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').eq(0).click({force: true});
 
-    cy.get('[data-cy="Tag_FI0009373"]').should('exist');
+    cy.get('[data-cy="Tag_FI0011224"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0009373').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0011224').should('exist');
     cy.validateTableResultsCount(/^1 Result$/);
 
     cy.get('[data-icon="close-circle"]').clickAndWait({force: true});
-    cy.get('[data-cy="Tag_FI0009373"]').should('not.exist');
+    cy.get('[data-cy="Tag_FI0011224"]').should('not.exist');
   });
 
   it('Dataset - Data1', () => {
-    cy.validateFacetFilter('Dataset', 'Data1', 'data1', /^28$/);
+    cy.validateFacetFilter('Dataset', 'Data1', 'data1', /^26$/);
     cy.validateFacetRank(0, 'Dataset');
   });
 
   it('Data Category - Genomics', () => {
-    cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,210$/);
+    cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,207$/);
     cy.validateFacetRank(1, 'Data Category');
   });
 

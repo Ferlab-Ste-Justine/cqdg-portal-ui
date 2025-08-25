@@ -9,7 +9,7 @@ beforeEach(() => {
 
   cy.login();
   cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
-  cy.get('div[role="tabpanel"] [class*="ant-table-row"]').eq(4).find('[type="checkbox"]').check({force: true});
+  cy.get('[data-row-key="FI00112245"]').find('[type="checkbox"]').check({force: true});
   cy.get('[data-cy="FileManifest_Button"]').click({force: true});
   cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-manifest', 1, 1);
   cy.waitUntilFile(oneMinute);
