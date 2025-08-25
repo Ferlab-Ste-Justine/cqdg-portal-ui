@@ -106,17 +106,17 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(3).contains('Format').should('exist');
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(4).contains('Size').should('exist');
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(5).contains('Sample').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0009066"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(1).contains('S15906.extra.tgz').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0009066"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(2).contains('Metrics').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0009066"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(3).contains('TGZ').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0009066"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(3).find('[class*="FileEntity_tag"]').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0009066"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(4).contains('0 B').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0009066"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(5).contains('SR0000084').should('exist');
   });
 });

@@ -8,7 +8,7 @@ beforeEach(() => {
   cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
   cy.login();
-  cy.visitFileEntity('FI0009373');
+  cy.visitFileEntity('FI0011224');
   cy.get('[data-cy="FileManifest_Button"]').click({force: true});
   cy.get('[class="ant-modal-body"] input[type="checkbox"]').check({force: true});
   cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-manifest', 1, 1);
