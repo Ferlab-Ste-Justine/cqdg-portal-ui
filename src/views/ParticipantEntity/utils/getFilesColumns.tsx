@@ -44,11 +44,9 @@ export const getFilesInfoByKey = (files: IFileEntity[], key: string, participant
   const filesInfosData: IFileInfoByType[] = [];
   for (const file of files) {
     // @ts-ignore
-    const valueOfKey: string = file.sequencing_experiment[key];
-    const filesFound = files.filter(
-      // @ts-ignore
-      ({ sequencing_experiment }) => sequencing_experiment[key] === valueOfKey,
-    );
+    const valueOfKey = file.sequencing_experiment?.[key];
+    // @ts-ignore
+    const filesFound = files.filter((f) => f?.sequencing_experiment?.[key] === valueOfKey);
     if (!filesInfosData.find((file) => file.value === valueOfKey)) {
       filesInfosData.push({
         key: valueOfKey,
