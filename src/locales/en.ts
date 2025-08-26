@@ -1008,7 +1008,7 @@ const en = {
     },
     analytics: {
       title: 'Data Analysis',
-      subtitle: 'Quickly visualize and interpret CQDG Data with our user-friendly tools.',
+      subtitle: 'Quickly visualize and interpret CQDG data with our user-friendly tools.',
       newsletter: {
         title: 'New Analysis Tools Coming Soon!',
       },
@@ -1030,15 +1030,14 @@ const en = {
           title: 'Select two or three sets to get started',
           descriptionVenn:
             'Visualize intersections between saved sets using an interactive Venn diagram.',
-          descriptionSet:
-            'View your saved sets in the <a href="{dashboard}" style="text-decoration: underline;">Dashboard</a>.',
+          descriptionSet: 'View your saved sets in the <a href="{dashboard}">Dashboard</a>.',
           entityType: {
             label: 'Entity type',
             placeholder: 'Select',
             participants: 'Participants',
             biospecimens: 'Biospecimens',
             files: 'Data Files',
-            variantsGermline: 'Variants (Germline)',
+            variantsGermline: 'Variants',
             variantsSomatic: 'Variants (Somatic)',
             disabledTooltip: 'No set to compare',
           },
@@ -1085,7 +1084,7 @@ const en = {
             files:
               'You have selected {count, plural, =0 {# data file} =1 {# data file} other {# data files}}',
             variants:
-              'You have selected {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Germline)',
+              'You have selected {count, plural, =0 {# variant} =1 {# variant} other {# variants}}',
             somatics:
               'You have selected {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Somatic)',
           },

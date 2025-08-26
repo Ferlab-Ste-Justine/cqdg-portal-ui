@@ -1018,7 +1018,7 @@ const fr = {
       subtitle:
         'Visualisez et interprétez rapidement les données du CQDG avec notre ensemble d’outils.',
       newsletter: {
-        title: 'De nouveaux outils d’analyse bientôt disponibles!',
+        title: 'De nouveaux outils d’analyse bientôt disponibles !',
       },
       setOperations: {
         title: 'Opérations d’ensembles',
@@ -1039,14 +1039,14 @@ const fr = {
           descriptionVenn:
             'Visualiser les intersections entre les ensembles sauvegardés à l’aide d’un diagramme de Venn interactif.',
           descriptionSet:
-            'Affichez vos ensembles sauvegardés dans le <a href="{dashboard}" style="text-decoration: underline;">tableau de bord</a>.',
+            'Voir vos ensembles sauvegardés dans le <a href="{dashboard}">tableau de bord</a>.',
           entityType: {
             label: "Type d'entité",
             placeholder: 'Sélectionner',
             participants: 'Participants',
             biospecimens: 'Biospécimens',
             files: 'Fichiers',
-            variantsGermline: 'Variants (Germline)',
+            variantsGermline: 'Variants',
             variantsSomatic: 'Variants (Somatic)',
             disabledTooltip: 'Aucun ensemble à comparer',
           },
@@ -1095,7 +1095,7 @@ const fr = {
             files:
               'Vous avez sélectionné {count, plural, =0 {# fichier de données} =1 {# fichier de données} other {# fichiers de données}}',
             variants:
-              'Vous avez sélectionné {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Germline)',
+              'Vous avez sélectionné {count, plural, =0 {# variant} =1 {# variant} other {# variants}}',
             somatics:
               'Vous avez sélectionné {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Somatique)',
           },

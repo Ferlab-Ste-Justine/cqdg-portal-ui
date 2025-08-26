@@ -68,8 +68,9 @@ const SetOperations = () => {
   const dispatch = useDispatch<any>();
   const [hasSets, setHasSets] = useState<boolean>(false);
   const [compareSets, setCompareSets] = useState<boolean>(false);
-  const { savedSets } = useSavedSet();
   const vennData = useVennData();
+  const { savedSets } = useSavedSet();
+  const visibleSets = savedSets.filter((set) => !set.is_invisible && !set.is_phantom_manifest);
 
   const [entitySelected, setEntitySelected] = useState<SetType | undefined>(undefined);
   const [setIdsSelected, setSetIdsSelected] = useState<string[]>([]);
@@ -79,21 +80,17 @@ const SetOperations = () => {
   const fileMapping = useGetExtendedMappings(INDEXES.FILE);
   const variantMapping = useGetExtendedMappings(INDEXES.VARIANT);
 
-  const participantSets = savedSets.filter(
-    (savedSet) => savedSet.setType === SetType.PARTICIPANT && !savedSet.is_invisible,
+  const participantSets = visibleSets.filter(
+    (savedSet) => savedSet.setType === SetType.PARTICIPANT,
   );
-  const biospecimenSets = savedSets.filter(
-    (savedSet) => savedSet.setType === SetType.BIOSPECIMEN && !savedSet.is_invisible,
+  const biospecimenSets = visibleSets.filter(
+    (savedSet) => savedSet.setType === SetType.BIOSPECIMEN,
   );
-  const fileSets = savedSets.filter(
-    (savedSet) => savedSet.setType === SetType.FILE && !savedSet.is_invisible,
-  );
-  const variantSets = savedSets.filter(
-    (savedSet) => savedSet.setType === SetType.VARIANT && !savedSet.is_invisible,
-  );
+  const fileSets = visibleSets.filter((savedSet) => savedSet.setType === SetType.FILE);
+  const variantSets = visibleSets.filter((savedSet) => savedSet.setType === SetType.VARIANT);
 
   const handleCompare = (setIdsSelected: string[], entity: string) => {
-    const sets = savedSets.filter((set) => setIdsSelected.includes(set.id));
+    const sets = visibleSets.filter((set) => setIdsSelected.includes(set.id));
     const queries: ISyntheticSqon[] = [];
     sets.forEach((set) => {
       const setValue = `${SET_ID_PREFIX}${set.id}`;
@@ -125,7 +122,7 @@ const SetOperations = () => {
     biospecimenSets.length,
     fileSets.length,
     participantSets.length,
-    savedSets,
+    visibleSets,
     variantSets.length,
   ]);
 
@@ -151,7 +148,7 @@ const SetOperations = () => {
     {
       value: SetType.VARIANT,
       label: intl.get('screen.analytics.setOperations.selectSet.entityType.variantsGermline'),
-      icon: <LineStyleIcon />,
+      icon: <LineStyleIcon height={18} width={18} />,
       disabled: variantSets?.length < 2,
     },
   ];
@@ -308,8 +305,8 @@ const SetOperations = () => {
                   icon: <LineStyleIcon height={16} width={16} />,
                 },
               ]}
-              queryPillDictionary={getQueryBuilderDictionary(facetTransResolver, savedSets)}
-              savedSets={savedSets}
+              queryPillDictionary={getQueryBuilderDictionary(facetTransResolver, visibleSets)}
+              savedSets={visibleSets}
               summary={vennData.summary}
               chartClassname={styles.vennChart}
             />

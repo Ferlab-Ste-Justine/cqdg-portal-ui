@@ -8,6 +8,7 @@ import { IconProps } from '.';
 const LineStyleIcon = ({ className = '', width = 24, height = 24 }: IconProps) => (
   <svg
     className={cx('anticon', className)}
+    style={{ verticalAlign: 'sub' }}
     width={width}
     height={height}
     viewBox="0 0 24 24"
