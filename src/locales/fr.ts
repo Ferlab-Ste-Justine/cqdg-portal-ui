@@ -1032,7 +1032,7 @@ const fr = {
         noSet: {
           title: 'Aucun ensemble à comparer',
           description:
-            'Vous devez avoir au moins deux ensembles sauvegardés du même type d’entité (ex. deux ensembles de participants) pour pouvoir utiliser cet outil. Vous pouvez créer des ensembles sauvegardés en haut du tableau des résultats dans les pages <a href="{dataExploration}" style="text-decoration: underline;">Exploration des données</a> et <a href="{variantExploration}" style="text-decoration: underline;">Exploration des variants</a>.',
+            'Vous devez avoir au moins deux ensembles sauvegardés du même type d’entité (ex. deux ensembles de participants) pour pouvoir utiliser cet outil. Vous pouvez créer des ensembles sauvegardés en haut du tableau des résultats dans les pages <a href="{dataExploration}">Exploration des données</a> et <a href="{variantExploration}">Exploration des variants</a>.',
         },
         selectSet: {
           title: 'Sélectionnez deux ou trois ensembles pour commencer',

@@ -1024,7 +1024,7 @@ const en = {
         noSet: {
           title: 'No sets to compare',
           description:
-            'You need at least two saved sets of entity IDs (e.g. two sets of participants) in order to use this tool. You can create saved sets at the top of the table of results in the <a href="{dataExploration}" style="text-decoration: underline;">Data Exploration</a> and <a href="{variantExploration}" style="text-decoration: underline;">Variants Exploration</a> pages.',
+            'You need at least two saved sets of entity IDs (e.g. two sets of participants) in order to use this tool. You can create saved sets at the top of the table of results in the <a href="{dataExploration}">Data Exploration</a> and <a href="{variantExploration}">Variants Exploration</a> pages.',
         },
         selectSet: {
           title: 'Select two or three sets to get started',
