@@ -1007,8 +1007,11 @@ const en = {
       },
     },
     analytics: {
-      title: 'Analytics',
-      subtitle: 'Quickly visualize and interpret CQDG Data with our user-friendly tools.',
+      title: 'Data Analysis',
+      subtitle: 'Quickly visualize and interpret CQDG data with our user-friendly tools.',
+      newsletter: {
+        title: 'New Analysis Tools Coming Soon!',
+      },
       setOperations: {
         title: 'Set Operations',
         description:
@@ -1021,21 +1024,20 @@ const en = {
         noSet: {
           title: 'No sets to compare',
           description:
-            'You need at least two saved sets of entity IDs (e.g. two sets of participants) in order to use this tool. You can create saved sets at the top of the table of results in the <a href="{dataExploration}" style="text-decoration: underline;">Data Exploration</a> and <a href="{variantExploration}" style="text-decoration: underline;">Variants Exploration</a> pages.',
+            'You need at least two saved sets of entity IDs (e.g. two sets of participants) in order to use this tool. You can create saved sets at the top of the table of results in the <a href="{dataExploration}">Data Exploration</a> and <a href="{variantExploration}">Variants Exploration</a> pages.',
         },
         selectSet: {
           title: 'Select two or three sets to get started',
           descriptionVenn:
             'Visualize intersections between saved sets using an interactive Venn diagram.',
-          descriptionSet:
-            'View your saved sets in the <a href="{dashboard}" style="text-decoration: underline;">Dashboard</a>.',
+          descriptionSet: 'View your saved sets in the <a href="{dashboard}">Dashboard</a>.',
           entityType: {
             label: 'Entity type',
             placeholder: 'Select',
             participants: 'Participants',
             biospecimens: 'Biospecimens',
             files: 'Data Files',
-            variantsGermline: 'Variants (Germline)',
+            variantsGermline: 'Variants',
             variantsSomatic: 'Variants (Somatic)',
             disabledTooltip: 'No set to compare',
           },
@@ -1082,7 +1084,7 @@ const en = {
             files:
               'You have selected {count, plural, =0 {# data file} =1 {# data file} other {# data files}}',
             variants:
-              'You have selected {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Germline)',
+              'You have selected {count, plural, =0 {# variant} =1 {# variant} other {# variants}}',
             somatics:
               'You have selected {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Somatic)',
           },

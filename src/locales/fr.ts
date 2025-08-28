@@ -911,7 +911,7 @@ const fr = {
   layout: {
     main: {
       menu: {
-        analytics: 'Analytique',
+        analytics: 'Analyse',
         dashboard: 'Tableau de bord',
         studies: 'Études',
         programs: 'Programmes',
@@ -1014,8 +1014,12 @@ const fr = {
       },
     },
     analytics: {
-      title: 'Analytique',
-      subtitle: 'Visualisez et interprétez rapidement les données CQDG avec nos outils conviviaux.',
+      title: 'Analyse des données',
+      subtitle:
+        'Visualisez et interprétez rapidement les données du CQDG avec notre ensemble d’outils.',
+      newsletter: {
+        title: 'De nouveaux outils d’analyse bientôt disponibles !',
+      },
       setOperations: {
         title: 'Opérations d’ensembles',
         description:
@@ -1028,21 +1032,21 @@ const fr = {
         noSet: {
           title: 'Aucun ensemble à comparer',
           description:
-            'Pour utiliser cet outil, vous devez enregistrer au moins deux ensembles d\'identifiants d\'entité (par exemple, deux ensembles de participants). Vous pouvez créer des ensembles enregistrés en haut du tableau des résultats dans les pages <a href="{dataExploration}" style="text-decoration: underline;">Exploration des données</a> et <a href="{variantExploration}" style="text-decoration: underline;">Exploration des variants</a>.',
+            'Vous devez avoir au moins deux ensembles sauvegardés du même type d’entité (ex. deux ensembles de participants) pour pouvoir utiliser cet outil. Vous pouvez créer des ensembles sauvegardés en haut du tableau des résultats dans les pages <a href="{dataExploration}">Exploration des données</a> et <a href="{variantExploration}">Exploration des variants</a>.',
         },
         selectSet: {
           title: 'Sélectionnez deux ou trois ensembles pour commencer',
           descriptionVenn:
-            'Visualisez les intersections entre les ensembles enregistrés à l’aide d’un diagramme de Venn interactif.',
+            'Visualiser les intersections entre les ensembles sauvegardés à l’aide d’un diagramme de Venn interactif.',
           descriptionSet:
-            'Affichez vos ensembles enregistrés dans le <a href="{dashboard}" style="text-decoration: underline;">tableau de bord</a>.',
+            'Voir vos ensembles sauvegardés dans le <a href="{dashboard}">tableau de bord</a>.',
           entityType: {
             label: "Type d'entité",
             placeholder: 'Sélectionner',
             participants: 'Participants',
             biospecimens: 'Biospécimens',
             files: 'Fichiers',
-            variantsGermline: 'Variants (Germline)',
+            variantsGermline: 'Variants',
             variantsSomatic: 'Variants (Somatic)',
             disabledTooltip: 'Aucun ensemble à comparer',
           },
@@ -1091,7 +1095,7 @@ const fr = {
             files:
               'Vous avez sélectionné {count, plural, =0 {# fichier de données} =1 {# fichier de données} other {# fichiers de données}}',
             variants:
-              'Vous avez sélectionné {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Germline)',
+              'Vous avez sélectionné {count, plural, =0 {# variant} =1 {# variant} other {# variants}}',
             somatics:
               'Vous avez sélectionné {count, plural, =0 {# variant} =1 {# variant} other {# variants}} (Somatique)',
           },

@@ -48,7 +48,6 @@ const App = () => {
   const keycloakIsReady = keycloak && initialized;
   setDefaultOptions({ locale: lang === LANG.FR ? fr : enUS });
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_PAGES_ENABLED') === 'true';
-  const isAnalyticsEnabled: boolean = EnvVariables.configFor('ANALYTICS_PAGE_ENABLED') === 'true';
 
   return (
     <ConfigProvider
@@ -179,26 +178,22 @@ const App = () => {
                       }
                     />
                   )}
-                  {isAnalyticsEnabled && (
-                    <>
-                      <Route
-                        path={STATIC_ROUTES.ANALYTICS}
-                        element={
-                          <ProtectedRoute>
-                            <Analytics />
-                          </ProtectedRoute>
-                        }
-                      />
-                      <Route
-                        path={STATIC_ROUTES.ANALYTICS_SET_OPERATIONS}
-                        element={
-                          <ProtectedRoute>
-                            <SetOperations />
-                          </ProtectedRoute>
-                        }
-                      />
-                    </>
-                  )}
+                  <Route
+                    path={STATIC_ROUTES.ANALYTICS}
+                    element={
+                      <ProtectedRoute>
+                        <Analytics />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path={STATIC_ROUTES.ANALYTICS_SET_OPERATIONS}
+                    element={
+                      <ProtectedRoute>
+                        <SetOperations />
+                      </ProtectedRoute>
+                    }
+                  />
                   <Route path="*" element={<Navigate to={STATIC_ROUTES.LOGIN} />} />
                 </Routes>
                 <NotificationContextHolder />
