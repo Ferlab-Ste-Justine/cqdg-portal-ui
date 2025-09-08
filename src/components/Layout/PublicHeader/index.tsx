@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   DotChartOutlined,
   DownOutlined,
@@ -166,7 +166,9 @@ const PublicHeader = () => {
         className={styles.mainHeader}
         title={
           <div className={styles.headerNavList}>
-            <img src={CQDGLogo} className={styles.logo} />
+            <Link to={'/'}>
+              <img src={CQDGLogo} className={styles.logo} />
+            </Link>
             {EnvVariables.configFor('IS_BETA') === 'true' && (
               <Tag color="blue" className={styles.tagBeta}>
                 Beta
