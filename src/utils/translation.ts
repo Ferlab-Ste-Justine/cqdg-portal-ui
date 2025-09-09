@@ -31,6 +31,15 @@ export const getEntityConsequenceDictionary = () => ({
     Conflicting_interpretations_of_pathogenicity: intl.get(
       'entities.variant.pathogenicity.clinVarLabel.conflicting_interpretations_of_pathogenicity',
     ),
+    conflicting_data_from_submitters: intl.get(
+      'entities.variant.pathogenicity.clinVarLabel.conflicting_data_from_submitters',
+    ),
+    likely_pathogenic_low_penetrance: intl.get(
+      'entities.variant.pathogenicity.clinVarLabel.likely_pathogenic_low_penetrance',
+    ),
+    pathogenic_low_penetrance: intl.get(
+      'entities.variant.pathogenicity.clinVarLabel.pathogenic_low_penetrance',
+    ),
     no_classification_for_the_single_variant: intl.get(
       'entities.variant.pathogenicity.clinVarLabel.no_classification_for_the_single_variant',
     ),
