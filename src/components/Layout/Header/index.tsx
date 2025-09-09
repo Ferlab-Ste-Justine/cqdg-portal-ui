@@ -195,7 +195,9 @@ const Header = () => {
         className={styles.mainHeader}
         title={
           <div className={styles.headerNavList}>
-            <img src={CQDGLogo} className={styles.logo} />
+            <Link to={'/'}>
+              <img src={CQDGLogo} className={styles.logo} />
+            </Link>
             {EnvVariables.configFor('IS_BETA') === 'true' && (
               <Tag color="blue" className={styles.tagBeta}>
                 Beta

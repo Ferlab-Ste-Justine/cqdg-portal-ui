@@ -27,9 +27,12 @@ const Login = () => {
 
   const { keycloak } = useKeycloak();
   const isAuthenticated = keycloak.authenticated;
-  if (isAuthenticated) {
-    navigate(STATIC_ROUTES.STUDIES);
-  }
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(STATIC_ROUTES.STUDIES);
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     dispatch(fetchStats());

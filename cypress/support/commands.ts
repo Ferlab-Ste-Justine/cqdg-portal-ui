@@ -243,7 +243,7 @@ Cypress.Commands.add('resetColumns', (table_id?: string) => {
   cy.get('button[class*="ProTablePopoverColumnResetBtn"]').clickAndWait({force: true});
   cy.get('button[class*="ProTablePopoverColumnResetBtn"]').should('be.disabled');
   cySettings.clickAndWait({force: true});
-  cy.get('[class*="Header_logo"]').clickAndWait({force: true});
+  cy.get('[class*="PageContent_title"], [class*="EntityTitle_title_"], [class*="EntityTitleLogo_title_"]').clickAndWait({force: true});
 });
 
 Cypress.Commands.add('saveFilterAs', (filterName: string) => {
@@ -332,7 +332,7 @@ Cypress.Commands.add('showColumn', (column: string|RegExp) => {
     .find('div[class="ant-space-item"]').contains(column)
     .find('[type="checkbox"]').check({force: true});
   cy.wait('@getPOSTuser', {timeout: oneMinute});
-  cy.get('[class*="Header_logo"]').clickAndWait({force: true});
+  cy.get('[class*="PageContent_title"], [class*="EntityTitle_title_"], [class*="EntityTitleLogo_title_"]').clickAndWait({force: true});
 });
 
 Cypress.Commands.add('sortTableAndIntercept', (column: string|RegExp, nbCalls: number) => {
