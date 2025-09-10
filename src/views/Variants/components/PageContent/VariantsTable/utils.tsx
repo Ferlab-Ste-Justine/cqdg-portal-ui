@@ -16,7 +16,7 @@ export const ClinvarColorMap: Record<any, string> = {
   benign: 'green',
   confers_sensitivity: 'default',
   conflicting_classifications_of_pathogenicity: 'volcano',
-  conflicting_interpretations_of_pathogenicity: 'gold',
+  conflicting_interpretations_of_pathogenicity: 'orange',
   conflicting_data_from_submitters: 'default',
   established_risk_allele: 'default',
   drug_response: 'default',
