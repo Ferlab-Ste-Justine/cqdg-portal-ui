@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { CheckOutlined } from '@ant-design/icons';
 import { TABLE_EMPTY_PLACE_HOLDER } from '@ferlab/ui/core/common/constants';
 import { ProColumnType } from '@ferlab/ui/core/components/ProTable/types';
+import { addQuery } from '@ferlab/ui/core/components/QueryBuilder/utils/useQueryBuilderState';
 import ExpandableCell from '@ferlab/ui/core/components/tables/ExpandableCell';
+import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/utils';
 import { numberFormat } from '@ferlab/ui/core/utils/numberUtils';
 import { Popover } from 'antd';
 import { ArrangerResultsTree } from 'graphql/models';
@@ -13,6 +15,9 @@ import EnvVariables from 'helpers/EnvVariables';
 
 import { STATIC_ROUTES } from 'utils/routes';
 import { truncateString } from 'utils/string';
+
+import { INDEXES } from '../../../graphql/constants';
+import { DATA_EXPLORATION_QB_ID } from '../../DataExploration/utils/constant';
 
 const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
@@ -92,7 +97,25 @@ const getPublicDefaultColumns = (
       const isRestricted = study ? study.security === 'R' : true;
       if (isRestricted) return numberFormat(study.participant_count);
       return (
-        <Link to={''} onClick={() => setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS)}>
+        <Link
+          to={''}
+          onClick={() => {
+            addQuery({
+              queryBuilderId: DATA_EXPLORATION_QB_ID,
+              query: generateQuery({
+                newFilters: [
+                  generateValueFilter({
+                    field: 'study_code',
+                    value: [study.study_code],
+                    index: INDEXES.STUDY,
+                  }),
+                ],
+              }),
+              setAsActive: true,
+            });
+            setLoginModalUri(STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS);
+          }}
+        >
           {numberFormat(study.participant_count)}
         </Link>
       );
