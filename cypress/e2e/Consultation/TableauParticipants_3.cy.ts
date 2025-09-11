@@ -18,7 +18,7 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
 
   it('Valider les fonctionnalités du tableau - Tri Sex', () => {
     cy.sortTableAndIntercept('Sex', 1);
-    cy.validateTableFirstRow('Female', 3, true);
+    cy.validateTableFirstRow('Another sex', 3, true);
     cy.sortTableAndIntercept('Sex', 1);
     cy.validateTableFirstRow('Male', 3, true);
   });
@@ -46,9 +46,9 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
 
   it('Valider les fonctionnalités du tableau - Tri Ethnicity', () => {
     cy.sortTableAndIntercept('Ethnicity', 1);
-    cy.validateTableFirstRow('-', 11, true);
+    cy.validateTableFirstRow('English Canadian', 11, true);
     cy.sortTableAndIntercept('Ethnicity', 1);
-    cy.validateTableFirstRow('-', 11, true);
+    cy.validateTableFirstRow('French Canadian', 11, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Vital Status', () => {
@@ -59,10 +59,10 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
-    cy.sortTableAndIntercept('Vital Status', 1);
-    cy.sortTableAndIntercept('Vital Status', 1);
+    cy.sortTableAndIntercept('Family Type', 1);
+    cy.sortTableAndIntercept('Family Type', 1);
     cy.sortTableAndIntercept('Study', 1);
-    cy.validateTableFirstRow('STUDY1', 2, true);
+    cy.validateTableFirstRow('STUDY2', 2, true);
   });
 
   it('Valider les fonctionnalités du tableau - Pagination', () => {
