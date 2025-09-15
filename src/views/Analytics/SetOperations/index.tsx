@@ -17,6 +17,8 @@ import { INDEXES } from 'graphql/constants';
 import {
   BIOSPECIMENS_SAVED_SETS_FIELD,
   DATA_EXPLORATION_QB_ID,
+  DATA_FILES_SAVED_SETS_FIELD,
+  PARTICIPANTS_SAVED_SETS_FIELD,
   TAB_IDS,
 } from 'views/DataExploration/utils/constant';
 import { VARIANT_REPO_QB_ID, VARIANT_SAVED_SETS_FIELD } from 'views/Variants/utils/constants';
@@ -54,8 +56,12 @@ const getIndexBySetType = (setType?: string) => {
 
 const getIdField = (setType: string) => {
   switch (setType) {
+    case INDEXES.PARTICIPANT:
+      return PARTICIPANTS_SAVED_SETS_FIELD;
     case INDEXES.BIOSPECIMEN:
       return BIOSPECIMENS_SAVED_SETS_FIELD;
+    case INDEXES.FILE:
+      return DATA_FILES_SAVED_SETS_FIELD;
     case INDEXES.VARIANT:
       return VARIANT_SAVED_SETS_FIELD;
     default:
