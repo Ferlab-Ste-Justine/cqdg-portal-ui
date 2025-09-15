@@ -124,7 +124,7 @@ const getFilterGroups = (type: FilterTypes) => {
               'icd_tagged__name',
               'relationship_to_proband',
               'family_type',
-              'sex_at_birth__display',
+              'sex',
               'gender__display',
               'age_at_recruitment',
               'vital_status',
