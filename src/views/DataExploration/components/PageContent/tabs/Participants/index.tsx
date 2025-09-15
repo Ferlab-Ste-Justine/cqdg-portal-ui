@@ -23,6 +23,7 @@ import { ArrangerResultsTree } from 'graphql/models';
 import { useParticipants } from 'graphql/participants/actions';
 import {
   ageCategories,
+  ICodeDisplayMethod,
   IIcd,
   IMondoTagged,
   IParticipantEntity,
@@ -90,6 +91,14 @@ const getDefaultColumns = (): ProColumnType[] => [
     dataIndex: 'sex',
     sorter: { multiple: 1 },
     render: (sex: string) => <ColorTag type={ColorTagType.Gender} value={capitalize(sex)} />,
+  },
+  {
+    key: 'gender.display',
+    title: intl.get('entities.participant.gender'),
+    dataIndex: 'gender',
+    defaultHidden: true,
+    sorter: { multiple: 1 },
+    render: (value: ICodeDisplayMethod) => value?.display || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     key: 'mondo_tagged.name',
@@ -268,12 +277,20 @@ const getDefaultColumns = (): ProColumnType[] => [
     },
   },
   {
-    key: 'ethnicity',
-    title: intl.get('entities.participant.ethnicity'),
-    dataIndex: 'ethnicity',
+    key: 'race.display',
+    title: intl.get('entities.participant.race'),
+    dataIndex: 'race',
     defaultHidden: true,
     sorter: { multiple: 1 },
-    render: (ethnicity) => ethnicity || TABLE_EMPTY_PLACE_HOLDER,
+    render: (value: ICodeDisplayMethod) => value?.display || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
+    key: 'race.another_category',
+    title: intl.get('entities.participant.raceOther'),
+    dataIndex: 'race',
+    defaultHidden: true,
+    sorter: { multiple: 1 },
+    render: (value: ICodeDisplayMethod) => value?.another_category || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     key: 'icd_tagged.name',

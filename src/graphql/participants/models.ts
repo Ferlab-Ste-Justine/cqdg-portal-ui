@@ -31,6 +31,16 @@ export interface IParticipantResultTree {
   Participant: ArrangerResultsTree<IParticipantEntity>;
 }
 
+export interface ICodeDisplayMethod {
+  code: string;
+  display: string;
+  another_category: string;
+  collect_method: {
+    code: string;
+    display: string;
+  };
+}
+
 export interface IPhenotype {
   id: any;
   age_at_event: string;
