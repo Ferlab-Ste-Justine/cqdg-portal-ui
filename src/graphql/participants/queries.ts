@@ -15,6 +15,16 @@ export const GET_PARTICIPANTS = gql`
             age_of_death
             cause_of_death
             ethnicity
+            race {
+              display
+              another_category
+            }
+            gender {
+              display
+            }
+            sex_at_birth {
+              display
+            }
             sex
             is_a_proband
             is_affected

@@ -104,6 +104,7 @@ const fr = {
       population: 'Population',
       ethnicity: 'Ethnicité',
       race: 'Race',
+      raceOther: 'Race (autre)',
       age: 'Âge',
       age_at_recruitment: 'Âge au recrutement',
       vital_status: 'Statut vital',
