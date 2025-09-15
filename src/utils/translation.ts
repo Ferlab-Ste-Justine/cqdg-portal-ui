@@ -317,6 +317,13 @@ export const getQueryBuilderDictionary = (
 });
 
 export const getFacetsDictionary = () => ({
+  sex_at_birth: {
+    display: intl.get('entities.participant.sex'),
+  },
+  gender: {
+    display: intl.get('entities.participant.gender'),
+  },
+  vital_status: intl.get('entities.participant.vital_status'),
   study_code: intl.get('entities.study.study_code'),
   domain: intl.get('entities.study.domain'),
   biospecimen_id: intl.get('entities.biospecimen.biospecimen_id'),

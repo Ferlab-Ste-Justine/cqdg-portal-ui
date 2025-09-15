@@ -99,6 +99,7 @@ const en = {
       family_position: 'Family Position',
       family_id: 'Family ID',
       sex: 'Sex',
+      gender: 'Gender',
       demographic: 'Demographic',
       population: 'Population',
       ethnicity: 'Ethnicity',

@@ -99,6 +99,7 @@ const fr = {
       family_position: 'Position familiale',
       family_id: 'ID de famille',
       sex: 'Sexe',
+      gender: 'Genre',
       demographic: 'Démographie',
       population: 'Population',
       ethnicity: 'Ethnicité',
