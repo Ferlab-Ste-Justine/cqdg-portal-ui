@@ -93,31 +93,38 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.validateFacetRank(5, 'Sex');
   });
 
+  it('Gender - Woman', () => {
+    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^5$/);
+    cy.validateFacetRank(6, 'Gender');
+  });
+
   it('Age at Recruitment - Congenital', () => {
     cy.validateFacetFilter('Age at Recruitment', 'Congenital', 'B-congenital', /^2$/);
-    cy.validateFacetRank(6, 'Age at Recruitment');
+    cy.validateFacetRank(7, 'Age at Recruitment');
+  });
+
+  it('Vital Status - Alive', () => {
+    cy.validateFacetFilter('Vital Status', 'Alive', 'Alive', /^2$/);
+    cy.validateFacetRank(8, 'Vital Status');
   });
 
   it('Age at Diagnosis - Congenital', () => {
     cy.validateFacetFilter('Age at Diagnosis', 'Congenital', 'B-congenital', /^3$/);
-    cy.validateFacetRank(7, 'Age at Diagnosis');
+    cy.validateFacetRank(9, 'Age at Diagnosis');
   });
 
-  it('Ethnicity - French Canadian', () => {
-    cy.get('[data-cy="FilterContainer_Ethnicity"]').should('exist');
-    cy.validateFacetRank(8, 'Ethnicity');
-    /* Pas de données
-    cy.validateFacetFilter('Ethnicity', 'French Canadian', 'French Canadian', /^1750$/);
-    */
+  it('Race - White', () => {
+    cy.validateFacetFilter('Race', 'White', 'White', /^5$/);
+    cy.validateFacetRank(10, 'Race');
   });
 
   it('Phenotype (Source Text) - Intractable Seizures', () => {
     cy.validateFacetFilter('Phenotype (Source Text)', 'Intractable Seizures', 'Intractable Seizures', /^203$/);
-    cy.validateFacetRank(9, 'Phenotype (Source Text)');
+    cy.validateFacetRank(11, 'Phenotype (Source Text)');
   });
 
   it('Diagnosis (Source Text) - Intractable Epilepsy', () => {
     cy.validateFacetFilter('Diagnosis (Source Text)', 'Intractable Epilepsy', 'Intractable Epilepsy', /\d{1}/);
-    cy.validateFacetRank(10, 'Diagnosis (Source Text)');
+    cy.validateFacetRank(12, 'Diagnosis (Source Text)');
   });
 });
