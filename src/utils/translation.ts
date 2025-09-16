@@ -323,6 +323,9 @@ export const getFacetsDictionary = () => ({
   gender: {
     display: intl.get('entities.participant.gender'),
   },
+  race: {
+    display: intl.get('entities.participant.race'),
+  },
   vital_status: intl.get('entities.participant.vital_status'),
   study_code: intl.get('entities.study.study_code'),
   domain: intl.get('entities.study.domain'),

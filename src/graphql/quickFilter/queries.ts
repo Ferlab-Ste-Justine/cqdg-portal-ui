@@ -74,7 +74,13 @@ export const GET_QUICK_FILTER_EXPLO = (lang: LANG) => {
               doc_count
             }
           }
-          ethnicity {
+          race__display {
+            buckets {
+              key
+              doc_count
+            }
+          }
+          gender__display {
             buckets {
               key
               doc_count

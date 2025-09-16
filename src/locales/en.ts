@@ -103,6 +103,7 @@ const en = {
       demographic: 'Demographic',
       population: 'Population',
       ethnicity: 'Ethnicity',
+      race: 'Race',
       age: 'Age',
       age_at_recruitment: 'Age at Recruitment',
       vital_status: 'Vital Status',
