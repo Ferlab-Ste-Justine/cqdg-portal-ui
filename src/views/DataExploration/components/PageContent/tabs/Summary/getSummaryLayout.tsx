@@ -67,7 +67,7 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
     xs: { h: 2, w: 2, x: 0, y: 4, minH: 2, minW: 2 },
   },
   {
-    title: intl.get('entities.participant.participantsByEthnicity'),
+    title: intl.get('entities.participant.participantsByRace'),
     id: ETHNICITY_GRAPH_CARD_ID,
     component: (
       <EthnicityGraphCard

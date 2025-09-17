@@ -122,7 +122,7 @@ const en = {
       observed: 'Observed',
       not_observed: 'Not Observed',
       participantsBySex: 'Participants by Sex',
-      participantsByEthnicity: 'Participants by Ethnicity',
+      participantsByRace: 'Participants by Race',
       participantsByStudy: 'Participants by Study',
       participantsByDataType: 'Participants by Data Type',
       participantsByStrategy: 'Participants by Strategy',
@@ -1387,11 +1387,6 @@ const en = {
               currentPath: 'Current Path',
             },
             empty: 'No diagnoses reported for these participants',
-          },
-          demographic: {
-            cardTitle: 'Demographics',
-            familyComposition: 'Family Composition',
-            ethnicityTitle: 'Ethnicity',
           },
           ageAtDiagnosis: {
             cardTitle: 'Age at Diagnosis',

@@ -123,7 +123,7 @@ const fr = {
       observed: 'Observé',
       not_observed: 'Non observé',
       participantsBySex: 'Participants par sexe',
-      participantsByEthnicity: 'Participants par ethnicité',
+      participantsByRace: 'Participants par race',
       participantsByStudy: 'Participants par étude',
       participantsByDataType: 'Participants par type de données',
       participantsByStrategy: 'Participants par stratégie',
@@ -1407,11 +1407,6 @@ const fr = {
               addTermToQuery: 'Ajouter un terme à la requête active',
               currentPath: 'Arborescence actuelle',
             },
-          },
-          demographic: {
-            cardTitle: 'Profils sociodémographiques',
-            ethnicityTitle: 'Ethnicité',
-            compositionFamilyTitle: 'Composition familiale',
           },
           ageAtDiagnosis: {
             cardTitle: 'Age at Diagnosis',

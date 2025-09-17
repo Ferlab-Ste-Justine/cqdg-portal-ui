@@ -25,7 +25,7 @@ const addToQuery = (field: string, key: string, queryId: string) =>
     index: INDEXES.PARTICIPANT,
   });
 
-const EthnicityGraphCard = ({
+const RaceGraphCard = ({
   gridUID,
   id,
   queryId,
@@ -42,7 +42,7 @@ const EthnicityGraphCard = ({
   });
 
   const data = aggregationToChartData(
-    result?.Participant?.aggregations?.ethnicity?.buckets,
+    result?.Participant?.aggregations?.race__display?.buckets,
     result?.Participant?.hits?.total,
   );
 
@@ -54,13 +54,13 @@ const EthnicityGraphCard = ({
       theme="shade"
       loading={loading}
       loadingType="spinner"
-      headerTitle={intl.get('entities.participant.participantsByEthnicity')}
+      headerTitle={intl.get('entities.participant.participantsByRace')}
       tsvSettings={{ data: [data] }}
       titleTruncateThresholdWidth={70}
       modalContent={
         <PieChart
           data={data}
-          onClick={(datum) => isPlayable && addToQuery('ethnicity', datum.id as string, queryId)}
+          onClick={(datum) => isPlayable && addToQuery('race', datum.id as string, queryId)}
           colors={colors}
           {...graphModalSettings}
         />
@@ -71,7 +71,7 @@ const EthnicityGraphCard = ({
         ) : (
           <PieChart
             data={data}
-            onClick={(datum) => isPlayable && addToQuery('ethnicity', datum.id as string, queryId)}
+            onClick={(datum) => isPlayable && addToQuery('race', datum.id as string, queryId)}
             colors={colors}
             {...graphSetting}
           />
@@ -81,4 +81,4 @@ const EthnicityGraphCard = ({
   );
 };
 
-export default EthnicityGraphCard;
+export default RaceGraphCard;
