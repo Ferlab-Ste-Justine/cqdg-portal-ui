@@ -121,6 +121,9 @@ export interface IParticipantEntity {
   cause_of_death: string;
   ethnicity: string;
   sex: string;
+  race: ICodeDisplayMethod;
+  gender: ICodeDisplayMethod;
+  sex_at_birth: ICodeDisplayMethod;
   is_a_proband: string;
   is_affected: string;
   vital_status: string;
