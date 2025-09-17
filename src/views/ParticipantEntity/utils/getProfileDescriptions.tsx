@@ -11,15 +11,15 @@ import styles from 'views/FileEntity/index.module.css';
 const getProfileDescriptions = (participant?: IParticipantEntity): IEntityDescriptionsItem[] => [
   {
     label: intl.get('entities.participant.sex'),
-    value: capitalize(participant?.sex) || TABLE_EMPTY_PLACE_HOLDER,
+    value: (
+      <Tag color="blue" className={styles.tag}>
+        {capitalize(participant?.sex) || TABLE_EMPTY_PLACE_HOLDER}
+      </Tag>
+    ),
   },
   {
     label: intl.get('entities.participant.gender'),
-    value: (
-      <Tag color="blue" className={styles.tag}>
-        {capitalize(participant?.gender?.display) || TABLE_EMPTY_PLACE_HOLDER}
-      </Tag>
-    ),
+    value: participant?.gender?.display || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.participant.race'),
