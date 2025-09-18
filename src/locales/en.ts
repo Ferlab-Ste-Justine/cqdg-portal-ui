@@ -104,6 +104,7 @@ const en = {
       population: 'Population',
       ethnicity: 'Ethnicity',
       race: 'Race',
+      raceOther: 'Race (Other)',
       age: 'Age',
       age_at_recruitment: 'Age at Recruitment',
       vital_status: 'Vital Status',
@@ -121,7 +122,7 @@ const en = {
       observed: 'Observed',
       not_observed: 'Not Observed',
       participantsBySex: 'Participants by Sex',
-      participantsByEthnicity: 'Participants by Ethnicity',
+      participantsByRace: 'Participants by Race',
       participantsByStudy: 'Participants by Study',
       participantsByDataType: 'Participants by Data Type',
       participantsByStrategy: 'Participants by Strategy',
@@ -1386,11 +1387,6 @@ const en = {
               currentPath: 'Current Path',
             },
             empty: 'No diagnoses reported for these participants',
-          },
-          demographic: {
-            cardTitle: 'Demographics',
-            familyComposition: 'Family Composition',
-            ethnicityTitle: 'Ethnicity',
           },
           ageAtDiagnosis: {
             cardTitle: 'Age at Diagnosis',

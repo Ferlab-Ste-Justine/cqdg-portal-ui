@@ -32,7 +32,7 @@ export const PARTICIPANT_AGG_QUERY = gql`
             doc_count
           }
         }
-        ethnicity {
+        race__display {
           buckets {
             key
             doc_count

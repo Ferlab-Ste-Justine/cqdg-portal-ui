@@ -18,8 +18,16 @@ const getProfileDescriptions = (participant?: IParticipantEntity): IEntityDescri
     ),
   },
   {
-    label: intl.get('entities.participant.ethnicity'),
-    value: participant?.ethnicity || TABLE_EMPTY_PLACE_HOLDER,
+    label: intl.get('entities.participant.gender'),
+    value: participant?.gender?.display || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
+    label: intl.get('entities.participant.race'),
+    value: participant?.race?.display || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
+    label: intl.get('entities.participant.raceOther'),
+    value: participant?.race?.another_category || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.participant.age_at_recruitment'),

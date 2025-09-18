@@ -31,6 +31,16 @@ export interface IParticipantResultTree {
   Participant: ArrangerResultsTree<IParticipantEntity>;
 }
 
+export interface ICodeDisplayMethod {
+  code: string;
+  display: string;
+  another_category: string;
+  collect_method: {
+    code: string;
+    display: string;
+  };
+}
+
 export interface IPhenotype {
   id: any;
   age_at_event: string;
@@ -111,6 +121,9 @@ export interface IParticipantEntity {
   cause_of_death: string;
   ethnicity: string;
   sex: string;
+  race: ICodeDisplayMethod;
+  gender: ICodeDisplayMethod;
+  sex_at_birth: ICodeDisplayMethod;
   is_a_proband: string;
   is_affected: string;
   vital_status: string;
