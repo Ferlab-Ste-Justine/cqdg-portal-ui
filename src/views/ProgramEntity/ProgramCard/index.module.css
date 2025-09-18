@@ -11,6 +11,11 @@
   overflow: hidden;
 }
 
+.buttonWrapper {
+  width: 100%;
+  justify-content: space-between;
+}
+
 .title {
   margin-bottom: 0 !important;
 }

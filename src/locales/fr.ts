@@ -502,6 +502,7 @@ const fr = {
       programStudies:
         'Ce programme inclut les études suivantes et peut évoluer avec l’ajout de nouvelles études.',
       viewStudy: 'Voir l’étude',
+      viewStudies: 'Voir les études',
       partners: 'Partenaires',
     },
   },

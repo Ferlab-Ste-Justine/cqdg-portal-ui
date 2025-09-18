@@ -8,14 +8,15 @@
 
 .descriptionWrapper {
   width: 55%;
+  min-width: 620px;
 }
 
 .managersWrapper {
   display: flex;
-  max-width: 480px;
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
+  margin: auto;
   gap: 32px 0;
   flex: 1 0 0;
   flex-wrap: wrap;

@@ -1,11 +1,10 @@
-import intl from 'react-intl-universal';
-import { Link } from 'react-router-dom';
-import ExternalLinkIcon from '@ferlab/ui/core/components/ExternalLink/ExternalLinkIcon';
-import { Button, Space, Typography } from 'antd';
+import { Space, Typography } from 'antd';
 import { IProgramEntity } from 'graphql/programs/models';
 
 import { LANG } from 'common/constants';
 import { useLang } from 'store/global';
+
+import ContactSection from '../ContactSection';
 
 import ManagerPicture from './ManagerPicture';
 
@@ -15,6 +14,7 @@ const { Title, Text } = Typography;
 
 const ProgramCard = ({ program }: { program?: IProgramEntity }) => {
   const lang = useLang();
+  const fourFirstManagers = program?.managers?.slice(0, 4) || [];
 
   return (
     <div className={styles.contentWrapper}>
@@ -25,17 +25,10 @@ const ProgramCard = ({ program }: { program?: IProgramEntity }) => {
         <Text className={styles.cardDescription}>
           {lang === LANG.FR ? program?.description_fr : program?.description_en}
         </Text>
-        {program?.website && (
-          <Link to={program.website} target="_blank">
-            <Button type="default">
-              {intl.get('entities.program.website')}
-              <ExternalLinkIcon />
-            </Button>
-          </Link>
-        )}
+        <ContactSection program={program} />
       </Space>
       <div className={styles.managersWrapper}>
-        {program?.managers?.map((manager) => (
+        {fourFirstManagers.map((manager) => (
           <div className={styles.managerWrapper} key={manager.name}>
             <ManagerPicture pictureUrl={manager.picture_url} />
             <Text className={styles.managerText}>{manager.name}</Text>
