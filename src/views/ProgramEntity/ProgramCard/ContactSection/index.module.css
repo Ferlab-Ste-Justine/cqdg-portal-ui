@@ -6,6 +6,7 @@
   gap: 40px;
   align-self: stretch;
   flex-wrap: wrap;
+  flex: 1 0 0;
 }
 
 .footerItemWrapper {
