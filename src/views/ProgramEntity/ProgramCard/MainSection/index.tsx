@@ -1,11 +1,10 @@
-import intl from 'react-intl-universal';
-import { Link } from 'react-router-dom';
-import ExternalLinkIcon from '@ferlab/ui/core/components/ExternalLink/ExternalLinkIcon';
-import { Button, Space, Typography } from 'antd';
+import { Typography } from 'antd';
 import { IProgramEntity } from 'graphql/programs/models';
 
 import { LANG } from 'common/constants';
 import { useLang } from 'store/global';
+
+import ContactSection from '../ContactSection';
 
 import ManagerPicture from './ManagerPicture';
 
@@ -15,39 +14,36 @@ const { Title, Text } = Typography;
 
 const ProgramCard = ({ program }: { program?: IProgramEntity }) => {
   const lang = useLang();
+  const fourFirstManagers = program?.managers?.slice(0, 4) || [];
+  const hasManagers = !!fourFirstManagers?.length;
 
   return (
     <div className={styles.contentWrapper}>
-      <Space direction="vertical" size={24} className={styles.descriptionWrapper}>
+      <div className={hasManagers ? styles.descriptionWrapper : styles.fullDescriptionWrapper}>
         <Title className={styles.title} level={4}>
           {lang === LANG.FR ? program?.name_fr : program?.name_en}
         </Title>
         <Text className={styles.cardDescription}>
           {lang === LANG.FR ? program?.description_fr : program?.description_en}
         </Text>
-        {program?.website && (
-          <Link to={program.website} target="_blank">
-            <Button type="default">
-              {intl.get('entities.program.website')}
-              <ExternalLinkIcon />
-            </Button>
-          </Link>
-        )}
-      </Space>
-      <div className={styles.managersWrapper}>
-        {program?.managers?.map((manager) => (
-          <div className={styles.managerWrapper} key={manager.name}>
-            <ManagerPicture pictureUrl={manager.picture_url} />
-            <Text className={styles.managerText}>{manager.name}</Text>
-            <Text className={styles.managerText}>
-              {lang === LANG.FR ? manager.role_fr : manager.role_en}
-            </Text>
-            <Text type="secondary" className={styles.managerInstitution}>
-              {manager.institution}
-            </Text>
-          </div>
-        ))}
+        <ContactSection program={program} />
       </div>
+      {hasManagers && (
+        <div className={styles.managersWrapper}>
+          {fourFirstManagers.map((manager) => (
+            <div className={styles.managerWrapper} key={manager.name}>
+              <ManagerPicture pictureUrl={manager.picture_url} />
+              <Text className={styles.managerText}>{manager.name}</Text>
+              <Text className={styles.managerText}>
+                {lang === LANG.FR ? manager.role_fr : manager.role_en}
+              </Text>
+              <Text type="secondary" className={styles.managerInstitution}>
+                {manager.institution}
+              </Text>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

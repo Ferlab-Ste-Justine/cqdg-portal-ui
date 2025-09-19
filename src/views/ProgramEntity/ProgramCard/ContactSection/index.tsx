@@ -10,11 +10,11 @@ import styles from './index.module.css';
 
 const { Text } = Typography;
 
-const FooterSection = ({ program }: { program?: IProgramEntity }) => {
+const ContactSection = ({ program }: { program?: IProgramEntity }) => {
   return (
-    <div className={styles.footer}>
+    <div className={styles.contactSectionWrapper}>
       <div className={styles.footerItemWrapper}>
-        <EmailLetterIcon width={48} height={48} className={styles.footerItemIcon} />
+        <EmailLetterIcon width={40} height={40} className={styles.footerItemIcon} />
         <div className={styles.footerItem}>
           <Text className={styles.footerItemLabel}>{intl.get('entities.program.contact')}</Text>
           {program?.contacts?.map((contact) => (
@@ -26,7 +26,7 @@ const FooterSection = ({ program }: { program?: IProgramEntity }) => {
       </div>
 
       <div className={styles.footerItemWrapper}>
-        <OfficeBuildingIcon width={48} height={48} className={styles.footerItemIcon} />
+        <OfficeBuildingIcon width={40} height={40} className={styles.footerItemIcon} />
         <div className={styles.footerItem}>
           <Text className={styles.footerItemLabel}>{intl.get('entities.program.affiliation')}</Text>
           {program?.contacts?.map((contact) => (
@@ -38,7 +38,7 @@ const FooterSection = ({ program }: { program?: IProgramEntity }) => {
       </div>
 
       <div className={styles.footerItemWrapper}>
-        <WebNavigationIcon width={48} height={48} className={styles.footerItemIcon} />
+        <WebNavigationIcon width={40} height={40} className={styles.footerItemIcon} />
         <div className={styles.footerItem}>
           <Text className={styles.footerItemLabel}>{intl.get('entities.program.website')}</Text>
           {program?.contacts?.map((contact) => (
@@ -52,4 +52,4 @@ const FooterSection = ({ program }: { program?: IProgramEntity }) => {
   );
 };
 
-export default FooterSection;
+export default ContactSection;

@@ -499,6 +499,7 @@ const en = {
       programStudies:
         'This program includes the following studies and may grow as new studies are added over time.',
       viewStudy: 'View study',
+      viewStudies: 'View studies',
       partners: 'Partners',
     },
   },

@@ -11,6 +11,8 @@ import styles from './index.module.css';
 const { Text } = Typography;
 
 const BottomSection = ({ program }: { program?: IProgramEntity }) => {
+  const citationStatementEnable = false;
+
   return (
     <div className={styles.sectionWrapper}>
       <TitleDivider title={intl.get('entities.program.partners')} />
@@ -28,22 +30,26 @@ const BottomSection = ({ program }: { program?: IProgramEntity }) => {
         )}
       </div>
 
-      <TitleDivider title={intl.get('entities.program.citation')} />
-      <div className={styles.citationWrapper}>
-        <Text className={styles.citation}>« {program?.citation_statement} »</Text>
-        <Text type="secondary" className={styles.citationStatement}>
-          {intl.get('entities.program.citation_statement')}
-          <Popover
-            title={intl.get('entities.program.citation_statement')}
-            content={intl.get('entities.program.citation_statement_info', {
-              program_id: program?.program_id,
-            })}
-            overlayClassName={styles.citationStatementTooltip}
-          >
-            <InfoCircleOutlined />
-          </Popover>
-        </Text>
-      </div>
+      {citationStatementEnable && (
+        <>
+          <TitleDivider title={intl.get('entities.program.citation')} />
+          <div className={styles.citationWrapper}>
+            <Text className={styles.citation}>« {program?.citation_statement} »</Text>
+            <Text type="secondary" className={styles.citationStatement}>
+              {intl.get('entities.program.citation_statement')}
+              <Popover
+                title={intl.get('entities.program.citation_statement')}
+                content={intl.get('entities.program.citation_statement_info', {
+                  program_id: program?.program_id,
+                })}
+                overlayClassName={styles.citationStatementTooltip}
+              >
+                <InfoCircleOutlined />
+              </Popover>
+            </Text>
+          </div>
+        </>
+      )}
     </div>
   );
 };
