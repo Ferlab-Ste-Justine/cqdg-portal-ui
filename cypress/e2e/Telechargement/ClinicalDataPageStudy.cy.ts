@@ -18,7 +18,7 @@ describe('Page d\'une étude - Télécharger le clinical data', () => {
     cy.validateFileName(`cqdg_clinicalData_${strDate.slice(0, 4)}${strDate.slice(4, 6)}${strDate.slice(6, 8)}.xlsx`);
   });
 
-  it('Valider le contenu du fichier [CQDG-889]', () => {
+  it('Valider le contenu du fichier [CQDG-889, CQDG-1218]', () => {
     cy.validateXlsxFileContent('DownloadClinicalDataStudy.json');
   });
 });

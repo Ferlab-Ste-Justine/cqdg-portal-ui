@@ -22,6 +22,12 @@ describe('Page Data Exploration (Participants) - Colonnes du tableau', () => {
       .find('th[class*="ant-table-cell"]').eq(3)
       .should('have.class', 'ant-table-column-has-sorters')
       .contains('Sex').should('exist');
+    
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Gender').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(4)
+      .contains('Gender').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(4)
@@ -41,7 +47,7 @@ describe('Page Data Exploration (Participants) - Colonnes du tableau', () => {
     cy.get('thead[class="ant-table-thead"]')
       .contains(/^Family$/).should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(7)
+      .find('div[class="ant-space-item"]').eq(8)
       .contains(/^Family$/).should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
@@ -65,39 +71,45 @@ describe('Page Data Exploration (Participants) - Colonnes du tableau', () => {
       .contains('Biospecimen').should('exist');
     
     cy.get('thead[class="ant-table-thead"]')
-      .contains('Ethnicity').should('not.exist');
+      .contains(/^Race$/).should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(12)
-      .contains('Ethnicity').should('exist');
+      .find('div[class="ant-space-item"]').eq(13)
+      .contains(/^Race$/).should('exist');
+    
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Race (Other)').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(14)
+      .contains('Race (Other)').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Diagnosis (ICD)').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(13)
+      .find('div[class="ant-space-item"]').eq(15)
       .contains('Diagnosis (ICD)').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Diagnosis (Source Text)').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(14)
+      .find('div[class="ant-space-item"]').eq(16)
       .contains('Diagnosis (Source Text)').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('External Participant').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(15)
+      .find('div[class="ant-space-item"]').eq(17)
       .contains('External Participant').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Vital Status').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(16)
+      .find('div[class="ant-space-item"]').eq(18)
       .contains('Vital Status').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Program').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(17)
+      .find('div[class="ant-space-item"]').eq(19)
       .contains('Program').should('exist');
   });
 
@@ -115,13 +127,13 @@ describe('Page Data Exploration (Participants) - Colonnes du tableau', () => {
 
   it('Afficher une colonne masquée', () => {
     cy.get('thead[class="ant-table-thead"]')
-      .contains('Ethnicity').should('not.exist');
+      .contains('Gender').should('not.exist');
 
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').contains('Ethnicity')
+      .find('div[class="ant-space-item"]').contains('Gender')
       .find('[type="checkbox"]').check({force: true});
 
     cy.get('thead[class="ant-table-thead"]')
-      .contains('Ethnicity').should('exist');
+      .contains('Gender').should('exist');
   });
 });
