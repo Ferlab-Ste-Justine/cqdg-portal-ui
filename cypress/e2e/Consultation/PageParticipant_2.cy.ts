@@ -39,17 +39,21 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(0).contains('Sex').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(0).contains('Male').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(0).find('[class*="ant-tag-blue"]').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(1).contains('Ethnicity').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(1).contains('Gender').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(1).contains('-').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(2).contains('Age at Recruitment').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(2).contains('Race').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(2).contains('-').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(3).contains('Vital Status').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(3).contains('Unknown').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(3).find('[class*="ant-tag-red"]').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(4).contains('Age at Death').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(3).contains('Race (Other)').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(3).contains('-').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(4).contains('Age at Recruitment').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(4).contains('-').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(5).contains('Cause of Death').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(5).contains('-').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(5).contains('Vital Status').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(5).contains('Unknown').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(5).find('[class*="ant-tag-red"]').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(6).contains('Age at Death').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(6).contains('-').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(7).contains('Cause of Death').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(7).contains('-').should('exist');
   });
   
   it('Panneau Family (sans famille)', () => {

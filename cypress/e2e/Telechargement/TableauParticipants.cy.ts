@@ -9,8 +9,10 @@ beforeEach(() => {
 
   cy.login();
   cy.visitDataExploration('participants', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+  cy.showColumn('Gender');
   cy.showColumn(/^Family$/);
-  cy.showColumn('Ethnicity');
+  cy.showColumn(/^Race$/);
+  cy.showColumn('Race (Other)');
   cy.showColumn('Diagnosis (ICD)');
   cy.showColumn('Diagnosis (Source Text)');
   cy.showColumn('External Participant');
@@ -26,7 +28,7 @@ describe('Page Data Exploration (Participants) - Exporter les participants en TS
     cy.validateFileName('cqdg-participant-table-'+`${strDate.slice(0, 4)}-${strDate.slice(4, 6)}-${strDate.slice(6, 8)}`+'.tsv');
   });
 
-  it('Valider les en-têtes du fichier', () => {
+  it('Valider les en-têtes du fichier [CQDG-1221]', () => {
     cy.validateFileHeaders('ExportTableauParticipants.json');
   });
 
