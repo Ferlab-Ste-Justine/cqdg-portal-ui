@@ -20,3 +20,8 @@ REACT_APP_CAVATICA_ENABLED=false
 REACT_APP_PROGRAMS_ENABLED=false
 REACT_APP_PROGRAMS_PAGES_ENABLED=true
 REACT_APP_S3_ASSETS_URL=https://objets.juno.calculquebec.ca/swift/v1/AUTH_266bf865f1fe46b88f51933e0e2e6bd3/cqdg-prod-assets-public
+
+REACT_APP_FT_SITE_WIDE_BANNER=true
+REACT_APP_FT_SITE_WIDE_BANNER_TYPE=warning
+REACT_APP_FT_SITE_WIDE_BANNER_MSG_FR="Veuillez noter que des travaux de maintenance réalisés par Calcul Québec sont prévus du 1er au 3 octobre. Le CQDG sera hors ligne durant cette période. Merci de votre compréhension."
+REACT_APP_FT_SITE_WIDE_BANNER_MSG_EN="Please note that maintenance by Calcul Québec is scheduled from October 1st  to 3rd. CQDG will be down during this period. Thank you for your understanding."

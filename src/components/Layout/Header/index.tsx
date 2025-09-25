@@ -60,6 +60,7 @@ const Header = () => {
     STATIC_ROUTES.DATA_EXPLORATION_DATAFILES,
   ];
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_PAGES_ENABLED') === 'true';
+  const BANNER_MSG_LOCALIZED = lang === LANG.FR ? `${BANNER_MSG_KEY}_FR` : `${BANNER_MSG_KEY}_EN`;
 
   const handleChangeLang = () => {
     const targetLang = getTargetLang(lang);
@@ -187,7 +188,7 @@ const Header = () => {
         className={styles.siteWideBanner}
         featureToggleKey={FT_FLAG_KEY}
         type={getFTEnvVarByKey<AlterTypes>(BANNER_TYPE_KEY, 'warning')}
-        message={getFTEnvVarByKey(BANNER_MSG_KEY)}
+        message={getFTEnvVarByKey(BANNER_MSG_LOCALIZED)}
         banner
         closable
       />
