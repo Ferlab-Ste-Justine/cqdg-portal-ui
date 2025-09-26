@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import { CommonSelectors } from '../shared/Selectors';
 import { CommonTexts } from '../shared/Texts';
-import { formatToK, getDateTime, getUrlLink, scientificToDecimal, stringToRegExp } from '../shared/Utils';
+import { formatToK, getDateTime, getUrlLink, isFerlease, scientificToDecimal, stringToRegExp } from '../shared/Utils';
 import { getColumnName, getColumnPosition } from '../shared/Utils';
 import { Replacement } from '../shared/Types';
 
@@ -169,18 +169,22 @@ export const VariantsTable = {
        * @param onPlusIcon Click on the plus icon (default: false).
        */
       clickTableCellLink(dataVariant: any, columnID: string, onPlusIcon: boolean = false) {
-        switch (columnID) {
-          case 'variant':
-            cy.get(selectors.tableCell).find(CommonSelectors.tableCell).contains(dataVariant.variant).invoke('removeAttr', 'target').clickAndWait({force: true});
-          break;
-          case 'gene':
-            const selectorToClick = onPlusIcon ? CommonSelectors.plusIcon : CommonSelectors.link;
-            cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(getColumnPosition(tableColumns, columnID)).find(selectorToClick).clickAndWait({force: true});
-          break;
-          default:
-            cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(getColumnPosition(tableColumns, columnID)).find(CommonSelectors.link).clickAndWait({force: true});
-          break;
-        };
+        cy.then(() => getColumnPosition(selectorHead, tableColumns, columnID).then((position) => {
+          if (position !== -1 || !isFerlease()) { // -1 position can only occur in a Ferlease
+            switch (columnID) {
+              case 'variant':
+                cy.get(selectors.tableCell).find(CommonSelectors.tableCell).contains(dataVariant.variant).invoke('removeAttr', 'target').clickAndWait({force: true});
+              break;
+              case 'gene':
+                const selectorToClick = onPlusIcon ? CommonSelectors.plusIcon : CommonSelectors.link;
+                cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(position).find(selectorToClick).clickAndWait({force: true});
+              break;
+              default:
+                cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(position).find(CommonSelectors.link).clickAndWait({force: true});
+              break;
+            };
+          };
+        }));
       },
       /**
        * Hides a specific column in the table.
@@ -284,7 +288,11 @@ export const VariantsTable = {
        * @param columnID The ID of the column to check.
        */
       shouldHaveFirstRowValue(value: string | RegExp, columnID: string) {
-        cy.validateTableFirstRow(value, getColumnPosition(tableColumns, columnID), true/*hasCheckbox*/);
+        cy.then(() => getColumnPosition(selectorHead, tableColumns, columnID).then((position) => {
+          if (position !== -1 || !isFerlease()) { // -1 position can only occur in a Ferlease
+            cy.validateTableFirstRow(value, position, true/*hasCheckbox*/);
+          };
+        }));
       },
       /**
        * Validates the pill in the selected query.
@@ -301,20 +309,24 @@ export const VariantsTable = {
        * @param columnID The ID of the column.
        */
       shouldHaveTableCellLink(dataVariant: any, columnID: string) {
-        switch (columnID) {
-          case 'participants':
-            if (dataVariant.partN < 10)
-            {
-              cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(getColumnPosition(tableColumns, columnID)).find(CommonSelectors.link).should('not.exist');
-            } else
-            {
-              cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(getColumnPosition(tableColumns, columnID)).find(CommonSelectors.link).should('have.attr', 'href', getUrlLink(columnID, dataVariant));
+        cy.then(() => getColumnPosition(selectorHead, tableColumns, columnID).then((position) => {
+          if (position !== -1 || !isFerlease()) { // -1 position can only occur in a Ferlease
+            switch (columnID) {
+              case 'participants':
+                if (dataVariant.partN < 10)
+                {
+                  cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(position).find(CommonSelectors.link).should('not.exist');
+                } else
+                {
+                  cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(position).find(CommonSelectors.link).should('have.attr', 'href', getUrlLink(columnID, dataVariant));
+                };
+                break;
+              default:
+                cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(position).find(CommonSelectors.link).should('have.attr', 'href', getUrlLink(columnID, dataVariant));
+                break;
             };
-            break;
-          default:
-            cy.get(selectors.tableCell).find(CommonSelectors.tableCell).eq(getColumnPosition(tableColumns, columnID)).find(CommonSelectors.link).should('have.attr', 'href', getUrlLink(columnID, dataVariant));
-            break;
-        };
+          };
+        }));
       },
       /**
        * Validates the default visibility of each column.
@@ -452,12 +464,15 @@ export const VariantsTable = {
        * @param dataMinMax The object containing the expected min max values.
        */
       shouldSortColumn(columnID: string, dataMinMax: any, needIntercept: boolean = true) {
-        const columnIndex = getColumnPosition(tableColumns, columnID);
-        VariantsTable.actions.sortColumn(columnID, needIntercept);
-        cy.validateTableFirstRow(dataMinMax[columnID].min, columnIndex, true);
+        cy.then(() => getColumnPosition(selectorHead, tableColumns, columnID).then((position) => {
+          if (position !== -1 || !isFerlease()) { // -1 position can only occur in a Ferlease
+            VariantsTable.actions.sortColumn(columnID, needIntercept);
+            cy.validateTableFirstRow(dataMinMax[columnID].min, position, true);
 
-        VariantsTable.actions.sortColumn(columnID);
-        cy.validateTableFirstRow(dataMinMax[columnID].max, columnIndex, true);
+            VariantsTable.actions.sortColumn(columnID);
+            cy.validateTableFirstRow(dataMinMax[columnID].max, position, true);
+          };
+        }));
       },
     },
   };
