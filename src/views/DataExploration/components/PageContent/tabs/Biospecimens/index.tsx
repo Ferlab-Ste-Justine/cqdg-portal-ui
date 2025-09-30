@@ -118,8 +118,8 @@ const getDefaultColumns = (): ProColumnType[] => [
     sorter: { multiple: 1 },
     render: (biospecimen_tissue_source: string) => {
       if (!biospecimen_tissue_source) return TABLE_EMPTY_PLACE_HOLDER;
-      if (biospecimen_tissue_source === 'Unknown') return intl.get('global.unknown');
       const { code, title } = extractNcitTissueTitleAndCode(biospecimen_tissue_source);
+      if (!code) return biospecimen_tissue_source;
       return (
         <>
           {title} (NCIT:{' '}
