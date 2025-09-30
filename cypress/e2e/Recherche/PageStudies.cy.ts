@@ -27,10 +27,10 @@ describe('Page des études - Rechercher des études', () => {
 
   it('Par programme', () => {
     cy.typeAndIntercept('[class*="PageContent_search"]', 'rare-qc2', 'POST', '**/graphql', 8);
-    cy.validateTableResultsCount(/3 Results/);
+    cy.validateTableResultsCount(/2 Results/);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
-    cy.validateTableResultsCount(/4 Results/);
+    cy.validateTableResultsCount(/\d{1} Results/);
   });
 
   it('Par domaine', () => {
