@@ -59,7 +59,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
   });
 
   it('Program - RARE-QC2', () => {
-    cy.validateFacetFilter('Program', 'RARE-QC2', 'RARE-QC2', /^597$/);
+    cy.validateFacetFilter('Program', 'RARE-QC2', 'RARE-QC2', /^588$/);
     cy.validateFacetRank(1, 'Program');
   });
 
