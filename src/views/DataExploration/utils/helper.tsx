@@ -50,3 +50,16 @@ export const extractDuoTitleAndCode = (duo: string) => titleAndCodeExtractor(duo
 
 // Format is like: Unspecified cataract (H26.9) or Type 1 diabetes mellitus (E10)
 export const extractIcdTitleAndCode = (icd: string) => titleAndCodeExtractor(icd, '\\(');
+
+export const normalizeSexGender = (value: string) => {
+  switch (value.toLocaleLowerCase()) {
+    case 'female':
+    case 'woman':
+      return 'female';
+    case 'male':
+    case 'man':
+      return 'male';
+    default:
+      return value;
+  }
+};
