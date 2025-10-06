@@ -60,7 +60,7 @@ const RaceGraphCard = ({
       modalContent={
         <PieChart
           data={data}
-          onClick={(datum) => isPlayable && addToQuery('race', datum.id as string, queryId)}
+          onClick={(datum) => isPlayable && addToQuery('race.display', datum.id as string, queryId)}
           colors={colors}
           {...graphModalSettings}
         />
@@ -71,7 +71,9 @@ const RaceGraphCard = ({
         ) : (
           <PieChart
             data={data}
-            onClick={(datum) => isPlayable && addToQuery('race', datum.id as string, queryId)}
+            onClick={(datum) =>
+              isPlayable && addToQuery('race.display', datum.id as string, queryId)
+            }
             colors={colors}
             {...graphSetting}
           />
