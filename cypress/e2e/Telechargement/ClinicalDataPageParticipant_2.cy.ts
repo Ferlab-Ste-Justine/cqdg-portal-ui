@@ -19,7 +19,7 @@ describe('Page d\'un participant - Télécharger le clinical data (family)', () 
     cy.validateFileName(`cqdg_familyClinicalData_${strDate.slice(0, 4)}${strDate.slice(4, 6)}${strDate.slice(6, 8)}.xlsx`);
   });
 
-  it('Valider le contenu du fichier [CQDG-889, CQDG-1218]', () => {
+  it('Valider le contenu du fichier [CQDG-889]', () => {
     cy.validateXlsxFileContent('DownloadClinicalDataFamily.json');
   });
 });
