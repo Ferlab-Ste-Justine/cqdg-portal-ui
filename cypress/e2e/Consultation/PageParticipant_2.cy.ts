@@ -38,7 +38,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="profile"] [class="ant-collapse-header"]').contains('Profile').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(0).contains('Sex').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(0).contains('Male').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(0).find('[class*="ant-tag-blue"]').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(0).find('[class*="ColorTag_genderMale"]').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(1).contains('Gender').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(1).contains('-').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(2).contains('Race').should('exist');
