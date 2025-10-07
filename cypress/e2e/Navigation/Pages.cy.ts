@@ -97,7 +97,7 @@ describe('Navigation', () => {
     cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
   });
 
-  it('Modals de la page Dashboard [CQDG-139]', () => {
+  it('Modals de la page Dashboard', () => {
     cy.visitDashboard();
     cy.get('[data-cy="SavedSets"] svg[data-icon="edit"]').eq(0).clickAndWait({force: true});
     cy.contains('Edit set').should('exist');
@@ -111,7 +111,7 @@ describe('Navigation', () => {
 
     cy.visitDashboard();
     cy.get('[data-cy="SavedFilters"] svg[data-icon="edit"]').eq(0).clickAndWait({force: true});
-    cy.contains('Edit filter').should('exist');
+    cy.contains('Save this filter').should('exist');
     cy.get('button[class="ant-modal-close"]').invoke('click');
 
     cy.visitDashboard();

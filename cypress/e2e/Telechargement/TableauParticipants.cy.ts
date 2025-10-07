@@ -28,7 +28,7 @@ describe('Page Data Exploration (Participants) - Exporter les participants en TS
     cy.validateFileName('cqdg-participant-table-'+`${strDate.slice(0, 4)}-${strDate.slice(4, 6)}-${strDate.slice(6, 8)}`+'.tsv');
   });
 
-  it('Valider les en-têtes du fichier [CQDG-1221]', () => {
+  it('Valider les en-têtes du fichier', () => {
     cy.validateFileHeaders('ExportTableauParticipants.json');
   });
 
