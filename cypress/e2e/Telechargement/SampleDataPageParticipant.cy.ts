@@ -18,7 +18,7 @@ describe('Page d\'un participant - Télécharger le sample data', () => {
     cy.validateFileName(`cqdg_biospecimenData_${strDate.slice(0, 4)}${strDate.slice(4, 6)}${strDate.slice(6, 8)}.xlsx`);
   });
 
-  it('Valider le contenu du fichier [CQDG-889]', () => {
+  it('Valider le contenu du fichier', () => {
     cy.validateXlsxFileContent('DownloadBiospecimenData.json');
   });
 });

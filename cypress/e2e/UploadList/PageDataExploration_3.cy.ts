@@ -48,13 +48,13 @@ describe('Page Data Exploration (Data Files) - Téléverser une liste d\'identif
     cy.get('[class*="UploadModal"] div[class*="ant-collapse-content-inactive ant-collapse-content-hidden"]').should('exist');
   });
 
-  it('Vérifier les informations affichées - Section Résumé (onglet Reconnus) [CQDG-762]', () => {
+  it('Vérifier les informations affichées - Section Résumé (onglet Reconnus)', () => {
     cy.get('[class*="UploadModal"] span[class*="ant-collapse-arrow"]').clickAndWait({force: true});
 
     cy.get('[class*="UploadModal_tablesMessages"]').contains('2 submitted identifiers mapped to 1 unique system identifiers').should('exist');
     cy.get('[data-node-key="matched"]').contains('Matched (1)').should('exist');
-    cy.get('[id*="panel-matched"] thead').contains('Submitted file identifiers').should('exist');
-    cy.get('[id*="panel-matched"] thead').contains('Mapped to').should('exist');
+    cy.get('[id*="panel-matched"] thead').contains('Submitted File identifiers').should('exist');
+    cy.get('[id*="panel-matched"] thead').contains('Mapped To').should('exist');
     cy.get('[id*="panel-matched"] thead').contains('File ID').should('exist');
     cy.get('[id*="panel-matched"] thead').contains('Study Code').should('exist');
     cy.get('[id*="panel-matched"] [data-row-key="FI0011224:0"] td').eq(0).contains('FI0011224').should('exist');
@@ -62,13 +62,13 @@ describe('Page Data Exploration (Data Files) - Téléverser une liste d\'identif
     cy.get('[id*="panel-matched"] [data-row-key="FI0011224:0"] td').eq(2).contains('T-DEE').should('exist');
   });
 
-  it('Vérifier les informations affichées - Section Résumé (onglet Inconnus) [CQDG-762]', () => {
+  it('Vérifier les informations affichées - Section Résumé (onglet Inconnus)', () => {
     cy.get('[class*="UploadModal"] span[class*="ant-collapse-arrow"]').clickAndWait({force: true});
     cy.get('[data-node-key="unmatched"]').clickAndWait({force: true});
 
     cy.get('[data-node-key="unmatched"]').contains('Unmatched (1)').should('exist');
-    cy.get('[id*="panel-unmatched"] thead').contains('Submitted file identifiers').should('exist');
-    cy.get('[id*="panel-unmatched"] thead').contains('Mapped to').should('not.exist');
+    cy.get('[id*="panel-unmatched"] thead').contains('Submitted File identifiers').should('exist');
+    cy.get('[id*="panel-unmatched"] thead').contains('Mapped To').should('not.exist');
     cy.get('[id*="panel-unmatched"] thead').contains('File ID').should('not.exist');
     cy.get('[id*="panel-unmatched"] thead').contains('Study Code').should('not.exist');
     cy.get('[id*="panel-unmatched"] [data-row-key="0"] td').eq(0).contains('unknown').should('exist');

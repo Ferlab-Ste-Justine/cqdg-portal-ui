@@ -7,8 +7,8 @@ beforeEach(() => {
 });
 
 describe('Page Profile Settings - Vérifier les informations affichées', () => {
-  it('Titre [CQDG-774]', () => {
-    cy.get('[class*="Settings_profileSettingsHeader"]').contains('Profile Settings');
+  it('Titre', () => {
+    cy.get('[class*="Settings_profileSettingsHeader"]').contains('Profile settings');
   });
 
   it('Section Identification - Bannière', () => {
