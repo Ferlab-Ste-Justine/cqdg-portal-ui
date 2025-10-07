@@ -1,10 +1,13 @@
 import intl from 'react-intl-universal';
+import ColorTag, { ColorTagType } from '@ferlab/ui/core/components/ColorTag/index';
 import { IEntityDescriptionsItem } from '@ferlab/ui/core/pages/EntityPage';
 import { Tag } from 'antd';
 import { ageCategories, IParticipantEntity } from 'graphql/participants/models';
-import capitalize from 'lodash/capitalize';
+import startCase from 'lodash/startCase';
 
 import { TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
+
+import { normalizeSexGender } from '../../DataExploration/utils/helper';
 
 import styles from 'views/FileEntity/index.module.css';
 
@@ -12,9 +15,9 @@ const getProfileDescriptions = (participant?: IParticipantEntity): IEntityDescri
   {
     label: intl.get('entities.participant.sex'),
     value: (
-      <Tag color="blue" className={styles.tag}>
-        {capitalize(participant?.sex) || TABLE_EMPTY_PLACE_HOLDER}
-      </Tag>
+      <ColorTag type={ColorTagType.Gender} value={normalizeSexGender(participant?.sex || '')}>
+        {startCase(participant?.sex)}
+      </ColorTag>
     ),
   },
   {
