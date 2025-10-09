@@ -1,15 +1,53 @@
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  height: 175px;
+  min-height: 0;
+}
+
+.cardTitle {
+  padding-bottom: 8px;
+  flex-shrink: 0;
+}
+
 .cardWrapper {
   min-width: 500px;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cardLogo {
   color: var(--blue-8);
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: 61px;
+  display: block;
+  object-fit: contain;
 }
 
+.cardLogoWrapper {
+  margin-top: 24px;
+  margin-left: 24px;
+  height: 67.54px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/*.cardDescription {*/
+/*  flex: 1 1 0;*/
+/*  min-height: 0;*/
+/*  overflow: hidden;*/
+/*  display: -webkit-box;*/
+/*  -webkit-box-orient: vertical;*/
+/*}*/
 .cardDescription {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   align-self: stretch;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -19,6 +57,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 15px;
 }
 
 .programCardLink {
