@@ -42,7 +42,11 @@ const ProgramCard = ({ program }: IProgramCardProps) => {
     <Card className={styles.cardWrapper}>
       <Space direction="vertical" size={16}>
         {program.logo_url ? (
-          <object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />
+          <img
+            className={styles.cardLogo}
+            src={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url}
+            alt="Program logo"
+          />
         ) : (
           <ScientificLiteratureIcon width={60} height={49} className={styles.cardLogo} />
         )}
