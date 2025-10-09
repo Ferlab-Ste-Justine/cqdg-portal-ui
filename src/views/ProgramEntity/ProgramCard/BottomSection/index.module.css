@@ -13,6 +13,13 @@
   justify-content: center;
 }
 
+.partnerPicture {
+  max-height: 60px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .citationWrapper {
   display: flex;
   flex-direction: column;
