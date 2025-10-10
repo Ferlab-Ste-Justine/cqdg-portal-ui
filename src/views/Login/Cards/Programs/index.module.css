@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px;
+  width: 100%;
+  height: fit-content;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 32px;
+  color: var(--gray-9);
+}
+
+.programsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.programLogo {
+  color: var(--blue-8);
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 1200px) {
+  .programsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .programsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
+  }
+}
