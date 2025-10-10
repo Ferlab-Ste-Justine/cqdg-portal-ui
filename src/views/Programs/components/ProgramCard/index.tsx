@@ -39,38 +39,49 @@ const ProgramCard = ({ program }: IProgramCardProps) => {
   const studiesCount = program.study_codes?.length || 0;
 
   return (
-    <Card className={styles.cardWrapper}>
-      <Space direction="vertical" size={16}>
-        {program.logo_url ? (
-          <object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />
-        ) : (
-          <ScientificLiteratureIcon width={60} height={49} className={styles.cardLogo} />
-        )}
-
-        <Typography.Title level={5}>
+    <Card
+      className={styles.cardWrapper}
+      style={{ height: '100%' }}
+      cover={
+        <div className={styles.cardLogoWrapper}>
+          {program.logo_url ? (
+            <object
+              data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url}
+              type="image/png"
+              className={styles.cardLogo}
+            >
+              <ScientificLiteratureIcon className={styles.cardLogo} />
+            </object>
+          ) : (
+            <ScientificLiteratureIcon className={styles.cardLogo} />
+          )}
+        </div>
+      }
+    >
+      <div className={styles.cardContent}>
+        <Typography.Title level={5} className={styles.cardTitle}>
           {lang === LANG.FR ? program.name_fr : program.name_en}
         </Typography.Title>
         <Typography.Text className={styles.cardDescription}>
           {lang === LANG.FR ? program.description_fr : program.description_en}
         </Typography.Text>
-
-        <div className={styles.footerRow}>
-          {studiesCount > 0 && (
-            <Tag icon={<ReadOutlined width={16} height={16} />} className={styles.cardTag}>
-              {`${studiesCount} ${intl.get('entities.study.studies_min')}`}
-            </Tag>
-          )}
-          <Link
-            to={`${STATIC_ROUTES.PROGRAMS}/${program.program_id}`}
-            className={styles.programCardLink}
-          >
-            <Button type="default">
-              {intl.get('screen.dashboard.cards.learnMore')}
-              <ExternalLinkIcon />
-            </Button>
-          </Link>
-        </div>
-      </Space>
+      </div>
+      <div className={styles.footerRow}>
+        {studiesCount > 0 && (
+          <Tag icon={<ReadOutlined width={16} height={16} />} className={styles.cardTag}>
+            {`${studiesCount} ${intl.get('entities.study.studies_min')}`}
+          </Tag>
+        )}
+        <Link
+          to={`${STATIC_ROUTES.PROGRAMS}/${program.program_id}`}
+          className={styles.programCardLink}
+        >
+          <Button type="default">
+            {intl.get('screen.dashboard.cards.learnMore')}
+            <ExternalLinkIcon />
+          </Button>
+        </Link>
+      </div>
     </Card>
   );
 };

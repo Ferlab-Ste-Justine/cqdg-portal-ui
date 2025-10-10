@@ -21,9 +21,10 @@ const BottomSection = ({ program }: { program?: IProgramEntity }) => {
           (p) =>
             p.logo_url && (
               <div key={p.name}>
-                <object
-                  data={EnvVariables.configFor('S3_ASSETS_URL') + p.logo_url}
-                  className={styles.managerPicture}
+                <img
+                  src={EnvVariables.configFor('S3_ASSETS_URL') + p.logo_url}
+                  className={styles.partnerPicture}
+                  alt={p.name}
                 />
               </div>
             ),
