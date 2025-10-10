@@ -1,7 +1,3 @@
-permissions:
-  checks: write
-  contents: read
-
 name: Quality
 
 permissions:
