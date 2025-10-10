@@ -1,11 +1,12 @@
 import intl from 'react-intl-universal';
 import VariantCard from '@ferlab/ui/core/pages/LandingPage/VariantCard';
 import { useKeycloak } from '@react-keycloak/web';
+import { usePrograms } from 'graphql/programs/actions';
 
 import { useGlobals } from 'store/global';
 import { STATIC_ROUTES } from 'utils/routes';
 
-import Rare from './Rare';
+import Programs from './Programs';
 import SecureData from './SecureData';
 import Stats from './Stats';
 
@@ -22,11 +23,13 @@ const Cards = () => {
     });
     window.location.assign(url);
   };
+  const { data } = usePrograms();
+
   return (
     <div className={styles.cardsContainer}>
       <div className={styles.cardsGrid}>
         <Stats />
-        <Rare />
+        <Programs programs={data} />
         <SecureData />
         <VariantCard
           variantsCount={variants}

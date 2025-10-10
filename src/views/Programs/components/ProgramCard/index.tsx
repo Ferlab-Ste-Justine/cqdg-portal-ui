@@ -45,7 +45,7 @@ const ProgramCard = ({ program }: IProgramCardProps) => {
           <img
             className={styles.cardLogo}
             src={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url}
-            alt="Program logo"
+            alt={program.program_id}
           />
         ) : (
           <ScientificLiteratureIcon width={60} height={49} className={styles.cardLogo} />

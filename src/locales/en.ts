@@ -987,8 +987,8 @@ const en = {
           genomes: 'Genomes',
           exomes: 'Exomes',
         },
-        rare: {
-          title: 'Network to advance research on rare diseases in Quebec',
+        programs: {
+          title: 'Programs & Partners',
           description:
             'The CQDG is a proud partner of the new Réseau pour Avancer la REcherche sur les maladies rares au Québec (Network to advance research on rare diseases in Quebec or RARE.Qc) financed by the FRQS. RARE.Qc is a coalition of over 100 researchers and patient partners across Quebec, aiming to transform research on rare diseases, particularly by promoting collaboration and data sharing using the CQDG infrastructure.',
         },
