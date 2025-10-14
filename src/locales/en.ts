@@ -982,6 +982,12 @@ const en = {
         },
       },
       cards: {
+        radiant: {
+          title: 'A new benchmark in precision medicine.',
+          description:
+            'The CQDG is pleased to offer its users Radiant, a secure platform that enables real-time exploration and interpretation of individual genomes in relation to patients’ clinical data, with the goal of accelerating molecular diagnosis and advancing precision medicine research.',
+          tag: 'Coming soon',
+        },
         stats: {
           release: 'Release v2.0',
           genomes: 'Genomes',
