@@ -53,7 +53,11 @@ const ProgramCard = ({ loading, program }: { loading: boolean; program?: IProgra
 
         <div className={styles.cardLogo}>
           {program?.logo_url ? (
-            <object data={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url} />
+            <img
+              className={styles.programLogo}
+              src={EnvVariables.configFor('S3_ASSETS_URL') + program.logo_url}
+              alt={program.program_id}
+            />
           ) : (
             <ScientificLiteratureIcon height={80} width={80} />
           )}

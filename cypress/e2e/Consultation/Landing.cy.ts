@@ -75,10 +75,11 @@ describe('Page Landing - Vérifier les informations affichées', () => {
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(5).contains('Exomes').should('exist');
   });
 
-  it('Section Rare QC', () => {
-    cy.get('[class*="Rare_container"] [src*="/static/media/rare-logo."]').should('exist');
-    cy.get('[class*="Rare_title"]').contains(/(Réseau pour Avancer la REcherche sur les maladies rares au Québec|Network to advance research on rare diseases in Quebec)/).should('exist');
-    cy.get('[class*="Rare_text"]').contains(/(Le CQDG est un fier partenaire du nouveau Réseau pour Avancer la REcherche sur les maladies rares au Québec \(RARE.Qc\) financé par le FRQS. RARE.Qc est un regroupement de plus 100 chercheurs et patients partenaires à travers le Québec, qui vise à transformer la recherche sur les maladies rares.|The CQDG is a proud partner of the new Réseau pour Avancer la REcherche sur les maladies rares au Québec \(Network to advance research on rare diseases in Quebec or RARE.Qc\) financed by the FRQS. RARE.Qc is a coalition of over 100 researchers and patient partners across Quebec, aiming to transform research on rare diseases, particularly by promoting collaboration and data sharing using the CQDG infrastructure.)/).should('exist');
+  it('Section Programs & Partners', () => {
+    cy.get('[class*="Programs_title"]').contains(/(Programmes & Partenaires|Programs & Partners)/).should('exist');
+    cy.get('[class*="Programs_container"] [src*="/cqdg-qa-assets-public/programs_logos/rare.svg"]').should('exist');
+    cy.get('[class*="Programs_container"] [src*="/cqdg-qa-assets-public/programs_logos/MGSS/mgss-logo-2.svg"]').should('exist');
+    cy.get('[class*="Programs_container"] [src*="/cqdg-qa-assets-public/programs_logos/PCHP/PCHP_Signature_Colour_En.svg"]').should('exist');
   });
 
   it('Section SD4H', () => {
