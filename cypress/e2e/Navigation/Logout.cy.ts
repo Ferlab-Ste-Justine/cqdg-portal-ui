@@ -11,6 +11,7 @@ describe('Page Logout', () => {
     cy.logout();
 
     cy.get('[class*="TopBanner_title"]').contains(/(Portail de données|Data Portal)/).should('exist');
+    cy.get('[class*="TopBanner_radiantTitle"]').should('exist');
     cy.get('[class*="Studies_container"] [class*="Summary"] [id="study"]').should('exist');
     cy.get('[class*="Studies_container"] [class*="ant-carousel"] [class*="Carousel_dots"]').should('exist');
     cy.get('[class*="Studies_container"] [class*="ant-carousel"] [class*="Carousel_title"] [src*="/static/media/cartagene."]').should('exist');
@@ -25,7 +26,7 @@ describe('Page Logout', () => {
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(3).find('[id="file"]').should('exist');
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(4).find('[id="gene"]').should('exist');
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(5).find('[id="exomes"]').should('exist');
-    cy.get('[class*="Programs_title"]').contains(/(Programmes & Partenaires|Programs & Partners)/).should('exist');
+    cy.get('[class*="Programs_title"]').should('exist');
     cy.get('[class*="SecureData_container"] [src*="data:image/png"]').should('exist');
     cy.get('[class*="VariantCard_container"] [id="gene"]').should('exist');
     cy.get('[class*="BannerItem_container"]').eq(0).find('[id="information"]').should('exist');

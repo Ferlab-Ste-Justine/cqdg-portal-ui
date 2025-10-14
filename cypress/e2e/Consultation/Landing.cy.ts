@@ -14,6 +14,13 @@ describe('Page Landing - Vérifier les informations affichées', () => {
     cy.get('[data-cy="Signup"]').contains(/(Créer compte|Sign up)/).should('exist');
   });
 
+  it('Section Radiant Tile', () => {
+    cy.get('[class*="TopBanner_radiantTag"] [data-icon="sound"]').should('exist');
+    cy.get('[class*="TopBanner_radiantTag"]').contains(/(Bientôt disponible|Coming soon)/).should('exist');
+    cy.get('[class*="TopBanner_radiantTitle"]').contains(/(Une nouvelle référence en médecine de précision.|A new benchmark in precision medicine.)/).should('exist');
+    cy.get('[class*="TopBanner_radiantDescription"]').contains(/(Le CQDG est heureux d’offrir à ses utilisateurs Radiant, une plateforme sécurisée permettant l’exploration et l’interprétation en temps réel des génomes individuels en lien avec les données cliniques des patients, afin d’accélérer le diagnostic moléculaire et de faire progresser la recherche en médecine de précision.|The CQDG is pleased to offer its users Radiant, a secure platform that enables real-time exploration and interpretation of individual genomes in relation to patients’ clinical data, with the goal of accelerating molecular diagnosis and advancing precision medicine research.)/).should('exist');
+  });
+
   it('Section Studies Side Panel Tile', () => {
     cy.get('[class*="Studies_container"] [class*="Summary"] [id="study"]').should('exist');
     cy.get('[class*="Studies_container"] [class*="Summary"] [class*="TextIcon_layout"]').contains('4').should('exist');
