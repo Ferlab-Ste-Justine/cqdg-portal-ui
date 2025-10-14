@@ -989,6 +989,12 @@ const fr = {
         },
       },
       cards: {
+        radiant: {
+          title: 'Une nouvelle référence en médecine de précision.',
+          description:
+            'Le CQDG est heureux d’offrir à ses utilisateurs Radiant, une plateforme sécurisée permettant l’exploration et l’interprétation en temps réel des génomes individuels en lien avec les données cliniques des patients, afin d’accélérer le diagnostic moléculaire et de faire progresser la recherche en médecine de précision.',
+          tag: 'Bientôt disponible',
+        },
         stats: {
           release: 'Données CQDG v2.0',
           genomes: 'Génomes',
