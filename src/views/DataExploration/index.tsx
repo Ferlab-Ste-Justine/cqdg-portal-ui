@@ -145,7 +145,17 @@ const getFilterGroups = (type: FilterTypes) => {
         ],
         groups: [
           {
-            facets: ['sample_type', 'biospecimen_tissue_source', 'age_biospecimen_collection'],
+            facets: [
+              'sample_type',
+              'biospecimen_tissue_source',
+              'cancer_biospecimen_type',
+              'age_biospecimen_collection',
+              'tumor_normal_designation',
+              'tumor_histological_type__display',
+              'tumor_histological_type__text',
+              'cancer_anatomic_location__display',
+              'cancer_anatomic_location__text',
+            ],
           },
         ],
       };

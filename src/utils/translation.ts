@@ -404,6 +404,16 @@ export const getFacetsDictionary = () => ({
   sample_type: intl.get('entities.biospecimen.sample_type'),
   biospecimen_tissue_source: intl.get('entities.biospecimen.biospecimen_tissue_source'),
   age_biospecimen_collection: intl.get('entities.biospecimen.age_biospecimen_collection'),
+  cancer_biospecimen_type: intl.get('entities.biospecimen.cancer_biospecimen_type'),
+  tumor_normal_designation: intl.get('entities.biospecimen.tumor_normal_designation'),
+  tumor_histological_type: {
+    display: intl.get('entities.biospecimen.tumor_histological_type.display'),
+    text: intl.get('entities.biospecimen.tumor_histological_type.text'),
+  },
+  cancer_anatomic_location: {
+    display: intl.get('entities.biospecimen.cancer_anatomic_location.display'),
+    text: intl.get('entities.biospecimen.cancer_anatomic_location.text'),
+  },
   biospecimens: {
     biospecimen_tissue_source: intl.get('entities.biospecimen.biospecimen_tissue_source'),
     age_biospecimen_collection: intl.get('entities.biospecimen.age_biospecimen_collection'),
