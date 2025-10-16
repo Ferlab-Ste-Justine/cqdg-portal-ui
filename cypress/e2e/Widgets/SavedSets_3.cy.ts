@@ -1,17 +1,18 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('participants');
-  cy.get('[data-cy="SidebarMenuItem_Participant"]').clickAndWait({force: true});
-  cy.createSetIfNotExists('Cypress_SA', 0);
-  cy.deleteSetIfExists('participants', 'Cypress_SB');
-  cy.visitDashboard();
-});
-
 describe('Page Dashboard - Widget Saved Sets', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('participants');
+    cy.get('[data-cy="SidebarMenuItem_Participant"]').clickAndWait({force: true});
+    cy.createSetIfNotExists('Cypress_SA', 0);
+    cy.deleteSetIfExists('participants', 'Cypress_SB');
+    cy.visitDashboard();
+  };
+
   it('Valider les liens disponibles - Bouton Edit', () => {
+    setupTest();
     cy.get('[class*="ListItemWithActions_fuiListItemWithActions"]').each(($el: JQuery<HTMLElement>) => {
       if ($el.text().includes('Cypress_SA')) {
         cy.wrap($el).find('svg[data-icon="edit"]').clickAndWait({force:true});

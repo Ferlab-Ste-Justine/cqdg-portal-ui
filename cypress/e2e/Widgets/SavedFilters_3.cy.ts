@@ -1,17 +1,18 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration();
-  cy.get('[id="query-builder-header-tools"] [data-icon="plus"]').clickAndWait({force: true});
-  cy.createFilterIfNotExists('Cypress_FA');
-  cy.deleteFilterIfExists('Cypress_FB');
-  cy.visitDashboard();
-});
-
 describe('Page Dashboard - Widget Saved Filters', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration();
+    cy.get('[id="query-builder-header-tools"] [data-icon="plus"]').clickAndWait({force: true});
+    cy.createFilterIfNotExists('Cypress_FA');
+    cy.deleteFilterIfExists('Cypress_FB');
+    cy.visitDashboard();
+  };
+
   it('Valider les liens disponibles - Bouton Edit', () => {
+    setupTest();
     cy.get('[class*="ListItemWithActions_fuiListItemWithActions"]').each(($el: JQuery<HTMLElement>) => {
       if ($el.text().includes('Cypress_FA')) {
         cy.wrap($el).find('svg[data-icon="edit"]').clickAndWait({force:true});

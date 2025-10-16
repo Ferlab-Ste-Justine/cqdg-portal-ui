@@ -1,21 +1,24 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitProfileSettingsPage();
-});
-
 describe('Page Profile Settings - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitProfileSettingsPage();
+  };
+
   it('Titre', () => {
+    setupTest();
     cy.get('[class*="Settings_profileSettingsHeader"]').contains('Profile settings');
   });
 
   it('Section Identification - Bannière', () => {
+    setupTest();
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(0).find('[class*="ant-alert-info"]').contains('You are authenticated with using . This email is never shown to the public and cannot be changed.').should('exist');
   });
 
   it('Section Identification - Champs', () => {
+    setupTest();
     cy.get('input[id="first_name"]').clear({force: true}).type('Cypress', {force: true});
     cy.get('input[id="last_name"]').clear({force: true}).type('Test', {force: true});
     cy.get('input[id="public_email"]').clear({force: true});
@@ -43,6 +46,7 @@ describe('Page Profile Settings - Vérifier les informations affichées', () => 
   });
 
   it('Section Role & Affiliation - Champs', () => {
+    setupTest();
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(1).find('input[value="bioinformatician_software_developer"]').check({force: true});
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(1).find('input[value="other"]').uncheck({force: true});
     cy.get('input[id="no_affiliation"]').check({force: true});
@@ -71,6 +75,7 @@ describe('Page Profile Settings - Vérifier les informations affichées', () => 
   });
 
   it('Section Research Domain - Champs', () => {
+    setupTest();
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="aging"]').check({force: true}).should('be.checked');
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="other"]').uncheck({force: true}).should('not.be.checked');
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('button[class*="ant-btn-primary"]').clickAndWait({force: true});
@@ -109,7 +114,8 @@ describe('Page Profile Settings - Vérifier les informations affichées', () => 
 
   });
 
-  it('Section Delete Account - Champs', () => {  
+  it('Section Delete Account - Champs', () => {
+    setupTest();
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(3).contains('You will no longer be able to sign into the CQDG data portal. All of your saved sets and queries will be lost. You can create a new account at any time.').should('exist');
     cy.get('button[class*="ant-btn-dangerous"]').contains('Delete my account').should('exist');
   });

@@ -2,8 +2,7 @@
 import '../../support/commands';
 
 describe('Page Variants - Bouton Save set', () => {
-
-  beforeEach(() => {
+  const setupTest = () => {
     cy.login();
     cy.deleteSetIfExists('variants', 'Cypress_New_V');
     cy.deleteSetIfExists('variants', 'Cypress_V');
@@ -14,9 +13,10 @@ describe('Page Variants - Bouton Save set', () => {
         cy.saveSetAs('Cypress_V', 0);
       };
     });
-  });
+  };
 
   it('Vérifier les informations affichées - Titre de la dropdown', () => {
+    setupTest();
     cy.get('[class="ant-table-body"] [class*="ant-table-row"]').eq(0).find('[type="checkbox"]').check({force: true});
     cy.get('[id="Variant-set-dropdown-container"] button').clickAndWait({force: true});
 
@@ -24,6 +24,7 @@ describe('Page Variants - Bouton Save set', () => {
   });
 
   it('Vérifier les informations affichées - Tooltip de la dropdown', () => {
+    setupTest();
     cy.get('[class="ant-table-body"] [class*="ant-table-row"]').eq(0).find('[type="checkbox"]').check({force: true});
     cy.get('[id="Variant-set-dropdown-container"] button').clickAndWait({force: true});
     cy.get('[class="ant-dropdown-menu-title-content"] [data-icon="info-circle"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
@@ -33,6 +34,7 @@ describe('Page Variants - Bouton Save set', () => {
   });
   
   it('Valider les fonctionnalités du bouton - Save as new set', () => {
+    setupTest();
     cy.saveSetAs('Cypress_New_V', 0);
 
     cy.get('[class*="ant-notification"]').contains('Your set has been saved.').should('exist');
@@ -44,6 +46,7 @@ describe('Page Variants - Bouton Save set', () => {
   });
 
   it('Valider les fonctionnalités du bouton - Add to existing set', () => {
+    setupTest();
     cy.get('[class="ant-table-body"] [class*="ant-table-row"]').eq(1).find('[type="checkbox"]').check({force: true});
     cy.get('[id*="-set-dropdown-container"] button').clickAndWait({force: true});
     cy.get('[data-menu-id*="add_ids"]').clickAndWait({force: true});
@@ -63,6 +66,7 @@ describe('Page Variants - Bouton Save set', () => {
     });
     
   it('Valider les fonctionnalités du bouton - Remove from existing set', () => {
+    setupTest();
     cy.get('[class="ant-table-body"] [class*="ant-table-row"]').eq(0).find('[type="checkbox"]').check({force: true});
     cy.get('[id*="-set-dropdown-container"] button').clickAndWait({force: true});
     cy.get('[data-menu-id*="remove_ids"]').clickAndWait({force: true});

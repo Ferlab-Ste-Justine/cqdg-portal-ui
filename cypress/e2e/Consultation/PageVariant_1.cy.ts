@@ -1,13 +1,14 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitVariantEntityPage('1-156176849-G-A', 1);
-});
-
 describe('Page d\'un variant - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitVariantEntityPage('1-156176849-G-A', 1);
+  };
+
   it('Titre', () => {
+    setupTest();
     cy.get('[class*="EntityTitle"]').contains('chr1:g.156176849G>A');
     cy.get('[class*="EntityTitle"]').contains('GRCh38');
     cy.get('[class*="EntityTitle"] [class="ant-tag"]').should('exist');
@@ -16,6 +17,7 @@ describe('Page d\'un variant - Vérifier les informations affichées', () => {
   });
 
   it('Panneau Summary', () => {
+    setupTest();
     // Banner
     cy.get('a[class*="VariantEntity_symbolLink"]').eq(0).contains('SEMA4A').should('exist');
     cy.get('a[class*="VariantEntity_ensemblLink"]').eq(0).contains('Ensembl').should('exist');
@@ -77,6 +79,7 @@ describe('Page d\'un variant - Vérifier les informations affichées', () => {
   });
 
   it('Panneau Transcripts', () => {
+    setupTest();
     cy.get('[id="consequence"] h4[class*="EntityNestedTable_title"]').eq(0).contains('Consequence').should('exist');
     cy.get('[id="consequence"] [class*="ant-collapse-header-text"] div[class*="ant-space-item"]').eq(0).contains('Transcripts').should('exist');
     // Main table
@@ -121,6 +124,7 @@ describe('Page d\'un variant - Vérifier les informations affichées', () => {
   });
 
   it('Panneau CQDG Studies', () => {
+    setupTest();
     cy.get('[id="frequency"] h4[class*="EntityTable_title"]').eq(0).contains('Frequency (only WGS)').should('exist');
     cy.get('[id="frequency"] [class*="ant-collapse-header-text"] div[class*="ant-space-item"]').eq(0).contains('CQDG Studies').should('exist');
     cy.get('[id="frequency"] thead th[class="ant-table-cell"]').eq(0).contains('Studies').should('exist');
@@ -143,6 +147,7 @@ describe('Page d\'un variant - Vérifier les informations affichées', () => {
   });
 
   it('Panneau Public Cohorts', () => {
+    setupTest();
     cy.get('[class*="EntityTable_container"]').eq(1).find('[class*="ant-collapse-header-text"] div[class*="ant-space-item"]').eq(0).contains('Public Cohorts').should('exist');
     cy.get('[class*="EntityTable_container"]').eq(1).find('thead th[class="ant-table-cell"]').eq(0).contains('Cohort').should('exist');
     cy.get('[class*="EntityTable_container"]').eq(1).find('thead th[class="ant-table-cell"]').eq(1).contains('# ALT Alleles').should('exist');
@@ -172,6 +177,7 @@ describe('Page d\'un variant - Vérifier les informations affichées', () => {
   });
 
   it('Panneau ClinVar', () => {
+    setupTest();
     cy.get('[id="pathogenicity"] h4[class*="EntityTable_title"]').eq(0).contains('Pathogenicity').should('exist');
     cy.get('[id="pathogenicity"] [class*="ant-collapse-header-text"]').contains('ClinVar').should('exist');
     cy.get('[id="pathogenicity"] [class*="ant-collapse-header-text"]').contains('3362').should('exist');
@@ -186,6 +192,7 @@ describe('Page d\'un variant - Vérifier les informations affichées', () => {
   });
 
   it('Panneau Gene - Phenotype Association', () => {
+    setupTest();
     cy.get('[id="condition"] h4[class*="EntityTable_title"]').eq(0).contains('Condition').should('exist');
     cy.get('[id="condition"] [class*="ant-collapse-header-text"]').contains('Gene - Phenotype Association').should('exist');
     cy.get('[id="condition"] thead th[class="ant-table-cell"]').eq(0).contains('Source').should('exist');

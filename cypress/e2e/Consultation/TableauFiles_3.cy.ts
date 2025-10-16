@@ -1,16 +1,17 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('datafiles');
-  cy.showColumn('Dataset');
-  cy.showColumn('File Name');
-  cy.showColumn('Platform');
-});
-
 describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du tableau', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('datafiles');
+    cy.showColumn('Dataset');
+    cy.showColumn('File Name');
+    cy.showColumn('Platform');
+  };
+
   it('Valider les fonctionnalités du tableau - Tri Study', () => {
+    setupTest();
     cy.sortTableAndWait('Study');
     cy.validateTableFirstRow('STUDY1', 4, true);
     cy.sortTableAndWait('Study');
@@ -18,6 +19,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Tri Dataset', () => {
+    setupTest();
     cy.sortTableAndWait('Dataset');
     cy.validateTableFirstRow('Data1', 5, true);
     cy.sortTableAndWait('Dataset');
@@ -25,6 +27,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Tri Data Category', () => {
+    setupTest();
     cy.sortTableAndWait('Data Category');
     cy.validateTableFirstRow('Genomics', 6, true);
     cy.sortTableAndWait('Data Category');
@@ -32,6 +35,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Tri Data Type', () => {
+    setupTest();
     cy.sortTableAndWait('Data Type');
     cy.validateTableFirstRow('Aligned Reads', 7, true);
     cy.sortTableAndWait('Data Type');
@@ -39,6 +43,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Tri Strategy', () => {
+    setupTest();
     cy.sortTableAndWait('Strategy');
     cy.validateTableFirstRow('Whole Genome Sequencing', 8, true);
     cy.sortTableAndWait('Strategy');
@@ -46,6 +51,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Tri Format', () => {
+    setupTest();
     cy.sortTableAndWait('Format');
     cy.validateTableFirstRow('CRAM', 9, true);
     cy.sortTableAndWait('Format');
@@ -53,6 +59,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Tri Size', () => {
+    setupTest();
     cy.sortTableAndWait('Size');
     cy.validateTableFirstRow('0 B', 10, true);
     cy.sortTableAndWait('Size');
@@ -60,6 +67,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Tri Platform', () => {
+    setupTest();
     cy.sortTableAndWait('Platform');
     cy.validateTableFirstRow('Illumina HiSeq 2000 PE100', 14, true);
     cy.sortTableAndWait('Platform');
@@ -67,6 +75,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
+    setupTest();
     cy.sortTableAndWait('Format');
     cy.sortTableAndWait('Study');
     cy.sortTableAndWait('Study');
@@ -74,6 +83,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   });
 
   it('Valider les fonctionnalités du tableau - Pagination', () => {
+    setupTest();
     cy.get('span[class*="ant-select-selection-item"]').clickAndWait({force: true});
     cy.get('div[class*="ant-select-item-option-content"]').contains('20').clickAndWait({force: true});
     cy.get('div[class*="ProTableHeader"]').contains(/^1$/).should('exist');

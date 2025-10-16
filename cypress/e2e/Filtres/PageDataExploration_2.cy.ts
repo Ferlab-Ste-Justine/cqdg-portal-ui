@@ -1,17 +1,18 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration();
-  cy.get('[id="query-builder-header-tools"] [data-icon="plus"]').clickAndWait({force: true});
-  cy.deleteFilterIfExists('Cypress_Fedit1');
-  cy.deleteFilterIfExists('Cypress_F1 COPY');
-  cy.createFilterIfNotExists('Cypress_F1');
-});
-
 describe('Page Data Exploration - Filtres', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration();
+    cy.get('[id="query-builder-header-tools"] [data-icon="plus"]').clickAndWait({force: true});
+    cy.deleteFilterIfExists('Cypress_Fedit1');
+    cy.deleteFilterIfExists('Cypress_F1 COPY');
+    cy.createFilterIfNotExists('Cypress_F1');
+  };
+
   it('Sélectionner un filtre dans la dropdown', () => {
+    setupTest();
     cy.get('button[class*="QueryBuilderHeaderTools_queryBuilderHeaderDdb"]').clickAndWait({force: true});
     cy.get('[class*="ant-dropdown-menu-item"]').contains('Cypress_F1').clickAndWait({force: true});
 
@@ -25,6 +26,7 @@ describe('Page Data Exploration - Filtres', () => {
   });
 
   it('Renommer un filtre par la querybar', () => {
+    setupTest();
     cy.get('button[class*="QueryBuilderHeaderTools_queryBuilderHeaderDdb"]').clickAndWait({force: true});
     cy.get('[class*="ant-dropdown-menu-item"]').contains(/^Cypress_F1$/).clickAndWait({force: true});
     cy.saveFilterAs('Cypress_Fedit1');
@@ -42,6 +44,7 @@ describe('Page Data Exploration - Filtres', () => {
   });
 
   it('Renommer un filtre par le manager', () => {
+    setupTest();
     cy.get('button[class*="QueryBuilderHeaderTools_queryBuilderHeaderDdb"]').clickAndWait({force: true});
     cy.get('[data-menu-id*="manage-my-filters"]').clickAndWait({force: true});
     cy.contains('Manage my filters').should('exist');
@@ -58,6 +61,7 @@ describe('Page Data Exploration - Filtres', () => {
   });
 
   it('Dupliquer un filtre sans sauvegarder', () => {
+    setupTest();
     cy.get('button[class*="QueryBuilderHeaderTools_queryBuilderHeaderDdb"]').clickAndWait({force: true});
     cy.get('[class*="ant-dropdown-menu-item"]').contains('Cypress_F1').clickAndWait({force: true});
     cy.get('[id="query-builder-header-tools"] [data-icon="copy"]').clickAndWait({force: true});
@@ -73,6 +77,7 @@ describe('Page Data Exploration - Filtres', () => {
   });
 
   it('Dupliquer un filtre et sauvegarder', () => {
+    setupTest();
     cy.get('button[class*="QueryBuilderHeaderTools_queryBuilderHeaderDdb"]').clickAndWait({force: true});
     cy.get('[class*="ant-dropdown-menu-item"]').contains('Cypress_F1').clickAndWait({force: true});
     cy.get('[id="query-builder-header-tools"] [data-icon="copy"]').clickAndWait({force: true});

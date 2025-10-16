@@ -1,13 +1,14 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitStudiesPage();
-});
-
 describe('Page des études - Rechercher des études', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitStudiesPage();
+  };
+
   it('Par study code', () => {
+    setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'study1', 'POST', '**/graphql', 6);
     cy.validateTableResultsCount(/1 Result/);
     cy.validateTableFirstRow('STUDY1', 0);
@@ -17,6 +18,7 @@ describe('Page des études - Rechercher des études', () => {
   });
 
   it('Par study name', () => {
+    setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'congenital', 'POST', '**/graphql', 10);
     cy.validateTableResultsCount(/1 Result/);
     cy.validateTableFirstRow('STUDY1', 0);
@@ -26,6 +28,7 @@ describe('Page des études - Rechercher des études', () => {
   });
 
   it('Par programme', () => {
+    setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'rare-qc2', 'POST', '**/graphql', 8);
     cy.validateTableResultsCount(/2 Results/);
 
@@ -34,6 +37,7 @@ describe('Page des études - Rechercher des études', () => {
   });
 
   it('Par domaine', () => {
+    setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'diseases', 'POST', '**/graphql', 8);
     cy.validateTableResultsCount(/1 Result/);
     cy.validateTableFirstRow('STUDY1', 0);
@@ -43,6 +47,7 @@ describe('Page des études - Rechercher des études', () => {
   });
 
   it('Par chercheur principal', () => {
+    setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'batman2', 'POST', '**/graphql', 6);
     cy.validateTableResultsCount(/1 Result/);
     cy.validateTableFirstRow('STUDY2', 0);
@@ -52,6 +57,7 @@ describe('Page des études - Rechercher des études', () => {
   });
 
   it('Par mot-clé', () => {
+    setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'FAMILY', 'POST', '**/graphql', 6);
     cy.validateTableResultsCount(/\d{1} Results/);
     cy.validateTableFirstRow('STUDY2', 0);

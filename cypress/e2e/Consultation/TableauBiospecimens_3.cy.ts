@@ -1,13 +1,14 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('biospecimens');
-});
-
 describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du tableau', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('biospecimens');
+  };
+
   it('Valider les fonctionnalités du tableau - Tri Study', () => {
+    setupTest();
     cy.sortTableAndWait('Study');
     cy.validateTableFirstRow('STUDY1', 4, true);
     cy.sortTableAndWait('Study');
@@ -15,6 +16,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   });
 
   it('Valider les fonctionnalités du tableau - Tri Sample Type', () => {
+    setupTest();
     cy.sortTableAndWait('Sample Type');
     cy.validateTableFirstRow('C449', 5, true);
     cy.sortTableAndWait('Sample Type');
@@ -22,6 +24,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   });
 
   it('Valider les fonctionnalités du tableau - Tri Tissue', () => {
+    setupTest();
     cy.sortTableAndWait('Tissue');
     cy.validateTableFirstRow('C12434', 6, true);
     cy.sortTableAndWait('Tissue');
@@ -30,6 +33,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   });
 
   it('Valider les fonctionnalités du tableau - Tri Age', () => {
+    setupTest();
     cy.sortTableAndIntercept('Age', 1);
     cy.validateTableFirstRow('Congenital', 7, true);
     cy.sortTableAndIntercept('Age', 1);
@@ -37,12 +41,14 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
+    setupTest();
     cy.sortTableAndIntercept('Sample Type', 1);
     cy.sortTableAndIntercept('Study', 1);
     cy.validateTableFirstRow('STUDY1', 4, true);
   });
 
   it('Valider les fonctionnalités du tableau - Pagination', () => {
+    setupTest();
     cy.get('span[class*="ant-select-selection-item"]').clickAndWait({force: true});
     cy.get('div[class*="ant-select-item-option-content"]').contains('20').clickAndWait({force: true});
     cy.get('div[class*="ProTableHeader"]').contains(/^1$/).should('exist');

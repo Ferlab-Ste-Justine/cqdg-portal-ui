@@ -2,17 +2,18 @@
 import '../../support/commands';
 import { SharedFilters } from '../../pom/shared/Filters';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitVariantsPage(SharedFilters.variant.combineQueries);
-
-  cy.get('[data-cy="SidebarMenuItem_Variant"]').clickAndWait({force: true});
-  cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
-  cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
-});
-
 describe('Page Data Exploration - Requêtes', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitVariantsPage(SharedFilters.variant.combineQueries);
+
+    cy.get('[data-cy="SidebarMenuItem_Variant"]').clickAndWait({force: true});
+    cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
+    cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
+  };
+
   it('Supprimer une requête utilisée dans une combinaison', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql1');
     cy.get('.simplebar-wrapper').invoke('css', 'overflow', 'visible');
     cy.get('[class*="QueryBar_selected"] button[class*="QueryPill_close"]').clickAndWait();

@@ -1,25 +1,28 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration();
-  cy.get('[id="query-builder-header-tools"] [data-icon="plus"]').clickAndWait({force: true});
-  cy.createFilterIfNotExists('Cypress_FB');
-  cy.visitDashboard();
-});
-
 describe('Page Dashboard - Widget Saved Filters', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration();
+    cy.get('[id="query-builder-header-tools"] [data-icon="plus"]').clickAndWait({force: true});
+    cy.createFilterIfNotExists('Cypress_FB');
+    cy.visitDashboard();
+  };
+
   it('Vérifier les informations affichées - Nom', () => {
+    setupTest();
     cy.get('[data-cy="SavedFilters"]').contains('Cypress_FB').should('exist');
   });
 
   it('Vérifier les informations affichées - Stamp', () => {
+    setupTest();
     cy.get('[data-cy="SavedFilters"]').contains('Last saved:').should('exist');
     cy.get('[data-cy="SavedFilters"]').contains(' ago').should('exist');
   });
 
   it('Valider les liens disponibles - Nom', () => {
+    setupTest();
     cy.get('[data-cy="SavedFilters"] [data-cy="Tab_Variants"]').clickAndWait({force: true});
     cy.get('[data-cy="SavedFilters"]').contains('Cypress Variant Type Filter').clickAndWait({force: true});
     cy.get('[data-cy="Title_Variants"]').should('exist');
@@ -28,6 +31,7 @@ describe('Page Dashboard - Widget Saved Filters', () => {
   });
 
   it('Valider les liens disponibles - Bouton Delete', () => {
+    setupTest();
     cy.get('[class*="ListItemWithActions_fuiListItemWithActions"]').each(($el: JQuery<HTMLElement>) => {
       if ($el.text().includes('Cypress_FB')) {
         cy.wrap($el).find('svg[data-icon="delete"]').clickAndWait({force:true});

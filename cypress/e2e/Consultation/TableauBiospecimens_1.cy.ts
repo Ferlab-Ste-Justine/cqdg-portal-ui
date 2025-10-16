@@ -1,17 +1,19 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('biospecimens', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
-});
-
 describe('Page Data Exploration (Biospecimens) - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('biospecimens', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+  };
+
   it('Titre', () => {
+    setupTest();
     cy.get('[data-cy="Title_DataExploration"]').contains('Data Explorer');
   });
 
   it('Tableau', () => {
+    setupTest();
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(1).contains('SR0000214').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(2).contains('SP0000179').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(3).contains('PT0000010').should('exist');

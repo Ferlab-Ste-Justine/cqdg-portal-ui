@@ -2,12 +2,12 @@
 import '../../support/commands';
 
 describe('Page Logout', () => {
-
-  beforeEach(() => {
+  const setupTest = () => {
     cy.login();
-  });
+  };
 
   it('Vérifier les informations affichées', () => {
+    setupTest();
     cy.logout();
 
     cy.get('[class*="TopBanner_title"]').contains(/(Portail de données|Data Portal)/).should('exist');

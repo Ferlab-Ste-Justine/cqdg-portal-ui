@@ -1,18 +1,20 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitProfileSettingsPage();
-});
-
 describe('Page Profile Settings - Valider les liens disponibles', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitProfileSettingsPage();
+  };
+
   it('Lien du bouton View profile', () => {
+    setupTest();
     cy.get('[class*="ProfileSettings_profileSettingsHeader"] button').clickAndWait({force: true}); // data-cy="ViewProfileButton"
     cy.get('[data-cy="AvatarHeader"]').should('exist');
   });
 
   it('Bouton Discard changes de la section Identification', () => {
+    setupTest();
     cy.get('input[id="first_name"]').clear({force: true}).type('Discard', {force: true}).should('have.attr', 'value', 'Discard');
     cy.get('input[id="last_name"]').clear({force: true}).type('Discard', {force: true}).should('have.attr', 'value', 'Discard');
     cy.get('input[id="public_email"]').clear({force: true}).type('Discard', {force: true}).should('have.attr', 'value', 'Discard');
@@ -26,6 +28,7 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Checkbox No Affiliation de la section Role & Affiliation', () => {
+    setupTest();
     cy.get('input[id="no_affiliation"]').uncheck({force: true}).should('not.be.checked');
 
     cy.get('input[id="affiliation"]').should('exist');
@@ -33,6 +36,7 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Bouton Discard changes de la section Role & Affiliation', () => {
+    setupTest();
     cy.wait(1000);
     cy.get('input[id="no_affiliation"]').check({force: true});
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(1).find('button[class*="ant-btn-primary"]').clickAndWait({force: true});
@@ -46,6 +50,7 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Bouton Discard changes de la section Research Domain', () => {
+    setupTest();
     cy.wait(1000);
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="aging"]').check({force: true});
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="other"]').uncheck({force: true});
@@ -58,6 +63,7 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Bouton Delete my account de la section Delete Account', () => {
+    setupTest();
     cy.get('button[class*="ant-btn-dangerous"]').clickAndWait({force: true});
     
     cy.get('[class="ant-modal-content"]').contains('Delete Account').should('exist');
@@ -70,6 +76,7 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Bouton Save changes de la section Identification', () => {
+    setupTest();
     cy.get('input[id="first_name"]').clear({force: true}).type('FirstNameEdit', {force: true}).should('have.attr', 'value', 'FirstNameEdit');
     cy.get('input[id="last_name"]').clear({force: true}).type('LastNameEdit', {force: true}).should('have.attr', 'value', 'LastNameEdit');
     cy.get('input[id="public_email"]').clear({force: true}).type('email@edit.com', {force: true}).should('have.attr', 'value', 'email@edit.com');
@@ -84,6 +91,7 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Bouton Save changes de la section Role & Affiliation', () => {
+    setupTest();
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(1).find('input[value="other"]').check({force: true}).should('be.checked');
     cy.get('input[id="no_affiliation"]').uncheck({force: true}).should('not.be.checked');
     cy.get('input[id="affiliation"]').clear({force: true}).type('AffiliationEdit', {force: true}).should('have.attr', 'value', 'AffiliationEdit');
@@ -94,6 +102,7 @@ describe('Page Profile Settings - Valider les liens disponibles', () => {
   });
 
   it('Bouton Save changes de la section Research Domain', () => {
+    setupTest();
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="aging"]').uncheck({force: true}).should('not.be.checked');
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('input[value="other"]').check({force: true}).should('be.checked');
     cy.get('[class*="Gridcard_fuiCardWrapper"]').eq(2).find('button[class*="ant-btn-primary"]').clickAndWait({force: true});

@@ -1,19 +1,18 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
-import { getDateTime, oneMinute } from '../../pom/shared/Utils';
-
-const { strDate } = getDateTime();
-
-beforeEach(() => {
-  cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
-
-  cy.login();
-  cy.visitStudyEntity('T-DEE', 1);
-  cy.get('[class*="EntityTitle"] [data-cy="RequestAccess_Button"]').click({force: true});
-});
+import { oneMinute } from '../../pom/shared/Utils';
 
 describe('Page d\'une étude - Bouton Request Access', () => {
+  const setupTest = () => {
+    cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
+
+    cy.login();
+    cy.visitStudyEntity('T-DEE', 1);
+    cy.get('[class*="EntityTitle"] [data-cy="RequestAccess_Button"]').click({force: true});
+  };
+
   it('Vérifier les informations affichées - Modal', () => {
+    setupTest();
     cy.get('[class="ant-modal-title"]').contains('Request access').should('exist');
     cy.get('[class="ant-modal-body"]').contains('To obtain access to the data from this study, please submit your request to the study’s Access Authority:').should('exist');
     cy.get('[class="ant-modal-body"]').contains('jacques.michaud.med@ssss.gouv.qc.ca').should('exist');
@@ -32,14 +31,17 @@ describe('Page d\'une étude - Bouton Request Access', () => {
   });
 
   it('Valider les liens disponibles - Lien Access Authority', () => {
+    setupTest();
     cy.get('[class*="ant-modal-body"] [href="mailto:jacques.michaud.med@ssss.gouv.qc.ca"]').contains('jacques.michaud.med@ssss.gouv.qc.ca').should('exist');
   });
 
   it('Valider les liens disponibles - Lien Documentation', () => {
+    setupTest();
     cy.get('[class="ant-modal-body"] a').eq(1).should('have.attr', 'href', 'https://docs.cqdg.ca/docs/faire-une-demande-daccès-aux-données-du-cqdg?ljs=en-CA');
   });
 
   it('Valider les fonctionnalités - Bouton Cancel', () => {
+    setupTest();
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').click({force: true});
     cy.get('[class*="DownloadRequestAccessModal_modal"]').should('have.css', 'display', 'none');
     cy.wait(5000);
@@ -49,6 +51,7 @@ describe('Page d\'une étude - Bouton Request Access', () => {
   });
 
   it('Valider les fonctionnalités - Bouton Download', () => {
+    setupTest();
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-request-access', 1);
     cy.get('[class*="DownloadRequestAccessModal_modal"]').should('have.css', 'display', 'none');
     cy.waitUntilFile(oneMinute);

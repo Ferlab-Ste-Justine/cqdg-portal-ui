@@ -1,17 +1,18 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('biospecimens');
-  cy.get('[data-cy="SidebarMenuItem_Biospecimen"]').clickAndWait({force: true});
-  cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
-  cy.get('[class="ant-modal-header"]').contains('sample').should('exist');
-  cy.get('[class*="UploadModal"] textarea').type('sr0000214,s03510 unknown');
-});
-
 describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'identifiants', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('biospecimens');
+    cy.get('[data-cy="SidebarMenuItem_Biospecimen"]').clickAndWait({force: true});
+    cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
+    cy.get('[class="ant-modal-header"]').contains('sample').should('exist');
+    cy.get('[class*="UploadModal"] textarea').type('sr0000214,s03510 unknown');
+  };
+
   it('Vérifier les informations affichées - Popover', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] [class*="anticon-info-circle"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
 
     cy.get('[class*="EntityUploadIds_entityUploadIdsPopover"]').should('not.have.class', 'ant-popover-hidden');
@@ -25,6 +26,7 @@ describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'ident
   });
 
   it('Valider les fonctionnalités de la modal - Bouton Supprimer', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] textarea').contains('sr0000214').should('exist');
     cy.get('[class*="UploadModal"] button[class*="ant-btn-text"]').clickAndWait({force: true});
 
@@ -33,12 +35,14 @@ describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'ident
   });
   
   it('Valider les fonctionnalités de la modal - Bouton Annuler', () => {
+    setupTest();
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').clickAndWait({force: true});
 
     cy.get('body').contains('Use the search tools & facets on the left to build a query').should('exist');
   });
 
   it('Valider les fonctionnalités de la modal - Section Résumé masquable', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] [class="ant-collapse-header-text"]').contains('Summary Table (2 matched, 1 unmatched)').should('exist');
 
     cy.get('[class*="UploadModal"] span[class*="ant-collapse-arrow"]').clickAndWait({force: true});
@@ -49,6 +53,7 @@ describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'ident
   });
 
   it('Vérifier les informations affichées - Section Résumé (onglet Reconnus)', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] span[class*="ant-collapse-arrow"]').clickAndWait({force: true});
 
     cy.get('[class*="UploadModal_tablesMessages"]').contains('3 submitted identifiers mapped to 1 unique system identifiers').should('exist');
@@ -66,6 +71,7 @@ describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'ident
   });
 
   it('Vérifier les informations affichées - Section Résumé (onglet Inconnus)', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] span[class*="ant-collapse-arrow"]').clickAndWait({force: true});
     cy.get('[data-node-key="unmatched"]').clickAndWait({force: true});
 
@@ -79,6 +85,7 @@ describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'ident
   });
   
   it('Valider les fonctionnalités de la modal - Bouton Téléverser', () => {
+    setupTest();
     cy.wait(2000);
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/graphql', 3);
 

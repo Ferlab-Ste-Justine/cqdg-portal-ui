@@ -1,20 +1,19 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
-import { getDateTime, oneMinute } from '../../pom/shared/Utils';
-
-const { strDate } = getDateTime();
-
-beforeEach(() => {
-  cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
-
-  cy.login();
-  cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
-  cy.get('div[role="tabpanel"] [class*="ant-table-row"]').eq(0).find('[type="checkbox"]').check({force: true});
-  cy.get('[data-cy="RequestAccess_Button"]').click({force: true});
-});
+import { oneMinute } from '../../pom/shared/Utils';
 
 describe('Page Data Exploration (Data Files) - Bouton Request Access', () => {
+  const setupTest = () => {
+    cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
+
+    cy.login();
+    cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.get('div[role="tabpanel"] [class*="ant-table-row"]').eq(0).find('[type="checkbox"]').check({force: true});
+    cy.get('[data-cy="RequestAccess_Button"]').click({force: true});
+  };
+
   it('Vérifier les informations affichées - Modal', () => {
+    setupTest();
     cy.get('[class="ant-modal-title"]').contains('Request access').should('exist');
     cy.get('[class="ant-modal-body"]').contains('Download an archive containing documents to guide you through your access requests. You will find terms of use and the Access Authority contact information for each study, as well as a list of files included in each study\'s access request.').should('exist');
     cy.get('[class="ant-modal-body"]').contains('For more information, consult the README_EN file in the archive or this documentation page:').should('exist');
@@ -32,10 +31,12 @@ describe('Page Data Exploration (Data Files) - Bouton Request Access', () => {
   });
 
   it('Valider les liens disponibles - Lien Documentation', () => {
+    setupTest();
     cy.get('[class="ant-modal-body"] a').should('have.attr', 'href', 'https://docs.cqdg.ca/docs/faire-une-demande-daccès-aux-données-du-cqdg?ljs=en-CA');
   });
 
   it('Valider les fonctionnalités - Bouton Cancel', () => {
+    setupTest();
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').click({force: true});
     cy.get('[class*="DownloadRequestAccessModal_modal"]').should('have.css', 'display', 'none');
     cy.wait(5000);
@@ -45,6 +46,7 @@ describe('Page Data Exploration (Data Files) - Bouton Request Access', () => {
   });
 
   it('Valider les fonctionnalités - Bouton Download', () => {
+    setupTest();
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-request-access', 1);
     cy.get('[class*="DownloadRequestAccessModal_modal"]').should('have.css', 'display', 'none');
     cy.waitUntilFile(oneMinute);

@@ -1,29 +1,31 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitStudiesPage();
-  cy.showColumn('Population');
-  cy.showColumn('Files');
-  cy.showColumn('Biospecimens');
-  cy.showColumn('Access Limitation');
-  cy.showColumn('Access Requirement');
-  cy.showColumn('Overall Design');
-  cy.showColumn('Data Collection Method');
-  cy.showColumn('Principal Investigators');
-  cy.showColumn('Contact Persons');
-  cy.showColumn('Affiliated Institutions');
-  cy.showColumn('Inclusion and Exclusion Criteria');
-  cy.showColumn('Description');
-});
-
 describe('Page des études - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitStudiesPage();
+    cy.showColumn('Population');
+    cy.showColumn('Files');
+    cy.showColumn('Biospecimens');
+    cy.showColumn('Access Limitation');
+    cy.showColumn('Access Requirement');
+    cy.showColumn('Overall Design');
+    cy.showColumn('Data Collection Method');
+    cy.showColumn('Principal Investigators');
+    cy.showColumn('Contact Persons');
+    cy.showColumn('Affiliated Institutions');
+    cy.showColumn('Inclusion and Exclusion Criteria');
+    cy.showColumn('Description');
+  };
+
   it('Titre', () => {
+    setupTest();
     cy.get('[data-cy="Title_Studies"]').contains('Study Directory');
   });
 
   it('Tableau', () => {
+    setupTest();
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(0).contains('T-DEE').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(1).contains('Developmental and epileptic encephalopathies').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(2).contains('RARE-QC2').should('exist');
@@ -53,6 +55,7 @@ describe('Page des études - Vérifier les informations affichées', () => {
   });
 
   it('Summary', () => {
+    setupTest();
     cy.get('tfoot [class*="summaryTotal"]').contains('Total').should('exist');
     cy.get('tfoot [class*="summaryTitle"]').eq(0).contains('Participants').should('exist');
     cy.get('tfoot [class*="summarySum"]').eq(0).contains(/\d{1}/).should('exist');

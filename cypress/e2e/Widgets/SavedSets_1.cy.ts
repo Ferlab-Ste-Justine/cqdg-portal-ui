@@ -1,13 +1,14 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDashboard();
-});
-
 describe('Page Dashboard - Widget Saved Sets', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDashboard();
+  };
+
   it('Vérifier les informations affichées - Tooltip', () => {
+    setupTest();
     cy.get('[class*="DashboardCards_dashboardCard"]').each(($el: JQuery<HTMLElement>) => {
       if ($el.text().includes('My Sets')) {
         cy.wrap($el).find('[class*="CardHeader_infoIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
@@ -18,6 +19,7 @@ describe('Page Dashboard - Widget Saved Sets', () => {
   });
 
   it('Valider les liens disponibles - Learn more du Tooltip', () => {
+    setupTest();
     cy.get('[class*="DashboardCards_dashboardCard"]').each(($el: JQuery<HTMLElement>) => {
       if ($el.text().includes('My Sets')) {
         cy.wrap($el).find('[class*="CardHeader_infoIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});

@@ -1,16 +1,17 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitVariantsPage();
-  cy.get(`[data-cy="SidebarMenuItem_Gene"]`).clickAndWait({force: true});
-  cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
-  cy.get('[class*="UploadModal"] textarea').type('prdx1,nkefa ensg00000117450\nunknown');
-});
-
 describe('Page des variants - Téléverser une liste de gènes', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitVariantsPage();
+    cy.get(`[data-cy="SidebarMenuItem_Gene"]`).clickAndWait({force: true});
+    cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
+    cy.get('[class*="UploadModal"] textarea').type('prdx1,nkefa ensg00000117450\nunknown');
+  };
+
   it('Vérifier les informations affichées - Popover', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] [class*="anticon-info-circle"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
 
     cy.get('[class*="EntityUploadIds_entityUploadIdsPopover"]').should('not.have.class', 'ant-popover-hidden');
@@ -24,6 +25,7 @@ describe('Page des variants - Téléverser une liste de gènes', () => {
   });
 
   it('Valider les fonctionnalités de la modal - Bouton Supprimer', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] textarea').contains('prdx1').should('exist');
     cy.get('[class*="UploadModal"] button[class*="ant-btn-text"]').clickAndWait({force: true});
 
@@ -32,12 +34,14 @@ describe('Page des variants - Téléverser une liste de gènes', () => {
   });
   
   it('Valider les fonctionnalités de la modal - Bouton Annuler', () => {
+    setupTest();
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').clickAndWait({force: true});
 
     cy.get('body').contains('Use the search tools & facets on the left to build a query').should('exist');
   });
 
   it('Valider les fonctionnalités de la modal - Section Résumé masquable', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] [class="ant-collapse-header-text"]').contains('Summary Table (3 matched, 1 unmatched)').should('exist');
 
     cy.get('[class*="UploadModal"] span[class*="ant-collapse-arrow"]').clickAndWait({force: true});
@@ -48,6 +52,7 @@ describe('Page des variants - Téléverser une liste de gènes', () => {
   });
 
   it('Vérifier les informations affichées - Section Résumé (onglet Reconnus)', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] span[class*="ant-collapse-arrow"]').clickAndWait({force: true});
 
     cy.get('[class*="UploadModal_tablesMessages"]').contains('4 submitted identifiers mapped to 1 unique system identifiers').should('exist');
@@ -68,6 +73,7 @@ describe('Page des variants - Téléverser une liste de gènes', () => {
   });
 
   it('Vérifier les informations affichées - Section Résumé (onglet Inconnus)', () => {
+    setupTest();
     cy.get('[class*="UploadModal"] span[class*="ant-collapse-arrow"]').clickAndWait({force: true});
     cy.get('[data-node-key="unmatched"]').clickAndWait({force: true});
 
@@ -81,6 +87,7 @@ describe('Page des variants - Téléverser une liste de gènes', () => {
   });
   
   it('Valider les fonctionnalités de la modal - Bouton Téléverser', () => {
+    setupTest();
     cy.wait(2000);
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/graphql', 3);
 

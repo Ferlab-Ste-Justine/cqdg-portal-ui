@@ -1,17 +1,18 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitVariantsPage('?sharedFilterId=5b4acf3a-54b3-4997-807e-d864e96f0aad');
-
-  cy.get('[data-cy="SidebarMenuItem_Variant"]').clickAndWait({force: true});
-  cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
-  cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
-});
-
 describe('Page Data Exploration - Requêtes', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitVariantsPage('?sharedFilterId=5b4acf3a-54b3-4997-807e-d864e96f0aad');
+
+    cy.get('[data-cy="SidebarMenuItem_Variant"]').clickAndWait({force: true});
+    cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
+    cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
+  };
+
   it('Modifier l\'opérateur d\'une requête', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql1');
     cy.get('[class*="QueryBar_selected"] [class*="Combiner_operator"]').clickAndWait({force: true});
     for (let i = 0; i < 7; i++) {
@@ -40,6 +41,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Supprimer une des pilules d\'une requête avec le X', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('.simplebar-wrapper').invoke('css', 'overflow', 'visible');
     cy.get('[class*="QueryBar_selected"] button[class*="QueryPill_close"]').eq(0).clickAndWait();

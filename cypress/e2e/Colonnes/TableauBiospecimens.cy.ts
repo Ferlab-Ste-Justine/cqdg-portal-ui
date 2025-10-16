@@ -1,13 +1,14 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('biospecimens');
-});
-
 describe('Page Data Exploration (Biospecimens) - Colonnes du tableau', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('biospecimens');
+  };
+
   it('Valider l\'affichage (par défaut/optionnel) et l\'ordre des colonnes', () => {
+    setupTest();
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(1)
       .should('not.have.class', 'ant-table-column-has-sorters')
@@ -50,6 +51,7 @@ describe('Page Data Exploration (Biospecimens) - Colonnes du tableau', () => {
   });
 
   it('Masquer/Afficher une colonne', () => {
+    setupTest();
     cy.get('thead[class="ant-table-thead"]')
       .contains('Biospecimen').should('exist');
 

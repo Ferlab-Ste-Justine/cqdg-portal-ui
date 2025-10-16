@@ -2,18 +2,20 @@
 import { SharedFilters } from '../../pom/shared/Filters';
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitVariantsPage(SharedFilters.variant.predefinedQueries);
-});
-
 describe('Page Data Exploration - Requêtes', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitVariantsPage(SharedFilters.variant.predefinedQueries);
+  };
+
   it('Validation Facette numérique ou No Data', () => {
+    setupTest();
     cy.validateTotalSelectedQuery('173K');
     cy.validateTableResultsCount('173K');
   });
 
   it('Validation Facette numérique OU Facette standard', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('.simplebar-wrapper').invoke('css', 'overflow', 'visible');
     cy.get('[class*="QueryBar_queryBarWrapper"]').eq(1).clickAndWait();
@@ -24,6 +26,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Validation Facette numérique ou No Data ET Facette standard', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('.simplebar-wrapper').invoke('css', 'overflow', 'visible');
     cy.get('[class*="QueryBar_queryBarWrapper"]').eq(2).clickAndWait();
@@ -34,6 +37,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Validation Facette standard (Any of)', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('.simplebar-wrapper').invoke('css', 'overflow', 'visible');
     cy.get('[class*="QueryBar_queryBarWrapper"]').eq(3).clickAndWait();
@@ -44,6 +48,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Validation Facette standard (All of)', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('.simplebar-wrapper').invoke('css', 'overflow', 'visible');
     cy.get('[class*="QueryBar_queryBarWrapper"]').eq(4).clickAndWait();
@@ -54,6 +59,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Validation Facette standard (None of)', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('.simplebar-wrapper').invoke('css', 'overflow', 'visible');
     cy.get('[class*="QueryBar_queryBarWrapper"]').eq(5).clickAndWait();
@@ -64,6 +70,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Validation Facette standard (None of) ET Facette numérique', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('.simplebar-wrapper').invoke('css', 'overflow', 'visible');
     cy.get('[class*="QueryBar_queryBarWrapper"]').eq(6).clickAndWait();

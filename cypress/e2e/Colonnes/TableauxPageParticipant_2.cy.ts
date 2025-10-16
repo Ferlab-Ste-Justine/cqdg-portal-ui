@@ -1,14 +1,15 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitParticipantEntity('PT0000010');
-  cy.resetColumns('diagnosis');
-});
-
 describe('Page d\'un participant - Colonnes du tableau Diagnoses', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitParticipantEntity('PT0000010');
+    cy.resetColumns('diagnosis');
+  };
+
   it('Valider l\'affichage (par défaut/optionnel) et l\'ordre des colonnes', () => {
+    setupTest();
     cy.get('[id="diagnosis"]')
       .find('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(0)
@@ -47,6 +48,7 @@ describe('Page d\'un participant - Colonnes du tableau Diagnoses', () => {
   });
 
   it('Masquer/Afficher une colonne affichée', () => {
+    setupTest();
     cy.get('[id="diagnosis"]')
       .find('thead[class="ant-table-thead"]')
       .contains('Diagnosis (MONDO)').should('exist');

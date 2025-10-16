@@ -1,17 +1,19 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitParticipantEntity('PT0000010');
-});
-
 describe('Page d\'un participant - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitParticipantEntity('PT0000010');
+  };
+
   it('Titre', () => {
+    setupTest();
     cy.get('[class*="EntityTitle"]').contains('PT0000010');
   });
 
   it('Panneau Summary', () => {
+    setupTest();
     cy.get('[data-cy="SummaryHeader_Studies_Button"]').contains(/^1$/);
     cy.get('[data-cy="SummaryHeader_Studies_Button"]').contains('Study');
     cy.get('[data-cy="SummaryHeader_Biospecimens_Button"]').contains(/^1$/);
@@ -34,6 +36,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
   });
 
   it('Panneau Profile', () => {
+    setupTest();
     cy.get('[id="profile"] [class*="EntityDescriptions_title"]').contains('Profile').should('exist');
     cy.get('[id="profile"] [class="ant-collapse-header"]').contains('Profile').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(0).contains('Sex').should('exist');
@@ -57,11 +60,13 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
   });
   
   it('Panneau Family (sans famille)', () => {
+    setupTest();
     cy.visitParticipantEntity('PT0000603');
     cy.get('[id="family"]').should('not.exist');
   });
 
   it('Panneau Family (avec famille)', () => {
+    setupTest();
     cy.resetColumns('family');
     cy.get('[id="family"] [class*="EntityTable_title"]').contains('Family').should('exist');
     cy.get('[id="family"] [class="ant-collapse-header"]').contains('Family ( ').should('exist');
@@ -82,6 +87,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
   });
 
   it('Panneau Data Access', () => {
+    setupTest();
     cy.get('[id="data_access"] [class*="EntityDescriptions_title"]').contains('Data Access').should('exist');
     cy.get('[id="data_access"] [class="ant-collapse-header"]').contains('Data Access').should('exist');
     cy.get('[id="data_access"] [class="ant-descriptions-item-label"]').eq(0).contains('Access Limitations').should('exist');
@@ -98,6 +104,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
   });
   
   it('Panneau Diagnoses', () => {
+    setupTest();
     cy.resetColumns('diagnosis');
     cy.get('[id="diagnosis"] [class*="EntityTable_title"]').contains('Diagnosis').should('exist');
     cy.get('[id="diagnosis"] [class="ant-collapse-header"]').contains('Diagnoses').should('exist');
@@ -120,6 +127,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
   });
   
   it('Panneau Phenotypes', () => {
+    setupTest();
     cy.resetColumns('phenotype');
     cy.get('[id="phenotype"] [class*="EntityTable_title"]').contains('Phenotype').should('exist');
     cy.get('[id="phenotype"] [class="ant-collapse-header"]').contains('Phenotypes').should('exist');
@@ -139,6 +147,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
   });
   
   it('Panneau Biospecimens', () => {
+    setupTest();
     cy.resetColumns('biospecimen');
     cy.get('[id="biospecimen"] [class*="EntityTable_title"]').contains('Biospecimen').should('exist');
     cy.get('[id="biospecimen"] [class="ant-collapse-header"]').contains('Biospecimens').should('exist');
@@ -162,6 +171,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
   });
   
   it('Panneau Files', () => {
+    setupTest();
     cy.get('[id="data_file"] [class*="EntityTable_title"]').contains('Data File').should('exist');
     cy.get('[id="data_file"] [class="ant-collapse-header"]').contains('Data Files').should('exist');
     cy.get('[id="data_file"] [class="ant-collapse-header"]').contains('(6)').should('exist');
