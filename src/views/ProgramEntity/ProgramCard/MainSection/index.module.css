@@ -32,7 +32,6 @@
   align-items: flex-start;
   align-content: flex-start;
   align-self: stretch;
-  margin: auto;
   gap: 32px 0;
   flex: 1 0 0;
   flex-wrap: wrap;

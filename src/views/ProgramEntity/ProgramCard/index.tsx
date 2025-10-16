@@ -27,28 +27,30 @@ const ProgramCard = ({ loading, program }: { loading: boolean; program?: IProgra
               {intl.get('entities.program.allPrograms')}
             </Button>
           </Link>
-          <Link
-            to={STATIC_ROUTES.STUDIES}
-            onClick={() =>
-              addQuery({
-                queryBuilderId: STUDIES_REPO_QB_ID,
-                query: generateQuery({
-                  newFilters: [
-                    generateValueFilter({
-                      field: 'programs.program_id',
-                      value: [program?.program_id || ''],
-                      index: INDEXES.STUDY,
-                    }),
-                  ],
-                }),
-                setAsActive: true,
-              })
-            }
-          >
-            <Button type="default" icon={<ReadOutlined />}>
-              {intl.get('entities.program.viewStudies')}
-            </Button>
-          </Link>
+          {(program?.studies?.length ?? 0) > 0 && (
+            <Link
+              to={STATIC_ROUTES.STUDIES}
+              onClick={() =>
+                addQuery({
+                  queryBuilderId: STUDIES_REPO_QB_ID,
+                  query: generateQuery({
+                    newFilters: [
+                      generateValueFilter({
+                        field: 'programs.program_id',
+                        value: [program?.program_id || ''],
+                        index: INDEXES.STUDY,
+                      }),
+                    ],
+                  }),
+                  setAsActive: true,
+                })
+              }
+            >
+              <Button type="default" icon={<ReadOutlined />}>
+                {intl.get('entities.program.viewStudies')}
+              </Button>
+            </Link>
+          )}
         </Space>
 
         <div className={styles.cardLogo}>
