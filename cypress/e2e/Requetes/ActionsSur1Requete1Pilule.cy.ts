@@ -2,17 +2,18 @@
 import '../../support/commands';
 import { SharedFilters } from '../../pom/shared/Filters';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitVariantsPage(SharedFilters.variant.onePill);
-cy.wait(5*60*1000);
-  cy.get('[data-cy="SidebarMenuItem_Variant"]').clickAndWait({force: true});
-  cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
-  cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
-});
-
 describe('Page Data Exploration - Requêtes', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitVariantsPage(SharedFilters.variant.onePill);
+    
+    cy.get('[data-cy="SidebarMenuItem_Variant"]').clickAndWait({force: true});
+    cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
+    cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
+  };
+
   it('Éditer une pilule via la facette', () => {
+    setupTest();
     cy.checkValueFacetAndApply('Variant Type', 'deletion');
 
     cy.validatePillSelectedQuery('Variant Type', ['SNV','Deletion']);
@@ -22,6 +23,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Éditer une pilule via son popup', () => {
+    setupTest();
     cy.get('[class*="QueryValues_queryValuesContainer"]').contains('SNV').clickAndWait({force:true});
     cy.get('[class*="filtersDropdown"] input[id="input-deletion"]').check({force: true});
     cy.clickAndIntercept('[class*="filtersDropdown"] [data-cy="Apply_Variant Type"]', 'POST', '**/graphql', 1);
@@ -33,6 +35,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Ajouter une pilule à une requête', () => {
+    setupTest();
     cy.checkValueFacetAndApply('Consequence', 'intron');
 
     cy.validatePillSelectedQuery('Variant Type', ['SNV']);
@@ -44,6 +47,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Construire une deuxième requête', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('button[class*="QueryTools_button"]').contains('New query').clickAndWait({force:true});
     for (let i = 0; i < 7; i++) {
@@ -64,6 +68,7 @@ describe('Page Data Exploration - Requêtes', () => {
   });
 
   it('Dupliquer une requête', () => {
+    setupTest();
     cy.intercept('POST', '**/graphql').as('getPOSTgraphql');
     cy.get('[class*="QueryBar_selected"] [data-icon="copy"]').clickAndWait({force: true});
     cy.wait('@getPOSTgraphql');

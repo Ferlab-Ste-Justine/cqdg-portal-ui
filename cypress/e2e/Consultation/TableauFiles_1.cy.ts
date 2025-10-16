@@ -1,20 +1,22 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
-  cy.showColumn('Dataset');
-  cy.showColumn('File Name');
-  cy.showColumn('Platform');
-});
-
 describe('Page Data Exploration (Data Files) - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.showColumn('Dataset');
+    cy.showColumn('File Name');
+    cy.showColumn('Platform');
+  };
+
   it('Titre', () => {
+    setupTest();
     cy.get('[data-cy="Title_DataExploration"]').contains('Data Explorer');
   });
 
   it('Tableau', () => {
+    setupTest();
     cy.get('tr[data-row-key="FI00112245"] [class*="ant-table-cell"]').eq(1).find('svg[data-icon="lock"]').should('exist');
     cy.get('tr[data-row-key="FI00112245"] [class*="ant-table-cell"]').eq(2).contains('C').should('exist');
     cy.get('tr[data-row-key="FI00112245"] [class*="ant-table-cell"]').eq(2).find('[class*="ant-tag-geekblue"]').should('exist');

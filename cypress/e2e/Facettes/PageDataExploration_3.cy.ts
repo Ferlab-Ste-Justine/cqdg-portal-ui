@@ -1,16 +1,17 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('datafiles');
-  cy.get('[data-cy="SidebarMenuItem_Data File"]').clickAndWait({force: true});
-  cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
-  cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
-});
-
 describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('datafiles');
+    cy.get('[data-cy="SidebarMenuItem_Data File"]').clickAndWait({force: true});
+    cy.get('[data-cy="ExpandAll"]').clickAndWait({force: true});
+    cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
+  };
+
   it('Expand all/Collapse all', () => {
+    setupTest();
     cy.get('section[class*="Filters"] [aria-expanded="true"]').should('exist');
     cy.get('section[class*="Filters"] [aria-expanded="false"]').should('not.exist');
 
@@ -21,6 +22,7 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
   });
 
   it('Search by file ID - FI0011224', () => {
+    setupTest();
     cy.get('[data-cy="SearchLabel_Title"]').contains('Search by IDs').should('exist');
 
     cy.get('[class*="SearchLabel_tooltipIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true}); //data-cy="SearchLabel_InfoCircleOutlined"
@@ -40,36 +42,43 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
   });
 
   it('Dataset - Data1', () => {
+    setupTest();
     cy.validateFacetFilter('Dataset', 'Data1', 'data1', /^26$/);
     cy.validateFacetRank(0, 'Dataset');
   });
 
   it('Data Category - Genomics', () => {
+    setupTest();
     cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,207$/);
     cy.validateFacetRank(1, 'Data Category');
   });
 
   it('Data Type - Aligned Reads', () => {
+    setupTest();
     cy.validateFacetFilter('Data Type', 'Aligned Reads', 'Aligned Reads', /^602$/);
     cy.validateFacetRank(2, 'Data Type');
   });
 
   it('Strategy - Whole Genome Sequencing', () => {
+    setupTest();
     cy.validateFacetFilter('Strategy', 'WGS', 'WGS', /^3,207$/);
     cy.validateFacetRank(3, 'Strategy');
   });
 
   it('Platform - Illumina HiSeq 2500 PE125', () => {
+    setupTest();
     cy.validateFacetFilter('Platform', 'Illumina HiSeq 2500 PE125', 'Illumina HiSeq 2500 PE125', /^2,369$/);
     cy.validateFacetRank(4, 'Platform');
   });
 
   it('Library Selection - Reduced Representation', () => {
+    setupTest();
     cy.validateFacetFilter('Library Selection', 'Reduced Representation', 'Reduced Representation', /^3,207$/);
     cy.validateFacetRank(5, 'Library Selection');
   });
 
   it('Format - gVCF', () => {
+    setupTest();
     cy.validateFacetFilter('Format', 'GVCF', 'gVCF', /^597$/);
     cy.validateFacetRank(6, 'Format');
   });

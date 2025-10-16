@@ -1,17 +1,19 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitStudyEntity('T-DEE', 1);
-});
-
 describe('Page d\'une étude - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitStudyEntity('T-DEE', 1);
+  };
+
   it('Titre', () => {
+    setupTest();
     cy.get('[class*="EntityTitle"]').contains('Developmental and epileptic encephalopathies');
   });
 
   it('Panneau Summary', () => {
+    setupTest();
     cy.get('[data-cy="SummaryHeader_Participants_Button"]').contains(/^588$/);
     cy.get('[data-cy="SummaryHeader_Participants_Button"]').contains('Participants');
     cy.get('[data-cy="SummaryHeader_Families_Button"]').contains(/^196$/);
@@ -68,6 +70,7 @@ describe('Page d\'une étude - Vérifier les informations affichées', () => {
   });
 
   it('Panneau Data Access', () => {
+    setupTest();
     cy.get('[id="data_access"] [class*="EntityDescriptions_title"]').contains('Data Access').should('exist');
     cy.get('[id="data_access"] [class="ant-collapse-header"]').contains('Data Access').should('exist');
     cy.get('[id="data_access"] [class="ant-descriptions-item-label"]').eq(0).contains('Access Limitation').should('exist');
@@ -89,6 +92,7 @@ describe('Page d\'une étude - Vérifier les informations affichées', () => {
   });
 
   it('Panneau data1', () => {
+    setupTest();
     cy.visitStudyEntity('STUDY1', 1);
     cy.get('[id="dataset"]').eq(0).find('[class*="Datasets_title"]').contains('Specialized Datasets').should('exist');
     cy.get('[id="dataset"]').eq(0).find('[id="dataset"]').eq(0).find('[class="ant-collapse-header"]').contains('data1').should('exist');
@@ -114,6 +118,7 @@ describe('Page d\'une étude - Vérifier les informations affichées', () => {
   });
 
   it('Panneau Files', () => {
+    setupTest();
     cy.get('[id="data_file"] [class*="EntityTable_title"]').contains('Data File').should('exist');
     cy.get('[id="data_file"] [class="ant-collapse-header"]').contains('Data Files').should('exist');
     cy.get('[id="data_file"] [class="ant-collapse-header"]').contains('(3,136)').should('exist');

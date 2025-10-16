@@ -1,19 +1,18 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
-import { getDateTime, oneMinute } from '../../pom/shared/Utils';
-
-const { strDate } = getDateTime();
-
-beforeEach(() => {
-  cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
-
-  cy.login();
-  cy.visitStudyEntity('STUDY1', 1);
-  cy.get('[class*="EntityDataset_container"] [data-cy="FileManifest_Button"]').eq(1).click({force: true});
-});
+import { oneMinute } from '../../pom/shared/Utils';
 
 describe('Page d\'une étude (Dataset) - Bouton Manifest', () => {
+  const setupTest = () => {
+    cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
+
+    cy.login();
+    cy.visitStudyEntity('STUDY1', 1);
+    cy.get('[class*="EntityDataset_container"] [data-cy="FileManifest_Button"]').eq(1).click({force: true});
+  };
+
   it('Vérifier les informations affichées - Modal', () => {
+    setupTest();
     cy.get('[class="ant-modal-title"]').contains('File manifest').should('exist');
     cy.get('[class="ant-modal-body"]').contains('Download a manifest of this study’s files which can be used with CQDG\'s bulk download tool. This manifest also includes additional information, including the participants and samples associated with these files.').should('exist');
     cy.get('[class="ant-modal-body"]').contains('Include data files of the same type for the participants\' related family members for this selection.').should('not.exist');
@@ -53,6 +52,7 @@ describe('Page d\'une étude (Dataset) - Bouton Manifest', () => {
   });
 
   it('Valider les fonctionnalités - Bouton Cancel', () => {
+    setupTest();
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').click({force: true});
     cy.get('[class*="DownloadFileManifestModal_modal"]').should('not.exist');
     cy.task('fileExists', `${Cypress.config('downloadsFolder')}`).then((exists) => {
@@ -61,12 +61,14 @@ describe('Page d\'une étude (Dataset) - Bouton Manifest', () => {
   });
 
   it('Valider les fonctionnalités - Bouton Copy manifest ID', () => {
+    setupTest();
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/sets', 1, 0);
     cy.get('[class="ant-message"]').contains('ID copied to clipboard').should('exist');
     cy.get('[class="ant-message"]').contains('error').should('not.exist');
   });
 
   it('Vérifier les informations affichées - Tooltip du bouton Copy manifest ID', () => {
+    setupTest();
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"] [class*="anticon-copy"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
     cy.get('div[class="ant-tooltip-inner"]').contains('Copy the manifest ID for use in ').should('exist');
     cy.get('div[class="ant-tooltip-inner"]').contains('ferload').should('exist');
@@ -74,11 +76,13 @@ describe('Page d\'une étude (Dataset) - Bouton Manifest', () => {
   });
 
   it('Valider les liens disponibles - Tooltip du bouton Copy manifest ID', () => {
+    setupTest();
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"] [class*="anticon-copy"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
     cy.get('div[class="ant-tooltip-inner"] [class*="DownloadFileManifestModal_externalLinkFerload"]').should('have.attr', 'href', 'https://docs.cqdg.ca/docs/comment-utiliser-le-client-ferload?ljs=en-CA');
   });
 
   it('Valider les fonctionnalités - Bouton Download', () => {
+    setupTest();
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-manifest', 1, 1);
     cy.get('[class*="DownloadFileManifestModal_modal"]').should('not.exist');
     cy.waitUntilFile(oneMinute);

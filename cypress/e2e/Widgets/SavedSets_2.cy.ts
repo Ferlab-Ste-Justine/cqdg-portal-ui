@@ -1,25 +1,28 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('participants');
-  cy.get('[data-cy="SidebarMenuItem_Participant"]').clickAndWait({force: true});
-  cy.createSetIfNotExists('Cypress_SB', 0);
-  cy.visitDashboard();
-});
-
 describe('Page Dashboard - Widget Saved Sets', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('participants');
+    cy.get('[data-cy="SidebarMenuItem_Participant"]').clickAndWait({force: true});
+    cy.createSetIfNotExists('Cypress_SB', 0);
+    cy.visitDashboard();
+  };
+
   it('Vérifier les informations affichées - Nom', () => {
+    setupTest();
     cy.get('[data-cy="SavedSets"]').contains('Cypress_SB').should('exist');
   });
 
   it('Vérifier les informations affichées - Stamp', () => {
+    setupTest();
     cy.get('[data-cy="SavedSets"]').contains('Last saved:').should('exist');
     cy.get('[data-cy="SavedSets"]').contains(' ago').should('exist');
   });
 
   it('Valider les liens disponibles - Nom', () => {
+    setupTest();
     cy.get('[data-cy="Tab_Biospecimens"]').clickAndWait({force: true});
     cy.get('[data-cy="SavedSets"]').contains('Cypress Biospecimens').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Biospecimens"]').should('exist');
@@ -42,6 +45,7 @@ describe('Page Dashboard - Widget Saved Sets', () => {
   });
 
   it('Valider les liens disponibles - Bouton Delete', () => {
+    setupTest();
     cy.get('[class*="ListItemWithActions_fuiListItemWithActions"]').each(($el: JQuery<HTMLElement>) => {
       if ($el.text().includes('Cypress_SB')) {
         cy.wrap($el).find('svg[data-icon="delete"]').clickAndWait({force:true});

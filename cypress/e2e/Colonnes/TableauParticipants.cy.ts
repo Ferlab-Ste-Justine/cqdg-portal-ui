@@ -1,13 +1,14 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('participants');
-});
-
 describe('Page Data Exploration (Participants) - Colonnes du tableau', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('participants');
+  };
+
   it('Valider l\'affichage (par défaut/optionnel) et l\'ordre des colonnes', () => {
+    setupTest();
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(1)
       .should('not.have.class', 'ant-table-column-has-sorters')
@@ -114,6 +115,7 @@ describe('Page Data Exploration (Participants) - Colonnes du tableau', () => {
   });
 
   it('Masquer une colonne affichée', () => {
+    setupTest();
     cy.get('thead[class="ant-table-thead"]')
       .contains('Study').should('exist');
 
@@ -126,6 +128,7 @@ describe('Page Data Exploration (Participants) - Colonnes du tableau', () => {
   });
 
   it('Afficher une colonne masquée', () => {
+    setupTest();
     cy.get('thead[class="ant-table-thead"]')
       .contains('Gender').should('not.exist');
 

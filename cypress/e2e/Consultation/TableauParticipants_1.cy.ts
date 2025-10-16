@@ -1,25 +1,27 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration('participants', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
-  cy.showColumn('Gender');
-  cy.showColumn(/^Race$/);
-  cy.showColumn('Race (Other)');
-  cy.showColumn('Diagnosis (ICD)');
-  cy.showColumn('Diagnosis (Source Text)');
-  cy.showColumn('External Participant');
-  cy.showColumn('Vital Status');
-  cy.showColumn('Program');
-});
-
 describe('Page Data Exploration (Participants) - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration('participants', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.showColumn('Gender');
+    cy.showColumn(/^Race$/);
+    cy.showColumn('Race (Other)');
+    cy.showColumn('Diagnosis (ICD)');
+    cy.showColumn('Diagnosis (Source Text)');
+    cy.showColumn('External Participant');
+    cy.showColumn('Vital Status');
+    cy.showColumn('Program');
+  };
+
   it('Titre', () => {
+    setupTest();
     cy.get('[data-cy="Title_DataExploration"]').contains('Data Explorer');
   });
 
   it('Tableau', () => {
+    setupTest();
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(1).contains('PT0000010').should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(2).contains('T-DEE').should('exist');
     cy.get('tr[data-row-key="PT0000010"] [class*="ant-table-cell"]').eq(3).contains('Male').should('exist');

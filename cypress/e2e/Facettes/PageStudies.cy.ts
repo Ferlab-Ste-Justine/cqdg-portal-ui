@@ -1,13 +1,14 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitStudiesPage();
-});
-
 describe('Page des études - Filtrer avec les facettes', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitStudiesPage();
+  };
+
   it('Expand all/Collapse all', () => {
+    setupTest();
     cy.get('[data-cy="ExpandAll"]').contains('Collapse all').should('exist');
     cy.get('section[class*="Filters"] [aria-expanded="true"]').should('exist');
     cy.get('section[class*="Filters"] [aria-expanded="false"]').should('not.exist');
@@ -24,41 +25,49 @@ describe('Page des études - Filtrer avec les facettes', () => {
   });
 
   it('Program - RARE-QC2', () => {
+    setupTest();
     cy.validateFacetFilter('Program', 'RARE-QC2', 'RARE-QC2', /^2 Results$/, false);
     cy.validateFacetRank(0, 'Program');
   });
 
   it('Domain - Rare Diseases', () => {
+    setupTest();
     cy.validateFacetFilter('Domain', 'Rare diseases', 'rare diseases', /^1 Result$/, false);
     cy.validateFacetRank(1, 'Domain');
   });
 
   it('Population - Pediatric and adult', () => {
+    setupTest();
     cy.validateFacetFilter('Population', 'Pediatric and adult', 'Pediatric and adult', /\d{1} Results/, false);
     cy.validateFacetRank(2, 'Population');
   });
 
   it('Access Limitation - Health or medical or biomedical research (DUO:0000006)', () => {
+    setupTest();
     cy.validateFacetFilter('Access Limitation', 'Health or medical or biomedical research (DUO:0000006)', 'health or medical or biomedical research (DUO:0000006)', /\d{1} Results/, false);
     cy.validateFacetRank(3, 'Access Limitation');
   });
 
   it('Access Requirement - Genetic studies only (DUO:0000016)', () => {
+    setupTest();
     cy.validateFacetFilter('Access Requirement', 'Genetic studies only (DUO:0000016)', 'genetic studies only (DUO:0000016)', /\d{1} Results/, false);
     cy.validateFacetRank(4, 'Access Requirement');
   });
 
   it('Data Category - Genomics', () => {
+    setupTest();
     cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /\d{1} Results/, false);
     cy.validateFacetRank(5, 'Data Category');
   });
 
   it('Overall Design - Case only', () => {
+    setupTest();
     cy.validateFacetFilter('Overall Design', 'Case only', 'Case only', /\d{1} Results/, false);
     cy.validateFacetRank(6, 'Overall Design');
   });
 
   it('Data Collection Method - Medical Records', () => {
+    setupTest();
     cy.validateFacetFilter('Data Collection Method', 'Medical Records', 'Medical Records', /\d{1} Results/, false);
     cy.validateFacetRank(7, 'Data Collection Method');
   });

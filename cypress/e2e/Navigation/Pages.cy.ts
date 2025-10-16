@@ -3,12 +3,12 @@ import '../../support/commands';
 import { oneMinute } from '../../pom/shared/Utils';
 
 describe('Navigation', () => {
-
-  beforeEach(() => {
+  const setupTest = () => {
     cy.login();
-  });
+  };
 
   it('Boutons de la header', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="Title_Dashboard"]').should('exist');
 
@@ -36,6 +36,7 @@ describe('Navigation', () => {
   });
 
   it('Lien externe de la header - Dictionary', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="Resources"]').clickAndWait({force: true});
     cy.get('[data-cy="HeaderLink_Dictionary"]')
@@ -43,6 +44,7 @@ describe('Navigation', () => {
   });
 
   it('Lien externe de la header - Documentation', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="Resources"]').clickAndWait({force: true});
     cy.get('[data-cy="HeaderLink_Documentation"]')
@@ -50,6 +52,7 @@ describe('Navigation', () => {
   });
 
   it('Lien externe de la header - Download tool', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="Resources"]').clickAndWait({force: true});
     cy.get('[data-cy="HeaderLink_DownloadTool"]')
@@ -57,6 +60,7 @@ describe('Navigation', () => {
   });
 
   it('Lien externe de la header - Website', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="Resources"]').clickAndWait({force: true});
     cy.get('[data-cy="HeaderLink_Website"]').invoke('removeAttr', 'target').click({force: true});
@@ -66,6 +70,7 @@ describe('Navigation', () => {
   });
 
   it('Lien externe de la header - Contact', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="Resources"]').clickAndWait({force: true});
     cy.get('[data-cy="HeaderLink_Contact"]')
@@ -73,6 +78,7 @@ describe('Navigation', () => {
   });
 
   it('Lien externe du Dashboard - Data Release', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="Resources"]').clickAndWait({force: true});
     cy.get('[data-cy="ExternalLink_DataRelease"]')
@@ -80,6 +86,7 @@ describe('Navigation', () => {
   });
 
   it('Redirections de la page Dashboard', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="GridCard_Studies"] [href]').clickAndWait({force: true});
     cy.get('[data-cy="Title_Studies"]').should('exist');
@@ -98,6 +105,7 @@ describe('Navigation', () => {
   });
 
   it('Modals de la page Dashboard', () => {
+    setupTest();
     cy.visitDashboard();
     cy.get('[data-cy="SavedSets"] svg[data-icon="edit"]').eq(0).clickAndWait({force: true});
     cy.contains('Edit set').should('exist');
@@ -121,6 +129,7 @@ describe('Navigation', () => {
   });
 
   it('Onglets de la page Data Exploration', () => {
+    setupTest();
     cy.visitDataExploration();
     cy.get('[aria-label="Participants by Study"]').should('exist');
 
@@ -135,6 +144,7 @@ describe('Navigation', () => {
   });
 
   it('Modals de la page Data Exploration', () => {
+    setupTest();
     cy.visitDataExploration();
 
     // Facettes
@@ -162,6 +172,7 @@ describe('Navigation', () => {
   });
  
   it('Modals de la page des variants', () => {
+    setupTest();
     cy.visitVariantsPage();
     cy.get('[data-cy="SidebarMenuItem_Gene"]').clickAndWait({force: true});
 
@@ -175,6 +186,7 @@ describe('Navigation', () => {
   });
  
   it('Modals de la page d\'une étude', () => {
+    setupTest();
     cy.visitStudyEntity('T-DEE', 1);
 
     cy.get('[data-cy="FileManifest_Button"]').clickAndWait({force: true});
@@ -187,6 +199,7 @@ describe('Navigation', () => {
   });
  
   it('Modals de la page d\'un fichier', () => {
+    setupTest();
     cy.visitFileEntity('FI0009813');
 
     cy.get('[data-cy="FileManifest_Button"]').clickAndWait({force: true});
@@ -195,6 +208,7 @@ describe('Navigation', () => {
   });
  
   it('Liens des page Profile', () => {
+    setupTest();
     cy.visitProfileViewPage();
     cy.get('[data-cy="EditProfileButton"]').clickAndWait({force: true});
     cy.get('[data-cy="Title_ProfileSettings"]').should('exist');
@@ -205,6 +219,7 @@ describe('Navigation', () => {
   });
  
   it('Liens de la page Community', () => {
+    setupTest();
     cy.visitCommunityPage();
     cy.get('[data-cy="MemberCard"]').eq(0).clickAndWait({force: true});
     cy.get('[data-cy="AvatarHeader"]').should('exist');

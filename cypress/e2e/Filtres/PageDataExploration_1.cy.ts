@@ -1,15 +1,16 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitDataExploration();
-  cy.get('[id="query-builder-header-tools"] [data-icon="plus"]').clickAndWait({force: true});
-  cy.deleteFilterIfExists('Cypress_F0');
-});
-
 describe('Page Data Exploration - Filtres', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitDataExploration();
+    cy.get('[id="query-builder-header-tools"] [data-icon="plus"]').clickAndWait({force: true});
+    cy.deleteFilterIfExists('Cypress_F0');
+  };
+
   it('Créer un nouveau filtre', () => {
+    setupTest();
     cy.saveFilterAs('Cypress_F0');
 
     cy.get('[id="query-builder-header-tools"] [class*="Header_togglerTitle"]').contains(/^Cypress_F0$/).should('exist');

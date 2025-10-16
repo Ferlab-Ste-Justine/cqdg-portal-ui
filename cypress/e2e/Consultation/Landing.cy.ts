@@ -1,12 +1,13 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.visit('/');
-});
-
 describe('Page Landing - Vérifier les informations affichées', () => {
+  const setupTest = () => {
+    cy.visit('/');
+  };
+
   it('Section Upper banner', () => {
+    setupTest();
     cy.get('[class*="TopBanner_logo"]').should('exist');
     cy.get('[class*="TopBanner_title"]').contains(/(Portail de données|Data Portal)/).should('exist');
     cy.get('[class*="TopBanner_description"]').contains(/(Le Centre Québécois de Données Génomiques est une plateforme d'harmonisation et de diffusion des données génomiques générées par les études cliniques et de recherche du Québec.|The Quebec Genomic Data Center is a data harmonization and sharing platform for genomic datasets produced by Quebec's clinical and research studies.)/).should('exist');
@@ -15,6 +16,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Radiant Tile', () => {
+    setupTest();
     cy.get('[class*="TopBanner_radiantTag"] [data-icon="sound"]').should('exist');
     cy.get('[class*="TopBanner_radiantTag"]').contains(/(Bientôt disponible|Coming soon)/).should('exist');
     cy.get('[class*="TopBanner_radiantTitle"]').contains(/(Une nouvelle référence en médecine de précision.|A new benchmark in precision medicine.)/).should('exist');
@@ -22,6 +24,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Studies Side Panel Tile', () => {
+    setupTest();
     cy.get('[class*="Studies_container"] [class*="Summary"] [id="study"]').should('exist');
     cy.get('[class*="Studies_container"] [class*="Summary"] [class*="TextIcon_layout"]').contains('4').should('exist');
     cy.get('[class*="Studies_container"] [class*="Summary"] [class*="TextIcon_layout"]').contains(/(Studies|Études)/).should('exist');
@@ -29,6 +32,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Studies Right Panel Tile', () => {
+    setupTest();
     cy.get('[class*="Studies_container"] [class*="ant-carousel"] [class*="Carousel_dots"]').should('exist');
 
     cy.get('[class*="Studies_container"] [class*="ant-carousel"] [class*="Carousel_title"] [src*="/static/media/cartagene."]').should('exist');
@@ -55,6 +59,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Released Data Stats', () => {
+    setupTest();
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-head"]').contains(/(Données CQDG|Release) v2.0/).should('exist');
 
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(0).find('[id="study"]').should('exist');
@@ -83,6 +88,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Programs & Partners', () => {
+    setupTest();
     cy.get('[class*="Programs_title"]').contains(/(Programmes & Partenaires|Programs & Partners)/).should('exist');
     cy.get('[class*="Programs_container"] [src*="/cqdg-qa-assets-public/programs_logos/rare.svg"]').should('exist');
     cy.get('[class*="Programs_container"] [src*="/cqdg-qa-assets-public/programs_logos/MGSS/mgss-logo-2.svg"]').should('exist');
@@ -90,6 +96,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section SD4H', () => {
+    setupTest();
     cy.get('[class*="SecureData_container"] [src*="data:image/png"]').should('exist');
     cy.get('[class*="SecureData_title"]').contains(/(CQDG dans l’infonuage|CQDG in the Cloud)/).should('exist');
     cy.get('[class*="SecureData_text"]').contains(/(Analysez les données du CQDG avec vos propres logiciels sur l’infrastructure infonuagique Secure Data for Health \(SD4H\). D’autres infonuages seront également intégrés au CQDG dans un avenir rapproché. Contactez-nous pour en savoir plus.|Analyse CQDG datasets with your own software using the Secure Data for Health \(SD4H\) cloud-based infrastructure. Other cloud providers will be integrated with CQDG in a near future. Contact us to learn more.)/).should('exist');
@@ -97,6 +104,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Variant Tile', () => {
+    setupTest();
     cy.get('[class*="VariantCard_container"] [id="gene"]').should('exist');
     cy.get('[class*="VariantCard_container"] [class*="TextIcon_title"]').contains(/\d{3}K/).should('exist');
     cy.get('[class*="VariantCard_container"] [class*="TextIcon_subtitle"]').contains(/(Variants germinaux|Germline Variants)/).should('exist');
@@ -105,6 +113,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Documentation Tiles', () => {
+    setupTest();
     cy.get('[class*="BannerItem_container"]').eq(0).find('[id="information"]').should('exist');
     cy.get('[class*="BannerItem_container"]').eq(0).find('[class*="TextIcon_title"]').contains(/(Centre de documentation|Documentation Center)/).should('exist');
     cy.get('[class*="BannerItem_container"]').eq(0).contains(/(Pour savoir comment soumettre vos données, faire une demande d’accès ou pour consulter des guides d’utilisation du portail, visitez le centre de documentation.|To learn how to submit your data, request access to data, or to read user guides for the portal, visit the Documentation Center.)/).should('exist');
@@ -117,6 +126,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
   });
 
   it('Section Lower banner', () => {
+    setupTest();
     cy.get('[src*="/static/media/logos-genome_qc."]').should('exist');
     cy.get('[src*="/static/media/logos-chusj-color."]').should('exist');
     cy.get('[src*="/static/media/logos-FRQS-color."]').should('exist');

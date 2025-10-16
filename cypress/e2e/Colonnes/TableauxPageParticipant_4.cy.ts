@@ -1,14 +1,15 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
 
-beforeEach(() => {
-  cy.login();
-  cy.visitParticipantEntity('PT0000010');
-  cy.resetColumns('biospecimen');
-});
-
 describe('Page d\'un participant - Colonnes du tableau Biospecimens', () => {
+  const setupTest = () => {
+    cy.login();
+    cy.visitParticipantEntity('PT0000010');
+    cy.resetColumns('biospecimen');
+  };
+
   it('Valider l\'affichage (par défaut/optionnel) et l\'ordre des colonnes', () => {
+    setupTest();
     cy.get('[id="biospecimen"]')
       .find('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(0)
@@ -41,6 +42,7 @@ describe('Page d\'un participant - Colonnes du tableau Biospecimens', () => {
   });
 
   it('Masquer/Afficher une colonne affichée', () => {
+    setupTest();
     cy.get('[id="biospecimen"]')
       .find('thead[class="ant-table-thead"]')
       .contains('Sample Type').should('exist');
