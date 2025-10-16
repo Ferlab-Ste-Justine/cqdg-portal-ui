@@ -20,6 +20,6 @@ describe('Page Data Exploration (Biospecimens) - Télécharger le sample data', 
   });
 
   it('Valider le contenu du fichier', () => {
-    cy.validateXlsxFileContent('DownloadBiospecimenData.json');
+    cy.validateXlsxFileContent('DownloadSampleData.json');
   });
 });
