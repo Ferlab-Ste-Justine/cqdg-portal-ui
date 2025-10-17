@@ -9,7 +9,7 @@ import {
 import { addQuery } from '@ferlab/ui/core/components/QueryBuilder/utils/useQueryBuilderState';
 import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/utils';
 import { numberFormat } from '@ferlab/ui/core/utils/numberUtils';
-import { Button, Popover } from 'antd';
+import { Button, Tooltip } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import { IStudyEntity } from 'graphql/studies/models';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
@@ -32,11 +32,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
       data-cy="SummaryHeader_Participants_Button"
       block
     >
-      <Popover
-        title={intl.get('entities.study.restrictedTitle')}
-        content={intl.get('entities.study.restrictedContent')}
-        trigger={isRestricted ? 'hover' : 'none'}
-      >
+      <Tooltip title={isRestricted ? intl.get('entities.study.restrictedTooltip') : ''}>
         <Link
           className={styles.link}
           to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
@@ -70,7 +66,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
             <span className={styles.name}>{intl.get('entities.participant.participants')}</span>
           </div>
         </Link>
-      </Popover>
+      </Tooltip>
     </Button>
     <Button
       className={`${styles.button} ${styles.disableHover} ${isRestricted && styles.buttonDisabled}`}
@@ -78,11 +74,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
       data-cy="SummaryHeader_Families_Button"
       block
     >
-      <Popover
-        title={intl.get('entities.study.restrictedTitle')}
-        content={intl.get('entities.study.restrictedContent')}
-        trigger={isRestricted ? 'hover' : 'none'}
-      >
+      <Tooltip title={isRestricted ? intl.get('entities.study.restrictedTooltip') : ''}>
         <div className={styles.link}>
           <TeamOutlined className={styles.icon} />
           <div className={styles.alignBaseline}>
@@ -92,7 +84,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
             <span className={styles.name}>{intl.get('entities.participant.families')}</span>
           </div>
         </div>
-      </Popover>
+      </Tooltip>
     </Button>
     <Button
       className={`${styles.button} ${isRestricted && styles.buttonDisabled}`}
@@ -100,11 +92,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
       data-cy="SummaryHeader_Biospecimens_Button"
       block
     >
-      <Popover
-        title={intl.get('entities.study.restrictedTitle')}
-        content={intl.get('entities.study.restrictedContent')}
-        trigger={isRestricted ? 'hover' : 'none'}
-      >
+      <Tooltip title={isRestricted ? intl.get('entities.study.restrictedTooltip') : ''}>
         <Link
           className={styles.link}
           to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS}
@@ -142,7 +130,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
             </span>
           </div>
         </Link>
-      </Popover>
+      </Tooltip>
     </Button>
     <Button
       className={`${styles.button} ${isRestricted && styles.buttonDisabled}`}
@@ -150,11 +138,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
       data-cy="SummaryHeader_Files_Button"
       block
     >
-      <Popover
-        title={intl.get('entities.study.restrictedTitle')}
-        content={intl.get('entities.study.restrictedContent')}
-        trigger={isRestricted ? 'hover' : 'none'}
-      >
+      <Tooltip title={isRestricted ? intl.get('entities.study.restrictedTooltip') : ''}>
         <Link
           className={styles.link}
           to={setLoginModalUri ? '' : STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}
@@ -188,7 +172,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
             <span className={styles.name}>{intl.get('entities.file.files')}</span>
           </div>
         </Link>
-      </Popover>
+      </Tooltip>
     </Button>
   </div>
 );

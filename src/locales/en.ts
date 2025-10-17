@@ -26,6 +26,8 @@ const en = {
       name: 'Name',
       keywords: 'Keywords',
       description: 'Description',
+      restrictedTooltip:
+        'The data of this study is not accessible for exploration since it has not yet been harmonized to the CQDG data model.',
       restrictedTitle: 'Restricted Study',
       restrictedContent: 'The data of this study is not accessible for exploration.',
       restrictedContact:
@@ -993,9 +995,9 @@ const en = {
       },
       cards: {
         radiant: {
-          title: 'A new benchmark in precision medicine.',
+          title: 'A new standard in precision medicine.',
           description:
-            'The CQDG is pleased to offer its users Radiant, a secure platform that enables real-time exploration and interpretation of individual genomes in relation to patients’ clinical data, with the goal of accelerating molecular diagnosis and advancing precision medicine research.',
+            "The CQDG is pleased to introduce Radiant, a secure platform that enables real-time exploration and interpretation of individual genomes in conjunction with patients' clinical data, with the aim of accelerating molecular diagnoses and advancing research in precision medicine.",
           tag: 'Coming soon',
         },
         stats: {

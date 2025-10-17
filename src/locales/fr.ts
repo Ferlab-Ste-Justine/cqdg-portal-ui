@@ -26,6 +26,8 @@ const fr = {
       name: 'Nom',
       keywords: 'Mots-clés',
       description: 'Description',
+      restrictedTooltip:
+        "Les données de cette étude ne sont pas accessibles puisqu'elles n'ont pas encore été harmonisées au modèle de données du CQDG.",
       restrictedTitle: 'Étude restreinte',
       restrictedContent: "Les données de cette étude ne sont pas accessibles à l'exploration.",
       restrictedContact:
@@ -1002,7 +1004,7 @@ const fr = {
         radiant: {
           title: 'Une nouvelle référence en médecine de précision.',
           description:
-            'Le CQDG est heureux d’offrir à ses utilisateurs Radiant, une plateforme sécurisée permettant l’exploration et l’interprétation en temps réel des génomes individuels en lien avec les données cliniques des patients, afin d’accélérer le diagnostic moléculaire et de faire progresser la recherche en médecine de précision.',
+            'Le CQDG est heureux d’offrir à ses utilisateurs Radiant, une plateforme sécurisée permettant l’exploration et l’interprétation clinique des génomes individuels, afin d’accélérer le diagnostic moléculaire et de faire progresser la recherche en médecine de précision.',
           tag: 'Bientôt disponible',
         },
         stats: {
