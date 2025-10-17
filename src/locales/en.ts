@@ -70,6 +70,16 @@ const en = {
       biospecimen_id: 'Biospecimen ID',
       age: 'Age',
       age_biospecimen_collection: 'Age at Biospecimen Collection',
+      cancer_biospecimen_type: 'Cancer Tissue Type',
+      tumor_normal_designation: 'Tumor Status',
+      tumor_histological_type: {
+        display: 'Tumor Type (NCIt)',
+        text: 'Tumor Type (Source Text)',
+      },
+      cancer_anatomic_location: {
+        display: 'Tumor Location (NCIt)',
+        text: 'Tumor Location (Source Text)',
+      },
     },
     participant: {
       participant_id: 'Participant ID',

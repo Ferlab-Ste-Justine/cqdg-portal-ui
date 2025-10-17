@@ -63,8 +63,38 @@ describe('Page Data Exploration (Biospecimens) - Filtrer avec les facettes', () 
     cy.validateFacetRank(1, 'Tissue');
   });
 
+  it('Cancer Tissue Type - Normal Tissue Sample (NCIT:C162623)', () => {
+    cy.validateFacetFilter('Cancer Tissue Type', 'Normal Tissue Sample (NCIT:C162623)', 'Normal Tissue Sample (NCIT:C162623)', /^9$/);
+    cy.validateFacetRank(2, 'Cancer Tissue Type');
+  });
+
   it('Age at Biospecimen Collection - Congenital', () => {
     cy.validateFacetFilter('Age at Biospecimen Collection', 'Congenital', 'B-congenital', /^2$/);
-    cy.validateFacetRank(2, 'Age at Biospecimen Collection');
+    cy.validateFacetRank(3, 'Age at Biospecimen Collection');
+  });
+
+  it('Tumor Status - Normal', () => {
+    cy.validateFacetFilter('Tumor Status', 'Normal', 'Normal', /^9$/);
+    cy.validateFacetRank(4, 'Tumor Status');
+  });
+
+  it('Tumor Type (NCIt) - Derived Cell Line (NCIT:C156445)', () => {
+    cy.validateFacetFilter('Tumor Type (NCIt)', 'Derived Cell Line (NCIT:C156445)', 'Derived Cell Line (NCIT:C156445)', /^4$/);
+    cy.validateFacetRank(5, 'Tumor Type (NCIt)');
+  });
+
+  it('Tumor Type (Source Text) - Histological Type Source Text', () => {
+    cy.validateFacetFilter('Tumor Type (Source Text)', 'Histological Type Source Text', 'histological_type_source_text', /^9$/);
+    cy.validateFacetRank(6, 'Tumor Type (Source Text)');
+  });
+
+  it('Tumor Location (NCIt) - Derived Cell Line (NCIT:C156445)', () => {
+    cy.validateFacetFilter('Tumor Location (NCIt)', 'Derived Cell Line (NCIT:C156445)', 'Derived Cell Line (NCIT:C156445)', /^2$/);
+    cy.validateFacetRank(7, 'Tumor Location (NCIt)');
+  });
+
+  it('Tumor Location (Source Text) - Anatomic Location Source Text', () => {
+    cy.validateFacetFilter('Tumor Location (Source Text)', 'Anatomic Location Source Text', 'anatomic_location_source_text', /^9$/);
+    cy.validateFacetRank(8, 'Tumor Location (Source Text)');
   });
 });
