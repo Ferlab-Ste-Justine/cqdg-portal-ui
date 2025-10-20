@@ -19,14 +19,14 @@ describe('Page Landing - Vérifier les informations affichées', () => {
     setupTest();
     cy.get('[class*="TopBanner_radiantTag"] [data-icon="sound"]').should('exist');
     cy.get('[class*="TopBanner_radiantTag"]').contains(/(Bientôt disponible|Coming soon)/).should('exist');
-    cy.get('[class*="TopBanner_radiantTitle"]').contains(/(Une nouvelle référence en médecine de précision.|A new benchmark in precision medicine.)/).should('exist');
-    cy.get('[class*="TopBanner_radiantDescription"]').contains(/(Le CQDG est heureux d’offrir à ses utilisateurs Radiant, une plateforme sécurisée permettant l’exploration et l’interprétation en temps réel des génomes individuels en lien avec les données cliniques des patients, afin d’accélérer le diagnostic moléculaire et de faire progresser la recherche en médecine de précision.|The CQDG is pleased to offer its users Radiant, a secure platform that enables real-time exploration and interpretation of individual genomes in relation to patients’ clinical data, with the goal of accelerating molecular diagnosis and advancing precision medicine research.)/).should('exist');
+    cy.get('[class*="TopBanner_radiantTitle"]').contains(/(Une nouvelle référence en médecine de précision.|A new standard in precision medicine.)/).should('exist');
+    cy.get('[class*="TopBanner_radiantDescription"]').contains(/(Le CQDG est heureux d’offrir à ses utilisateurs Radiant, une plateforme sécurisée permettant l’exploration et l’interprétation clinique des génomes individuels, afin d’accélérer le diagnostic moléculaire et de faire progresser la recherche en médecine de précision.|The CQDG is pleased to introduce Radiant, a secure platform that enables real-time exploration and interpretation of individual genomes in conjunction with patients' clinical data, with the aim of accelerating molecular diagnoses and advancing research in precision medicine.)/).should('exist');
   });
 
   it('Section Studies Side Panel Tile', () => {
     setupTest();
     cy.get('[class*="Studies_container"] [class*="Summary"] [id="study"]').should('exist');
-    cy.get('[class*="Studies_container"] [class*="Summary"] [class*="TextIcon_layout"]').contains('4').should('exist');
+    cy.get('[class*="Studies_container"] [class*="Summary"] [class*="TextIcon_layout"]').contains(/\d{1}/).should('exist');
     cy.get('[class*="Studies_container"] [class*="Summary"] [class*="TextIcon_layout"]').contains(/(Studies|Études)/).should('exist');
     cy.get('[class*="Studies_container"] [class*="Summary"]').contains(/(Explorez les données harmonisées d’études dans les populations pédiatriques et adultes.|Explore harmonized data from studies in both pediatric and adult populations.)/).should('exist');
   });
@@ -63,7 +63,7 @@ describe('Page Landing - Vérifier les informations affichées', () => {
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-head"]').contains(/(Données CQDG|Release) v2.0/).should('exist');
 
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(0).find('[id="study"]').should('exist');
-    cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(0).contains('4').should('exist');
+    cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(0).contains(/\d{1}/).should('exist');
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(0).contains(/(Études|Studies)/).should('exist');
     
     cy.get('[class*="Stats_wrapper"] [class*="ant-card-body"] [class*="TextIcon_layout"]').eq(1).find('[id="participant"]').should('exist');

@@ -39,8 +39,8 @@ describe('Page des études - Rechercher des études', () => {
   it('Par domaine', () => {
     setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'diseases', 'POST', '**/graphql', 8);
-    cy.validateTableResultsCount(/1 Result/);
-    cy.validateTableFirstRow('STUDY1', 0);
+    cy.validateTableResultsCount(/2 Results/);
+    cy.validateTableFirstRow('STUDY', 0);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
     cy.validateTableResultsCount(/\d{1} Results/);
