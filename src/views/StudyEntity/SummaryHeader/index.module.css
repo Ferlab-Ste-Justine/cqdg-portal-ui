@@ -48,3 +48,6 @@
 .buttonGroup .disableHover:hover {
   background-color: inherit;
 }
+.buttonGroup .buttonDisabled:hover {
+  background-color: var(--gray-3);
+}
