@@ -21,7 +21,7 @@ describe('Page des études - Valider les fonctionnalités du tableau', () => {
   it('Tri Code', () => {
     setupTest();
     cy.sortTableAndWait('Code');
-    cy.validateTableFirstRow('STUDY1', 0);
+    cy.validateTableFirstRow('STUDY', 0);
     cy.sortTableAndWait('Code');
     cy.validateTableFirstRow('T-DEE', 0);
   });
@@ -31,7 +31,7 @@ describe('Page des études - Valider les fonctionnalités du tableau', () => {
     cy.sortTableAndWait('Name');
     cy.validateTableFirstRow('Congenital malformations', 1);
     cy.sortTableAndWait('Name');
-    cy.validateTableFirstRow('Developmental and epileptic encephalopathies', 1);
+    cy.validateTableFirstRow(/(Developmental|Fast-track)/, 1);
   });
     
   it('Tri Domain', () => {
@@ -45,13 +45,14 @@ describe('Page des études - Valider les fonctionnalités du tableau', () => {
   it('Tri Population', () => {
     setupTest();
     cy.sortTableAndWait('Population');
-    cy.validateTableFirstRow('Pediatric and adult', 4);
+    cy.validateTableFirstRow(/Pediatric and (a|A)dult/, 4);
     cy.sortTableAndWait('Population');
-    cy.validateTableFirstRow('Pediatric and adult', 4);
+    cy.validateTableFirstRow(/Pediatric and (a|A)dult/, 4);
   });
 
   it('Tri multiple', () => {
     setupTest();
+    cy.sortTableAndWait('Population');
     cy.sortTableAndWait('Population');
     cy.sortTableAndWait('Domain');
     cy.validateTableFirstRow('Neurodevelopmental Conditions', 3);

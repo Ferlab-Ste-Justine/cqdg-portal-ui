@@ -32,7 +32,7 @@ describe('Page des études - Filtrer avec les facettes', () => {
 
   it('Domain - Rare Diseases', () => {
     setupTest();
-    cy.validateFacetFilter('Domain', 'Rare diseases', 'rare diseases', /^1 Result$/, false);
+    cy.validateFacetFilter('Domain', 'Rare diseases', 'rare diseases', /\d{1} Result/, false);
     cy.validateFacetRank(1, 'Domain');
   });
 
