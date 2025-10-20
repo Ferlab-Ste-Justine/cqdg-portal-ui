@@ -61,7 +61,11 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
           <UserOutlined className={styles.icon} />
           <div className={styles.alignBaseline}>
             <span className={styles.count}>
-              {study?.participant_count ? numberFormat(study.participant_count) : '-'}
+              {study?.restricted_number_participants
+                ? numberFormat(study.restricted_number_participants)
+                : study?.participant_count
+                ? numberFormat(study.participant_count)
+                : '-'}
             </span>
             <span className={styles.name}>{intl.get('entities.participant.participants')}</span>
           </div>
@@ -121,7 +125,11 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
           <ExperimentOutlined className={styles.icon} />
           <div className={styles.alignBaseline}>
             <span className={styles.count}>
-              {study?.sample_count ? numberFormat(study.sample_count) : '-'}
+              {study?.restricted_number_biospecimens
+                ? numberFormat(study.restricted_number_biospecimens)
+                : study?.sample_count
+                ? numberFormat(study.sample_count)
+                : '-'}
             </span>
             <span className={styles.name}>
               {intl.get('entities.biospecimen.biospecimensAuto', {
@@ -167,7 +175,11 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
           <FileTextOutlined className={styles.icon} />
           <div className={styles.alignBaseline}>
             <span className={styles.count}>
-              {study?.file_count ? numberFormat(study.file_count) : '-'}
+              {study?.restricted_number_files
+                ? numberFormat(study.restricted_number_files)
+                : study?.file_count
+                ? numberFormat(study.file_count)
+                : '-'}
             </span>
             <span className={styles.name}>{intl.get('entities.file.files')}</span>
           </div>

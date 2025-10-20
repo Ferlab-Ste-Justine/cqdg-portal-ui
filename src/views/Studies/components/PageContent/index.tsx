@@ -183,6 +183,13 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
     }),
   });
 
+  const replaceRestrictedStudiesNumbers = data.map((i) => ({
+    ...i,
+    participant_count: i.restricted_number_participants ?? i.participant_count,
+    file_count: i.restricted_number_files ?? i.file_count,
+    sample_count: i.restricted_number_biospecimens ?? i.sample_count,
+  }));
+
   useEffect(() => {
     setQueryConfig((prevQueryConfig) => ({
       ...prevQueryConfig,
@@ -274,10 +281,10 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
               clearFilter,
             }}
             size="small"
-            dataSource={data.map((i) => ({ ...i, key: i.study_code }))}
+            dataSource={replaceRestrictedStudiesNumbers.map((i) => ({ ...i, key: i.study_code }))}
             dictionary={getProTableDictionary()}
             summaryColumns={getSummaryColumns(
-              data,
+              replaceRestrictedStudiesNumbers,
               defaultColumns,
               userInfo?.config.studies?.tables?.studies?.columns,
             )}
