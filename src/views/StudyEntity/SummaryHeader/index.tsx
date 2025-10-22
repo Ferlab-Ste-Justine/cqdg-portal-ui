@@ -14,6 +14,7 @@ import { INDEXES } from 'graphql/constants';
 import { IStudyEntity } from 'graphql/studies/models';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 
+import { TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
 import { STATIC_ROUTES } from 'utils/routes';
 
 import styles from './index.module.css';
@@ -23,6 +24,42 @@ interface ISummaryBarProps {
   isRestricted?: boolean;
   setLoginModalUri?: (uri: string) => void; //setLoginModalUri exists when the user is on a public page
 }
+
+type EntityType = 'participants' | 'biospecimens' | 'files';
+
+interface CountFields {
+  restrictedCount?: number;
+  count?: number;
+}
+
+const getCount = (entityType: EntityType, study?: any, isRestricted?: boolean): string => {
+  if (!study) return TABLE_EMPTY_PLACE_HOLDER;
+
+  const countFields: Record<EntityType, CountFields> = {
+    participants: {
+      restrictedCount: study.restricted_number_participants,
+      count: study.participant_count,
+    },
+    biospecimens: {
+      restrictedCount: study.restricted_number_biospecimens,
+      count: study.sample_count,
+    },
+    files: {
+      restrictedCount: study.restricted_number_files,
+      count: study.file_count,
+    },
+  };
+
+  const fields = countFields[entityType];
+
+  if (isRestricted && fields.restrictedCount && fields.restrictedCount >= 0) {
+    return fields.restrictedCount > 0
+      ? String(numberFormat(fields.restrictedCount))
+      : TABLE_EMPTY_PLACE_HOLDER;
+  }
+
+  return fields.count ? String(numberFormat(fields.count)) : TABLE_EMPTY_PLACE_HOLDER;
+};
 
 const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarProps) => (
   <div className={styles.buttonGroup}>
@@ -60,13 +97,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
         >
           <UserOutlined className={styles.icon} />
           <div className={styles.alignBaseline}>
-            <span className={styles.count}>
-              {study?.restricted_number_participants
-                ? numberFormat(study.restricted_number_participants)
-                : study?.participant_count
-                ? numberFormat(study.participant_count)
-                : '-'}
-            </span>
+            <span className={styles.count}>{getCount('participants', study, isRestricted)}</span>
             <span className={styles.name}>{intl.get('entities.participant.participants')}</span>
           </div>
         </Link>
@@ -83,7 +114,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
           <TeamOutlined className={styles.icon} />
           <div className={styles.alignBaseline}>
             <span className={styles.count}>
-              {study?.family_count ? numberFormat(study.family_count) : '-'}
+              {study?.family_count ? numberFormat(study.family_count) : TABLE_EMPTY_PLACE_HOLDER}
             </span>
             <span className={styles.name}>{intl.get('entities.participant.families')}</span>
           </div>
@@ -124,13 +155,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
         >
           <ExperimentOutlined className={styles.icon} />
           <div className={styles.alignBaseline}>
-            <span className={styles.count}>
-              {study?.restricted_number_biospecimens
-                ? numberFormat(study.restricted_number_biospecimens)
-                : study?.sample_count
-                ? numberFormat(study.sample_count)
-                : '-'}
-            </span>
+            <span className={styles.count}>{getCount('biospecimens', study, isRestricted)}</span>
             <span className={styles.name}>
               {intl.get('entities.biospecimen.biospecimensAuto', {
                 count: study?.sample_count || 0,
@@ -174,13 +199,7 @@ const SummaryHeader = ({ study, isRestricted, setLoginModalUri }: ISummaryBarPro
         >
           <FileTextOutlined className={styles.icon} />
           <div className={styles.alignBaseline}>
-            <span className={styles.count}>
-              {study?.restricted_number_files
-                ? numberFormat(study.restricted_number_files)
-                : study?.file_count
-                ? numberFormat(study.file_count)
-                : '-'}
-            </span>
+            <span className={styles.count}>{getCount('files', study, isRestricted)}</span>
             <span className={styles.name}>{intl.get('entities.file.files')}</span>
           </div>
         </Link>
