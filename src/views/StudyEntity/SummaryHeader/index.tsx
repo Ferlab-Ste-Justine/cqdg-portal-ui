@@ -52,7 +52,7 @@ const getCount = (entityType: EntityType, study?: any, isRestricted?: boolean): 
 
   const fields = countFields[entityType];
 
-  if (isRestricted && fields.restrictedCount && fields.restrictedCount >= 0) {
+  if (isRestricted && (fields.restrictedCount || fields.restrictedCount === 0)) {
     return fields.restrictedCount > 0
       ? String(numberFormat(fields.restrictedCount))
       : TABLE_EMPTY_PLACE_HOLDER;
