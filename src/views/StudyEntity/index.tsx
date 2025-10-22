@@ -68,10 +68,12 @@ const StudyEntity = () => {
         title: intl.get('entities.file.specialized_datasets'),
       },
     ],
-    {
-      href: `#${SectionId.DATA_FILE}`,
-      title: intl.get('entities.file.datafile'),
-    },
+    ...[
+      !isRestricted && {
+        href: `#${SectionId.DATA_FILE}`,
+        title: intl.get('entities.file.datafile'),
+      },
+    ],
   ];
   const links: IAnchorLink[] = defaultLinks.filter((link: IAnchorLink) => link);
 
@@ -155,12 +157,14 @@ const StudyEntity = () => {
           setLoginModalUri={isPublicStudyPage ? setLoginModalUri : undefined}
         />
       )}
-      <FilesTable
-        id={SectionId.DATA_FILE}
-        study={study}
-        loading={loading}
-        setLoginModalUri={isPublicStudyPage ? setLoginModalUri : undefined}
-      />
+      {!isRestricted && (
+        <FilesTable
+          id={SectionId.DATA_FILE}
+          study={study}
+          loading={loading}
+          setLoginModalUri={isPublicStudyPage ? setLoginModalUri : undefined}
+        />
+      )}
       {isPublicStudyPage && (
         <LoginModal
           isOpen={!!loginModalUri}
