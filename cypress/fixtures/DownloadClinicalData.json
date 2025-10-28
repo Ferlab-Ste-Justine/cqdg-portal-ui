@@ -27,7 +27,7 @@
                "Diagnosis (Source Text)",
                "Age at Diagnosis",
                "Family Member ID",
-               "PT0000010",
+               "PT0000879",
                "HSJ-1005-389",
                "FM0000487",
                "HSJ0389",
@@ -45,10 +45,10 @@
                "epilepsy (MONDO:0005027)",
                "Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)",
                "Intractable Epilepsy",
-               "PT0000483",
+               "PT0000899",
                "HSJ-1007-389",
                "Father",
-               "PT0000091",
+               "PT0001035",
                "HSJ-1006-389",
                "Mother"]
 }

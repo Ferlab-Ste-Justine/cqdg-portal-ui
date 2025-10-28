@@ -15,8 +15,8 @@ describe('Page Data Exploration (Biospecimens) - Vérifier les informations affi
   it('Tableau', () => {
     setupTest();
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(1).contains('SR0000214').should('exist');
-    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(2).contains('SP0000179').should('exist');
-    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(3).contains('PT0000010').should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(2).contains('SP0000683').should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(3).contains('PT0000879').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(4).contains('T-DEE').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(5).contains('DNA').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(5).contains('NCIT:').should('exist');

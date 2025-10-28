@@ -21,39 +21,39 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.get('section[class*="Filters"] [aria-expanded="true"]').should('not.exist');
   });
 
-  it('Search by participant ID - PT0000010', () => {
+  it('Search by participant ID - PT0000879', () => {
     setupTest();
     cy.get('[data-cy="SearchLabel_Title"]').contains('Search by IDs').should('exist');
 
     cy.get('[class*="SearchLabel_tooltipIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true}); //data-cy="SearchLabel_InfoCircleOutlined"
     cy.get('div[class="ant-tooltip-inner"]').contains('Search by participant ID or external participant ID').should('exist');
 
-    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'pt0000010', 'POST', '*/grapgql', 1);
-    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('PT0000010').should('exist');
+    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'PT0000879', 'POST', '*/grapgql', 1);
+    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('PT0000879').should('exist');
     cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').eq(0).click({force: true});
 
-    cy.get('[data-cy="Tag_PT0000010"]').should('exist');
+    cy.get('[data-cy="Tag_PT0000879"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000010').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000879').should('exist');
     cy.validateTableResultsCount(/^1 Result$/);
 
     cy.get('[data-icon="close-circle"]').clickAndWait({force: true});
-    cy.get('[data-cy="Tag_PT0000010"]').should('not.exist');
+    cy.get('[data-cy="Tag_PT0000879"]').should('not.exist');
   });
 
   it('Search by external participant ID - HSJ-1005-389', () => {
     setupTest();
     cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'hsj-1005-389', 'POST', '*/grapgql', 1);
-    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('PT0000010').should('exist');
+    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('PT0000879').should('exist');
     cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').eq(0).click({force: true});
 
-    cy.get('[data-cy="Tag_PT0000010"]').should('exist');
+    cy.get('[data-cy="Tag_PT0000879"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000010').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000879').should('exist');
     cy.validateTableResultsCount(/^1 Result$/);
 
     cy.get('[data-icon="close-circle"]').clickAndWait({force: true});
-    cy.get('[data-cy="Tag_PT0000010"]').should('not.exist');
+    cy.get('[data-cy="Tag_PT0000879"]').should('not.exist');
   });
 
   it('Study Code - STUDY1', () => {
@@ -62,9 +62,9 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.validateFacetRank(0, 'Study Code');
   });
 
-  it('Program - RARE-QC2', () => {
+  it('Program - RARE-QC', () => {
     setupTest();
-    cy.validateFacetFilter('Program', 'RARE-QC2', 'RARE-QC2', /^588$/);
+    cy.validateFacetFilter('Program', 'RARE-QC', 'RARE-QC', /^602$/);
     cy.validateFacetRank(1, 'Program');
   });
 
@@ -106,7 +106,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Gender - Woman', () => {
     setupTest();
-    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^5$/);
+    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^286$/);
     cy.validateFacetRank(6, 'Gender');
   });
 
@@ -130,7 +130,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Race - White', () => {
     setupTest();
-    cy.validateFacetFilter('Race', 'White', 'White', /^5$/);
+    cy.validateFacetFilter('Race', 'White', 'White', /^84$/);
     cy.validateFacetRank(10, 'Race');
   });
 

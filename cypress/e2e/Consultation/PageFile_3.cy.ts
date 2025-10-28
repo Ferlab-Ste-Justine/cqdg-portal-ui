@@ -19,7 +19,7 @@ describe('Page d\'un fichier - Valider les liens disponibles', () => {
     setupTest();
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(0).find('[href]').clickAndWait({force: true});
     cy.get('[id="participant-entity-page"]').should('exist');
-    cy.get('[class*="EntityTitle"]').contains('PT0000458');
+    cy.get('[class*="EntityTitle"]').contains('PT0000964');
   });
 
   it('Lien Study du panneau Participants-Samples', () => {

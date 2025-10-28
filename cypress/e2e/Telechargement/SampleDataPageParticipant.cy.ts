@@ -9,7 +9,7 @@ describe('Page d\'un participant - Télécharger le sample data', () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitParticipantEntity('PT0000010');
+    cy.visitParticipantEntity('PT0000879');
     cy.clickAndIntercept('[id="biospecimen"] button[class*="ant-btn-default"]', 'POST', '**/file-manifest', 1);
     cy.waitUntilFile(oneMinute);
   };

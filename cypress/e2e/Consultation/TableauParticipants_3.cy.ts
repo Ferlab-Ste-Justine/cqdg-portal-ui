@@ -70,7 +70,7 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Race (Other)', () => {
     setupTest();
     cy.sortTableAndIntercept('Race (Other)', 1);
-    cy.validateTableFirstRow('Some Other Race', 13, true);
+    cy.validateTableFirstRow('Fluff', 13, true);
     cy.sortTableAndIntercept('Race (Other)', 1);
     cy.validateTableFirstRow('Some Other Race', 13, true);
   });

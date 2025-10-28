@@ -55,13 +55,13 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[id="biospecimens"] thead th[class="ant-table-cell"]').eq(3).contains('Sample Type').should('exist');
     cy.get('[id="biospecimens"] thead th[class="ant-table-cell"]').eq(4).contains('Biospecimen').should('exist');
     cy.get('[id="biospecimens"] thead th[class="ant-table-cell"]').eq(5).contains('Tissue').should('exist');
-    cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(0).contains('PT0000458').should('exist');
+    cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(0).contains('PT0000964').should('exist');
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(1).contains('T-DEE').should('exist');
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(2).contains('SR0000084').should('exist');
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(3).contains('DNA').should('exist');
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(3).contains('NCIT:').should('exist');
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(3).contains('C449').should('exist');
-    cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(4).contains('SP0000519').should('exist');
+    cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(4).contains('SP0000932').should('exist');
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(5).contains('Blood').should('exist');
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(5).contains('NCIT:').should('exist');
     cy.get('[id="biospecimens"] td[class="ant-table-cell"]').eq(5).contains('C12434').should('exist');
