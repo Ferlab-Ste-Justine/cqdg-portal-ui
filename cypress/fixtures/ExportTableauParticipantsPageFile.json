@@ -5,10 +5,10 @@
               "Sample Type",
               "Biospecimen",
               "Tissue"],
-  "content": ["PT0000458",
+  "content": ["PT0000964",
               "T-DEE",
               "SR0000084",
               "DNA (NCIT:C449)",
-              "SP0000519",
+              "SP0000932",
               "Blood (NCIT:C12434)"]
 }

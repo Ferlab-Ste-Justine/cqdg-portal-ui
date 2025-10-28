@@ -9,7 +9,7 @@ describe('Page d\'un participant - Télécharger le clinical data', () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitParticipantEntity('PT0000010');
+    cy.visitParticipantEntity('PT0000879');
     cy.get('[class*="EntityTitle"] button[class*="ant-dropdown-trigger"]').click({force: true});
     cy.clickAndIntercept('[data-menu-id*="-clinicalData"]', 'POST', '**/file-manifest', 1);
     cy.waitUntilFile(oneMinute);

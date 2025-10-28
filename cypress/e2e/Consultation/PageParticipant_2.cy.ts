@@ -4,12 +4,12 @@ import '../../support/commands';
 describe('Page d\'un participant - Vérifier les informations affichées', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitParticipantEntity('PT0000010');
+    cy.visitParticipantEntity('PT0000879');
   };
 
   it('Titre', () => {
     setupTest();
-    cy.get('[class*="EntityTitle"]').contains('PT0000010');
+    cy.get('[class*="EntityTitle"]').contains('PT0000879');
   });
 
   it('Panneau Summary', () => {
@@ -22,7 +22,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[data-cy="SummaryHeader_Files_Button"]').contains('Files');
     cy.get('[id="summary"] [class="ant-collapse-header"]').contains('Summary').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(0).contains('ID').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(0).contains('PT0000010').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(0).contains('PT0000879').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(1).contains('External Participant ID').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(1).contains('HSJ-1005-389').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(2).contains('Study').should('exist');
@@ -43,15 +43,15 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(0).contains('Male').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(0).find('[class*="ColorTag_genderMale"]').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(1).contains('Gender').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(1).contains('-').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(1).contains('Man').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(2).contains('Race').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(2).contains('-').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(2).contains('Black').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(3).contains('Race (Other)').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(3).contains('-').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(4).contains('Age at Recruitment').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(4).contains('-').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(5).contains('Vital Status').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(5).contains('Unknown').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(5).contains('Missing - Unknown').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(5).find('[class*="ant-tag-red"]').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(6).contains('Age at Death').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(6).contains('-').should('exist');
@@ -75,15 +75,15 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="family"] thead th[class="ant-table-cell"]').eq(0).contains('Participant').should('exist');
     cy.get('[id="family"] thead th[class="ant-table-cell"]').eq(1).contains('Family Position').should('exist');
     cy.get('[id="family"] thead th[class="ant-table-cell"]').eq(2).contains('Disease Status').should('exist');
-    cy.get('[data-row-key="PT0000010"] td[class="ant-table-cell"]').eq(0).contains('PT0000010').should('exist');
-    cy.get('[data-row-key="PT0000010"] td[class="ant-table-cell"]').eq(1).contains('Proband').should('exist');
-    cy.get('[data-row-key="PT0000010"] td[class="ant-table-cell"]').eq(2).contains('Yes').should('exist');
-    cy.get('[data-row-key="PT0000483"] td[class="ant-table-cell"]').eq(0).contains('PT0000483').should('exist');
-    cy.get('[data-row-key="PT0000483"] td[class="ant-table-cell"]').eq(1).contains('Father').should('exist');
-    cy.get('[data-row-key="PT0000483"] td[class="ant-table-cell"]').eq(2).contains('No').should('exist');
-    cy.get('[data-row-key="PT0000091"] td[class="ant-table-cell"]').eq(0).contains('PT0000091').should('exist');
-    cy.get('[data-row-key="PT0000091"] td[class="ant-table-cell"]').eq(1).contains('Mother').should('exist');
-    cy.get('[data-row-key="PT0000091"] td[class="ant-table-cell"]').eq(2).contains('No').should('exist');
+    cy.get('[data-row-key="PT0000879"] td[class="ant-table-cell"]').eq(0).contains('PT0000879').should('exist');
+    cy.get('[data-row-key="PT0000879"] td[class="ant-table-cell"]').eq(1).contains('Proband').should('exist');
+    cy.get('[data-row-key="PT0000879"] td[class="ant-table-cell"]').eq(2).contains('Yes').should('exist');
+    cy.get('[data-row-key="PT0000899"] td[class="ant-table-cell"]').eq(0).contains('PT0000899').should('exist');
+    cy.get('[data-row-key="PT0000899"] td[class="ant-table-cell"]').eq(1).contains('Father').should('exist');
+    cy.get('[data-row-key="PT0000899"] td[class="ant-table-cell"]').eq(2).contains('No').should('exist');
+    cy.get('[data-row-key="PT0001035"] td[class="ant-table-cell"]').eq(0).contains('PT0001035').should('exist');
+    cy.get('[data-row-key="PT0001035"] td[class="ant-table-cell"]').eq(1).contains('Mother').should('exist');
+    cy.get('[data-row-key="PT0001035"] td[class="ant-table-cell"]').eq(2).contains('No').should('exist');
   });
 
   it('Panneau Data Access', () => {
@@ -166,7 +166,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(2).contains('Blood').should('exist');
     cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(2).contains('NCIT:').should('exist');
     cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(2).contains('C12434').should('exist');
-    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(3).contains('SP0000179').should('exist');
+    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(3).contains('SP0000683').should('exist');
     cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(4).contains('-').should('exist');
   });
   

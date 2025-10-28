@@ -29,7 +29,7 @@ describe('Page des études - Valider les liens disponibles', () => {
   it('Lien Program du tableau', () => {
     setupTest();
     cy.get('tr[data-row-key="T-DEE"] [class*="ant-table-cell"]').eq(2).find('[href]').eq(0).clickAndWait({force: true});
-    cy.get('[class*="ProgramCard"]').contains(/RARE.Qc (2|3)/);
+    cy.get('[class*="ProgramCard"]').contains('RARE.Qc');
   });
 
   it('Lien Participants du tableau', () => {

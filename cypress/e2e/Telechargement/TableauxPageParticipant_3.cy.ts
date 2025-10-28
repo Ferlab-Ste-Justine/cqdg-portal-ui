@@ -7,7 +7,7 @@ describe('Page d\'un participant - Exporter le tableau Phenotypes en TSV', () =>
   const setupTest = () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
     cy.login();
-    cy.visitParticipantEntity('PT0000010');
+    cy.visitParticipantEntity('PT0000879');
     cy.resetColumns('phenotype');
     cy.get('div[id="content"] svg[data-icon="download"]').eq(3).clickAndWait({force: true});
     cy.waitUntilFile(oneMinute);

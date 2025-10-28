@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page d\'un participant - Valider les liens disponibles', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitParticipantEntity('PT0000010');
+    cy.visitParticipantEntity('PT0000879');
   };
 
   it('Lien Study du panneau Summary', () => {
@@ -24,8 +24,8 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
 
   it('Lien Mother du panneau Family', () => {
     setupTest();
-    cy.get('[data-row-key="PT0000483"] td[class="ant-table-cell"]').eq(0).find('[href]').clickAndWait({force: true});
-    cy.get('[class*="EntityTitle"]').contains('PT0000483');
+    cy.get('[data-row-key="PT0000899"] td[class="ant-table-cell"]').eq(0).find('[href]').clickAndWait({force: true});
+    cy.get('[class*="EntityTitle"]').contains('PT0000899');
   });
 
   it('Lien Duo de l\'Access Limitations du panneau Data Access', () => {
@@ -95,7 +95,7 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.get('[data-cy="Biospecimens_RedirectLink"]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Biospecimens"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000010').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000879').should('exist');
   });
 
   it('Lien NCIT du Sample Type du panneau Biospecimens', () => {
@@ -115,7 +115,7 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.get('[data-cy="Files_RedirectLink"]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000010').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000879').should('exist');
   });
 
   it('Lien Files de Germline CNV du panneau Files', () => {
@@ -124,7 +124,7 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Data Type').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000010').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000879').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('Germline CNV').should('exist');
   });
 
@@ -134,7 +134,7 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Strategy').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000010').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000879').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('WGS').should('exist');
   });
 });

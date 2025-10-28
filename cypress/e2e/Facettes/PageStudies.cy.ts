@@ -24,9 +24,9 @@ describe('Page des études - Filtrer avec les facettes', () => {
     cy.get('section[class*="Filters"] [aria-expanded="false"]').should('not.exist');
   });
 
-  it('Program - RARE-QC2', () => {
+  it('Program - RARE-QC', () => {
     setupTest();
-    cy.validateFacetFilter('Program', 'RARE-QC2', 'RARE-QC2', /^2 Results$/, false);
+    cy.validateFacetFilter('Program', 'RARE-QC', 'RARE-QC', /^5 Results$/, false);
     cy.validateFacetRank(0, 'Program');
   });
 

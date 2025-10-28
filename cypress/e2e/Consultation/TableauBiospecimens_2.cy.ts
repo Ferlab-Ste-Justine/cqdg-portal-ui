@@ -11,7 +11,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les liens disponibles',
     setupTest();
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(3).find('[href]').clickAndWait({force: true});
     cy.get('[id="participant-entity-page"]').should('exist');
-    cy.get('[class*="EntityTitle"]').contains('PT0000010');
+    cy.get('[class*="EntityTitle"]').contains('PT0000879');
   });
 
   it('Lien Study du tableau', () => {

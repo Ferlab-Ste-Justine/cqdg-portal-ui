@@ -8,7 +8,7 @@ describe('Page Data Exploration (Participants) - Téléverser une liste d\'ident
     cy.get('[data-cy="SidebarMenuItem_Participant"]').clickAndWait({force: true});
     cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
     cy.get('[class="ant-modal-header"]').contains('participant').should('exist');
-    cy.get('[class*="UploadModal"] textarea').type('pt0000010,hsj-1005-389 unknown');
+    cy.get('[class*="UploadModal"] textarea').type('PT0000879,hsj-1005-389 unknown');
   };
 
   it('Vérifier les informations affichées - Popover', () => {
@@ -27,10 +27,10 @@ describe('Page Data Exploration (Participants) - Téléverser une liste d\'ident
 
   it('Valider les fonctionnalités de la modal - Bouton Supprimer', () => {
     setupTest();
-    cy.get('[class*="UploadModal"] textarea').contains('pt0000010').should('exist');
+    cy.get('[class*="UploadModal"] textarea').contains('PT0000879').should('exist');
     cy.get('[class*="UploadModal"] button[class*="ant-btn-text"]').clickAndWait({force: true});
 
-    cy.get('[class*="UploadModal"] textarea').contains('pt0000010').should('not.exist');
+    cy.get('[class*="UploadModal"] textarea').contains('PT0000879').should('not.exist');
     cy.get('[class*="UploadModal"] button[class*="ant-btn-text"]').should('not.exist');
   });
   
@@ -62,12 +62,12 @@ describe('Page Data Exploration (Participants) - Téléverser une liste d\'ident
     cy.get('[id*="panel-matched"] thead').contains('Mapped To').should('exist');
     cy.get('[id*="panel-matched"] thead').contains('Participant ID').should('exist');
     cy.get('[id*="panel-matched"] thead').contains('Study Code').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="PT0000010:0"] td').eq(0).contains('pt0000010').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="PT0000010:0"] td').eq(1).contains('PT0000010').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="PT0000010:0"] td').eq(2).contains('T-DEE').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="PT0000010:1"] td').eq(0).contains('hsj-1005-389').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="PT0000010:1"] td').eq(1).contains('PT0000010').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="PT0000010:1"] td').eq(2).contains('T-DEE').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="PT0000879:0"] td').eq(0).contains('PT0000879').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="PT0000879:0"] td').eq(1).contains('PT0000879').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="PT0000879:0"] td').eq(2).contains('T-DEE').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="PT0000879:1"] td').eq(0).contains('hsj-1005-389').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="PT0000879:1"] td').eq(1).contains('PT0000879').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="PT0000879:1"] td').eq(2).contains('T-DEE').should('exist');
   });
 
   it('Vérifier les informations affichées - Section Résumé (onglet Inconnus)', () => {
