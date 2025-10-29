@@ -33,6 +33,7 @@ export interface IParticipantResultTree {
 
 export interface ICodeDisplayMethod {
   code: string;
+  text: string;
   display: string;
   another_category: string;
   collect_method: {
