@@ -203,7 +203,6 @@ const getDefaultColumns = (): ProColumnType[] => [
     dataIndex: 'tumor_normal_designation',
     title: intl.get('entities.biospecimen.tumor_normal_designation'),
     sorter: { multiple: 1 },
-    defaultHidden: true,
     render: (tumor_normal_designation: string) => (
       <ColorTag
         type={ColorTagType.TumorType}
