@@ -217,7 +217,17 @@ const getDefaultColumns = (): ProColumnType[] => [
     title: intl.get('entities.biospecimen.tumor_histological_type.display'),
     sorter: { multiple: 1 },
     defaultHidden: true,
-    render: (value: ICodeDisplayMethod) => value?.display || TABLE_EMPTY_PLACE_HOLDER,
+    render: (value: ICodeDisplayMethod) => {
+      if (!value?.display) return TABLE_EMPTY_PLACE_HOLDER;
+      const { code, title } = extractNcitTissueTitleAndCode(value?.display);
+      if (!code) return value?.display;
+      return (
+        <>
+          {title} (NCIT:{' '}
+          <ExternalLink href={`http://purl.obolibrary.org/obo/NCIT_${code}`}>{code}</ExternalLink>)
+        </>
+      );
+    },
   },
   {
     key: 'tumor_histological_type.text',
@@ -233,7 +243,17 @@ const getDefaultColumns = (): ProColumnType[] => [
     title: intl.get('entities.biospecimen.cancer_anatomic_location.display'),
     sorter: { multiple: 1 },
     defaultHidden: true,
-    render: (value: ICodeDisplayMethod) => value?.display || TABLE_EMPTY_PLACE_HOLDER,
+    render: (value: ICodeDisplayMethod) => {
+      if (!value?.display) return TABLE_EMPTY_PLACE_HOLDER;
+      const { code, title } = extractNcitTissueTitleAndCode(value?.display);
+      if (!code) return value?.display;
+      return (
+        <>
+          {title} (NCIT:{' '}
+          <ExternalLink href={`http://purl.obolibrary.org/obo/NCIT_${code}`}>{code}</ExternalLink>)
+        </>
+      );
+    },
   },
   {
     key: 'cancer_anatomic_location.text',
