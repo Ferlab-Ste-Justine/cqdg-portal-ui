@@ -11,6 +11,16 @@ export const GET_BIOSPECIMENS = gql`
             id
             biospecimen_id
             age_biospecimen_collection
+            cancer_biospecimen_type
+            tumor_normal_designation
+            tumor_histological_type {
+              display
+              text
+            }
+            cancer_anatomic_location {
+              display
+              text
+            }
             biospecimen_tissue_source
             study_id
             study_code
