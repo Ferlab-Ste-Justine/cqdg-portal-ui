@@ -139,6 +139,10 @@ const fetchTsvReport = createAsyncThunk<void, TFetchTSVArgs, { rejectValue: stri
   },
 );
 
+const getNestedValue = (obj: any, key: string) => {
+  return key.split('.').reduce((acc, part) => acc && acc[part], obj);
+};
+
 const generateLocalTsvReport = createAsyncThunk<
   void,
   {
@@ -165,10 +169,19 @@ const generateLocalTsvReport = createAsyncThunk<
     const visibleRows = (args.rows || []).reduce(
       (rs, r) => [
         ...rs,
-        visibleHeaders.map((h) => (h.exportValue ? h.exportValue(r) : '') || r[h.key] || '--'),
+        visibleHeaders.map(
+          (h) => (h.exportValue ? h.exportValue(r) : '') || getNestedValue(r, h.key) || '--',
+        ),
       ],
       [],
     );
+
+    // eslint-disable-next-line no-console
+    console.log('args.rows', args.rows);
+    // eslint-disable-next-line no-console
+    console.log('visibleRows', visibleRows);
+    // eslint-disable-next-line no-console
+    console.log('visibleHeaders', visibleHeaders);
 
     const shapeIsOK = visibleRows.every((r: unknown[]) => r.length === visibleTitle.length);
     if (!shapeIsOK) {
