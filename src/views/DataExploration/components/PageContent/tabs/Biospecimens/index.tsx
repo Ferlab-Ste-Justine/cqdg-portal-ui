@@ -137,8 +137,19 @@ const getDefaultColumns = (): ProColumnType[] => [
     title: intl.get('entities.biospecimen.cancer_biospecimen_type'),
     sorter: { multiple: 1 },
     defaultHidden: true,
-    render: (cancer_biospecimen_type: string) =>
-      cancer_biospecimen_type || TABLE_EMPTY_PLACE_HOLDER,
+    // render: (cancer_biospecimen_type: string) =>
+    //   cancer_biospecimen_type || TABLE_EMPTY_PLACE_HOLDER,
+    render: (cancer_biospecimen_type: string) => {
+      if (!cancer_biospecimen_type) return TABLE_EMPTY_PLACE_HOLDER;
+      const { code, title } = extractNcitTissueTitleAndCode(cancer_biospecimen_type);
+      if (!code) return cancer_biospecimen_type;
+      return (
+        <>
+          {title} (NCIT:{' '}
+          <ExternalLink href={`http://purl.obolibrary.org/obo/NCIT_${code}`}>{code}</ExternalLink>)
+        </>
+      );
+    },
   },
   {
     key: 'age_biospecimen_collection',
