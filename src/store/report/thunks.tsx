@@ -176,13 +176,6 @@ const generateLocalTsvReport = createAsyncThunk<
       [],
     );
 
-    // eslint-disable-next-line no-console
-    console.log('args.rows', args.rows);
-    // eslint-disable-next-line no-console
-    console.log('visibleRows', visibleRows);
-    // eslint-disable-next-line no-console
-    console.log('visibleHeaders', visibleHeaders);
-
     const shapeIsOK = visibleRows.every((r: unknown[]) => r.length === visibleTitle.length);
     if (!shapeIsOK) {
       showErrorReportNotif(thunkAPI);
