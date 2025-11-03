@@ -5,6 +5,11 @@ describe('Page Data Exploration (Biospecimens) - Vérifier les informations affi
   const setupTest = () => {
     cy.login();
     cy.visitDataExploration('biospecimens', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.showColumn('Cancer Tissue Type');
+    cy.showColumn('Tumor Type (NCIt)');
+    cy.showColumn('Tumor Type (Source Text)');
+    cy.showColumn('Tumor Location (NCIt)');
+    cy.showColumn('Tumor Location (Source Text)');
   };
 
   it('Titre', () => {
@@ -25,6 +30,13 @@ describe('Page Data Exploration (Biospecimens) - Vérifier les informations affi
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(6).contains('NCIT:').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(6).contains('C12434').should('exist');
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(7).contains('-').should('exist');
-    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(8).contains(/^6$/).should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(8).contains('-').should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(9).contains(/^6$/).should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(10).contains('Not applicable').should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(10).find('[class*="ColorTag_default"]').should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(11).contains('-').should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(12).contains('-').should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(13).contains('-').should('exist');
+    cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(14).contains('-').should('exist');
   });
 });

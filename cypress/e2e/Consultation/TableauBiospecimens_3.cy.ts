@@ -5,6 +5,11 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   const setupTest = () => {
     cy.login();
     cy.visitDataExploration('biospecimens');
+    cy.showColumn('Cancer Tissue Type');
+    cy.showColumn('Tumor Type (NCIt)');
+    cy.showColumn('Tumor Type (Source Text)');
+    cy.showColumn('Tumor Location (NCIt)');
+    cy.showColumn('Tumor Location (Source Text)');
   };
 
   it('Valider les fonctionnalités du tableau - Tri Study', () => {
@@ -25,19 +30,68 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
 
   it('Valider les fonctionnalités du tableau - Tri Tissue', () => {
     setupTest();
-    cy.sortTableAndWait('Tissue');
+    cy.sortTableAndWait(/^Tissue$/);
     cy.validateTableFirstRow('C12434', 6, true);
-    cy.sortTableAndWait('Tissue');
+    cy.sortTableAndWait(/^Tissue$/);
     cy.validateTableFirstRow('Unknown', 6, true);
-    cy.sortTableAndWait('Tissue');
+    cy.sortTableAndWait(/^Tissue$/);
+  });
+
+  it('Valider les fonctionnalités du tableau - Tri Cancer Tissue Type', () => {
+    setupTest();
+    cy.sortTableAndWait('Cancer Tissue Type');
+    cy.validateTableFirstRow('Normal Tissue Sample', 7, true);
+    cy.sortTableAndWait('Cancer Tissue Type');
+    cy.validateTableFirstRow('Normal Tissue Sample', 7, true);
+    cy.sortTableAndWait('Cancer Tissue Type');
   });
 
   it('Valider les fonctionnalités du tableau - Tri Age', () => {
     setupTest();
     cy.sortTableAndIntercept('Age', 1);
-    cy.validateTableFirstRow('Congenital', 7, true);
+    cy.validateTableFirstRow('Congenital', 8, true);
     cy.sortTableAndIntercept('Age', 1);
-    cy.validateTableFirstRow('Young Adult', 7, true);
+    cy.validateTableFirstRow('Young Adult', 8, true);
+  });
+
+  it('Valider les fonctionnalités du tableau - Tri Tumor Status', () => {
+    setupTest();
+    cy.sortTableAndIntercept('Tumor Status', 1);
+    cy.validateTableFirstRow('Normal', 10, true);
+    cy.sortTableAndIntercept('Tumor Status', 1);
+    cy.validateTableFirstRow('Not applicable', 10, true);
+  });
+
+  it('Valider les fonctionnalités du tableau - Tri Tumor Type (NCIt)', () => {
+    setupTest();
+    cy.sortTableAndIntercept('Tumor Type (NCIt)', 1);
+    cy.validateTableFirstRow('Derived Cell Line', 11, true);
+    cy.sortTableAndIntercept('Tumor Type (NCIt)', 1);
+    cy.validateTableFirstRow('Missing - Not Provided', 11, true);
+  });
+
+  it('Valider les fonctionnalités du tableau - Tri Tumor Type (Source Text)', () => {
+    setupTest();
+    cy.sortTableAndIntercept('Tumor Type (Source Text)', 1);
+    cy.validateTableFirstRow('histological_type_source_text', 12, true);
+    cy.sortTableAndIntercept('Tumor Type (Source Text)', 1);
+    cy.validateTableFirstRow('histological_type_source_text', 12, true);
+  });
+
+  it('Valider les fonctionnalités du tableau - Tri Tumor Location (NCIt)', () => {
+    setupTest();
+    cy.sortTableAndIntercept('Tumor Location (NCIt)', 1);
+    cy.validateTableFirstRow('Derived Cell Line', 13, true);
+    cy.sortTableAndIntercept('Tumor Location (NCIt)', 1);
+    cy.validateTableFirstRow('Missing - Not Provided', 13, true);
+  });
+
+  it('Valider les fonctionnalités du tableau - Tri Tumor Location (Source Text)', () => {
+    setupTest();
+    cy.sortTableAndIntercept('Tumor Location (Source Text)', 1);
+    cy.validateTableFirstRow('anatomic_location_source_text', 14, true);
+    cy.sortTableAndIntercept('Tumor Location (Source Text)', 1);
+    cy.validateTableFirstRow('anatomic_location_source_text', 14, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
