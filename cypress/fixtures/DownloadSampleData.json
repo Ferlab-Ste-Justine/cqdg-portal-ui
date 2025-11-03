@@ -9,6 +9,12 @@
                "External Biospecimen ID",
                "Biospecimen Tissue Source",
                "Age at Biospecimen Collection",
+               "Tumor Status",
+               "Cancer Tissue Type",
+               "Tumor Type (NCIt)",
+               "Tumor Type (Source Text)",
+               "Tumor Location (NCIt)",
+               "Tumor Location (Source Text)",
                "PT0000879",
                "HSJ-1005-389",
                "Developmental and epileptic encephalopathies",
@@ -18,5 +24,6 @@
                "DNA (NCIT:C449)",
                "SP0000683",
                "B-S03510",
-               "Blood (NCIT:C12434)"]
+               "Blood (NCIT:C12434)",
+               "Not applicable"]
 }
