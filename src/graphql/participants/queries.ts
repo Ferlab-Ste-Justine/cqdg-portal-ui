@@ -75,7 +75,17 @@ export const GET_PARTICIPANTS = gql`
                     biospecimen_id
                     sample_type
                     biospecimen_tissue_source
+                    cancer_biospecimen_type
                     age_biospecimen_collection
+                    tumor_normal_designation
+                    tumor_histological_type {
+                      display
+                      text
+                    }
+                    cancer_anatomic_location {
+                      display
+                      text
+                    }
                   }
                 }
               }

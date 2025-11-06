@@ -100,13 +100,13 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
 
   it('Lien NCIT du Sample Type du panneau Biospecimens', () => {
     setupTest();
-    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(1).find('[href]')
+    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(2).find('[href]')
       .should('have.attr', 'href', 'http://purl.obolibrary.org/obo/NCIT_C449');
   });
 
   it('Lien NCIT du Tissue du panneau Biospecimens', () => {
     setupTest();
-    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(2).find('[href]')
+    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(3).find('[href]')
       .should('have.attr', 'href', 'http://purl.obolibrary.org/obo/NCIT_C12434');
   });
 

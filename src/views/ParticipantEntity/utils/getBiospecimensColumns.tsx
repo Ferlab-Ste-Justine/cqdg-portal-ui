@@ -1,8 +1,10 @@
 import React from 'react';
 import intl from 'react-intl-universal';
+import ColorTag, { ColorTagType } from '@ferlab/ui/core/components/ColorTag';
 import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import { Tooltip } from 'antd';
-import { ageCategories } from 'graphql/participants/models';
+import { ageCategories, ICodeDisplayMethod } from 'graphql/participants/models';
+import capitalize from 'lodash/capitalize';
 import { extractNcitTissueTitleAndCode } from 'views/DataExploration/utils/helper';
 
 import { TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
@@ -15,6 +17,12 @@ const getDiagnosesColumns = (): IProColumnExport[] => [
     key: 'sample_id',
     dataIndex: 'sample_id',
     title: intl.get('entities.biospecimen.sample'),
+    render: (label: string) => label || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
+    key: 'biospecimen_id',
+    dataIndex: 'biospecimen_id',
+    title: intl.get('entities.biospecimen.biospecimen'),
     render: (label: string) => label || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
@@ -49,10 +57,22 @@ const getDiagnosesColumns = (): IProColumnExport[] => [
     },
   },
   {
-    key: 'biospecimen_id',
-    dataIndex: 'biospecimen_id',
-    title: intl.get('entities.biospecimen.biospecimen'),
-    render: (label: string) => label || TABLE_EMPTY_PLACE_HOLDER,
+    key: 'cancer_biospecimen_type',
+    dataIndex: 'cancer_biospecimen_type',
+    title: intl.get('entities.biospecimen.cancer_biospecimen_type'),
+    sorter: { multiple: 1 },
+    defaultHidden: true,
+    render: (cancer_biospecimen_type: string) => {
+      if (!cancer_biospecimen_type) return TABLE_EMPTY_PLACE_HOLDER;
+      const { code, title } = extractNcitTissueTitleAndCode(cancer_biospecimen_type);
+      if (!code) return cancer_biospecimen_type;
+      return (
+        <>
+          {title} (NCIT:{' '}
+          <ExternalLink href={`http://purl.obolibrary.org/obo/NCIT_${code}`}>{code}</ExternalLink>)
+        </>
+      );
+    },
   },
   {
     key: 'age_biospecimen_collection',
@@ -83,6 +103,70 @@ const getDiagnosesColumns = (): IProColumnExport[] => [
         category.label
       );
     },
+  },
+  {
+    key: 'tumor_normal_designation',
+    dataIndex: 'tumor_normal_designation',
+    title: intl.get('entities.biospecimen.tumor_normal_designation'),
+    sorter: { multiple: 1 },
+    render: (tumor_normal_designation: string) => (
+      <ColorTag
+        type={ColorTagType.TumorType}
+        value={capitalize(tumor_normal_designation)}
+      ></ColorTag>
+    ),
+  },
+  {
+    key: 'tumor_histological_type.display',
+    dataIndex: 'tumor_histological_type',
+    title: intl.get('entities.biospecimen.tumor_histological_type.display'),
+    sorter: { multiple: 1 },
+    defaultHidden: true,
+    render: (value: ICodeDisplayMethod) => {
+      if (!value?.display) return TABLE_EMPTY_PLACE_HOLDER;
+      const { code, title } = extractNcitTissueTitleAndCode(value?.display);
+      if (!code) return value?.display;
+      return (
+        <>
+          {title} (NCIT:{' '}
+          <ExternalLink href={`http://purl.obolibrary.org/obo/NCIT_${code}`}>{code}</ExternalLink>)
+        </>
+      );
+    },
+  },
+  {
+    key: 'tumor_histological_type.text',
+    dataIndex: 'tumor_histological_type',
+    title: intl.get('entities.biospecimen.tumor_histological_type.text'),
+    sorter: { multiple: 1 },
+    defaultHidden: true,
+    render: (value: ICodeDisplayMethod) => value?.text || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
+    key: 'cancer_anatomic_location.display',
+    dataIndex: 'cancer_anatomic_location',
+    title: intl.get('entities.biospecimen.cancer_anatomic_location.display'),
+    sorter: { multiple: 1 },
+    defaultHidden: true,
+    render: (value: ICodeDisplayMethod) => {
+      if (!value?.display) return TABLE_EMPTY_PLACE_HOLDER;
+      const { code, title } = extractNcitTissueTitleAndCode(value?.display);
+      if (!code) return value?.display;
+      return (
+        <>
+          {title} (NCIT:{' '}
+          <ExternalLink href={`http://purl.obolibrary.org/obo/NCIT_${code}`}>{code}</ExternalLink>)
+        </>
+      );
+    },
+  },
+  {
+    key: 'cancer_anatomic_location.text',
+    dataIndex: 'cancer_anatomic_location',
+    title: intl.get('entities.biospecimen.cancer_anatomic_location.text'),
+    sorter: { multiple: 1 },
+    defaultHidden: true,
+    render: (value: ICodeDisplayMethod) => value?.text || TABLE_EMPTY_PLACE_HOLDER,
   },
 ];
 

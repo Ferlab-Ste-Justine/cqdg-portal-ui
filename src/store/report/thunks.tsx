@@ -139,6 +139,10 @@ const fetchTsvReport = createAsyncThunk<void, TFetchTSVArgs, { rejectValue: stri
   },
 );
 
+const getNestedValue = (obj: any, key: string) => {
+  return key.split('.').reduce((acc, part) => acc && acc[part], obj);
+};
+
 const generateLocalTsvReport = createAsyncThunk<
   void,
   {
@@ -165,7 +169,9 @@ const generateLocalTsvReport = createAsyncThunk<
     const visibleRows = (args.rows || []).reduce(
       (rs, r) => [
         ...rs,
-        visibleHeaders.map((h) => (h.exportValue ? h.exportValue(r) : '') || r[h.key] || '--'),
+        visibleHeaders.map(
+          (h) => (h.exportValue ? h.exportValue(r) : '') || getNestedValue(r, h.key) || '--',
+        ),
       ],
       [],
     );
