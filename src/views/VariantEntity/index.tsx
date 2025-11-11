@@ -48,10 +48,11 @@ export default function VariantEntity() {
       href: `#${SectionId.FREQUENCY}`,
       title: intl.get('entities.variant.frequencies.frequency'),
     },
-    {
-      href: `#${SectionId.PATHOGENICITY}`,
-      title: intl.get('entities.variant.pathogenicity.pathogenicity'),
-    },
+    // FIXME Pathogenicity section is temporarily removed CQDG-1290
+    // {
+    //   href: `#${SectionId.PATHOGENICITY}`,
+    //   title: intl.get('entities.variant.pathogenicity.pathogenicity'),
+    // },
     {
       href: `#${SectionId.CONDITION}`,
       title: intl.get('entities.variant.conditions.title'),
