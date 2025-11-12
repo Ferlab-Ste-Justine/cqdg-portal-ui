@@ -1,5 +1,16 @@
-## VERSION 0.20.2 (2025-07-08)
+## VERSION 0.22.0 (2025-11-12)
+### Features:
+- [CQDG-1197](https://ferlab-crsj.atlassian.net/browse/CQDG-1197) Feature: [Data Exploration] Add fields to biospecimen tab table of results
+- [CQDG-1198](https://ferlab-crsj.atlassian.net/browse/CQDG-1198) Feature: [Entity] Add fields to biospecimen table to Participant entity
+- [CQDG-1199](https://ferlab-crsj.atlassian.net/browse/CQDG-1199) Feature: [Report] Add fields to biospecimen report
+### Technical / Other Changes:
+- [CQDG-1290](https://ferlab-crsj.atlassian.net/browse/CQDG-1290) Fix: [Variant Entity] Remove the ClinVar table from the pathogenicity section
 
+## VERSION 0.21.2 (2025-07-08)
+### Technical / Other Changes:
+- [CQDG-1250](https://ferlab-crsj.atlassian.net/browse/CQDG-1250) Fix: [Program Entity] Remove the ClinVar table from the pathogenicity section
+
+## VERSION 0.20.2 (2025-07-08)
 ### Features:
 - [CQDG-842](https://ferlab-crsj.atlassian.net/browse/CQDG-842) Feature: [Data Exploration] Extracted the ontology NCIt term directly from the obo file
 - [CQDG-895](https://ferlab-crsj.atlassian.net/browse/CQDG-895) Feature: [Studies] Added new fields to the Studies page
