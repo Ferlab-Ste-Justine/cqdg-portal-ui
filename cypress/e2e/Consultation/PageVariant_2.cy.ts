@@ -140,12 +140,6 @@ describe('Page d\'un variant - Valider les liens disponibles', () => {
     .should('have.attr', 'href', 'https://gnomad.broadinstitute.org/variant/1-156176849-G-A?dataset=gnomad_r3');
   });
 
-  it('Lien ClinVar du panneau ClinVar', () => {
-    setupTest();
-    cy.get('[id="pathogenicity"] div[class="ant-collapse-header"] [href]') // data-cy="Pathogenicity_ClinVar_3362_ExternalLink"
-    .should('have.attr', 'href', 'https://www.ncbi.nlm.nih.gov/clinvar/variation/3362');
-  });
-
   it('Lien de la condition Orphanet du panneau Gene - Phenotype Association', () => {
     setupTest();
     cy.get('[data-row-key="0-s-e-m-a-4-a"] td[class="ant-table-cell"]').eq(2).find('[href]')

@@ -2,7 +2,6 @@ import intl from 'react-intl-universal';
 import { useParams } from 'react-router-dom';
 import { IAnchorLink } from '@ferlab/ui/core/components/AnchorMenu';
 import { NO_GENE } from '@ferlab/ui/core/components/Consequences/Cell';
-import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import { hydrateResults } from '@ferlab/ui/core/graphql/utils';
 import EntityPageWrapper, {
   EntityPublicCohortTable,
@@ -11,11 +10,8 @@ import EntityPageWrapper, {
 } from '@ferlab/ui/core/pages/EntityPage';
 import EntityNestedTable from '@ferlab/ui/core/pages/EntityPage/EntityNestedTable';
 import EntityVariantSummary from '@ferlab/ui/core/pages/EntityPage/EntityVariantSummary';
-import {
-  makeClinvarRows,
-  makeGenesOrderedRow,
-} from '@ferlab/ui/core/pages/EntityPage/utils/pathogenicity';
-import { Space, Tag } from 'antd';
+import { makeGenesOrderedRow } from '@ferlab/ui/core/pages/EntityPage/utils/pathogenicity';
+import { Tag } from 'antd';
 import { useVariantEntity } from 'graphql/variants/actions';
 
 import LineStyleIcon from 'components/Icons/LineStyleIcon';
@@ -26,7 +22,7 @@ import {
   getFrequencyTableSummaryColumns,
   getPublicCohorts,
 } from './utils/frequency';
-import { getClinvarColumns, getGenePhenotypeColumns } from './utils/pathogenicity';
+import { getGenePhenotypeColumns } from './utils/pathogenicity';
 import { getSummaryItems } from './utils/summary';
 
 import styles from './index.module.css';
@@ -52,10 +48,11 @@ export default function VariantEntity() {
       href: `#${SectionId.FREQUENCY}`,
       title: intl.get('entities.variant.frequencies.frequency'),
     },
-    {
-      href: `#${SectionId.PATHOGENICITY}`,
-      title: intl.get('entities.variant.pathogenicity.pathogenicity'),
-    },
+    // FIXME Pathogenicity section is temporarily removed CQDG-1290
+    // {
+    //   href: `#${SectionId.PATHOGENICITY}`,
+    //   title: intl.get('entities.variant.pathogenicity.pathogenicity'),
+    // },
     {
       href: `#${SectionId.CONDITION}`,
       title: intl.get('entities.variant.conditions.title'),
@@ -102,7 +99,6 @@ export default function VariantEntity() {
             </>
           }
         />
-
         <EntityVariantSummary
           id={SectionId.SUMMARY}
           loading={loading}
@@ -110,7 +106,6 @@ export default function VariantEntity() {
           noDataLabel={intl.get('api.noDataAvailable')}
           theme="basic-bordered"
         />
-
         <EntityNestedTable
           columns={getColumn(geneSymbolOfPicked)}
           data={consequencesData.length ? consequencesData : undefined}
@@ -121,7 +116,6 @@ export default function VariantEntity() {
           header={intl.get('entities.variant.consequences.transcripts')}
           noDataLabel={intl.get('api.noDataAvailable')}
         />
-
         <EntityTable
           id={SectionId.FREQUENCY}
           columns={getFrequencyItems()}
@@ -132,7 +126,6 @@ export default function VariantEntity() {
           summaryColumns={getFrequencyTableSummaryColumns(data)}
           emptyMessage={intl.get('api.noDataAvailable')}
         />
-
         <EntityPublicCohortTable
           id="EntityPublicCohortTable"
           columns={getPublicCohorts()}
@@ -143,29 +136,29 @@ export default function VariantEntity() {
           emptyMessage={intl.get('api.noDataAvailable')}
         />
 
-        <EntityTable
-          id={SectionId.PATHOGENICITY}
-          loading={loading}
-          title={intl.get('entities.variant.pathogenicity.pathogenicity')}
-          header={
-            <Space size={4}>
-              {intl.get('entities.variant.pathogenicity.clinVar')}
-              {data?.clinvar?.clinvar_id && (
-                <ExternalLink
-                  href={`https://www.ncbi.nlm.nih.gov/clinvar/variation/${data?.clinvar.clinvar_id}`}
-                  data-cy={`Pathogenicity_ClinVar_${data?.clinvar.clinvar_id}_ExternalLink`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {data?.clinvar?.clinvar_id}
-                </ExternalLink>
-              )}
-            </Space>
-          }
-          data={makeClinvarRows(data?.clinvar)}
-          columns={getClinvarColumns()}
-          emptyMessage={intl.get('api.noDataAvailable')}
-        />
-
+        {/* FIXME Pathogenicity section is temporarily removed CQDG-1290 */}
+        {/*<EntityTable*/}
+        {/*  id={SectionId.PATHOGENICITY}*/}
+        {/*  loading={loading}*/}
+        {/*  title={intl.get('entities.variant.pathogenicity.pathogenicity')}*/}
+        {/*  header={*/}
+        {/*    <Space size={4}>*/}
+        {/*      {intl.get('entities.variant.pathogenicity.clinVar')}*/}
+        {/*      {data?.clinvar?.clinvar_id && (*/}
+        {/*        <ExternalLink*/}
+        {/*          href={`https://www.ncbi.nlm.nih.gov/clinvar/variation/${data?.clinvar.clinvar_id}`}*/}
+        {/*          data-cy={`Pathogenicity_ClinVar_${data?.clinvar.clinvar_id}_ExternalLink`}*/}
+        {/*          onClick={(e) => e.stopPropagation()}*/}
+        {/*        >*/}
+        {/*          {data?.clinvar?.clinvar_id}*/}
+        {/*        </ExternalLink>*/}
+        {/*      )}*/}
+        {/*    </Space>*/}
+        {/*  }*/}
+        {/*  data={makeClinvarRows(data?.clinvar)}*/}
+        {/*  columns={getClinvarColumns()}*/}
+        {/*  emptyMessage={intl.get('api.noDataAvailable')}*/}
+        {/*/>*/}
         <EntityTable
           id={SectionId.CONDITION}
           loading={loading}
