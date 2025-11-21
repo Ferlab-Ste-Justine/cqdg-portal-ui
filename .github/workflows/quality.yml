@@ -1,10 +1,5 @@
 name: Quality
 
-permissions:
-  checks: write
-  contents: read
-  pull-requests: write
-
 on:
   pull_request:
     branches: [main]
@@ -62,16 +57,3 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Run tests
         run: npm run test:github
-  coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ArtiomTr/jest-coverage-report-action@v2
-        id: coverage
-        with:
-          test-script: npm run coverage:changed
-          output: report-markdown
-      - uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          header: PR Coverage
-          message: ${{ steps.coverage.outputs.report }}
