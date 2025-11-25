@@ -42,15 +42,6 @@
   text-transform: capitalize;
 }
 
-.clinVar {
-  white-space: wrap;
-  text-decoration: underline;
-  color: inherit;
-}
-.clinVar:hover {
-  text-decoration: none;
-}
-
 .interpretation {
   white-space: wrap;
   color: inherit;
@@ -119,7 +110,8 @@
   background-color: var(--gray-1);
 }
 
-.externalLinkInTag {
+.externalLinkInTag,
+.externalLinkInTag:hover {
   color: inherit !important;
 }
 
