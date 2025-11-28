@@ -87,6 +87,7 @@
   border-bottom: 1px dotted;
 }
 
-.externalLinkInTag {
+.externalLinkInTag,
+.externalLinkInTag:hover {
   color: inherit !important;
 }

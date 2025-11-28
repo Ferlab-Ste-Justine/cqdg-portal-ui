@@ -38,9 +38,7 @@ const renderClinvar = (clinVar: IClinVar) => {
             className={styles.externalLinkInTag}
             href={`https://www.ncbi.nlm.nih.gov/clinvar/variation/${clinVar.clinvar_id}`}
           >
-            <Text className={styles.clinVar}>
-              {intl.get(`entities.variant.pathogenicity.clinVarLabel.${clinvarKey}`)}
-            </Text>
+            {intl.get(`entities.variant.pathogenicity.clinVarLabel.${clinvarKey}`)}
           </ExternalLink>
         </Tag>
       ))
