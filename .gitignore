@@ -115,6 +115,7 @@ dist
 build/
 
 # testing
+/.cache
 /coverage
 /cypress/downloads
 /cypress/screenshots
