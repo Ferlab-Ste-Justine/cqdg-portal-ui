@@ -121,3 +121,4 @@ build/
 /cypress/screenshots
 /cypress/results
 .testquality
+.copilot
