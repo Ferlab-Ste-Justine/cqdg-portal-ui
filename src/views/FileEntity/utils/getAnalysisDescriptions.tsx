@@ -14,8 +14,8 @@ const getAnalysisDescriptions = (file?: IFileEntity): IEntityDescriptionsItem[] 
     value: file?.sequencing_experiment?.bio_informatic_analysis || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
-    label: intl.get('entities.file.sequencing_experiment.workflow_name'),
-    value: file?.sequencing_experiment?.workflow_name || TABLE_EMPTY_PLACE_HOLDER,
+    label: intl.get('entities.file.sequencing_experiment.pipelines'),
+    value: file?.sequencing_experiment?.pipelines.join(', ') || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.file.sequencing_experiment.genome_build'),

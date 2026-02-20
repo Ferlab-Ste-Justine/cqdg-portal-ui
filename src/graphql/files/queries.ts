@@ -69,6 +69,7 @@ export const GET_FILES = gql`
               labAliquotID
               bio_informatic_analysis
               workflow_name
+              pipelines
               genome_build
               analysis_id
               source {

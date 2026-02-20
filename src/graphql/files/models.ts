@@ -32,6 +32,7 @@ export interface IFileSequencingExperiment {
   snv: string;
   ssup: string;
   workflow_name: string;
+  pipelines: string[];
   type_of_sequencing: string;
   analysis_id: string;
   source: ICodeDisplay;
