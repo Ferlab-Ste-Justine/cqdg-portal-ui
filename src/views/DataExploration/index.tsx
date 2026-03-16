@@ -171,6 +171,7 @@ const getFilterGroups = (type: FilterTypes) => {
             facets: [
               'dataset',
               'data_category',
+              'sequencing_experiment__bio_informatic_analysis',
               'data_type',
               'sequencing_experiment__experimental_strategy',
               'sequencing_experiment__platform',

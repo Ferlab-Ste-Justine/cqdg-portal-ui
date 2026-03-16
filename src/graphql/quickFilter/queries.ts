@@ -136,6 +136,12 @@ export const GET_QUICK_FILTER_EXPLO = (lang: LANG) => {
               doc_count
             }
           }
+          files__sequencing_experiment__bio_informatic_analysis {
+            buckets {
+              key
+              doc_count
+            }
+          }
           files__data_type {
             buckets {
               key

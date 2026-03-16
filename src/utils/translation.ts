@@ -441,6 +441,9 @@ export const getFacetsDictionary = () => ({
       display: intl.get('entities.file.strategy'),
     },
     platform: intl.get('entities.file.sequencing_experiment.platform'),
+    bio_informatic_analysis: intl.get(
+      'entities.file.sequencing_experiment.bio_informatic_analysis',
+    ),
     selection: {
       display: intl.get('entities.file.sequencing_experiment.selection'),
     },
