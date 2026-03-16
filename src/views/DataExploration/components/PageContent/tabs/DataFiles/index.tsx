@@ -117,6 +117,14 @@ const getDefaultColumns = (): ProColumnType[] => [
     sorter: { multiple: 1 },
   },
   {
+    key: 'sequencing_experiment.bio_informatic_analysis',
+    title: intl.get('entities.file.sequencing_experiment.bio_informatic_analysis'),
+    dataIndex: 'sequencing_experiment',
+    sorter: { multiple: 1 },
+    render: (sequencing_experiment) =>
+      sequencing_experiment?.bio_informatic_analysis || TABLE_EMPTY_PLACE_HOLDER,
+  },
+  {
     key: 'data_type',
     title: intl.get('entities.file.data_type'),
     tooltip: <ExternalDataTypeLink />,
@@ -179,6 +187,7 @@ const getDefaultColumns = (): ProColumnType[] => [
         0
       );
     },
+    defaultHidden: true,
   },
   {
     key: 'nb_biospecimens',
@@ -210,6 +219,7 @@ const getDefaultColumns = (): ProColumnType[] => [
         0
       );
     },
+    defaultHidden: true,
   },
   {
     key: 'file_name',
