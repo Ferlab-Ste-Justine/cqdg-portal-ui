@@ -179,6 +179,7 @@ const getDefaultColumns = (): ProColumnType[] => [
         0
       );
     },
+    defaultHidden: true,
   },
   {
     key: 'nb_biospecimens',
@@ -210,6 +211,7 @@ const getDefaultColumns = (): ProColumnType[] => [
         0
       );
     },
+    defaultHidden: true,
   },
   {
     key: 'file_name',
