@@ -11,6 +11,8 @@ describe('Page Data Exploration (Data Files) - Exporter les fichiers en TSV', ()
     cy.login();
     cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
     cy.showColumn('Dataset');
+    cy.showColumn('Participants');
+    cy.showColumn('Biospecimens');
     cy.showColumn('File Name');
     cy.showColumn('Platform');
 

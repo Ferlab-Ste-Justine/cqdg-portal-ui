@@ -53,33 +53,39 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
     cy.validateFacetRank(1, 'Data Category');
   });
 
+  it('Analysis Type - Germline Genome Bioinformatic Analysis', () => {
+    setupTest();
+    cy.validateFacetFilter('Analysis Type', 'Germline Genome Bioinformatic Analysis', 'Germline Genome Bioinformatic Analysis', /^3,163$/);
+    cy.validateFacetRank(2, 'Analysis Type');
+  });
+
   it('Data Type - Aligned Reads', () => {
     setupTest();
     cy.validateFacetFilter('Data Type', 'Aligned Reads', 'Aligned Reads', /^602$/);
-    cy.validateFacetRank(2, 'Data Type');
+    cy.validateFacetRank(3, 'Data Type');
   });
 
   it('Strategy - Whole Genome Sequencing', () => {
     setupTest();
     cy.validateFacetFilter('Strategy', 'WGS', 'WGS', /^3,207$/);
-    cy.validateFacetRank(3, 'Strategy');
+    cy.validateFacetRank(4, 'Strategy');
   });
 
   it('Platform - Illumina HiSeq 2500 PE125', () => {
     setupTest();
-    cy.validateFacetFilter('Platform', 'Illumina HiSeq 2500 PE125', 'Illumina HiSeq 2500 PE125', /^2,369$/);
-    cy.validateFacetRank(4, 'Platform');
+    cy.validateFacetFilter('Platform', 'Illumina HiSeq 2500 PE125', 'Illumina HiSeq 2500 PE125', /^2,351$/);
+    cy.validateFacetRank(5, 'Platform');
   });
 
   it('Library Selection - Reduced Representation', () => {
     setupTest();
     cy.validateFacetFilter('Library Selection', 'Reduced Representation', 'Reduced Representation', /^3,207$/);
-    cy.validateFacetRank(5, 'Library Selection');
+    cy.validateFacetRank(6, 'Library Selection');
   });
 
   it('Format - gVCF', () => {
     setupTest();
     cy.validateFacetFilter('Format', 'GVCF', 'gVCF', /^597$/);
-    cy.validateFacetRank(6, 'Format');
+    cy.validateFacetRank(7, 'Format');
   });
 });

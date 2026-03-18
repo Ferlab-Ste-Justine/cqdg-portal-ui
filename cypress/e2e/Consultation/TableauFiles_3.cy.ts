@@ -6,6 +6,8 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.login();
     cy.visitDataExploration('datafiles');
     cy.showColumn('Dataset');
+    cy.showColumn('Participants');
+    cy.showColumn('Biospecimens');
     cy.showColumn('File Name');
     cy.showColumn('Platform');
   };
@@ -34,44 +36,52 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.validateTableFirstRow('Genomics', 6, true);
   });
 
+  it('Valider les fonctionnalités du tableau - Tri Analysis Type', () => {
+    setupTest();
+    cy.sortTableAndWait('Analysis Type');
+    cy.validateTableFirstRow('Germline Genome Bioinformatic Analysis', 7, true);
+    cy.sortTableAndWait('Analysis Type');
+    cy.validateTableFirstRow('Germline Variant Analysis', 7, true);
+  });
+
   it('Valider les fonctionnalités du tableau - Tri Data Type', () => {
     setupTest();
     cy.sortTableAndWait('Data Type');
-    cy.validateTableFirstRow('Aligned Reads', 7, true);
+    cy.validateTableFirstRow('Aligned Reads', 8, true);
     cy.sortTableAndWait('Data Type');
-    cy.validateTableFirstRow('Unaligned Reads', 7, true);
+    cy.validateTableFirstRow('Unaligned Reads', 8, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Strategy', () => {
     setupTest();
     cy.sortTableAndWait('Strategy');
-    cy.validateTableFirstRow('Whole Genome Sequencing', 8, true);
+    cy.validateTableFirstRow('Whole Genome Sequencing', 9, true);
     cy.sortTableAndWait('Strategy');
-    cy.validateTableFirstRow('Whole Genome Sequencing', 8, true);
+    cy.validateTableFirstRow('Whole Genome Sequencing', 9, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Format', () => {
     setupTest();
     cy.sortTableAndWait('Format');
-    cy.validateTableFirstRow('CRAM', 9, true);
+    cy.validateTableFirstRow('CRAM', 10, true);
     cy.sortTableAndWait('Format');
-    cy.validateTableFirstRow('gVCF', 9, true);
+    cy.validateTableFirstRow('gVCF', 10, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Size', () => {
     setupTest();
     cy.sortTableAndWait('Size');
-    cy.validateTableFirstRow('0 B', 10, true);
+    cy.validateTableFirstRow('0 B', 11, true);
     cy.sortTableAndWait('Size');
-    cy.validateTableFirstRow('10.7 GB', 10, true);
+    cy.validateTableFirstRow('10.7 GB', 11, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Platform', () => {
     setupTest();
     cy.sortTableAndWait('Platform');
-    cy.validateTableFirstRow('Illumina HiSeq 2000 PE100', 14, true);
+    cy.validateTableFirstRow('Illumina HiSeq 2000 PE100', 15, true);
     cy.sortTableAndWait('Platform');
-    cy.validateTableFirstRow('NovaSeq S4 PE150', 14, true);
+    cy.validateTableFirstRow('Illumina HiSeq 2500 PE125', 15, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {

@@ -16,9 +16,9 @@
               "External Sample ID",
               "External Biospecimen ID",
               "Analysis ID"],
-  "content": ["FI0010780",
-              "FI0010780.S14020.metrics.tar.gz",
-              "0 B",
+  "content": ["FI0011483",
+              "FI0011483.S14020.metrics.tar.gz",
+              "1 B",
               "Genomics",
               "Metrics",
               "TGZ",
@@ -32,5 +32,5 @@
               "051-005-GNO-1",
               "S14020",
               "B-S14020",
-              "Germline Genome Bioinformatic Analysis"]
+              "Germline Variant Analysis"]
 }

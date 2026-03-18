@@ -23,11 +23,11 @@ describe('Page d\'une étude - Bouton Manifest', () => {
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(0).contains('Metrics').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(1).contains(/^9$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(2).contains(/^9$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(3).contains(/^0 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(3).contains(/^9 B$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Germline Structural Variant"] td').eq(0).contains('Germline Structural Variant').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Germline Structural Variant"] td').eq(1).contains(/^9$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Germline Structural Variant"] td').eq(2).contains(/^9$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Germline Structural Variant"] td').eq(3).contains(/^0 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Germline Structural Variant"] td').eq(3).contains(/^9 B$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(0).contains('Annotated SNV').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(1).contains(/^3$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(2).contains(/^3$/).should('exist');
@@ -43,7 +43,7 @@ describe('Page d\'une étude - Bouton Manifest', () => {
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Unaligned Reads"] td').eq(0).contains('Unaligned Reads').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Unaligned Reads"] td').eq(1).contains(/^1$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Unaligned Reads"] td').eq(2).contains(/^4$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Unaligned Reads"] td').eq(3).contains(/^0 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Unaligned Reads"] td').eq(3).contains(/^4 B$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Supplement"] td').eq(0).contains('Supplement').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Supplement"] td').eq(1).contains(/^1$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Supplement"] td').eq(2).contains(/^1$/).should('exist');
