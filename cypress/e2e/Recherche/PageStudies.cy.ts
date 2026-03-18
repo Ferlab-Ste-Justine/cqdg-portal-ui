@@ -30,7 +30,7 @@ describe('Page des études - Rechercher des études', () => {
   it('Par programme', () => {
     setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'desiir', 'POST', '**/graphql', 8);
-    cy.validateTableResultsCount(/1 Result/);
+    cy.validateTableResultsCount(/2 Results/);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
     cy.validateTableResultsCount(/\d{1} Results/);

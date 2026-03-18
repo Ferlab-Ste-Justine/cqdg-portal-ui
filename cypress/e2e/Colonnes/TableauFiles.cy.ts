@@ -51,43 +51,50 @@ describe('Page Data Exploration (Files) - Colonnes du tableau', () => {
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(6)
       .should('have.class', 'ant-table-column-has-sorters')
-      .contains('Data Type').should('exist');
+      .contains('Analysis Type').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(7)
       .should('have.class', 'ant-table-column-has-sorters')
-      .contains('Strategy').should('exist');
+      .contains('Data Type').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(8)
       .should('have.class', 'ant-table-column-has-sorters')
+      .contains('Strategy').should('exist');
+
+    cy.get('thead[class="ant-table-thead"]')
+      .find('th[class*="ant-table-cell"]').eq(9)
+      .should('have.class', 'ant-table-column-has-sorters')
       .contains('Format').should('exist');
     
     cy.get('thead[class="ant-table-thead"]')
-      .find('th[class*="ant-table-cell"]').eq(9)
+      .find('th[class*="ant-table-cell"]').eq(10)
       .should('have.class', 'ant-table-column-has-sorters')
       .contains('Size').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
-      .find('th[class*="ant-table-cell"]').eq(10)
-      .should('not.have.class', 'ant-table-column-has-sorters')
+      .contains('File Name').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(12)
       .contains('Participants').should('exist');
-  
-    cy.get('thead[class="ant-table-thead"]')
-      .find('th[class*="ant-table-cell"]').eq(11)
-      .should('not.have.class', 'ant-table-column-has-sorters')
-      .contains('Biospecimens').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('File Name').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
       .find('div[class="ant-space-item"]').eq(13)
+      .contains('Biospecimens').should('exist');
+
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('File Name').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(14)
       .contains('File Name').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Platform').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(14)
+      .find('div[class="ant-space-item"]').eq(15)
       .contains('Platform').should('exist');
   });
 
