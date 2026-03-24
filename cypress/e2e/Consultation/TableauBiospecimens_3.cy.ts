@@ -15,7 +15,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Study', () => {
     setupTest();
     cy.sortTableAndWait('Study');
-    cy.validateTableFirstRow('STUDY1', 4, true);
+    cy.validateTableFirstRow('RAREQC-DEMO', 4, true);
     cy.sortTableAndWait('Study');
     cy.validateTableFirstRow('T-DEE', 4, true);
   });
@@ -98,7 +98,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
     setupTest();
     cy.sortTableAndIntercept('Sample Type', 1);
     cy.sortTableAndIntercept('Study', 1);
-    cy.validateTableFirstRow('STUDY1', 4, true);
+    cy.validateTableFirstRow('RAREQC-DEMO', 4, true);
   });
 
   it('Valider les fonctionnalités du tableau - Pagination', () => {

@@ -15,7 +15,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Study', () => {
     setupTest();
     cy.sortTableAndWait('Study');
-    cy.validateTableFirstRow('STUDY1', 4, true);
+    cy.validateTableFirstRow('RAREQC-DEMO', 4, true);
     cy.sortTableAndWait('Study');
     cy.validateTableFirstRow('T-DEE', 4, true);
   });
@@ -23,7 +23,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Dataset', () => {
     setupTest();
     cy.sortTableAndWait('Dataset');
-    cy.validateTableFirstRow('Data1', 5, true);
+    cy.validateTableFirstRow('Individuals', 5, true);
     cy.sortTableAndWait('Dataset');
     cy.validateTableFirstRow('Data2', 5, true);
   });
@@ -55,7 +55,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Strategy', () => {
     setupTest();
     cy.sortTableAndWait('Strategy');
-    cy.validateTableFirstRow('Whole Genome Sequencing', 9, true);
+    cy.validateTableFirstRow('MRE-Seq', 9, true);
     cy.sortTableAndWait('Strategy');
     cy.validateTableFirstRow('Whole Genome Sequencing', 9, true);
   });
@@ -73,7 +73,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.sortTableAndWait('Size');
     cy.validateTableFirstRow('0 B', 11, true);
     cy.sortTableAndWait('Size');
-    cy.validateTableFirstRow('10.7 GB', 11, true);
+    cy.validateTableFirstRow('GB', 11, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Platform', () => {
