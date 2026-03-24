@@ -21,7 +21,7 @@ describe('Page des études - Valider les fonctionnalités du tableau', () => {
   it('Tri Code', () => {
     setupTest();
     cy.sortTableAndWait('Code');
-    cy.validateTableFirstRow('STUDY', 0);
+    cy.validateTableFirstRow('RAREQC-DEMO', 0);
     cy.sortTableAndWait('Code');
     cy.validateTableFirstRow('T-DEE', 0);
   });
@@ -31,7 +31,7 @@ describe('Page des études - Valider les fonctionnalités du tableau', () => {
     cy.sortTableAndWait('Name');
     cy.validateTableFirstRow('Congenital malformations', 1);
     cy.sortTableAndWait('Name');
-    cy.validateTableFirstRow(/(Developmental|Fast-track)/, 1);
+    cy.validateTableFirstRow('Rare Disease Registry', 1);
   });
     
   it('Tri Domain', () => {

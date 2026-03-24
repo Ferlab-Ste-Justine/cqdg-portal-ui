@@ -26,7 +26,7 @@ describe('Page des études - Filtrer avec les facettes', () => {
 
   it('Program - RARE-QC', () => {
     setupTest();
-    cy.validateFacetFilter('Program', 'RARE-QC', 'RARE-QC', /^5 Results$/, false);
+    cy.validateFacetFilter('Program', 'RARE-QC', 'RARE-QC', /^6 Results$/, false);
     cy.validateFacetRank(0, 'Program');
   });
 

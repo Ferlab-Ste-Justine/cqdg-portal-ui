@@ -64,7 +64,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Program - RARE-QC', () => {
     setupTest();
-    cy.validateFacetFilter('Program', 'RARE-QC', 'RARE-QC', /^602$/);
+    cy.validateFacetFilter('Program', 'RARE-QC', 'RARE-QC', /^632$/);
     cy.validateFacetRank(1, 'Program');
   });
 
@@ -82,31 +82,31 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Diagnosis (ICD-10) - Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', () => {
     setupTest();
-    cy.validateFacetFilter('Diagnosis (ICD-10)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', /^206$/);
+    cy.validateFacetFilter('Diagnosis (ICD-10)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', /^217$/);
     cy.validateFacetRank(2, 'Diagnosis (ICD-10)');
   });
 
   it('Family Position - Proband', () => {
     setupTest();
-    cy.validateFacetFilter('Family Position', 'Proband', 'Proband', /^201$/);
+    cy.validateFacetFilter('Family Position', 'Proband', 'Proband', /^213$/);
     cy.validateFacetRank(3, 'Family Position');
   });
 
   it('Family Type - Case-parent trio', () => {
     setupTest();
-    cy.validateFacetFilter('Family Type', 'Case-parent trio', 'Case-parent trio', /^594$/);
+    cy.validateFacetFilter('Family Type', 'Case-parent trio', 'Case-parent trio', /^618$/);
     cy.validateFacetRank(4, 'Family Type');
   });
 
   it('Sex - Female', () => {
     setupTest();
-    cy.validateFacetFilter('Sex', 'Female', 'female', /^286$/);
+    cy.validateFacetFilter('Sex', 'Female', 'female', /^301$/);
     cy.validateFacetRank(5, 'Sex');
   });
 
   it('Gender - Woman', () => {
     setupTest();
-    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^286$/);
+    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^301$/);
     cy.validateFacetRank(6, 'Gender');
   });
 
@@ -118,7 +118,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Vital Status - Alive', () => {
     setupTest();
-    cy.validateFacetFilter('Vital Status', 'Alive', 'Alive', /^2$/);
+    cy.validateFacetFilter('Vital Status', 'Alive', 'Alive', /^32$/);
     cy.validateFacetRank(8, 'Vital Status');
   });
 
@@ -130,7 +130,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Race - White', () => {
     setupTest();
-    cy.validateFacetFilter('Race', 'White', 'White', /^84$/);
+    cy.validateFacetFilter('Race', 'White', 'White', /^90$/);
     cy.validateFacetRank(10, 'Race');
   });
 

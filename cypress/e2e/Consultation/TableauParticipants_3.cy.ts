@@ -14,7 +14,7 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Study', () => {
     setupTest();
     cy.sortTableAndIntercept('Study', 1);
-    cy.validateTableFirstRow('STUDY1', 2, true);
+    cy.validateTableFirstRow('RAREQC-DEMO', 2, true);
     cy.sortTableAndIntercept('Study', 1);
     cy.validateTableFirstRow('T-DEE', 2, true);
   });
@@ -46,7 +46,7 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Family Type', () => {
     setupTest();
     cy.sortTableAndIntercept('Family Type', 1);
-    cy.validateTableFirstRow('Case-parent trio', 8, true);
+    cy.validateTableFirstRow('Case only', 8, true);
     cy.sortTableAndIntercept('Family Type', 1);
     cy.validateTableFirstRow('Other', 8, true);
   });
