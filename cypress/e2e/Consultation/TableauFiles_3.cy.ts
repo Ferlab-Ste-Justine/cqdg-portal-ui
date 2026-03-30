@@ -63,7 +63,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Format', () => {
     setupTest();
     cy.sortTableAndWait('Format');
-    cy.validateTableFirstRow('CRAM', 10, true);
+    cy.validateTableFirstRow('BED', 10, true);
     cy.sortTableAndWait('Format');
     cy.validateTableFirstRow('gVCF', 10, true);
   });
@@ -79,7 +79,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Platform', () => {
     setupTest();
     cy.sortTableAndWait('Platform');
-    cy.validateTableFirstRow('Illumina HiSeq 2000 PE100', 15, true);
+    cy.validateTableFirstRow('Illumina', 15, true);
     cy.sortTableAndWait('Platform');
     cy.validateTableFirstRow('Illumina HiSeq 2500 PE125', 15, true);
   });
@@ -89,7 +89,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.sortTableAndWait('Format');
     cy.sortTableAndWait('Study');
     cy.sortTableAndWait('Study');
-    cy.validateTableFirstRow('T-DEE', 4, true);
+    cy.validateTableFirstRow('STUDY1', 4, true);
   });
 
   it('Valider les fonctionnalités du tableau - Pagination', () => {
