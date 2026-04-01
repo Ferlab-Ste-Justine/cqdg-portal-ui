@@ -34,7 +34,10 @@ const getExperimentalProcedureDescriptions = (file?: IFileEntity): IEntityDescri
   },
   {
     label: intl.get('entities.file.sequencing_experiment.target_capture_kit'),
-    value: file?.sequencing_experiment?.target_capture_kit || TABLE_EMPTY_PLACE_HOLDER,
+    value:
+      file?.sequencing_experiment?.capture_kit ||
+      file?.sequencing_experiment?.target_capture_kit ||
+      TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.file.sequencing_experiment.target_loci'),
