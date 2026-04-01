@@ -64,6 +64,7 @@ export const GET_FILES = gql`
               read_length
               platform
               capture_kit
+              target_capture_kit
               sequencer_id
               run_name
               labAliquotID
