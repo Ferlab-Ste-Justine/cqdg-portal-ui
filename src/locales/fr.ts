@@ -187,7 +187,7 @@ const fr = {
         type_of_sequencing: 'Type de séquençage',
         read_length: 'Longueur des fragments',
         platform: 'Plateforme',
-        capture_kit: 'Kit de capture',
+        target_capture_kit: 'Kit de capture',
         sequencer_id: 'Séquenceur',
         run_name: 'Run',
         labAliquotID: 'Aliquot',

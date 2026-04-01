@@ -183,7 +183,7 @@ const en = {
         type_of_sequencing: 'Sequencing Type',
         read_length: 'Read Length',
         platform: 'Platform',
-        capture_kit: 'Capture Kit',
+        target_capture_kit: 'Capture Kit',
         sequencer_id: 'Sequencer',
         run_name: 'Run',
         labAliquotID: 'Aliquot',

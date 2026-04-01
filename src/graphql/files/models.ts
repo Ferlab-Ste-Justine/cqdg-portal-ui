@@ -16,6 +16,7 @@ export interface IFileSequencingExperiment {
   alir: string;
   bio_informatic_analysis: string;
   capture_kit: string;
+  target_capture_kit: string;
   experimental_strategy: string;
   experimental_strategy_1: ICodeDisplay;
   gcnv: string;
