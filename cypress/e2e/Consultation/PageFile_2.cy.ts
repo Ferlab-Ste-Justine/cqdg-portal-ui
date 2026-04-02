@@ -81,7 +81,7 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(4).contains('Library Selection').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(4).contains('Reduced Representation').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(5).contains('Capture Kit').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(5).contains('-').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(5).contains('targetCaptureKit1 - TDEE').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(6).contains('Targeted Loci').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(6).contains('targetedLoci1 - TDEE').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(7).contains('Read Length').should('exist');
