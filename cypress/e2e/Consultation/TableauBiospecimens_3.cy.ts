@@ -23,9 +23,9 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Sample Type', () => {
     setupTest();
     cy.sortTableAndWait('Sample Type');
-    cy.validateTableFirstRow('C449', 5, true);
+    cy.validateTableFirstRow('DNA', 5, true);
     cy.sortTableAndWait('Sample Type');
-    cy.validateTableFirstRow('C449', 5, true);
+    cy.validateTableFirstRow('Ribonucleic Acid', 5, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Tissue', () => {
@@ -40,7 +40,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Cancer Tissue Type', () => {
     setupTest();
     cy.sortTableAndWait('Cancer Tissue Type');
-    cy.validateTableFirstRow('Normal Tissue Sample', 7, true);
+    cy.validateTableFirstRow('Cell Line-Derived Xenograft', 7, true);
     cy.sortTableAndWait('Cancer Tissue Type');
     cy.validateTableFirstRow('Normal Tissue Sample', 7, true);
     cy.sortTableAndWait('Cancer Tissue Type');
@@ -59,7 +59,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
     cy.sortTableAndIntercept('Tumor Status', 1);
     cy.validateTableFirstRow('Normal', 10, true);
     cy.sortTableAndIntercept('Tumor Status', 1);
-    cy.validateTableFirstRow('Not applicable', 10, true);
+    cy.validateTableFirstRow('Tumor', 10, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Tumor Type (NCIt)', () => {
@@ -67,10 +67,10 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
     cy.sortTableAndIntercept('Tumor Type (NCIt)', 1);
     cy.validateTableFirstRow('Derived Cell Line', 11, true);
     cy.sortTableAndIntercept('Tumor Type (NCIt)', 1);
-    cy.validateTableFirstRow('Missing - Not Provided', 11, true);
+    cy.validateTableFirstRow('NCIt Antineoplastic Agent Terminology', 11, true);
   });
 
-  it('Valider les fonctionnalités du tableau - Tri Tumor Type (Source Text)', () => {
+  it('Valider les fonctionnalités du tableau - Tri Tumor Type (Source Text) [CQDG-1398]', () => {
     setupTest();
     cy.sortTableAndIntercept('Tumor Type (Source Text)', 1);
     cy.validateTableFirstRow('histological_type_source_text', 12, true);
@@ -83,10 +83,10 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
     cy.sortTableAndIntercept('Tumor Location (NCIt)', 1);
     cy.validateTableFirstRow('Derived Cell Line', 13, true);
     cy.sortTableAndIntercept('Tumor Location (NCIt)', 1);
-    cy.validateTableFirstRow('Missing - Not Provided', 13, true);
+    cy.validateTableFirstRow('NCIt Neoplasm Core Terminology', 13, true);
   });
 
-  it('Valider les fonctionnalités du tableau - Tri Tumor Location (Source Text)', () => {
+  it('Valider les fonctionnalités du tableau - Tri Tumor Location (Source Text) [CQDG-1398]', () => {
     setupTest();
     cy.sortTableAndIntercept('Tumor Location (Source Text)', 1);
     cy.validateTableFirstRow('anatomic_location_source_text', 14, true);

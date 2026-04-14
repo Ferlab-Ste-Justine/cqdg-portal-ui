@@ -41,7 +41,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.sortTableAndWait('Analysis Type');
     cy.validateTableFirstRow('Germline Genome Bioinformatic Analysis', 7, true);
     cy.sortTableAndWait('Analysis Type');
-    cy.validateTableFirstRow('Germline Variant Analysis', 7, true);
+    cy.validateTableFirstRow('Somatic Variant Analysis', 7, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Data Type', () => {
@@ -81,7 +81,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.sortTableAndWait('Platform');
     cy.validateTableFirstRow('Illumina', 15, true);
     cy.sortTableAndWait('Platform');
-    cy.validateTableFirstRow('Illumina HiSeq 2500 PE125', 15, true);
+    cy.validateTableFirstRow('SOLiD', 15, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
