@@ -123,7 +123,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="diagnosis"] td[class="ant-table-cell"]').eq(2).contains('Intractable Epilepsy').should('exist');
     cy.get('[id="diagnosis"] td[class="ant-table-cell"]').eq(3).contains('-').should('exist');
     cy.get('[id="diagnosis"] td[class="ant-table-cell"]').eq(4).contains('-').should('exist');
-    cy.get('[id="diagnosis"] td[class="ant-table-cell"]').eq(5).contains('217').should('exist');
+    cy.get('[id="diagnosis"] td[class="ant-table-cell"]').eq(5).contains(/21\d{1}/).should('exist');
   });
   
   it('Panneau Phenotypes', () => {

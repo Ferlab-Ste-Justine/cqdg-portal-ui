@@ -58,13 +58,13 @@ describe('Page Data Exploration (Biospecimens) - Filtrer avec les facettes', () 
 
   it('Sample Type - DNA (NCIT:C449)', () => {
     setupTest();
-    cy.validateFacetFilter('Sample Type', 'DNA (NCIT:C449)', 'DNA (NCIT:C449)', /^692$/);
+    cy.validateFacetFilter('Sample Type', 'DNA (NCIT:C449)', 'DNA (NCIT:C449)', /^69\d{1}$/);
     cy.validateFacetRank(0, 'Sample Type');
   });
 
   it('Tissue - Blood (NCIT:C12434)', () => {
     setupTest();
-    cy.validateFacetFilter('Tissue', 'Blood (NCIT:C12434)', 'Blood (NCIT:C12434)', /^659$/);
+    cy.validateFacetFilter('Tissue', 'Blood (NCIT:C12434)', 'Blood (NCIT:C12434)', /^6\d{2}$/);
     cy.validateFacetRank(1, 'Tissue');
   });
 

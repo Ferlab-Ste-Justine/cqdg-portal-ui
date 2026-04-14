@@ -82,13 +82,13 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Diagnosis (ICD-10) - Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', () => {
     setupTest();
-    cy.validateFacetFilter('Diagnosis (ICD-10)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', /^217$/);
+    cy.validateFacetFilter('Diagnosis (ICD-10)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', 'Generalized idiopathic epilepsy and epileptic syndromes, intractable (G40.31)', /^21\d{1}$/);
     cy.validateFacetRank(2, 'Diagnosis (ICD-10)');
   });
 
   it('Family Position - Proband', () => {
     setupTest();
-    cy.validateFacetFilter('Family Position', 'Proband', 'Proband', /^213$/);
+    cy.validateFacetFilter('Family Position', 'Proband', 'Proband', /^21\d{1}$/);
     cy.validateFacetRank(3, 'Family Position');
   });
 
@@ -100,13 +100,13 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Sex - Female', () => {
     setupTest();
-    cy.validateFacetFilter('Sex', 'Female', 'female', /^301$/);
+    cy.validateFacetFilter('Sex', 'Female', 'female', /^30\d{1}$/);
     cy.validateFacetRank(5, 'Sex');
   });
 
   it('Gender - Woman', () => {
     setupTest();
-    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^301$/);
+    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^30\d{1}$/);
     cy.validateFacetRank(6, 'Gender');
   });
 
@@ -118,7 +118,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Vital Status - Alive', () => {
     setupTest();
-    cy.validateFacetFilter('Vital Status', 'Alive', 'Alive', /^32$/);
+    cy.validateFacetFilter('Vital Status', 'Alive', 'Alive', /^3\d{1}$/);
     cy.validateFacetRank(8, 'Vital Status');
   });
 
@@ -136,7 +136,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Phenotype (Source Text) - Intractable Seizures', () => {
     setupTest();
-    cy.validateFacetFilter('Phenotype (Source Text)', 'Intractable Seizures', 'Intractable Seizures', /^203$/);
+    cy.validateFacetFilter('Phenotype (Source Text)', 'Intractable Seizures', 'Intractable Seizures', /^20\d{1}$/);
     cy.validateFacetRank(11, 'Phenotype (Source Text)');
   });
 

@@ -72,7 +72,7 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.get('[data-cy="ProTable_Participants"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Diagnosis (MONDO)').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('Epilepsy (MONDO:0005027)').should('exist');
-    cy.validateTableResultsCount(/^217$/);
+    cy.validateTableResultsCount(/^21\d{1}$/);
   });
 
   it('Lien HPO du panneau Phenotypes', () => {

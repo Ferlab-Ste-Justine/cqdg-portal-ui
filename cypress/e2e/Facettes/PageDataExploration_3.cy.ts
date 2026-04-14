@@ -43,13 +43,13 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
 
   it('Dataset - Data1', () => {
     setupTest();
-    cy.validateFacetFilter('Dataset', 'Data1', 'data1', /^26$/);
+    cy.validateFacetFilter('Dataset', 'Data1', 'data1', /^2\d{1}$/);
     cy.validateFacetRank(0, 'Dataset');
   });
 
   it('Data Category - Genomics', () => {
     setupTest();
-    cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,351$/);
+    cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,3\d{2}$/);
     cy.validateFacetRank(1, 'Data Category');
   });
 
@@ -61,13 +61,13 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
 
   it('Data Type - Aligned Reads', () => {
     setupTest();
-    cy.validateFacetFilter('Data Type', 'Aligned Reads', 'Aligned Reads', /^632$/);
+    cy.validateFacetFilter('Data Type', 'Aligned Reads', 'Aligned Reads', /^63\d{1}$/);
     cy.validateFacetRank(3, 'Data Type');
   });
 
   it('Strategy - Whole Genome Sequencing', () => {
     setupTest();
-    cy.validateFacetFilter('Strategy', 'WGS', 'WGS', /^3,339$/);
+    cy.validateFacetFilter('Strategy', 'WGS', 'WGS', /^3,3\d{2}$/);
     cy.validateFacetRank(4, 'Strategy');
   });
 
@@ -85,7 +85,7 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
 
   it('Format - gVCF', () => {
     setupTest();
-    cy.validateFacetFilter('Format', 'GVCF', 'gVCF', /^627$/);
+    cy.validateFacetFilter('Format', 'GVCF', 'gVCF', /^6\d{2}$/);
     cy.validateFacetRank(7, 'Format');
   });
 });

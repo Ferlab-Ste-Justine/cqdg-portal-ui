@@ -72,7 +72,7 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
     cy.sortTableAndIntercept('Race (Other)', 1);
     cy.validateTableFirstRow('Fluff', 13, true);
     cy.sortTableAndIntercept('Race (Other)', 1);
-    cy.validateTableFirstRow('Some Other Race', 13, true);
+    cy.validateTableFirstRow('other racial category', 13, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Vital Status', () => {
