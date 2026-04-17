@@ -70,7 +70,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
     cy.validateTableFirstRow('NCIt Antineoplastic Agent Terminology', 11, true);
   });
 
-  it('Valider les fonctionnalités du tableau - Tri Tumor Type (Source Text) [CQDG-1398]', () => {
+  it('Valider les fonctionnalités du tableau - Tri Tumor Type (Source Text)', () => {
     setupTest();
     cy.sortTableAndIntercept('Tumor Type (Source Text)', 1);
     cy.validateTableFirstRow('histological_type_source_text', 12, true);
@@ -86,7 +86,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
     cy.validateTableFirstRow('NCIt Neoplasm Core Terminology', 13, true);
   });
 
-  it('Valider les fonctionnalités du tableau - Tri Tumor Location (Source Text) [CQDG-1398]', () => {
+  it('Valider les fonctionnalités du tableau - Tri Tumor Location (Source Text)', () => {
     setupTest();
     cy.sortTableAndIntercept('Tumor Location (Source Text)', 1);
     cy.validateTableFirstRow('anatomic_location_source_text', 14, true);

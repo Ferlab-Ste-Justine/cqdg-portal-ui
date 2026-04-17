@@ -94,7 +94,7 @@ describe('Page Data Exploration (Biospecimens) - Filtrer avec les facettes', () 
 
   it('Tumor Type (Source Text) - Histological Type Source Text', () => {
     setupTest();
-    cy.validateFacetFilter('Tumor Type (Source Text)', 'Histological Type Source Text', 'histological_type_source_text', /^9$/);
+    cy.validateFacetFilter('Tumor Type (Source Text)', 'Histological Type Source Text', 'histological_type_source_text', /^11$/);
     cy.validateFacetRank(6, 'Tumor Type (Source Text)');
   });
 
@@ -106,7 +106,7 @@ describe('Page Data Exploration (Biospecimens) - Filtrer avec les facettes', () 
 
   it('Tumor Location (Source Text) - Anatomic Location Source Text', () => {
     setupTest();
-    cy.validateFacetFilter('Tumor Location (Source Text)', 'Anatomic Location Source Text', 'anatomic_location_source_text', /^9$/);
+    cy.validateFacetFilter('Tumor Location (Source Text)', 'Anatomic Location Source Text', 'anatomic_location_source_text', /^11$/);
     cy.validateFacetRank(8, 'Tumor Location (Source Text)');
   });
 });
