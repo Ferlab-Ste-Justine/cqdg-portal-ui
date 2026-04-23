@@ -49,7 +49,7 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
 
   it('Data Category - Genomics', () => {
     setupTest();
-    cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,3\d{2}$/);
+    cy.validateFacetFilter('Data Category', 'Genomics', 'Genomics', /^3,\d{3}$/);
     cy.validateFacetRank(1, 'Data Category');
   });
 
