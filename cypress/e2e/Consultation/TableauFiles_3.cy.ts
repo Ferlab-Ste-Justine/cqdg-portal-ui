@@ -23,7 +23,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Dataset', () => {
     setupTest();
     cy.sortTableAndWait('Dataset');
-    cy.validateTableFirstRow('Individuals', 5, true);
+    cy.validateTableFirstRow('Families', 5, true);
     cy.sortTableAndWait('Dataset');
     cy.validateTableFirstRow('Data2', 5, true);
   });
@@ -49,13 +49,13 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.sortTableAndWait('Data Type');
     cy.validateTableFirstRow('Aligned Reads', 8, true);
     cy.sortTableAndWait('Data Type');
-    cy.validateTableFirstRow('Unaligned Reads', 8, true);
+    cy.validateTableFirstRow('Structural Variations (SVs)', 8, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Strategy', () => {
     setupTest();
     cy.sortTableAndWait('Strategy');
-    cy.validateTableFirstRow('MRE-Seq', 9, true);
+    cy.validateTableFirstRow('Direct Methyl-Seq', 9, true);
     cy.sortTableAndWait('Strategy');
     cy.validateTableFirstRow('Whole Genome Sequencing', 9, true);
   });
@@ -79,9 +79,9 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Platform', () => {
     setupTest();
     cy.sortTableAndWait('Platform');
-    cy.validateTableFirstRow('Illumina', 15, true);
+    cy.validateTableFirstRow('Capillary', 15, true);
     cy.sortTableAndWait('Platform');
-    cy.validateTableFirstRow('SOLiD', 15, true);
+    cy.validateTableFirstRow('Singular', 15, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
