@@ -154,6 +154,7 @@ const en = {
       file_name: 'File Name',
       file_format: 'Format',
       file_size: 'Size',
+      files_skipped: 'Files skipped',
       ferload_url: 'URL',
       file_hash: 'Hash',
       analysis: 'Analysis',
@@ -699,6 +700,8 @@ const en = {
         manifestIdButtonTooltip: 'Copy the manifest ID for use in ',
         manifestIdCopySuccess: 'ID copied to clipboard',
         manifestIdCopyError: 'ID copy to clipboard error',
+        duplicatesSkipped:
+          'Some of the selected files contain duplicates and will not be downloaded.',
       },
       requestAccess: {
         button: 'Request access',

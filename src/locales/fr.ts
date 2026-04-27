@@ -155,6 +155,7 @@ const fr = {
       file_name: 'Nom du fichier',
       file_format: 'Format',
       file_size: 'Taille',
+      files_skipped: 'Fichiers ignorés',
       ferload_url: 'URL',
       file_hash: 'Hash',
       participants: '{count, plural, =0 {Participant} =1 {Participant} other {Participants}}',
@@ -703,6 +704,8 @@ const fr = {
         manifestIdButtonTooltip: "Copiez l'identifiant du manifeste à utiliser avec ",
         manifestIdCopySuccess: 'Identifiant copié dans le presse-papiers',
         manifestIdCopyError: 'Erreur de copie de l’identifiant dans le presse-papiers',
+        duplicatesSkipped:
+          'Certains des fichiers sélectionnés contiennent des doublons et ne seront pas téléchargés.',
       },
       requestAccess: {
         button: 'Demande d’accès',

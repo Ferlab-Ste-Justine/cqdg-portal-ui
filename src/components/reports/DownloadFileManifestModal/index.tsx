@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
 import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
@@ -55,11 +55,18 @@ const DownloadFileManifestModal = ({
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isFamilyChecked, setIsFamilyChecked] = useState(false);
+  const [hasSkippedFiles, setHasSkippedFiles] = useState(false);
   const { isLoading } = useSavedSet();
 
   const handleClose = () => {
     setIsModalVisible(false);
+    setHasSkippedFiles(false);
   };
+
+  const handleSkippedFilesChange = useCallback(
+    (hasSkipped: boolean) => setHasSkippedFiles(hasSkipped),
+    [],
+  );
 
   const Content = () => (
     <Text>
@@ -217,8 +224,15 @@ const DownloadFileManifestModal = ({
             </Checkbox>
           )
         }
+        {hasSkippedFiles && (
+          <p className={styles.duplicatesMessage}>
+            * {intl.get('api.report.fileManifest.duplicatesSkipped')}
+          </p>
+        )}
         {hasTooManyFiles && <TooMuchFilesAlert />}
-        {!hasTooManyFiles && isModalVisible && <FilesTable sqon={sqon} />}
+        {!hasTooManyFiles && isModalVisible && (
+          <FilesTable sqon={sqon} onSkippedFilesChange={handleSkippedFilesChange} />
+        )}
       </Modal>
     </Tooltip>
   );
