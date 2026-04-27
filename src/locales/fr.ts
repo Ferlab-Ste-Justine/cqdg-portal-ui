@@ -705,7 +705,7 @@ const fr = {
         manifestIdCopySuccess: 'Identifiant copié dans le presse-papiers',
         manifestIdCopyError: 'Erreur de copie de l’identifiant dans le presse-papiers',
         duplicatesSkipped:
-          'Certains des fichiers sélectionnés contiennent des doublons et ne seront pas téléchargés.',
+          'Certains des fichiers sélectionnés contiennent des doublons et ne seront pas téléchargés. La Taille ne tient pas compte des fichiers ignorés.',
       },
       requestAccess: {
         button: 'Demande d’accès',

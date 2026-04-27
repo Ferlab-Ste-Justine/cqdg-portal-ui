@@ -701,7 +701,7 @@ const en = {
         manifestIdCopySuccess: 'ID copied to clipboard',
         manifestIdCopyError: 'ID copy to clipboard error',
         duplicatesSkipped:
-          'Some of the selected files contain duplicates and will not be downloaded.',
+          'Some of the selected files contain duplicates and will not be downloaded. The Size does not include the skipped files.',
       },
       requestAccess: {
         button: 'Request access',
