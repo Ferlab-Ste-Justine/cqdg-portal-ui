@@ -24,6 +24,13 @@
   font-weight: 600;
 }
 
+.duplicatesMessage {
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
 .externalLinkFerload {
   color: inherit;
 }

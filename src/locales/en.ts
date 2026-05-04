@@ -154,6 +154,7 @@ const en = {
       file_name: 'File Name',
       file_format: 'Format',
       file_size: 'Size',
+      files_skipped: 'Files skipped',
       ferload_url: 'URL',
       file_hash: 'Hash',
       analysis: 'Analysis',
@@ -699,6 +700,8 @@ const en = {
         manifestIdButtonTooltip: 'Copy the manifest ID for use in ',
         manifestIdCopySuccess: 'ID copied to clipboard',
         manifestIdCopyError: 'ID copy to clipboard error',
+        duplicatesSkipped:
+          'Your selection includes one or more files attributed to multiple samples (for example, a study-wide file or a supplement associated with a sequencing experiment). Only one copy will be included in the manifest.',
       },
       requestAccess: {
         button: 'Request access',
