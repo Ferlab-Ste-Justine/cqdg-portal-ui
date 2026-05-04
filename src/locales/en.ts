@@ -701,7 +701,7 @@ const en = {
         manifestIdCopySuccess: 'ID copied to clipboard',
         manifestIdCopyError: 'ID copy to clipboard error',
         duplicatesSkipped:
-          'Some of the selected files contain duplicates and will not be downloaded. The Size does not include the skipped files.',
+          'Your selection includes one or more files attributed to multiple samples (for example, a study-wide file or a supplement associated with a sequencing experiment). Only one copy will be included in the manifest.',
       },
       requestAccess: {
         button: 'Request access',
