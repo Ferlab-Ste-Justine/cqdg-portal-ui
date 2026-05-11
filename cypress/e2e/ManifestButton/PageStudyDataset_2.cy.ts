@@ -11,7 +11,7 @@ describe('Page d\'une étude (Dataset) - Bouton Manifest', () => {
     cy.get('[class*="EntityDataset_container"] [data-cy="FileManifest_Button"]').eq(1).click({force: true});
   };
 
-  it('Vérifier les informations affichées - Modal', () => {
+  it('Vérifier les informations affichées - Modal [CQDG-1413]', () => {
     setupTest();
     cy.get('[class="ant-modal-title"]').contains('File manifest').should('exist');
     cy.get('[class="ant-modal-body"]').contains('Download a manifest of this study’s files which can be used with CQDG\'s bulk download tool. This manifest also includes additional information, including the participants and samples associated with these files.').should('exist');
