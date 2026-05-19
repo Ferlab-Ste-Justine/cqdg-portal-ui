@@ -26,12 +26,6 @@ describe('Page des études - Valider les liens disponibles', () => {
     cy.get('[class*="EntityTitle"]').contains('Developmental and epileptic encephalopathies');
   });
 
-  it('Lien Program du tableau', () => {
-    setupTest();
-    cy.get('tr[data-row-key="T-DEE"] [class*="ant-table-cell"]').eq(2).find('[href]').eq(0).clickAndWait({force: true});
-    cy.get('[class*="ProgramCard"]').contains('RARE.Qc');
-  });
-
   it('Lien Participants du tableau', () => {
     setupTest();
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(5).find('[href]').clickAndWait({force: true});

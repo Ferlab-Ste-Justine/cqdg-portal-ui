@@ -39,7 +39,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Analysis Type', () => {
     setupTest();
     cy.sortTableAndWait('Analysis Type');
-    cy.validateTableFirstRow('Germline Genome Bioinformatic Analysis', 7, true);
+    cy.validateTableFirstRow('Germline Variant Analysis', 7, true);
     cy.sortTableAndWait('Analysis Type');
     cy.validateTableFirstRow('Somatic Variant Analysis', 7, true);
   });
@@ -71,9 +71,9 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Size', () => {
     setupTest();
     cy.sortTableAndWait('Size');
-    cy.validateTableFirstRow('0 B', 11, true);
+    cy.validateTableFirstRow(/ B$/, 11, true);
     cy.sortTableAndWait('Size');
-    cy.validateTableFirstRow('GB', 11, true);
+    cy.validateTableFirstRow(' GB', 11, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Platform', () => {

@@ -15,7 +15,7 @@ describe('Page d\'une étude - Bouton Request Access', () => {
     setupTest();
     cy.get('[class="ant-modal-title"]').contains('Request access').should('exist');
     cy.get('[class="ant-modal-body"]').contains('To obtain access to the data from this study, please submit your request to the study’s Access Authority:').should('exist');
-    cy.get('[class="ant-modal-body"]').contains('jacques.michaud.med@ssss.gouv.qc.ca').should('exist');
+    cy.get('[class="ant-modal-body"]').contains('toto@gov.org').should('exist');
     cy.get('[class="ant-modal-body"]').contains('Before submitting your request, please ensure you are able to comply with the study’s Access Limitations and Access Requirements listed in the “Data Access” section.').should('exist');
     cy.get('[class="ant-modal-body"]').contains('To find out more, please read the page').should('exist');
     cy.get('[class="ant-modal-body"]').contains('Data Access Request').should('exist');
@@ -32,7 +32,7 @@ describe('Page d\'une étude - Bouton Request Access', () => {
 
   it('Valider les liens disponibles - Lien Access Authority', () => {
     setupTest();
-    cy.get('[class*="ant-modal-body"] [href="mailto:jacques.michaud.med@ssss.gouv.qc.ca"]').contains('jacques.michaud.med@ssss.gouv.qc.ca').should('exist');
+    cy.get('[class*="ant-modal-body"] [href="mailto:toto@gov.org"]').contains('toto@gov.org').should('exist');
   });
 
   it('Valider les liens disponibles - Lien Documentation', () => {

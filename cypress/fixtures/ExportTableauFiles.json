@@ -10,14 +10,15 @@
               "Size",
               "File Name",
               "Platform"],
-  "content": ["FI0011224",
+  "content": ["FI0013377",
               "T-DEE",
+              "--",
               "Genomics",
-              "Germline Genome Bioinformatic Analysis",
-              "Metrics",
+              "Germline Variant Analysis with Family Joint Genotyping",
+              "Quality Control Metrics",
               "Whole Genome Sequencing",
               "TGZ",
-              "--",
-              "S03510.extra.tgz",
-              "Illumina HiSeq 2500 PE125"]
+              "17906702479",
+              "S15906.extra.tgz",
+              "Illumina"]
 }

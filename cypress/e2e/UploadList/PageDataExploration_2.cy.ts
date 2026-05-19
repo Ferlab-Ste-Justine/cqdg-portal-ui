@@ -8,7 +8,7 @@ describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'ident
     cy.get('[data-cy="SidebarMenuItem_Biospecimen"]').clickAndWait({force: true});
     cy.get('button[class*="UploadIdsButton"]').clickAndWait({force: true});
     cy.get('[class="ant-modal-header"]').contains('sample').should('exist');
-    cy.get('[class*="UploadModal"] textarea').type('sr0000214,s03510 unknown');
+    cy.get('[class*="UploadModal"] textarea').type('SR0000084,S15906 unknown');
   };
 
   it('Vérifier les informations affichées - Popover', () => {
@@ -27,10 +27,10 @@ describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'ident
 
   it('Valider les fonctionnalités de la modal - Bouton Supprimer', () => {
     setupTest();
-    cy.get('[class*="UploadModal"] textarea').contains('sr0000214').should('exist');
+    cy.get('[class*="UploadModal"] textarea').contains('SR0000084').should('exist');
     cy.get('[class*="UploadModal"] button[class*="ant-btn-text"]').clickAndWait({force: true});
 
-    cy.get('[class*="UploadModal"] textarea').contains('sr0000214').should('not.exist');
+    cy.get('[class*="UploadModal"] textarea').contains('SR0000084').should('not.exist');
     cy.get('[class*="UploadModal"] button[class*="ant-btn-text"]').should('not.exist');
   });
   
@@ -62,12 +62,12 @@ describe('Page Data Exploration (Biospecimens) - Téléverser une liste d\'ident
     cy.get('[id*="panel-matched"] thead').contains('Mapped To').should('exist');
     cy.get('[id*="panel-matched"] thead').contains('Sample ID').should('exist');
     cy.get('[id*="panel-matched"] thead').contains('Study Code').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="SR0000214:0"] td').eq(0).contains('sr0000214').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="SR0000214:0"] td').eq(1).contains('SR0000214').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="SR0000214:0"] td').eq(2).contains('T-DEE').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="SR0000214:1"] td').eq(0).contains('s03510').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="SR0000214:1"] td').eq(1).contains('SR0000214').should('exist');
-    cy.get('[id*="panel-matched"] [data-row-key="SR0000214:1"] td').eq(2).contains('T-DEE').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="SR0000084:0"] td').eq(0).contains('SR0000084').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="SR0000084:0"] td').eq(1).contains('SR0000084').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="SR0000084:0"] td').eq(2).contains('T-DEE').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="SR0000084:1"] td').eq(0).contains('S15906').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="SR0000084:1"] td').eq(1).contains('SR0000084').should('exist');
+    cy.get('[id*="panel-matched"] [data-row-key="SR0000084:1"] td').eq(2).contains('T-DEE').should('exist');
   });
 
   it('Vérifier les informations affichées - Section Résumé (onglet Inconnus)', () => {

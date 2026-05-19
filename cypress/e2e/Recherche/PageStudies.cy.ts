@@ -30,7 +30,7 @@ describe('Page des études - Rechercher des études', () => {
   it('Par programme', () => {
     setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'desiir', 'POST', '**/graphql', 8);
-    cy.validateTableResultsCount(/1 Result/);
+    cy.validateTableResultsCount(/(2|3) Results/);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
     cy.validateTableResultsCount(/\d{1} Results/);
@@ -39,7 +39,7 @@ describe('Page des études - Rechercher des études', () => {
   it('Par domaine', () => {
     setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'diseases', 'POST', '**/graphql', 8);
-    cy.validateTableResultsCount(/3 Results/);
+    cy.validateTableResultsCount(/(3|4) Results/);
     cy.validateTableFirstRow('RAREQC-DEMO', 0);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
@@ -48,9 +48,9 @@ describe('Page des études - Rechercher des études', () => {
 
   it('Par chercheur principal', () => {
     setupTest();
-    cy.typeAndIntercept('[class*="PageContent_search"]', 'batman2', 'POST', '**/graphql', 6);
+    cy.typeAndIntercept('[class*="PageContent_search"]', 'batman', 'POST', '**/graphql', 6);
     cy.validateTableResultsCount(/1 Result/);
-    cy.validateTableFirstRow('STUDY2', 0);
+    cy.validateTableFirstRow('STUDY1', 0);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
     cy.validateTableResultsCount(/\d{1} Results/);

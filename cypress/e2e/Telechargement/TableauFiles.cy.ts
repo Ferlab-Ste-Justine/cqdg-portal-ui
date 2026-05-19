@@ -9,7 +9,7 @@ describe('Page Data Exploration (Data Files) - Exporter les fichiers en TSV', ()
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.visitDataExploration('datafiles', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.showColumn('Dataset');
     cy.showColumn('Participants');
     cy.showColumn('Biospecimens');

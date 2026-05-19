@@ -54,7 +54,7 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Age', () => {
     setupTest();
     cy.sortTableAndIntercept('Age', 1);
-    cy.validateTableFirstRow('Congenital', 9, true);
+    cy.validateTableFirstRow('Neonatal', 9, true);
     cy.sortTableAndIntercept('Age', 1);
     cy.validateTableFirstRow('Senior', 9, true);
   });
@@ -80,15 +80,15 @@ describe('Page Data Exploration (Participants) - Valider les fonctionnalités du
     cy.sortTableAndIntercept('Vital Status', 1);
     cy.validateTableFirstRow('Alive', 14, true);
     cy.sortTableAndIntercept('Vital Status', 1);
-    cy.validateTableFirstRow('Unknown', 14, true);
+    cy.validateTableFirstRow('Not Applicable', 14, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
     setupTest();
-    cy.sortTableAndIntercept('Family Type', 1);
-    cy.sortTableAndIntercept('Family Type', 1);
+    cy.sortTableAndIntercept('Family Position', 1);
+    cy.sortTableAndIntercept('Family Position', 1);
     cy.sortTableAndIntercept('Study', 1);
-    cy.validateTableFirstRow('STUDY2', 2, true);
+    cy.validateTableFirstRow('RAREQC-DEMO', 2, true);
   });
 
   it('Valider les fonctionnalités du tableau - Pagination', () => {

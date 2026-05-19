@@ -9,7 +9,7 @@ describe('Page Data Exploration (Biospecimens) - Exporter les biospecimens en TS
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitDataExploration('biospecimens', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.visitDataExploration('biospecimens', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.showColumn('Cancer Tissue Type');
     cy.showColumn('Tumor Type (NCIt)');
     cy.showColumn('Tumor Type (Source Text)');
