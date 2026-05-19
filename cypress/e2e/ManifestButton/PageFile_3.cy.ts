@@ -9,8 +9,8 @@ describe('Page d\'un fichier - Télécharger le manifest', () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitFileEntity('FI0011224');
-    cy.get('[data-cy="FileManifest_Button"]').click({force: true});
+    cy.visitFileEntity('FI0013377');
+    cy.clickAndIntercept('[data-cy="FileManifest_Button"]', 'POST', '**/file-manifest/stats', 1);
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-manifest', 1, 1);
     cy.waitUntilFile(oneMinute);
   };

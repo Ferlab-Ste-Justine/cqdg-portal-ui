@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page d\'un participant - Colonnes du tableau Phenotypes', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitParticipantEntity('PT0000879');
+    cy.visitParticipantEntity('PT0000964');
     cy.resetColumns('phenotype');
   };
 

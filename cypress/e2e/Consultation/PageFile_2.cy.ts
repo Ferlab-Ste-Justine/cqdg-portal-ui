@@ -4,12 +4,12 @@ import '../../support/commands';
 describe('Page d\'un fichier - Vérifier les informations affichées', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitFileEntity('FI0009813');
+    cy.visitFileEntity('FI0014581');
   };
 
   it('Titre', () => {
     setupTest();
-    cy.get('[class*="EntityTitle"]').contains('FI0009813');
+    cy.get('[class*="EntityTitle"]').contains('FI0014581');
   });
 
   it('Panneau Summary', () => {
@@ -21,14 +21,14 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[data-cy="SummaryHeader_Samples_Button"]').contains(/^1$/);
     cy.get('[data-cy="SummaryHeader_Samples_Button"]').contains(/^Sample$/);
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(0).contains('ID').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(0).contains('FI0009813').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(0).contains('FI0014581').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(1).contains('Name').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(1).contains('FI0009813.S15906.hard-filtered.gvcf.gz').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(1).contains('FI0014581.S15906.hard-filtered.gvcf.gz').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(2).contains('Format').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(2).contains(/^gVCF$/).should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(2).find('[class*="FileEntity_tag"]').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(3).contains('Size').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(3).contains('0 B').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(3).contains('6.51 GB').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').contains('URL').should('not.exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').contains('https://ferload.qa.cqdg.ferlab.bio/').should('not.exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').contains('Hash').should('not.exist');
@@ -73,21 +73,21 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(0).contains('WGS').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(0).find('[class*="FileEntity_tag"]').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(1).contains('Source').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(1).contains('Transcriptomic Single Cell').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(1).contains('Genomic').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(2).contains('Platform').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(2).contains('Illumina HiSeq 2000 PE100').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(2).contains('Illumina').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(3).contains('Sequencing Type').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(3).contains('Paired Reads').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(4).contains('Library Selection').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(4).contains('Reduced Representation').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(4).contains('Random').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(5).contains('Capture Kit').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(5).contains('targetCaptureKit1 - TDEE').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(5).contains('-').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(6).contains('Targeted Loci').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(6).contains('targetedLoci1 - TDEE').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(6).contains('-').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(7).contains('Read Length').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(7).contains('151').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(7).contains('300').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(8).contains('Protocol').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(8).contains('protocol1 - TDEE').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(8).contains('Genomic DNA extracted from blood samples was subjected to an additional cleaning step with the ZR-96 DNA Clean & Concentrator-5 Kit (Zymo) and then used for generating sequencing libraries with the TruSeq DNA PCR-Free Library Preparation Kit according to the manufacturer’s procedure. The platform model used for sequencing was Illumina HiSeq 2500.').should('exist');
   });
 
   it('Panneau Analysis Properties', () => {
@@ -95,9 +95,9 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[id="analysis"] [class="ant-descriptions-item-label"]').eq(0).contains('ID').should('exist');
     cy.get('[id="analysis"] [class="ant-descriptions-item-content"]').eq(0).contains('AN0001563').should('exist');
     cy.get('[id="analysis"] [class="ant-descriptions-item-label"]').eq(1).contains('Analysis Type').should('exist');
-    cy.get('[id="analysis"] [class="ant-descriptions-item-content"]').eq(1).contains('Germline Genome Bioinformatic Analysis').should('exist');
+    cy.get('[id="analysis"] [class="ant-descriptions-item-content"]').eq(1).contains('Germline Variant Analysis with Family Joint Genotyping').should('exist');
     cy.get('[id="analysis"] [class="ant-descriptions-item-label"]').eq(2).contains('Pipeline').should('exist');
-    cy.get('[id="analysis"] [class="ant-descriptions-item-content"]').eq(2).contains('-').should('exist');
+    cy.get('[id="analysis"] [class="ant-descriptions-item-content"]').eq(2).contains('Dragen v6.0.0, Ferlab-Post-processing-Pipeline v102.0').should('exist');
     cy.get('[id="analysis"] [class="ant-descriptions-item-label"]').eq(3).contains('Genome Build').should('exist');
     cy.get('[id="analysis"] [class="ant-descriptions-item-content"]').eq(3).contains('GRCh38').should('exist');
   });
@@ -113,17 +113,17 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(3).contains('Format').should('exist');
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(4).contains('Size').should('exist');
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(5).contains('Sample').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(1).contains('S15906.extra.tgz').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
-      .find('td[class="ant-table-cell"]').eq(2).contains('Metrics').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
+      .find('td[class="ant-table-cell"]').eq(2).contains('Quality Control Metrics').should('exist');
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(3).contains('TGZ').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(3).find('[class*="FileEntity_tag"]').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
-      .find('td[class="ant-table-cell"]').eq(4).contains('0 B').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0011213"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
+      .find('td[class="ant-table-cell"]').eq(4).contains('17.91 GB').should('exist');
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(5).contains('SR0000084').should('exist');
   });
 });

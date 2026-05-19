@@ -9,7 +9,7 @@ describe('Page Data Exploration (Participants) - Exporter les participants en TS
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitDataExploration('participants', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.visitDataExploration('participants', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.showColumn('Gender');
     cy.showColumn(/^Family$/);
     cy.showColumn(/^Race$/);

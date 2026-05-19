@@ -8,10 +8,10 @@ describe('Page d\'une étude - Bouton Manifest', () => {
 
     cy.login();
     cy.visitStudyEntity('STUDY1', 1);
-    cy.get('[class*="EntityTitle"] [data-cy="FileManifest_Button"]').click({force: true});
+    cy.clickAndIntercept('[class*="EntityTitle"] [data-cy="FileManifest_Button"]', 'POST', '**/file-manifest/stats', 1);
   };
 
-  it('Vérifier les informations affichées - Modal [CQDG-1413]', () => {
+  it('Vérifier les informations affichées - Modal', () => {
     setupTest();
     cy.get('[class="ant-modal-title"]').contains('File manifest').should('exist');
     cy.get('[class="ant-modal-body"]').contains('Download a manifest of this study’s files which can be used with CQDG\'s bulk download tool. This manifest also includes additional information, including the participants and samples associated with these files.').should('exist');
@@ -21,33 +21,33 @@ describe('Page d\'une étude - Bouton Manifest', () => {
     cy.get('[class*="DownloadFileManifestModal_table"] thead th').eq(2).contains('Files').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] thead th').eq(3).contains('Size').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(0).contains('Quality Control Metrics').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(1).contains(/^9$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(2).contains(/^9$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(3).contains(/^9 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(1).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(2).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(3).contains(/^1 B$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Structural Variations (SVs)"] td').eq(0).contains('Structural Variations (SVs)').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Structural Variations (SVs)"] td').eq(1).contains(/^9$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Structural Variations (SVs)"] td').eq(2).contains(/^9$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Structural Variations (SVs)"] td').eq(3).contains(/^9 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Structural Variations (SVs)"] td').eq(1).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Structural Variations (SVs)"] td').eq(2).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Structural Variations (SVs)"] td').eq(3).contains(/^1 B$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(0).contains('Annotated SNV').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(1).contains(/^3$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(2).contains(/^3$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(3).contains(/^238.9 MB$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(1).contains(/^2$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(2).contains(/^2$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Annotated SNV"] td').eq(3).contains(/^158.77 MB$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(0).contains('Aligned Reads').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(1).contains(/^9$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(2).contains(/^9$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(1).contains(/^2$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(2).contains(/^2$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Aligned Reads"] td').eq(3).contains(/^10.73 GB$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Single Nucleotide Variants (SNVs)"] td').eq(0).contains('Single Nucleotide Variants (SNVs)').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Single Nucleotide Variants (SNVs)"] td').eq(1).contains(/^9$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Single Nucleotide Variants (SNVs)"] td').eq(2).contains(/^9$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Single Nucleotide Variants (SNVs)"] td').eq(1).contains(/^7$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Single Nucleotide Variants (SNVs)"] td').eq(2).contains(/^7$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Single Nucleotide Variants (SNVs)"] td').eq(3).contains(/^2.17 GB$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R1"] td').eq(0).contains('Raw Sequencing Reads R1').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R1"] td').eq(1).contains(/^1$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R1"] td').eq(2).contains(/^2$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R1"] td').eq(3).contains(/^2 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R1"] td').eq(2).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R1"] td').eq(3).contains(/^1 B$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R2"] td').eq(0).contains('Raw Sequencing Reads R2').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R2"] td').eq(1).contains(/^1$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R2"] td').eq(2).contains(/^2$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R2"] td').eq(3).contains(/^2 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R2"] td').eq(2).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Raw Sequencing Reads R2"] td').eq(3).contains(/^1 B$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Sequencing Data Supplement"] td').eq(0).contains('Sequencing Data Supplement').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Sequencing Data Supplement"] td').eq(1).contains(/^1$/).should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Sequencing Data Supplement"] td').eq(2).contains(/^1$/).should('exist');

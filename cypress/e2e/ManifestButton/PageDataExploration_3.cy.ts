@@ -9,9 +9,9 @@ describe('Page Data Exploration (Data Files) - Télécharger le manifest (checkb
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
-    cy.get('[data-row-key="FI00112245"]').find('[type="checkbox"]').check({force: true});
-    cy.get('[data-cy="FileManifest_Button"]').click({force: true});
+    cy.visitDataExploration('datafiles', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
+    cy.get('[data-row-key*="FI0013377"]').find('[type="checkbox"]').check({force: true});
+    cy.clickAndIntercept('[data-cy="FileManifest_Button"]', 'POST', '**/file-manifest/stats', 1);
     cy.get('[class="ant-modal-body"] input[type="checkbox"]').check({force: true});
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-manifest', 1, 1);
     cy.waitUntilFile(oneMinute);

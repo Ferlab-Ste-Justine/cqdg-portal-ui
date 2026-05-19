@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page d\'un participant - Valider les panneaux masquables', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitParticipantEntity('PT0000879');
+    cy.visitParticipantEntity('PT0000817');
   };
 
   it('Panneau Summary', () => {

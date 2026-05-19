@@ -10,7 +10,7 @@ describe('Page d\'une étude (Dataset) - Télécharger le manifest', () => {
 
     cy.login();
     cy.visitStudyEntity('STUDY1', 1);
-    cy.get('[class*="EntityDataset_container"] [data-cy="FileManifest_Button"]').eq(1).click({force: true});
+    cy.clickAndIntercept('[class*="EntityDataset_container"] [data-cy="FileManifest_Button"]', 'POST', '**/file-manifest/stats', 1, 1);
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-manifest', 1, 1);
     cy.waitUntilFile(oneMinute);
   };
@@ -25,7 +25,7 @@ describe('Page d\'une étude (Dataset) - Télécharger le manifest', () => {
     cy.validateFileHeaders('DownloadManifestStudy.json');
   });
 
-  it('Valider le contenu du fichier [CQDG-1413]', () => {
+  it('Valider le contenu du fichier', () => {
     setupTest();
     cy.validateFileContent('DownloadManifestStudy.json');
   });

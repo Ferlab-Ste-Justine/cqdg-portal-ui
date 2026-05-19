@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page d\'un fichier - Colonnes du tableau Participants-Samples', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitFileEntity('FI0009813');
+    cy.visitFileEntity('FI0014581');
     cy.resetColumns('biospecimens');
   };
 

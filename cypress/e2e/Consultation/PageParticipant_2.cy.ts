@@ -4,12 +4,12 @@ import '../../support/commands';
 describe('Page d\'un participant - Vérifier les informations affichées', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitParticipantEntity('PT0000879');
+    cy.visitParticipantEntity('PT0000817');
   };
 
   it('Titre', () => {
     setupTest();
-    cy.get('[class*="EntityTitle"]').contains('PT0000879');
+    cy.get('[class*="EntityTitle"]').contains('PT0000817');
   });
 
   it('Panneau Summary', () => {
@@ -22,9 +22,9 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[data-cy="SummaryHeader_Files_Button"]').contains('Files');
     cy.get('[id="summary"] [class="ant-collapse-header"]').contains('Summary').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(0).contains('ID').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(0).contains('PT0000879').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(0).contains('PT0000817').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(1).contains('External Participant ID').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(1).contains('HSJ-1005-389').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(1).contains('HSJ-1625-577').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(2).contains('Study').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(2).contains('Developmental and epileptic encephalopathies (T-DEE)').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(3).contains('Family Type').should('exist');
@@ -45,9 +45,9 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(1).contains('Gender').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(1).contains('Man').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(2).contains('Race').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(2).contains('Black').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(2).contains('Another Racial Category').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(3).contains('Race (Other)').should('exist');
-    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(3).contains('-').should('exist');
+    cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(3).contains('Fluff').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(4).contains('Age at Recruitment').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-content"]').eq(4).contains('-').should('exist');
     cy.get('[id="profile"] [class="ant-descriptions-item-label"]').eq(5).contains('Vital Status').should('exist');
@@ -70,20 +70,20 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.resetColumns('family');
     cy.get('[id="family"] [class*="EntityTable_title"]').contains('Family').should('exist');
     cy.get('[id="family"] [class="ant-collapse-header"]').contains('Family ( ').should('exist');
-    cy.get('[id="family"] [class="ant-collapse-header"]').contains('FM0000487').should('exist');
+    cy.get('[id="family"] [class="ant-collapse-header"]').contains('FM0000540').should('exist');
     cy.get('[id="family"] [class="ant-collapse-header"]').contains(' )').should('exist');
     cy.get('[id="family"] thead th[class="ant-table-cell"]').eq(0).contains('Participant').should('exist');
     cy.get('[id="family"] thead th[class="ant-table-cell"]').eq(1).contains('Family Position').should('exist');
     cy.get('[id="family"] thead th[class="ant-table-cell"]').eq(2).contains('Disease Status').should('exist');
-    cy.get('[data-row-key="PT0000879"] td[class="ant-table-cell"]').eq(0).contains('PT0000879').should('exist');
-    cy.get('[data-row-key="PT0000879"] td[class="ant-table-cell"]').eq(1).contains('Proband').should('exist');
-    cy.get('[data-row-key="PT0000879"] td[class="ant-table-cell"]').eq(2).contains('Yes').should('exist');
-    cy.get('[data-row-key="PT0000899"] td[class="ant-table-cell"]').eq(0).contains('PT0000899').should('exist');
-    cy.get('[data-row-key="PT0000899"] td[class="ant-table-cell"]').eq(1).contains('Father').should('exist');
-    cy.get('[data-row-key="PT0000899"] td[class="ant-table-cell"]').eq(2).contains('No').should('exist');
-    cy.get('[data-row-key="PT0001035"] td[class="ant-table-cell"]').eq(0).contains('PT0001035').should('exist');
-    cy.get('[data-row-key="PT0001035"] td[class="ant-table-cell"]').eq(1).contains('Mother').should('exist');
-    cy.get('[data-row-key="PT0001035"] td[class="ant-table-cell"]').eq(2).contains('No').should('exist');
+    cy.get('[data-row-key="PT0000817"] td[class="ant-table-cell"]').eq(0).contains('PT0000817').should('exist');
+    cy.get('[data-row-key="PT0000817"] td[class="ant-table-cell"]').eq(1).contains('Proband').should('exist');
+    cy.get('[data-row-key="PT0000817"] td[class="ant-table-cell"]').eq(2).contains('Yes').should('exist');
+    cy.get('[data-row-key="PT0001177"] td[class="ant-table-cell"]').eq(0).contains('PT0001177').should('exist');
+    cy.get('[data-row-key="PT0001177"] td[class="ant-table-cell"]').eq(1).contains('Father').should('exist');
+    cy.get('[data-row-key="PT0001177"] td[class="ant-table-cell"]').eq(2).contains('No').should('exist');
+    cy.get('[data-row-key="PT0000964"] td[class="ant-table-cell"]').eq(0).contains('PT0000964').should('exist');
+    cy.get('[data-row-key="PT0000964"] td[class="ant-table-cell"]').eq(1).contains('Mother').should('exist');
+    cy.get('[data-row-key="PT0000964"] td[class="ant-table-cell"]').eq(2).contains('No').should('exist');
   });
 
   it('Panneau Data Access', () => {
@@ -100,7 +100,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="data_access"] [class="ant-descriptions-item-content"]').eq(1).contains('0000016').should('exist');
     cy.get('[id="data_access"] [class="ant-descriptions-item-content"]').eq(1).contains('See more').should('exist');
     cy.get('[id="data_access"] [class="ant-descriptions-item-label"]').eq(2).contains('Access Authority').should('exist');
-    cy.get('[id="data_access"] [class="ant-descriptions-item-content"]').eq(2).contains('jacques.michaud.med@ssss.gouv.qc.ca').should('exist');
+    cy.get('[id="data_access"] [class="ant-descriptions-item-content"]').eq(2).contains('toto@gov.org').should('exist');
   });
   
   it('Panneau Diagnoses', () => {
@@ -137,13 +137,13 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="phenotype"] thead th[class="ant-table-cell"]').eq(2).contains('Interpretation').should('exist');
     cy.get('[id="phenotype"] thead th[class="ant-table-cell"]').eq(3).contains('Age').should('exist');
     cy.get('[id="phenotype"] thead th[class="ant-table-cell"]').eq(4).contains('HPO Term').should('exist');
-    cy.get('[data-row-key="PH0000196"] td[class="ant-table-cell"]').eq(0).contains('Seizure').should('exist');
-    cy.get('[data-row-key="PH0000196"] td[class="ant-table-cell"]').eq(0).contains('HP').should('exist');
-    cy.get('[data-row-key="PH0000196"] td[class="ant-table-cell"]').eq(0).contains('0001250').should('exist');
-    cy.get('[data-row-key="PH0000196"] td[class="ant-table-cell"]').eq(1).contains('Intractable Seizures').should('exist');
-    cy.get('[data-row-key="PH0000196"] td[class="ant-table-cell"]').eq(2).contains('Observed').should('exist');
-    cy.get('[data-row-key="PH0000196"] td[class="ant-table-cell"]').eq(3).contains('Neonatal').should('exist');
-    cy.get('[data-row-key="PH0000196"] td[class="ant-table-cell"]').eq(4).contains('209').should('exist');
+    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(0).contains('Seizure').should('exist');
+    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(0).contains('HP').should('exist');
+    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(0).contains('0001250').should('exist');
+    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(1).contains('Intractable Seizures').should('exist');
+    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(2).contains('Observed').should('exist');
+    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(3).contains('Neonatal').should('exist');
+    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(4).contains('206').should('exist');
   });
   
   it('Panneau Biospecimens', () => {
@@ -170,8 +170,8 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="biospecimen"] thead th[class*="ant-table-cell"]').eq(8).contains('Tumor Type (Source Text)').should('exist');
     cy.get('[id="biospecimen"] thead th[class*="ant-table-cell"]').eq(9).contains('Tumor Location (NCIt)').should('exist');
     cy.get('[id="biospecimen"] thead th[class*="ant-table-cell"]').eq(10).contains('Tumor Location (Source Text)').should('exist');
-    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(0).contains('SR0000214').should('exist');
-    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(1).contains('SP0000683').should('exist');
+    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(0).contains('SR0000215').should('exist');
+    cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(1).contains('SP0000824').should('exist');
     cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(2).contains('DNA').should('exist');
     cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(2).contains('NCIT:').should('exist');
     cy.get('[id="biospecimen"] td[class="ant-table-cell"]').eq(2).contains('C449').should('exist');
@@ -198,14 +198,14 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(0).find('thead th[class="ant-table-cell"]').eq(0).contains('Data Type').should('exist');
     cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(0).find('thead th[class="ant-table-cell"]').eq(1).contains('Files').should('exist');
     cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(0).find('thead th[class="ant-table-cell"]').eq(2).contains('(n=6)').should('exist');
-    cy.get('[id="data_file"] [data-row-key="Germline CNV"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="Germline CNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
-    cy.get('[id="data_file"] [data-row-key="SNV"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="SNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
-    cy.get('[id="data_file"] [data-row-key="Metrics"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="Metrics"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
-    cy.get('[id="data_file"] [data-row-key="Germline Structural Variant"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="Germline Structural Variant"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Copy Number Variations (CNVs)"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
+    cy.get('[id="data_file"] [data-row-key="Copy Number Variations (CNVs)"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Single Nucleotide Variants (SNVs)"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
+    cy.get('[id="data_file"] [data-row-key="Single Nucleotide Variants (SNVs)"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Quality Control Metrics"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
+    cy.get('[id="data_file"] [data-row-key="Quality Control Metrics"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Structural Variations (SVs)"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
+    cy.get('[id="data_file"] [data-row-key="Structural Variations (SVs)"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
     cy.get('[id="data_file"] [data-row-key="Aligned Reads"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');
     cy.get('[id="data_file"] [data-row-key="Aligned Reads"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 16.6"]').should('exist');
     cy.get('[id="data_file"] [data-row-key="Annotated SNV"] td[class="ant-table-cell"]').eq(1).contains(/^1$/).should('exist');

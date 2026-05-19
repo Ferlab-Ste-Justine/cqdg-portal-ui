@@ -6,10 +6,10 @@ describe('Page Data Exploration (Data Files) - Bouton Save set', () => {
     cy.login();
     cy.deleteSetIfExists('files', 'Cypress_New_F');
     cy.deleteSetIfExists('files', 'Cypress_F');
-    cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.visitDataExploration('datafiles', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.get('[data-cy="SidebarMenuItem_Data File"]').clickAndWait({force: true});
     cy.createSetIfNotExists('Cypress_F', 0);
-    cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.visitDataExploration('datafiles', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.get('[data-cy="SidebarMenuItem_Data File"]').clickAndWait({force: true});
   };
 

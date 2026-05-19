@@ -7,8 +7,8 @@ describe('Page d\'un fichier - Bouton Manifest', () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitFileEntity('FI0011224');
-    cy.get('[data-cy="FileManifest_Button"]').click({force: true});
+    cy.visitFileEntity('FI0013377');
+    cy.clickAndIntercept('[data-cy="FileManifest_Button"]', 'POST', '**/file-manifest/stats', 1);
   };
 
   it('Vérifier les informations affichées - Modal', () => {
@@ -20,10 +20,10 @@ describe('Page d\'un fichier - Bouton Manifest', () => {
     cy.get('[class*="DownloadFileManifestModal_table"] thead th').eq(1).contains('Participants').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] thead th').eq(2).contains('Files').should('exist');
     cy.get('[class*="DownloadFileManifestModal_table"] thead th').eq(3).contains('Size').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(0).contains('Metrics').should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(1).contains(/^1$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(2).contains(/^1$/).should('exist');
-    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Metrics"] td').eq(3).contains(/^0 B$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(0).contains('Quality Control Metrics').should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(1).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(2).contains(/^1$/).should('exist');
+    cy.get('[class*="DownloadFileManifestModal_table"] [data-row-key="Quality Control Metrics"] td').eq(3).contains(/^17.91 GB$/).should('exist');
 
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').contains('Cancel').should('exist');
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"]').eq(0).find('[class*="anticon-copy"]').should('exist');

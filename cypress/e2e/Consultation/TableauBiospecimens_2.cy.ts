@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page Data Exploration (Biospecimens) - Valider les liens disponibles', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitDataExploration('biospecimens', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.visitDataExploration('biospecimens', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.showColumn('Cancer Tissue Type');
     cy.showColumn('Tumor Type (NCIt)');
     cy.showColumn('Tumor Type (Source Text)');
@@ -16,7 +16,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les liens disponibles',
     setupTest();
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(3).find('[href]').clickAndWait({force: true});
     cy.get('[id="participant-entity-page"]').should('exist');
-    cy.get('[class*="EntityTitle"]').contains('PT0000879');
+    cy.get('[class*="EntityTitle"]').contains('PT0000964');
   });
 
   it('Lien Study du tableau', () => {
@@ -43,7 +43,7 @@ describe('Page Data Exploration (Biospecimens) - Valider les liens disponibles',
     cy.get('tr[class*="ant-table-row"] [class*="ant-table-cell"]').eq(9).find('[href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_DataFiles"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Sample ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('SR0000214').should('exist');
-    cy.validateTableResultsCount(/^6$/);
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('SR0000084').should('exist');
+    cy.validateTableResultsCount(/^5$/);
   });
 });

@@ -4,19 +4,19 @@ import '../../support/commands';
 describe('Page Data Exploration (Data Files) - Valider les liens disponibles', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitDataExploration('datafiles', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.visitDataExploration('datafiles', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
   };
 
   it('Lien File du tableau', () => {
     setupTest();
-    cy.get('tr[data-row-key="FI00112245"] [class*="ant-table-cell"]').eq(3).find('[href]').clickAndWait({force: true});
+    cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(3).find('[href]').clickAndWait({force: true});
     cy.get('[id="file-entity-page"]').should('exist');
-    cy.get('[class*="EntityTitle"]').contains('FI0011224');
+    cy.get('[class*="EntityTitle"]').contains('FI0013377');
   });
 
   it('Lien Study du tableau', () => {
     setupTest();
-    cy.get('tr[data-row-key="FI00112245"] [class*="ant-table-cell"]').eq(4).find('[href]').clickAndWait({force: true});
+    cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(4).find('[href]').clickAndWait({force: true});
     cy.get('[id="study-entity-page"]').should('exist');
     cy.get('[class*="EntityTitle"]').contains('Developmental and epileptic encephalopathies');
   });
@@ -24,20 +24,20 @@ describe('Page Data Exploration (Data Files) - Valider les liens disponibles', (
   it('Lien Participants du tableau', () => {
     setupTest();
     cy.showColumn('Participants');
-    cy.get('tr[data-row-key="FI00112245"] [class*="ant-table-cell"]').eq(11).find('[href]').clickAndWait({force: true});
+    cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(11).find('[href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Participants"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0011224').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0013377').should('exist');
     cy.validateTableResultsCount(/^1$/);
   });
 
   it('Lien Biospecimens du tableau', () => {
     setupTest();
     cy.showColumn('Biospecimens');
-    cy.get('tr[data-row-key="FI00112245"] [class*="ant-table-cell"]').eq(11).find('[href]').clickAndWait({force: true});
+    cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(11).find('[href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Biospecimens"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0011224').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0013377').should('exist');
     cy.validateTableResultsCount(/^1$/);
   });
 });

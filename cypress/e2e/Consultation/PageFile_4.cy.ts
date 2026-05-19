@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page d\'un fichier - Valider les panneaux masquables', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitFileEntity('FI0009813');
+    cy.visitFileEntity('FI0014581');
   };
 
   it('Panneau Summary', () => {

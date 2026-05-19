@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page Data Exploration (Participants) - Vérifier les informations affichées', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitDataExploration('participants', '?sharedFilterId=f586eafb-ed2d-4cde-8ac0-c0c44fa2a504');
+    cy.visitDataExploration('participants', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.showColumn('Gender');
     cy.showColumn(/^Race$/);
     cy.showColumn('Race (Other)');
@@ -20,30 +20,30 @@ describe('Page Data Exploration (Participants) - Vérifier les informations affi
     cy.get('[data-cy="Title_DataExploration"]').contains('Data Explorer');
   });
 
-  it('Tableau', () => {
+  it('Tableau [CQDG-1443]', () => {
     setupTest();
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(1).contains('PT0000879').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(2).contains('T-DEE').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(3).contains('Male').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(4).contains('Man').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(5).contains('epilepsy').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(5).contains('MONDO:').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(5).contains('0005027').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(6).contains('Seizure').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(6).contains('HP:').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(6).contains('0001250').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(7).contains('Proband').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(8).contains('Case-parent trio').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(9).contains('-').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(10).contains(/^6$/).should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(11).contains(/^1$/).should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(12).contains('Black').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(13).contains('-').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(14).contains('Generalized idiopathic epilepsy and epileptic syndromes, intractable').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(14).contains('G40.31').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(15).contains('Intractable Epilepsy').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(16).contains('HSJ-1005-389').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(17).contains('Missing - Unknown').should('exist');
-    cy.get('tr[data-row-key="PT0000879"] [class*="ant-table-cell"]').eq(18).contains('RARE-QC').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(1).contains('PT0000817').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(2).contains('T-DEE').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(3).contains('Male').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(4).contains('Man').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(5).contains('epilepsy').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(5).contains('MONDO:').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(5).contains('0005027').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(6).contains('Seizure').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(6).contains('HP:').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(6).contains('0001250').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(7).contains('Proband').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(8).contains('Case-parent trio').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(9).contains('-').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(10).contains(/^6$/).should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(11).contains(/^1$/).should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(12).contains('Another Racial Category').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(13).contains('Fluff').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(14).contains('Generalized idiopathic epilepsy and epileptic syndromes, intractable').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(14).contains('G40.31').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(15).contains('Intractable Epilepsy').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(16).contains('HSJ-1625-577').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(17).contains('Missing - Unknown').should('exist');
+    cy.get('tr[data-row-key="PT0000817"] [class*="ant-table-cell"]').eq(18).contains('-').should('exist');
   });
 });

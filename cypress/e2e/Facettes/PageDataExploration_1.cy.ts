@@ -21,39 +21,39 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.get('section[class*="Filters"] [aria-expanded="true"]').should('not.exist');
   });
 
-  it('Search by participant ID - PT0000879', () => {
+  it('Search by participant ID - PT0000964', () => {
     setupTest();
     cy.get('[data-cy="SearchLabel_Title"]').contains('Search by IDs').should('exist');
 
     cy.get('[class*="SearchLabel_tooltipIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true}); //data-cy="SearchLabel_InfoCircleOutlined"
     cy.get('div[class="ant-tooltip-inner"]').contains('Search by participant ID or external participant ID').should('exist');
 
-    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'PT0000879', 'POST', '*/grapgql', 1);
-    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('PT0000879').should('exist');
+    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'PT0000964', 'POST', '*/grapgql', 1);
+    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('PT0000964').should('exist');
     cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').eq(0).click({force: true});
 
-    cy.get('[data-cy="Tag_PT0000879"]').should('exist');
+    cy.get('[data-cy="Tag_PT0000964"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000879').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000964').should('exist');
     cy.validateTableResultsCount(/^1 Result$/);
 
     cy.get('[data-icon="close-circle"]').clickAndWait({force: true});
-    cy.get('[data-cy="Tag_PT0000879"]').should('not.exist');
+    cy.get('[data-cy="Tag_PT0000964"]').should('not.exist');
   });
 
-  it('Search by external participant ID - HSJ-1005-389', () => {
+  it('Search by external participant ID - HSJ-1626-577', () => {
     setupTest();
-    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'hsj-1005-389', 'POST', '*/grapgql', 1);
-    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('PT0000879').should('exist');
+    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'HSJ-1626-577', 'POST', '*/grapgql', 1);
+    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('PT0000964').should('exist');
     cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').eq(0).click({force: true});
 
-    cy.get('[data-cy="Tag_PT0000879"]').should('exist');
+    cy.get('[data-cy="Tag_PT0000964"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Participant ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000879').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('PT0000964').should('exist');
     cy.validateTableResultsCount(/^1 Result$/);
 
     cy.get('[data-icon="close-circle"]').clickAndWait({force: true});
-    cy.get('[data-cy="Tag_PT0000879"]').should('not.exist');
+    cy.get('[data-cy="Tag_PT0000964"]').should('not.exist');
   });
 
   it('Study Code - STUDY1', () => {
@@ -64,7 +64,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Program - RARE-QC', () => {
     setupTest();
-    cy.validateFacetFilter('Program', 'RARE-QC', 'RARE-QC', /^632$/);
+    cy.validateFacetFilter('Program', 'RARE-QC', 'RARE-QC', /^3\d{1}$/);
     cy.validateFacetRank(1, 'Program');
   });
 
@@ -94,7 +94,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Family Type - Case-parent trio', () => {
     setupTest();
-    cy.validateFacetFilter('Family Type', 'Case-parent trio', 'Case-parent trio', /^618$/);
+    cy.validateFacetFilter('Family Type', 'Case-parent trio', 'Case-parent trio', /^6\d{2}$/);
     cy.validateFacetRank(4, 'Family Type');
   });
 
@@ -110,9 +110,9 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.validateFacetRank(6, 'Gender');
   });
 
-  it('Age at Recruitment - Congenital', () => {
+  it('Age at Recruitment - Senior', () => {
     setupTest();
-    cy.validateFacetFilter('Age at Recruitment', 'Congenital', 'B-congenital', /^2$/);
+    cy.validateFacetFilter('Age at Recruitment', 'Senior', 'I-senior', /^\d{1}$/);
     cy.validateFacetRank(7, 'Age at Recruitment');
   });
 
@@ -122,15 +122,15 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.validateFacetRank(8, 'Vital Status');
   });
 
-  it('Age at Diagnosis - Congenital', () => {
+  it('Age at Diagnosis - Senior', () => {
     setupTest();
-    cy.validateFacetFilter('Age at Diagnosis', 'Congenital', 'B-congenital', /^3$/);
+    cy.validateFacetFilter('Age at Diagnosis', 'Senior', 'I-senior', /^\d{1}$/);
     cy.validateFacetRank(9, 'Age at Diagnosis');
   });
 
   it('Race - White', () => {
     setupTest();
-    cy.validateFacetFilter('Race', 'White', 'White', /^90$/);
+    cy.validateFacetFilter('Race', 'White', 'White', /^(8|9)\d{1}$/);
     cy.validateFacetRank(10, 'Race');
   });
 
