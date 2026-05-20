@@ -1,12 +1,14 @@
 {
   "headers": ["Sample",
+              "Biospecimen",
               "Sample Type",
               "Tissue",
-              "Biospecimen",
-              "Age"],
-  "content": ["SR0000084",
+              "Age",
+              "Tumor Status"],
+  "content": ["SR0000215",
+              "SP0000824",
               "DNA (NCIT:C449)",
               "Blood (NCIT:C12434)",
-              "SP0000932",
-              "--"]
+              "--",
+              "Not applicable"]
 }
