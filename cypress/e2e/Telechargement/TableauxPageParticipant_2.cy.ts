@@ -7,7 +7,7 @@ describe('Page d\'un participant - Exporter le tableau Diagnoses en TSV', () => 
   const setupTest = () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
     cy.login();
-    cy.visitParticipantEntity('PT0000964');
+    cy.visitParticipantEntity('PT0000817');
     cy.resetColumns('diagnosis');
     cy.get('div[id="content"] svg[data-icon="download"]').eq(2).clickAndWait({force: true});
     cy.waitUntilFile(oneMinute);

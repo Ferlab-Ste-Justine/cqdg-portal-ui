@@ -135,7 +135,7 @@ describe('Page d\'une étude - Vérifier les informations affichées', () => {
     cy.get('[id="data_file"] [data-row-key="Aligned Reads"] td[class="ant-table-cell"]').eq(1).contains(/^5\d{2}$/).should('exist');
     cy.get('[id="data_file"] [data-row-key="Aligned Reads"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 18."]').should('exist');
     cy.get('[id="data_file"] [data-row-key="Annotated SNV"] td[class="ant-table-cell"]').eq(1).contains(/^1\d{2}$/).should('exist');
-    cy.get('[id="data_file"] [data-row-key="Annotated SNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 5."]').should('exist');
+    cy.get('[id="data_file"] [data-row-key="Annotated SNV"] td[class="ant-table-cell"]').eq(2).find('[style*="width: 6."]').should('exist');
 
     cy.get('[id="data_file"] [class*="EntityTable_subTitle"]').eq(1).contains('File counts by Strategy').should('exist');
     cy.get('[id="data_file"] [class*="EntityTable_contentTable"]').eq(1).find('thead th[class="ant-table-cell"]').eq(0).contains('Strategy').should('exist');

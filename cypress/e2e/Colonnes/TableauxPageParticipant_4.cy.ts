@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page d\'un participant - Colonnes du tableau Biospecimens', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitParticipantEntity('PT0000964');
+    cy.visitParticipantEntity('PT0000817');
     cy.resetColumns('biospecimen');
   };
 
