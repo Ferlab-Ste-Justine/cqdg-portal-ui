@@ -598,6 +598,11 @@ const fr = {
         },
       },
     },
+    maintenance: {
+      title: 'Site en maintenance',
+      description:
+        'Le portail est actuellement en maintenance planifiée. Nous serons de retour en ligne sous peu. Merci de votre patience.',
+    },
     notification: {
       genericError: 'Une erreur est apparue',
     },

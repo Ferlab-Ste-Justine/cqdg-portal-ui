@@ -13,6 +13,7 @@ import ApolloProvider from 'provider/ApolloProvider';
 import ContextProvider from 'provider/ContextProvider';
 import ErrorPage from 'views/Error';
 import Login from 'views/Login';
+import Maintenance from 'views/Maintenance';
 
 import { LANG } from 'common/constants';
 import ErrorBoundary from 'components/ErrorBoundary';
@@ -62,6 +63,7 @@ const App = () => {
                 <Routes>
                   <Route path={STATIC_ROUTES.LOGIN} element={<Login />} />
                   <Route path={DYNAMIC_ROUTES.ERROR} element={<ErrorPage />} />
+                  <Route path={STATIC_ROUTES.MAINTENANCE} element={<Maintenance />} />
                   <Route
                     path={STATIC_ROUTES.DASHBOARD}
                     element={

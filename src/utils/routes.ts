@@ -9,6 +9,7 @@ export enum STATIC_ROUTES {
   COMMUNITY = '/community',
   PROGRAMS = '/programs',
   ERROR = '/error',
+  MAINTENANCE = '/maintenance',
   ANALYTICS = '/analytics',
   ANALYTICS_SET_OPERATIONS = '/analytics/set-operations',
 

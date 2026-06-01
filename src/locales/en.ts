@@ -597,6 +597,11 @@ const en = {
         },
       },
     },
+    maintenance: {
+      title: 'Site under maintenance',
+      description:
+        'The portal is currently undergoing scheduled maintenance. We will be back online shortly. Thank you for your patience.',
+    },
     notification: {
       genericError: 'An error occured',
     },

@@ -1,0 +1,44 @@
+.maintenance {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-image: url('../../components/assets/background.svg'),
+    linear-gradient(266deg, #28aae2 0.82%, #006095 98.04%);
+  background-position: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 560px;
+  width: 100%;
+  padding: 48px 40px;
+  text-align: center;
+  border-radius: 16px;
+  background: var(--gray-1);
+  box-shadow: 0 0 8px 0 rgba(38, 67, 111, 0.25);
+}
+.logo {
+  height: 40px;
+  width: auto;
+  align-self: flex-start;
+}
+.icon {
+  font-size: 48px;
+  color: var(--blue-8);
+}
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: normal;
+  color: var(--gray-8);
+}
+.description {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--gray-8);
+}
