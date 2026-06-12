@@ -46,6 +46,7 @@ export interface IFileEntity {
   key?: string;
   id: string;
   file_id: string;
+  stable_file_id: string;
   participants: ArrangerResultsTree<IParticipantEntity>;
   data_category: string;
   data_type: string;

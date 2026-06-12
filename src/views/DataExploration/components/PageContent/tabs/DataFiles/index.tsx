@@ -89,8 +89,10 @@ const getDefaultColumns = (): ProColumnType[] => [
   {
     key: 'file_id',
     title: intl.get('entities.file.file_id'),
-    dataIndex: 'file_id',
-    render: (file_id: string) => <Link to={`${STATIC_ROUTES.FILES}/${file_id}`}>{file_id}</Link>,
+    dataIndex: 'stable_file_id',
+    render: (stable_file_id: string, file: IFileEntity) => (
+      <Link to={`${STATIC_ROUTES.FILES}/${file.file_id}`}>{stable_file_id}</Link>
+    ),
   },
   {
     key: 'study_code',
