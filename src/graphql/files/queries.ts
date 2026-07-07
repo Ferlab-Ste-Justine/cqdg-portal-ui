@@ -142,6 +142,7 @@ export const GET_FILES_CAVATICA = gql`
         edges {
           node {
             file_id
+            stable_file_id
             user_authorized
             study {
               study_code

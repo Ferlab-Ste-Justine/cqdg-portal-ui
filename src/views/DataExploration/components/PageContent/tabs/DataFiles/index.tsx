@@ -90,8 +90,8 @@ const getDefaultColumns = (): ProColumnType[] => [
     key: 'file_id',
     title: intl.get('entities.file.file_id'),
     dataIndex: 'stable_file_id',
-    render: (stable_file_id: string, file: IFileEntity) => (
-      <Link to={`${STATIC_ROUTES.FILES}/${file.file_id}`}>{stable_file_id}</Link>
+    render: (stable_file_id: string) => (
+      <Link to={`${STATIC_ROUTES.FILES}/${stable_file_id}`}>{stable_file_id}</Link>
     ),
   },
   {
@@ -173,8 +173,8 @@ const getDefaultColumns = (): ProColumnType[] => [
               query: generateQuery({
                 newFilters: [
                   generateValueFilter({
-                    field: 'file_id',
-                    value: [file.file_id],
+                    field: 'stable_file_id',
+                    value: [file.stable_file_id],
                     index: INDEXES.FILE,
                   }),
                 ],
@@ -205,8 +205,8 @@ const getDefaultColumns = (): ProColumnType[] => [
               query: generateQuery({
                 newFilters: [
                   generateValueFilter({
-                    field: 'file_id',
-                    value: [file.file_id],
+                    field: 'stable_file_id',
+                    value: [file.stable_file_id],
                     index: INDEXES.FILE,
                   }),
                 ],
@@ -361,8 +361,14 @@ const DataFilesTab = ({ sqon }: IDataFilesTabProps) => {
           onTableExportClick: () =>
             dispatch(
               fetchTsvReport({
-                columnStates: userColumns,
-                columns: defaultCols,
+                // the column key stays 'file_id' to preserve saved column layouts,
+                // but the exported TSV must contain the stable_file_id (FH) values
+                columnStates: userColumns.map((c) =>
+                  c.key === 'file_id' ? { ...c, key: 'stable_file_id' } : c,
+                ),
+                columns: defaultCols.map((c) =>
+                  c.key === 'file_id' ? { ...c, key: 'stable_file_id' } : c,
+                ),
                 index: INDEXES.FILE,
                 sqon: getCurrentSqon(),
               }),

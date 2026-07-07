@@ -23,13 +23,14 @@ interface IFileEntityTitleProps {
 const FileEntityTitle = ({ file, loading }: IFileEntityTitleProps) => {
   const hasFamily = file?.participants?.hits?.edges?.some((e) => e.node.family_id);
   const hasAccess = !!file?.user_authorized;
-  const getCurrentSqon = (): any => generateSelectionSqon(INDEXES.FILE, [file?.file_id || '']);
+  const getCurrentSqon = (): any =>
+    generateSelectionSqon(INDEXES.FILE, [file?.stable_file_id || '']);
   const docHref = `${EnvVariables.configFor(
     'CQDG_DOCUMENTATION',
   )}/docs/faire-une-demande-daccès-aux-données-du-cqdg${getDocLang()}`;
 
   const title = {
-    text: file?.file_id,
+    text: file?.stable_file_id,
     icon: <FileTextOutlined />,
     tag: hasAccess ? (
       <Popover

@@ -5,7 +5,7 @@ import { IQueryConfig, ISort } from '@ferlab/ui/core/graphql/types';
 import { SavedFilterTag } from 'services/api/savedFilter/models';
 
 export const PARTICIPANTS_SAVED_SETS_FIELD = 'participant_id';
-export const DATA_FILES_SAVED_SETS_FIELD = 'file_id';
+export const DATA_FILES_SAVED_SETS_FIELD = 'stable_file_id';
 export const BIOSPECIMENS_SAVED_SETS_FIELD = 'sample_id';
 
 export const DEFAULT_OFFSET = 0;

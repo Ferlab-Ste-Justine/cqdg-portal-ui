@@ -125,7 +125,7 @@ export const getIdFieldByType = (type: string): string => {
     case INDEXES.PARTICIPANT:
       return 'participant_id';
     case INDEXES.FILE:
-      return 'file_id';
+      return 'stable_file_id';
     case INDEXES.VARIANT:
       return 'locus';
     case INDEXES.STUDY:

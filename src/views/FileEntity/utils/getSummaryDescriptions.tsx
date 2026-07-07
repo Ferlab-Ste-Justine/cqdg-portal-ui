@@ -11,7 +11,7 @@ import styles from '../index.module.css';
 const getSummaryDescriptions = (file?: IFileEntity): IEntityDescriptionsItem[] => [
   {
     label: intl.get('entities.file.file_id'),
-    value: file?.file_id || TABLE_EMPTY_PLACE_HOLDER,
+    value: file?.stable_file_id || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     label: intl.get('entities.file.name'),

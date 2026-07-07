@@ -62,8 +62,8 @@ const SummaryHeader = ({ file }: ISummaryBarProps) => (
             query: generateQuery({
               newFilters: [
                 generateValueFilter({
-                  field: 'file_id',
-                  value: [file.file_id],
+                  field: 'stable_file_id',
+                  value: [file.stable_file_id],
                   index: INDEXES.FILE,
                 }),
               ],
@@ -94,8 +94,8 @@ const SummaryHeader = ({ file }: ISummaryBarProps) => (
             query: generateQuery({
               newFilters: [
                 generateValueFilter({
-                  field: 'file_id',
-                  value: [file.file_id],
+                  field: 'stable_file_id',
+                  value: [file.stable_file_id],
                   index: INDEXES.FILE,
                 }),
               ],
