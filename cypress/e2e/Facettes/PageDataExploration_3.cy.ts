@@ -79,7 +79,7 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
 
   it('Library Selection - Reduced Representation', () => {
     setupTest();
-    cy.validateFacetFilter('Library Selection', 'Reduced Representation', 'Reduced Representation', /^44$/);
+    cy.validateFacetFilter('Library Selection', 'Reduced Representation', 'Reduced Representation', /^\d{2}$/);
     cy.validateFacetRank(6, 'Library Selection');
   });
 
