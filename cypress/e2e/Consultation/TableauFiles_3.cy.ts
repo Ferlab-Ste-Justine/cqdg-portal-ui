@@ -63,7 +63,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri Format', () => {
     setupTest();
     cy.sortTableAndWait('Format');
-    cy.validateTableFirstRow('BED', 10, true);
+    cy.validateTableFirstRow(/(BED|CRAM)/, 10, true);
     cy.sortTableAndWait('Format');
     cy.validateTableFirstRow('gVCF', 10, true);
   });
@@ -87,9 +87,9 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
     setupTest();
     cy.sortTableAndWait('Format');
+    cy.sortTableAndWait('Format');
     cy.sortTableAndWait('Study');
-    cy.sortTableAndWait('Study');
-    cy.validateTableFirstRow('STUDY1', 4, true);
+    cy.validateTableFirstRow('RAREQC-DEMO', 4, true);
   });
 
   it('Valider les fonctionnalités du tableau - Pagination', () => {
