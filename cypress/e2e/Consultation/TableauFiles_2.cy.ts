@@ -11,7 +11,7 @@ describe('Page Data Exploration (Data Files) - Valider les liens disponibles', (
     setupTest();
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(3).find('[href]').clickAndWait({force: true});
     cy.get('[id="file-entity-page"]').should('exist');
-    cy.get('[class*="EntityTitle"]').contains('FI0013377');
+    cy.get('[class*="EntityTitle"]').contains('FH0004562');
   });
 
   it('Lien Study du tableau', () => {
@@ -27,7 +27,7 @@ describe('Page Data Exploration (Data Files) - Valider les liens disponibles', (
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(11).find('[href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Participants"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0013377').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FH0004562').should('exist');
     cy.validateTableResultsCount(/^1$/);
   });
 
@@ -37,7 +37,7 @@ describe('Page Data Exploration (Data Files) - Valider les liens disponibles', (
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(11).find('[href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Biospecimens"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0013377').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FH0004562').should('exist');
     cy.validateTableResultsCount(/^1$/);
   });
 });

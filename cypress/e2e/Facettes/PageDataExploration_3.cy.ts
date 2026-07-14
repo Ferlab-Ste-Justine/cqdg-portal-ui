@@ -21,24 +21,24 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
     cy.get('section[class*="Filters"] [aria-expanded="true"]').should('not.exist');
   });
 
-  it('Search by file ID - FI0013377', () => {
+  it('Search by file ID - FH0004562', () => {
     setupTest();
     cy.get('[data-cy="SearchLabel_Title"]').contains('Search by IDs').should('exist');
 
     cy.get('[class*="SearchLabel_tooltipIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true}); //data-cy="SearchLabel_InfoCircleOutlined"
     cy.get('div[class="ant-tooltip-inner"]').contains('Search by file ID').should('exist');
 
-    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'FI0013377', 'POST', '*/grapgql', 1);
-    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('FI0013377').should('exist');
+    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'FH0004562', 'POST', '*/grapgql', 1);
+    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('FH0004562').should('exist');
     cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').eq(0).click({force: true});
 
-    cy.get('[data-cy="Tag_FI0013377"]').should('exist');
+    cy.get('[data-cy="Tag_FH0004562"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0013377').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FH0004562').should('exist');
     cy.validateTableResultsCount(/^1 Result$/);
 
     cy.get('[data-icon="close-circle"]').clickAndWait({force: true});
-    cy.get('[data-cy="Tag_FI0013377"]').should('not.exist');
+    cy.get('[data-cy="Tag_FH0004562"]').should('not.exist');
   });
 
   it('Dataset - Data1', () => {
