@@ -4,12 +4,12 @@ import '../../support/commands';
 describe('Page d\'un fichier - Vérifier les informations affichées', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitFileEntity('FI0014581');
+    cy.visitFileEntity('FH0003480');
   };
 
   it('Titre', () => {
     setupTest();
-    cy.get('[class*="EntityTitle"]').contains('FI0014581');
+    cy.get('[class*="EntityTitle"]').contains('FH0003480');
   });
 
   it('Panneau Summary', () => {
@@ -21,7 +21,7 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[data-cy="SummaryHeader_Samples_Button"]').contains(/^1$/);
     cy.get('[data-cy="SummaryHeader_Samples_Button"]').contains(/^Sample$/);
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(0).contains('ID').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(0).contains('FI0014581').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(0).contains('FH0003480').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(1).contains('Name').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(1).contains('FI0014581.S15906.hard-filtered.gvcf.gz').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(2).contains('Format').should('exist');
@@ -113,17 +113,17 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(3).contains('Format').should('exist');
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(4).contains('Size').should('exist');
     cy.get('[id="analysis_files"] thead th[class="ant-table-cell"]').eq(5).contains('Sample').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FH0004562"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(1).contains('S15906.extra.tgz').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FH0004562"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(2).contains('Quality Control Metrics').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FH0004562"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(3).contains('TGZ').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FH0004562"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(3).find('[class*="FileEntity_tag"]').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FH0004562"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(4).contains('17.91 GB').should('exist');
-    cy.get('[id="analysis_files"] [data-cy="Link_File_FI0013377"]').parents('tr')
+    cy.get('[id="analysis_files"] [data-cy="Link_File_FH0004562"]').parents('tr')
       .find('td[class="ant-table-cell"]').eq(5).contains('SR0000084').should('exist');
   });
 });

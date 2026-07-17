@@ -9,7 +9,7 @@ describe('Page d\'un fichier - Télécharger le manifest (checkbox)', () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitFileEntity('FI0013377');
+    cy.visitFileEntity('FH0004562');
     cy.clickAndIntercept('[data-cy="FileManifest_Button"]', 'POST', '**/file-manifest/stats', 1);
     cy.get('[class="ant-modal-body"] input[type="checkbox"]').check({force: true});
     cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-manifest', 1, 1);

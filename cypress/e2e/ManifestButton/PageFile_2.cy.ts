@@ -7,7 +7,7 @@ describe('Page d\'un fichier - Bouton Manifest', () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitFileEntity('FI0013377');
+    cy.visitFileEntity('FH0004562');
     cy.clickAndIntercept('[data-cy="FileManifest_Button"]', 'POST', '**/file-manifest/stats', 1);
   };
 

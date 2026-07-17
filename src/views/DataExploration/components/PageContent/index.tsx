@@ -296,6 +296,7 @@ const PageContent = ({
             'sample_2_id',
             'file_id',
             'file_2_id',
+            'stable_file_id',
           ],
         }}
         enableCombine

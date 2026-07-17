@@ -4,7 +4,7 @@ import '../../support/commands';
 describe('Page d\'un fichier - Valider les redirections', () => {
   const setupTest = () => {
     cy.login();
-    cy.visitFileEntity('FI0014581');
+    cy.visitFileEntity('FH0003480');
   };
 
   it('Studies', () => {
@@ -20,7 +20,7 @@ describe('Page d\'un fichier - Valider les redirections', () => {
     cy.get('[data-cy="SummaryHeader_Participants_Button"] [href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Participants"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0014581').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FH0003480').should('exist');
   });
   
   it('Sample', () => {
@@ -28,6 +28,6 @@ describe('Page d\'un fichier - Valider les redirections', () => {
     cy.get('[data-cy="SummaryHeader_Samples_Button"] [href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Biospecimens"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FI0014581').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FH0003480').should('exist');
   });
 });

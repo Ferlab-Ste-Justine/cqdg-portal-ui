@@ -31,7 +31,7 @@ const FileUploadIds = ({ queryBuilderId }: OwnProps) => (
           offset: 0,
           sqon: generateQuery({
             operator: BooleanOperators.or,
-            newFilters: ['file_id'].map((field) =>
+            newFilters: ['stable_file_id'].map((field) =>
               generateValueFilter({
                 field,
                 value: ids,
@@ -46,21 +46,21 @@ const FileUploadIds = ({ queryBuilderId }: OwnProps) => (
 
       return files?.flatMap((file) => {
         const matchedIds: string[] = ids.filter(
-          (id: string) => file.file_id.toLocaleLowerCase() === id.toLocaleLowerCase(),
+          (id: string) => file.stable_file_id.toLocaleLowerCase() === id.toLocaleLowerCase(),
         );
 
         return matchedIds.map((id, index) => ({
-          key: `${file.file_id}:${index}`,
+          key: `${file.stable_file_id}:${index}`,
           submittedId: id,
           mappedTo: file.study_code,
-          matchTo: file.file_id,
+          matchTo: file.stable_file_id,
         }));
       });
     }}
     onUpload={(matches) =>
       updateActiveQueryField({
         queryBuilderId,
-        field: 'file_2_id',
+        field: 'stable_file_id',
         value: matches.map((match) => match.matchTo),
         index: INDEXES.FILE,
         overrideValuesName: intl.get('components.uploadIds.pillTitle'),

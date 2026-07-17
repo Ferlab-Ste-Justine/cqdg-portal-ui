@@ -10,6 +10,7 @@ export const GET_FILES = gql`
           node {
             id
             file_id
+            stable_file_id
             file_format
             file_size
             file_name
@@ -98,6 +99,7 @@ export const MATCH_FILES = gql`
         edges {
           node {
             file_id
+            stable_file_id
             study_code
           }
         }
@@ -114,6 +116,7 @@ export const GET_FILE_BY_ID = gql`
           node {
             id
             file_id
+            stable_file_id
           }
         }
       }
@@ -139,6 +142,7 @@ export const GET_FILES_CAVATICA = gql`
         edges {
           node {
             file_id
+            stable_file_id
             user_authorized
             study {
               study_code

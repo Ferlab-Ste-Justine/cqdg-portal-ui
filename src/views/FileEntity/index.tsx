@@ -37,11 +37,11 @@ export const pageId = 'file-entity-page';
 const FileEntity = () => {
   const dispatch = useDispatch();
   const { userInfo } = useUser();
-  const { file_id = '' } = useParams<{ file_id: string }>();
+  const { stable_file_id = '' } = useParams<{ stable_file_id: string }>();
 
   const { data, loading } = useFile({
-    field: 'file_id',
-    value: file_id,
+    field: 'stable_file_id',
+    value: stable_file_id,
   });
 
   enum SectionId {
@@ -108,8 +108,8 @@ const FileEntity = () => {
                 query: generateQuery({
                   newFilters: [
                     generateValueFilter({
-                      field: 'file_id',
-                      value: data ? [data.file_id] : [],
+                      field: 'stable_file_id',
+                      value: data ? [data.stable_file_id] : [],
                       index: INDEXES.FILE,
                     }),
                   ],

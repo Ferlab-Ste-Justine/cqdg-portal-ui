@@ -735,7 +735,7 @@ const en = {
       noSampleSetFound: 'No sample sets found',
       samplePlaceholder: 'e.g. SR0230956',
       noFileFound: 'No file found',
-      filePlaceholder: 'e.g. FI0080837',
+      filePlaceholder: 'e.g. FH0080837',
       noFileSetFound: 'No file set found',
       savedFileSets: 'Saved file sets',
       searchByFileIdTooltip: 'Search by file ID',
@@ -743,7 +743,7 @@ const en = {
     uploadIds: {
       participantPlaceholder: 'e.g. PT0483333',
       samplePlaceholder: 'e.g. SR0230956',
-      filePlaceholder: 'e.g. FI0080837',
+      filePlaceholder: 'e.g. FH0080837',
       sampleTitle: 'Upload a sample list',
       gene: 'gene',
       geneID: 'Gene Symbol, Gene Alias, Ensembl ID',

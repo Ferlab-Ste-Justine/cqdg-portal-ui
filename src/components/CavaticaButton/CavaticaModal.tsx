@@ -54,7 +54,7 @@ const CavaticaModal = ({
   const filesAuthorized = files.filter((file) => file.user_authorized);
   const filesAuthorizedCount: number = filesAuthorized?.length || 0;
   const filesTotalCount: number = files?.length || 0;
-  const file_ids = files.map((file) => file.file_id);
+  const file_ids = files.map((file) => file.stable_file_id);
 
   const ContentUnauthorized = () => (
     <Text>

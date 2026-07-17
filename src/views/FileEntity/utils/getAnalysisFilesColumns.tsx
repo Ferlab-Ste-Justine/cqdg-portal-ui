@@ -15,15 +15,15 @@ import styles from 'views/FileEntity/index.module.css';
 const getAnalysisFilesColumns = (): ProColumnType<any>[] => [
   {
     key: 'file_id',
-    dataIndex: 'file_id',
+    dataIndex: 'stable_file_id',
     title: intl.get('entities.file.file'),
-    render: (file_id: string) => (
+    render: (stable_file_id: string) => (
       <Link
-        to={`${STATIC_ROUTES.FILES}/${file_id}`}
+        to={`${STATIC_ROUTES.FILES}/${stable_file_id}`}
         onClick={() => document.getElementById(pageId)?.scrollTo(0, 0)}
-        data-cy={`Link_File_${file_id}`}
+        data-cy={`Link_File_${stable_file_id}`}
       >
-        {file_id}
+        {stable_file_id}
       </Link>
     ),
   },

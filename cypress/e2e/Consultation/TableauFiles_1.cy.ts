@@ -22,7 +22,7 @@ describe('Page Data Exploration (Data Files) - Vérifier les informations affich
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(1).find('svg[data-icon="lock"]').should('exist');
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(2).contains('C').should('exist');
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(2).find('[class*="ant-tag-geekblue"]').should('exist');
-    cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(3).contains('FI0013377').should('exist');
+    cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(3).contains('FH0004562').should('exist');
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(4).contains('T-DEE').should('exist');
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(5).contains('-').should('exist');
     cy.get('tr[data-row-key*="FI0013377"] [class*="ant-table-cell"]').eq(6).contains('Genomics').should('exist');
