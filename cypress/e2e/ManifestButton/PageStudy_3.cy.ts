@@ -25,7 +25,7 @@ describe('Page d\'une étude - Télécharger le manifest', () => {
     cy.validateFileHeaders('DownloadManifestStudy.json');
   });
 
-  it('Valider le contenu du fichier [CQDG-1477]', () => {
+  it('Valider le contenu du fichier', () => {
     setupTest();
     cy.validateFileContent('DownloadManifestStudy.json');
   });
