@@ -11,6 +11,7 @@ import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 
 import { TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
 import ExternalDataTypeLink from 'components/utils/ExternalDataTypeLink';
+import { toList } from 'utils/indexLinkedArrays';
 import { STATIC_ROUTES } from 'utils/routes';
 
 interface IFileInfoByType {
@@ -39,15 +40,16 @@ export const getFilesDataTypeInfo = (files: IFileEntity[], participant_id?: stri
   return filesInfosData;
 };
 
-/** Join files by sequencing_experiment key (ex: experimental_strategy) */
 export const getFilesInfoByKey = (files: IFileEntity[], key: string, participant_id?: string) => {
   const filesInfosData: IFileInfoByType[] = [];
+  const valuesOf = (file?: IFileEntity): string[] =>
+    // @ts-ignore
+    toList(file?.sequencing_experiment?.[key]).filter((value) => !!value);
+
   for (const file of files) {
-    // @ts-ignore
-    const valueOfKey = file.sequencing_experiment?.[key];
-    // @ts-ignore
-    const filesFound = files.filter((f) => f?.sequencing_experiment?.[key] === valueOfKey);
-    if (!filesInfosData.find((file) => file.value === valueOfKey)) {
+    for (const valueOfKey of valuesOf(file)) {
+      if (filesInfosData.find((info) => info.value === valueOfKey)) continue;
+      const filesFound = files.filter((f) => valuesOf(f).includes(valueOfKey));
       filesInfosData.push({
         key: valueOfKey,
         value: valueOfKey,

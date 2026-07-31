@@ -61,9 +61,13 @@ export const GET_FILES = gql`
                 code
                 display
               }
+              profiling_resolution
               type_of_sequencing
               read_length
               platform
+              instrument_model
+              pore_type
+              is_imputed
               capture_kit
               target_capture_kit
               sequencer_id
