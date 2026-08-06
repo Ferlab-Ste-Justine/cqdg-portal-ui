@@ -29,7 +29,7 @@ const FilesTable = ({ participant, id, loading }: IFilesTableProps) => {
   const dataTypeInfoData = getFilesDataTypeInfo(files, participant?.participant_id);
   const experimentalStrategyData = getFilesInfoByKey(
     files,
-    'experimental_strategy',
+    'experimental_strategies',
     participant?.participant_id,
   );
 

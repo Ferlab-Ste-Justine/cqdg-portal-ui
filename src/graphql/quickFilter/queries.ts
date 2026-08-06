@@ -148,7 +148,7 @@ export const GET_QUICK_FILTER_EXPLO = (lang: LANG) => {
               doc_count
             }
           }
-          files__sequencing_experiment__experimental_strategy {
+          files__sequencing_experiment__experimental_strategies {
             buckets {
               key
               doc_count

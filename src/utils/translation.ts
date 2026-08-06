@@ -425,7 +425,7 @@ export const getFacetsDictionary = () => ({
     data_type: intl.get('entities.file.data_type'),
     file_format: intl.get('entities.file.file_format'),
     sequencing_experiment: {
-      experimental_strategy: intl.get('entities.file.strategy'),
+      experimental_strategies: intl.get('entities.file.strategy'),
     },
   },
   clinvar: {
@@ -436,12 +436,12 @@ export const getFacetsDictionary = () => ({
   file_format: intl.get('entities.file.file_format'),
   dataset: intl.get('entities.file.dataset'),
   sequencing_experiment: {
-    experimental_strategy: intl.get('entities.file.strategy'),
+    experimental_strategies: intl.get('entities.file.strategy'),
     analysis_id: intl.get('entities.file.sequencing_experiment.analysis_id'),
-    experimental_strategy_1: {
+    experimental_strategies_1: {
       display: intl.get('entities.file.strategy'),
     },
-    platform: intl.get('entities.file.sequencing_experiment.platform'),
+    platforms: intl.get('entities.file.sequencing_experiment.platform'),
     bio_informatic_analysis: intl.get(
       'entities.file.sequencing_experiment.bio_informatic_analysis',
     ),

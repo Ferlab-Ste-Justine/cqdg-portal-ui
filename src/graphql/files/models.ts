@@ -17,9 +17,9 @@ export interface IFileSequencingExperiment {
   bio_informatic_analysis: string;
   capture_kit: string;
   target_capture_kit: string;
-  experimental_strategy: string[];
-  experimental_strategy_1: ICodeDisplay[];
-  profiling_resolution: string[];
+  experimental_strategies: string[];
+  experimental_strategies_1: ICodeDisplay[];
+  profiling_resolutions: string[];
   gcnv: string;
   genome_build: string;
   gsv: string;
@@ -27,8 +27,8 @@ export interface IFileSequencingExperiment {
   is_imputed: boolean;
   labAliquotID: string;
   owner: string;
-  platform: string[];
-  instrument_model: string[];
+  platforms: string[];
+  instrument_models: string[];
   pore_type: string;
   read_length: string;
   run_alias: string;

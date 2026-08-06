@@ -87,7 +87,7 @@ export const getExperimentalStrategyColumns = (files_nb: number): ProColumnType<
                     index: INDEXES.PARTICIPANT,
                   }),
                   generateValueFilter({
-                    field: 'sequencing_experiment.experimental_strategy',
+                    field: 'sequencing_experiment.experimental_strategies',
                     value: [filesInfo.value],
                     index: INDEXES.FILE,
                   }),

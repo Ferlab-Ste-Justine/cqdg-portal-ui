@@ -136,27 +136,27 @@ const getDefaultColumns = (): ProColumnType[] => [
     render: (data_type) => data_type || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
-    key: 'sequencing_experiment.experimental_strategy_1.display',
+    key: 'sequencing_experiment.experimental_strategies_1.display',
     title: intl.get('entities.file.strategy'),
     dataIndex: 'sequencing_experiment',
     sorter: { multiple: 1 },
     render: (sequencing_experiment) =>
       joinList(
-        toList(sequencing_experiment?.experimental_strategy_1).map(
+        toList(sequencing_experiment?.experimental_strategies_1).map(
           (strategy: ICodeDisplay) => strategy?.display,
         ),
       ) ||
-      joinList(sequencing_experiment?.experimental_strategy) ||
+      joinList(sequencing_experiment?.experimental_strategies) ||
       TABLE_EMPTY_PLACE_HOLDER,
   },
   {
-    key: 'sequencing_experiment.profiling_resolution',
+    key: 'sequencing_experiment.profiling_resolutions',
     title: intl.get('entities.file.sequencing_experiment.profiling_resolution'),
     dataIndex: 'sequencing_experiment',
     sorter: { multiple: 1 },
     defaultHidden: true,
     render: (sequencing_experiment) =>
-      joinList(sequencing_experiment?.profiling_resolution) || TABLE_EMPTY_PLACE_HOLDER,
+      joinList(sequencing_experiment?.profiling_resolutions) || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     key: 'file_format',
@@ -243,22 +243,22 @@ const getDefaultColumns = (): ProColumnType[] => [
     render: (file_name) => file_name || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
-    key: 'sequencing_experiment.platform',
+    key: 'sequencing_experiment.platforms',
     title: intl.get('entities.file.sequencing_experiment.platform'),
     dataIndex: 'sequencing_experiment',
     sorter: { multiple: 1 },
     defaultHidden: true,
     render: (sequencing_experiment) =>
-      joinList(sequencing_experiment?.platform) || TABLE_EMPTY_PLACE_HOLDER,
+      joinList(sequencing_experiment?.platforms) || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
-    key: 'sequencing_experiment.instrument_model',
+    key: 'sequencing_experiment.instrument_models',
     title: intl.get('entities.file.sequencing_experiment.instrument_model'),
     dataIndex: 'sequencing_experiment',
     sorter: { multiple: 1 },
     defaultHidden: true,
     render: (sequencing_experiment) =>
-      joinList(sequencing_experiment?.instrument_model) || TABLE_EMPTY_PLACE_HOLDER,
+      joinList(sequencing_experiment?.instrument_models) || TABLE_EMPTY_PLACE_HOLDER,
   },
   {
     key: 'sequencing_experiment.pore_type',

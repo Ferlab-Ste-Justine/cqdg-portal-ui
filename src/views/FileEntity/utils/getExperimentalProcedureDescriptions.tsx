@@ -12,13 +12,13 @@ const getExperimentalProcedureDescriptions = (file?: IFileEntity): IEntityDescri
   const experiment = file?.sequencing_experiment;
 
   const strategyResolution = combineIndexLinked(
-    experiment?.experimental_strategy_1?.map((strategy) => strategy?.display) ??
-      experiment?.experimental_strategy,
-    experiment?.profiling_resolution,
+    experiment?.experimental_strategies_1?.map((strategy) => strategy?.display) ??
+      experiment?.experimental_strategies,
+    experiment?.profiling_resolutions,
   );
   const platformInstrumentModel = combineIndexLinked(
-    experiment?.platform,
-    experiment?.instrument_model,
+    experiment?.platforms,
+    experiment?.instrument_models,
   );
 
   return [
