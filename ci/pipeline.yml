@@ -124,6 +124,7 @@ jobs:
             - name: git-portal-ui
           outputs:
             - name: test-results
+            - name: test-screenshots
             - name: timestamp
           params:
             CYPRESS_PASSWORD: ((cypress.password))
@@ -162,6 +163,12 @@ jobs:
                 else
                   echo "No results to merge." > ../test-results/merged-results-${TIMESTAMP}.xml
                 fi
+
+                # Create the target directory if it doesn't exist and copy screenshots
+                mkdir -p ../test-screenshots
+                if [ -d cypress/screenshots ]; then
+                  cp -r cypress/screenshots/. ../test-screenshots/
+                fi
                 
                 popd
                 exit 0
@@ -184,6 +191,7 @@ jobs:
           tag: latest
       inputs:
         - name: test-results
+        - name: test-screenshots
         - name: timestamp
       outputs:
         - name: slack-data
@@ -199,6 +207,15 @@ jobs:
 
             # Check if the merged results file is not empty
             if [ -s test-results/merged-results-${TIMESTAMP}.xml ]; then
+
+              # Count the number of failures (screenshots)
+              attemptMax=6
+              TOTAL_FAILS=$(find test-screenshots/ -type f -name "*.png" 2>/dev/null | grep -F "(attempt ${attemptMax})" | wc -l | tr -d " ")
+              TOTAL_FAILS=${TOTAL_FAILS:-0}
+              NEW_FAILS=$(find test-screenshots/ -type f -name "*.png" 2>/dev/null | grep -F "(attempt ${attemptMax})" | grep -v "CQDG-" | wc -l | tr -d " ")
+              NEW_FAILS=${NEW_FAILS:-0}
+              EMOJI_NEW_FAILS=$(if [ "$NEW_FAILS" -eq 0 ]; then echo '🆗'; else echo '🐛'; fi)
+
               # Set AWS environment variables for credentials
               export AWS_ACCESS_KEY_ID=$CEPH_ACCESS_KEY
               export AWS_SECRET_ACCESS_KEY=$CEPH_SECRET_KEY
@@ -210,8 +227,8 @@ jobs:
               echo '[
                 {
                   "color": "good",
-                  "title": "Portal UI Cypress Test Results",
-                  "text": "Cypress test results are available for Portal UI. <'$PRESIGNED_URL'|View Results>"
+                  "title": "CQDG - Cypress Test Results: '$NEW_FAILS' new fails '$EMOJI_NEW_FAILS' ('$TOTAL_FAILS' total fails)",
+                  "text": "Report XML: <'$PRESIGNED_URL'|View Results>"
                 }
               ]' > slack-data/attachments.json
             else
@@ -219,8 +236,8 @@ jobs:
               echo '[
                 {
                   "color": "warning",
-                  "title": "Portal UI Cypress Test Results",
-                  "text": "No test results are available for Portal UI due to an error or no tests were executed."
+                  "title": "CQDG - Cypress Test Results",
+                  "text": "No test results are available for CQDG due to an error or no tests were executed."
                 }
               ]' > slack-data/attachments.json
             fi
