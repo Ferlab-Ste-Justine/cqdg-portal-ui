@@ -21,14 +21,6 @@ const getAnalysisDescriptions = (file?: IFileEntity): IEntityDescriptionsItem[] 
     label: intl.get('entities.file.sequencing_experiment.genome_build'),
     value: file?.sequencing_experiment?.genome_build || TABLE_EMPTY_PLACE_HOLDER,
   },
-  {
-    label: intl.get('entities.file.sequencing_experiment.is_imputed'),
-    value:
-      file?.sequencing_experiment?.is_imputed === undefined ||
-      file?.sequencing_experiment?.is_imputed === null
-        ? TABLE_EMPTY_PLACE_HOLDER
-        : intl.get(file.sequencing_experiment.is_imputed ? 'global.yes' : 'global.no'),
-  },
 ];
 
 export default getAnalysisDescriptions;

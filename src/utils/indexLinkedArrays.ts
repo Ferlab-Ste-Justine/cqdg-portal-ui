@@ -6,15 +6,15 @@ export const combineIndexLinked = (
   primary?: (string | null)[] | string | null,
   secondary?: (string | null)[] | string | null,
 ): string[] => {
-  const primaryList = toList(primary);
   const secondaryList = toList(secondary);
 
-  return primaryList
-    .filter((value) => !!value)
+  return toList(primary)
     .map((value, index) => {
+      if (!value) return '';
       const paired = secondaryList[index];
       return paired ? `${value} (${paired})` : `${value}`;
-    });
+    })
+    .filter((value) => !!value);
 };
 
 /**

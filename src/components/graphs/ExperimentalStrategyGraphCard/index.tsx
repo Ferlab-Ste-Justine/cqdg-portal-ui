@@ -43,7 +43,7 @@ const ExperimentalStrategyGraphCard = ({
 
   const data = aggregationToChartData(
     result?.Participant?.aggregations?.files__sequencing_experiment__experimental_strategies
-      .buckets,
+      ?.buckets,
     result?.Participant?.hits?.total,
   );
 

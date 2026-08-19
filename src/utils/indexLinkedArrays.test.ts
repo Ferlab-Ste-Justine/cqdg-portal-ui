@@ -40,7 +40,10 @@ describe('combineIndexLinked', () => {
   });
 
   it('drops empty primary values instead of emitting stray parentheses', () => {
-    expect(combineIndexLinked([null, 'WGS'], ['Bulk', 'Bulk'])).toEqual(['WGS (Bulk)']);
+    // Distinct secondary values on purpose: identical ones would hide an index shift.
+    expect(combineIndexLinked([null, 'WGS'], ['Bulk', 'Single Nucleus'])).toEqual([
+      'WGS (Single Nucleus)',
+    ]);
     expect(combineIndexLinked([], ['Bulk'])).toEqual([]);
   });
 });

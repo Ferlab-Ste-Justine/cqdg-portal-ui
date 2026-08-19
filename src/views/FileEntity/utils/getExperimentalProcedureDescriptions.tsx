@@ -4,16 +4,18 @@ import { Tag } from 'antd';
 import { IFileEntity } from 'graphql/files/models';
 
 import { TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
-import { combineIndexLinked, joinList } from 'utils/indexLinkedArrays';
+import { combineIndexLinked, joinList, toList } from 'utils/indexLinkedArrays';
 
 import styles from 'views/FileEntity/index.module.css';
 
 const getExperimentalProcedureDescriptions = (file?: IFileEntity): IEntityDescriptionsItem[] => {
   const experiment = file?.sequencing_experiment;
 
+  const strategies = toList(experiment?.experimental_strategies);
   const strategyResolution = combineIndexLinked(
-    experiment?.experimental_strategies_1?.map((strategy) => strategy?.display) ??
-      experiment?.experimental_strategies,
+    strategies.length
+      ? strategies
+      : toList(experiment?.experimental_strategies_1).map((strategy) => strategy?.display),
     experiment?.profiling_resolutions,
   );
   const platformInstrumentModel = combineIndexLinked(
@@ -26,14 +28,14 @@ const getExperimentalProcedureDescriptions = (file?: IFileEntity): IEntityDescri
       label: intl.get('entities.file.sequencing_experiment.strategy_resolution'),
       value: strategyResolution.length ? (
         <>
-          {strategyResolution.map((value) => (
-            <Tag key={value} className={styles.tag}>
+          {strategyResolution.map((value, index) => (
+            <Tag key={`${value}-${index}`} className={styles.tag}>
               {value}
             </Tag>
           ))}
         </>
       ) : (
-        TABLE_EMPTY_PLACE_HOLDER
+        <Tag className={styles.tag}>{TABLE_EMPTY_PLACE_HOLDER}</Tag>
       ),
     },
     {
