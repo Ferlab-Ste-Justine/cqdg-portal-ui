@@ -27,7 +27,7 @@ import { useKeycloak } from '@react-keycloak/web';
 import { Button, Input, Space, Typography } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import { useStudies } from 'graphql/studies/actions';
-import { IStudyEntity } from 'graphql/studies/models';
+import { IStudyEntity, Security } from 'graphql/studies/models';
 import EnvVariables from 'helpers/EnvVariables';
 import cloneDeep from 'lodash/cloneDeep';
 import {
@@ -183,12 +183,16 @@ const PageContent = ({ defaultColumns = [] }: OwnProps) => {
     }),
   });
 
-  const replaceRestrictedStudiesNumbers = data.map((i) => ({
-    ...i,
-    participant_count: i.restricted_number_participants ?? i.participant_count,
-    file_count: i.restricted_number_files ?? i.file_count,
-    sample_count: i.restricted_number_biospecimens ?? i.sample_count,
-  }));
+  const replaceRestrictedStudiesNumbers = data.map((i) =>
+    i.security === Security.R
+      ? {
+          ...i,
+          participant_count: i.restricted_number_participants ?? i.participant_count,
+          file_count: i.restricted_number_files ?? i.file_count,
+          sample_count: i.restricted_number_biospecimens ?? i.sample_count,
+        }
+      : i,
+  );
 
   useEffect(() => {
     setQueryConfig((prevQueryConfig) => ({

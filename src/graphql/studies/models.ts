@@ -36,7 +36,7 @@ export interface IDataSet {
   participant_count: number;
 }
 
-enum Security {
+export enum Security {
   R = 'R',
 }
 

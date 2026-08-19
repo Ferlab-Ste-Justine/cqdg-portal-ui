@@ -12,7 +12,12 @@ import { Popover } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import { ArrangerResultsTree } from 'graphql/models';
 import { IProgramEntity } from 'graphql/programs/models';
-import { IStudyDataAccessCodes, IStudyEntity, ITableStudyEntity } from 'graphql/studies/models';
+import {
+  IStudyDataAccessCodes,
+  IStudyEntity,
+  ITableStudyEntity,
+  Security,
+} from 'graphql/studies/models';
 import EnvVariables from 'helpers/EnvVariables';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 import { extractDuoTitleAndCode } from 'views/DataExploration/utils/helper';
@@ -77,7 +82,7 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
     title: intl.get('screen.studies.participants'),
     render: (study: IStudyEntity) => {
       if (!study?.participant_count) return TABLE_EMPTY_PLACE_HOLDER;
-      const isRestricted = study ? study.security === 'R' : true;
+      const isRestricted = study ? study.security === Security.R : true;
       if (isRestricted) return numberFormat(study.participant_count);
       return (
         <Link
@@ -116,7 +121,7 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
     defaultHidden: true,
     render: (study: IStudyEntity) => {
       if (!study?.file_count) return TABLE_EMPTY_PLACE_HOLDER;
-      const isRestricted = study ? study.security === 'R' : true;
+      const isRestricted = study ? study.security === Security.R : true;
       if (isRestricted) return numberFormat(study.file_count);
       return (
         <Link
@@ -148,7 +153,7 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
     defaultHidden: true,
     render: (study: IStudyEntity) => {
       if (!study?.sample_count) return TABLE_EMPTY_PLACE_HOLDER;
-      const isRestricted = study ? study.security === 'R' : true;
+      const isRestricted = study ? study.security === Security.R : true;
       if (isRestricted) return numberFormat(study.sample_count);
       return (
         <Link

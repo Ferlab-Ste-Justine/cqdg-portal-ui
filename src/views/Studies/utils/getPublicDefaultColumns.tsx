@@ -10,7 +10,7 @@ import { numberFormat } from '@ferlab/ui/core/utils/numberUtils';
 import { Popover } from 'antd';
 import { ArrangerResultsTree } from 'graphql/models';
 import { IProgramEntity } from 'graphql/programs/models';
-import { IStudyEntity, ITableStudyEntity } from 'graphql/studies/models';
+import { IStudyEntity, ITableStudyEntity, Security } from 'graphql/studies/models';
 import EnvVariables from 'helpers/EnvVariables';
 
 import { STATIC_ROUTES } from 'utils/routes';
@@ -94,7 +94,7 @@ const getPublicDefaultColumns = (
     title: intl.get('screen.studies.participants'),
     render: (study: IStudyEntity) => {
       if (!study?.participant_count) return TABLE_EMPTY_PLACE_HOLDER;
-      const isRestricted = study ? study.security === 'R' : true;
+      const isRestricted = study ? study.security === Security.R : true;
       if (isRestricted) return numberFormat(study.participant_count);
       return (
         <Link
