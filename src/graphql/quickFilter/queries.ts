@@ -98,7 +98,7 @@ export const GET_QUICK_FILTER_EXPLO = (lang: LANG) => {
               doc_count
             }
           }
-          mondo_tagged__source_text {
+          diagnoses__diagnosis_source_text {
             buckets {
               key
               doc_count

@@ -382,6 +382,9 @@ export const getFacetsDictionary = () => ({
     source_text: 'Diagnosis (Source Text)',
     source_text_tumor_location: 'Tumor Location (Source Text)',
   },
+  diagnoses: {
+    diagnosis_source_text: intl.get('entities.participant.diagnosis_source_text'),
+  },
   observed_phenotypes: {
     name: intl.get('entities.participant.phenotype_hpo'),
   },

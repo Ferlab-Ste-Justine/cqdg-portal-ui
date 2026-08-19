@@ -131,7 +131,7 @@ const getFilterGroups = (type: FilterTypes) => {
               'mondo_tagged__age_at_event',
               'race__display',
               'observed_phenotype_tagged__source_text',
-              'mondo_tagged__source_text',
+              'diagnoses__diagnosis_source_text',
             ],
           },
         ],

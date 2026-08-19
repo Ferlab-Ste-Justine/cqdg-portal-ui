@@ -24,6 +24,7 @@ import { useParticipants } from 'graphql/participants/actions';
 import {
   ageCategories,
   ICodeDisplayMethod,
+  IDiagnoses,
   IIcd,
   IMondoTagged,
   IParticipantEntity,
@@ -326,14 +327,14 @@ const getDefaultColumns = (): ProColumnType[] => [
     },
   },
   {
-    key: 'mondo_tagged.source_text',
+    key: 'diagnoses.diagnosis_source_text',
     title: intl.get('entities.participant.diagnosis_source_text'),
-    dataIndex: 'mondo_tagged',
+    dataIndex: 'diagnoses',
     defaultHidden: true,
     className: styles.diagnosisCell,
-    render: (mondo_tagged: ArrangerResultsTree<IMondoTagged>) => {
-      const sourceTexts = mondo_tagged?.hits?.edges
-        .map((m) => m.node.source_text)
+    render: (diagnoses: ArrangerResultsTree<IDiagnoses>) => {
+      const sourceTexts = diagnoses?.hits?.edges
+        .map((d) => d.node.diagnosis_source_text)
         ?.filter((e) => e);
       if (!sourceTexts?.length) return TABLE_EMPTY_PLACE_HOLDER;
       return (
