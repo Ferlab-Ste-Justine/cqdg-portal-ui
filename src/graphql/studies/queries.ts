@@ -53,6 +53,7 @@ export const GET_STUDIES = gql`
                 edges {
                   node {
                     participant_count
+                    file_count
                     data_type
                   }
                 }
