@@ -92,7 +92,7 @@ export const GET_QUICK_FILTER_EXPLO = (lang: LANG) => {
               doc_count
             }
           }
-          observed_phenotype_tagged__source_text {
+          phenotypes_tagged__source_text {
             buckets {
               key
               doc_count

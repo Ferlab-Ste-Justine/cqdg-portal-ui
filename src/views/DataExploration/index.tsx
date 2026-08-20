@@ -130,7 +130,7 @@ const getFilterGroups = (type: FilterTypes) => {
               'vital_status',
               'mondo_tagged__age_at_event',
               'race__display',
-              'observed_phenotype_tagged__source_text',
+              'phenotypes_tagged__source_text',
               'diagnoses__diagnosis_source_text',
             ],
           },

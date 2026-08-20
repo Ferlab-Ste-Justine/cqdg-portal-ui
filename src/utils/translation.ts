@@ -391,6 +391,9 @@ export const getFacetsDictionary = () => ({
   observed_phenotype_tagged: {
     source_text: intl.get('entities.participant.phenotype_source_text'),
   },
+  phenotypes_tagged: {
+    source_text: intl.get('entities.participant.phenotype_source_text'),
+  },
   icd_tagged: {
     name: intl.get('entities.participant.diagnosis_icd10'),
   },
