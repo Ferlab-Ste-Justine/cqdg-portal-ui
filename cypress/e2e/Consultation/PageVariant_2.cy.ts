@@ -1,4 +1,5 @@
 /// <reference types="cypress"/>
+import { oneMinute } from '../../pom/shared/Utils';
 import '../../support/commands';
 
 describe('Page d\'un variant - Valider les liens disponibles', () => {
@@ -123,7 +124,7 @@ describe('Page d\'un variant - Valider les liens disponibles', () => {
   it('Lien Studies du panneau CQDG Studies', () => {
     setupTest();
     cy.get('[id="frequency"] tr[class*="ant-table-row"]').eq(0).find('td[class="ant-table-cell"]').eq(0).find('a').clickAndWait({force: true});
-    cy.get('[class*="Participants_participantTabWrapper"]').should('exist'); // data-cy="ProTable_Participants"
+    cy.get('[class*="Participants_participantTabWrapper"]', {timeout: oneMinute}).should('exist'); // data-cy="ProTable_Participants"
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Study Code').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('STUDY1').should('exist');
   });

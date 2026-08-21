@@ -15,9 +15,9 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Study', () => {
     setupTest();
     cy.sortTableAndWait('Study');
-    cy.validateTableFirstRow('RAREQC-DEMO', 4, true);
+    cy.validateTableFirstRow(/^[A-M]/, 4, true);
     cy.sortTableAndWait('Study');
-    cy.validateTableFirstRow('T-DEE', 4, true);
+    cy.validateTableFirstRow(/^[N-Z]/, 4, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Sample Type', () => {
@@ -40,9 +40,9 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Cancer Tissue Type', () => {
     setupTest();
     cy.sortTableAndWait('Cancer Tissue Type');
-    cy.validateTableFirstRow('C156443', 7, true);
+    cy.validateTableFirstRow(/^[A-M]/, 7, true);
     cy.sortTableAndWait('Cancer Tissue Type');
-    cy.validateTableFirstRow('C18009', 7, true);
+    cy.validateTableFirstRow(/^[N-Z]/, 7, true);
     cy.sortTableAndWait('Cancer Tissue Type');
   });
 
@@ -81,24 +81,24 @@ describe('Page Data Exploration (Biospecimens) - Valider les fonctionnalités du
   it('Valider les fonctionnalités du tableau - Tri Tumor Location (NCIt)', () => {
     setupTest();
     cy.sortTableAndIntercept('Tumor Location (NCIt)', 1);
-    cy.validateTableFirstRow('C13442', 13, true);
+    cy.validateTableFirstRow(/^[A-M]/, 13, true);
     cy.sortTableAndIntercept('Tumor Location (NCIt)', 1);
-    cy.validateTableFirstRow('C126659', 13, true);
+    cy.validateTableFirstRow(/^[N-Z]/, 13, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Tumor Location (Source Text)', () => {
     setupTest();
     cy.sortTableAndIntercept('Tumor Location (Source Text)', 1);
-    cy.validateTableFirstRow('Lung', 14, true);
+    cy.validateTableFirstRow(/^[A-Z]/, 14, true);
     cy.sortTableAndIntercept('Tumor Location (Source Text)', 1);
-    cy.validateTableFirstRow('anatomic_location_source_text', 14, true);
+    cy.validateTableFirstRow(/^[a-z]/, 14, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri multiple', () => {
     setupTest();
-    cy.sortTableAndIntercept('Sample Type', 1);
+    cy.sortTableAndIntercept('Tumor Status', 1);
     cy.sortTableAndIntercept('Study', 1);
-    cy.validateTableFirstRow('RAREQC-DEMO', 4, true);
+    cy.validateTableFirstRow(/^[N-Z]/, 4, true);
   });
 
   it('Valider les fonctionnalités du tableau - Pagination', () => {

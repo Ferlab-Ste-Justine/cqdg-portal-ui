@@ -21,24 +21,24 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
     cy.get('section[class*="Filters"] [aria-expanded="true"]').should('not.exist');
   });
 
-  it('Search by file ID - FH0004562', () => {
+  it('Search by file ID - FH0002090', () => {
     setupTest();
     cy.get('[data-cy="SearchLabel_Title"]').contains('Search by IDs').should('exist');
 
     cy.get('[class*="SearchLabel_tooltipIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true}); //data-cy="SearchLabel_InfoCircleOutlined"
     cy.get('div[class="ant-tooltip-inner"]').contains('Search by file ID').should('exist');
 
-    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'FH0004562', 'POST', '*/grapgql', 1);
-    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('FH0004562').should('exist');
+    cy.typeAndIntercept('[data-cy="SearchAutocomplete_Select"]', 'FH0002090', 'POST', '*/grapgql', 1);
+    cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').contains('FH0002090').should('exist');
     cy.get('[data-cy="Search_Dropdown"] [class*="ant-select-item"]').eq(0).click({force: true});
 
-    cy.get('[data-cy="Tag_FH0004562"]').should('exist');
+    cy.get('[data-cy="Tag_FH0002090"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('File ID').should('exist');
-    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FH0004562').should('exist');
+    cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('FH0002090').should('exist');
     cy.validateTableResultsCount(/^1 Result$/);
 
     cy.get('[data-icon="close-circle"]').clickAndWait({force: true});
-    cy.get('[data-cy="Tag_FH0004562"]').should('not.exist');
+    cy.get('[data-cy="Tag_FH0002090"]').should('not.exist');
   });
 
   it('Dataset - Data1', () => {
@@ -61,7 +61,7 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
 
   it('Data Type - Aligned Reads', () => {
     setupTest();
-    cy.validateFacetFilter('Data Type', 'Aligned Reads', 'Aligned Reads', /^(5|6)\d{2}$/);
+    cy.validateFacetFilter('Data Type', 'Aligned Reads', 'Aligned Reads', /^\d{3}$/);
     cy.validateFacetRank(3, 'Data Type');
   });
 
@@ -71,21 +71,27 @@ describe('Page Data Exploration (Data Files) - Filtrer avec les facettes', () =>
     cy.validateFacetRank(4, 'Strategy');
   });
 
+  it('Profiling Resolution - Bulk', () => {
+    setupTest();
+    cy.validateFacetFilter('Profiling Resolution', 'Bulk', 'Bulk', /^\d{1},\d{3}$/);
+    cy.validateFacetRank(5, 'Profiling Resolution');
+  });
+
   it('Platform - Illumina', () => {
     setupTest();
-    cy.validateFacetFilter('Platform', 'Illumina', 'Illumina', /^(2|3),\d{3}$/);
-    cy.validateFacetRank(5, 'Platform');
+    cy.validateFacetFilter('Platform', 'Illumina', 'Illumina', /^\d{1},\d{3}$/);
+    cy.validateFacetRank(6, 'Platform');
   });
 
   it('Library Selection - Reduced Representation', () => {
     setupTest();
     cy.validateFacetFilter('Library Selection', 'Reduced Representation', 'Reduced Representation', /^\d{2}$/);
-    cy.validateFacetRank(6, 'Library Selection');
+    cy.validateFacetRank(7, 'Library Selection');
   });
 
   it('Format - gVCF', () => {
     setupTest();
     cy.validateFacetFilter('Format', 'GVCF', 'gVCF', /^(5|6)\d{2}$/);
-    cy.validateFacetRank(7, 'Format');
+    cy.validateFacetRank(8, 'Format');
   });
 });

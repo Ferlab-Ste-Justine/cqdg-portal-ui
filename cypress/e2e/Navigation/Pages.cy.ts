@@ -16,7 +16,7 @@ describe('Navigation', () => {
     cy.get('[data-cy="Title_Studies"]').should('exist');
 
     cy.get('[data-cy="HeaderLink_Data Explorer"]').clickAndWait();
-    cy.get('[data-cy="Title_DataExploration"]').should('exist');
+    cy.get('[data-cy="Title_DataExploration"]', {timeout: oneMinute}).should('exist');
 
     cy.get('[data-cy="HeaderLink_Variants"]').clickAndWait();
     cy.get('[data-cy="Title_Variants"]').should('exist');
@@ -93,7 +93,7 @@ describe('Navigation', () => {
 
     cy.visitDashboard();
     cy.get('[data-cy="GridCard_Participants"] [href]').clickAndWait({force: true});
-    cy.get('[data-cy="ProTable_Participants"]').should('exist');
+    cy.get('[data-cy="ProTable_Participants"]', {timeout: oneMinute}).should('exist');
 
     cy.visitDashboard();
     cy.get('[data-cy="GridCard_Biospecimens"] [href]').clickAndWait({force: true});

@@ -23,7 +23,7 @@ describe('Page d\'un participant - Exporter le tableau Phenotypes en TSV', () =>
     cy.validateFileHeaders('ExportTableauPhenotypesPageParticipant.json');
   });
 
-  it('Valider le contenu du fichier', () => {
+  it('Valider le contenu du fichier [CQDG-1528]', () => {
     setupTest();
     cy.validateFileContent('ExportTableauPhenotypesPageParticipant.json');
   });

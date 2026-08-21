@@ -11,10 +11,14 @@ describe('Page Data Exploration (Data Files) - Exporter les fichiers en TSV', ()
     cy.login();
     cy.visitDataExploration('datafiles', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.showColumn('Dataset');
+    cy.showColumn('Profiling Resolution');
     cy.showColumn('Participants');
     cy.showColumn('Biospecimens');
     cy.showColumn('File Name');
     cy.showColumn('Platform');
+    cy.showColumn('Instrument Model');
+    cy.showColumn('Pore Type');
+    cy.showColumn('Imputed');
 
     cy.clickAndIntercept('div[id="content"] svg[data-icon="download"]', 'POST', '**/download', 1, 2);
     cy.waitUntilFile(oneMinute);

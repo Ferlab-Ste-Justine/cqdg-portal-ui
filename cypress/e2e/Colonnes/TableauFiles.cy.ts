@@ -62,6 +62,12 @@ describe('Page Data Exploration (Files) - Colonnes du tableau', () => {
       .find('th[class*="ant-table-cell"]').eq(8)
       .should('have.class', 'ant-table-column-has-sorters')
       .contains('Strategy').should('exist');
+  
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Profiling Resolution').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(10)
+      .contains('Profiling Resolution').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .find('th[class*="ant-table-cell"]').eq(9)
@@ -74,28 +80,46 @@ describe('Page Data Exploration (Files) - Colonnes du tableau', () => {
       .contains('Size').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
-      .contains('File Name').should('not.exist');
+      .contains('Participants').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(12)
+      .find('div[class="ant-space-item"]').eq(13)
       .contains('Participants').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
-      .contains('File Name').should('not.exist');
+      .contains('Biospecimens').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(13)
+      .find('div[class="ant-space-item"]').eq(14)
       .contains('Biospecimens').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('File Name').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(14)
+      .find('div[class="ant-space-item"]').eq(15)
       .contains('File Name').should('exist');
   
     cy.get('thead[class="ant-table-thead"]')
       .contains('Platform').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(15)
+      .find('div[class="ant-space-item"]').eq(16)
       .contains('Platform').should('exist');
+  
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Instrument Model').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(17)
+      .contains('Instrument Model').should('exist');
+  
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Pore Type').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(18)
+      .contains('Pore Type').should('exist');
+  
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Imputed').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(19)
+      .contains('Imputed').should('exist');
   });
 
   it('Masquer une colonne affichée', () => {

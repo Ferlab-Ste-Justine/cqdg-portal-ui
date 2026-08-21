@@ -21,7 +21,7 @@ describe('Page Data Exploration (Participants) - Télécharger le clinical data'
     cy.validateFileName(`cqdg_clinicalData_${strDate.slice(0, 4)}${strDate.slice(4, 6)}${strDate.slice(6, 8)}.xlsx`);
   });
 
-  it('Valider le contenu du fichier', () => {
+  it('Valider le contenu du fichier [CQDG-1528]', () => {
     setupTest();
     cy.validateXlsxFileContent('DownloadClinicalData.json');
   });

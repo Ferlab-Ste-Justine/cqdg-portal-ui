@@ -69,23 +69,23 @@ describe('Page d\'un fichier - Vérifier les informations affichées', () => {
 
   it('Panneau Experimental Procedure', () => {
     setupTest();
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(0).contains('Strategy').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(0).contains('WGS').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(0).contains('Strategy + Resolution').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(0).contains('WGS (Bulk)').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(0).find('[class*="FileEntity_tag"]').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(1).contains('Source').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(1).contains('Genomic').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(2).contains('Platform').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(2).contains('Illumina').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(3).contains('Sequencing Type').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(3).contains('Paired Reads').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(4).contains('Library Selection').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(4).contains('Random').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(5).contains('Capture Kit').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(1).contains('Platform + Instrument Model').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(1).contains('Illumina (Illumina HiSeq 2500)').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(2).contains('Sequencing Type').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(2).contains('Paired Reads').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(3).contains('Library Selection').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(3).contains('Random').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(4).contains('Capture Kit').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(4).contains('-').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(5).contains('Targeted Loci').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(5).contains('-').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(6).contains('Targeted Loci').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(6).contains('-').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(7).contains('Read Length').should('exist');
-    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(7).contains('300').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(6).contains('Read Length').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(6).contains('300').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(7).contains('Pore Type').should('exist');
+    cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(7).contains('-').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-label"]').eq(8).contains('Protocol').should('exist');
     cy.get('[id="experimental_procedure"] [class="ant-descriptions-item-content"]').eq(8).contains('Genomic DNA extracted from blood samples was subjected to an additional cleaning step with the ZR-96 DNA Clean & Concentrator-5 Kit (Zymo) and then used for generating sequencing libraries with the TruSeq DNA PCR-Free Library Preparation Kit according to the manufacturer’s procedure. The platform model used for sequencing was Illumina HiSeq 2500.').should('exist');
   });

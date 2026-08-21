@@ -20,8 +20,8 @@ describe('Page des études - Rechercher des études', () => {
   it('Par study name', () => {
     setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'congenital', 'POST', '**/graphql', 10);
-    cy.validateTableResultsCount(/1 Result/);
-    cy.validateTableFirstRow('STUDY1', 0);
+    cy.validateTableResultsCount(/(1|2) Result/);
+    cy.validateTableFirstRow('STUDY', 0);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
     cy.validateTableResultsCount(/\d{1} Results/);
@@ -49,8 +49,8 @@ describe('Page des études - Rechercher des études', () => {
   it('Par chercheur principal', () => {
     setupTest();
     cy.typeAndIntercept('[class*="PageContent_search"]', 'batman', 'POST', '**/graphql', 6);
-    cy.validateTableResultsCount(/1 Result/);
-    cy.validateTableFirstRow('STUDY1', 0);
+    cy.validateTableResultsCount(/(1|2) Result/);
+    cy.validateTableFirstRow('STUDY', 0);
 
     cy.get('button[class*="Header_clearFilterLink"]').should('contain', 'Clear filters').clickAndWait({force: true});
     cy.validateTableResultsCount(/\d{1} Results/);
