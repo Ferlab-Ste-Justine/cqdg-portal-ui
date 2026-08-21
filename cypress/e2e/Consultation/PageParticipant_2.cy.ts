@@ -126,7 +126,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="diagnosis"] td[class="ant-table-cell"]').eq(5).contains(/21\d{1}/).should('exist');
   });
   
-  it('Panneau Phenotypes', () => {
+  it('Panneau Phenotypes [CQDG-1528]', () => {
     setupTest();
     cy.resetColumns('phenotype');
     cy.get('[id="phenotype"] [class*="EntityTable_title"]').contains('Phenotype').should('exist');

@@ -75,13 +75,13 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.validateTableResultsCount(/^21\d{1}$/);
   });
 
-  it('Lien HPO du panneau Phenotypes', () => {
+  it('Lien HPO du panneau Phenotypes [CQDG-1528]', () => {
     setupTest();
     cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(0).find('[href]')
       .should('have.attr', 'href', 'http://purl.obolibrary.org/obo/HP_0001250');
   });
 
-  it('Lien HPO Term du panneau Phenotypes', () => {
+  it('Lien HPO Term du panneau Phenotypes [CQDG-1528]', () => {
     setupTest();
     cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(4).find('[href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Participants"]').should('exist');

@@ -333,6 +333,7 @@ Cypress.Commands.add('showColumn', (column: string|RegExp) => {
     .find('[type="checkbox"]').check({force: true});
   cy.wait('@getPOSTuser', {timeout: oneMinute});
   cy.get('[class*="PageContent_title"], [class*="EntityTitle_title_"], [class*="EntityTitleLogo_title_"]').clickAndWait({force: true});
+  cy.get('thead[class="ant-table-thead"]').contains(column).should('exist');
 });
 
 Cypress.Commands.add('sortTableAndIntercept', (column: string|RegExp, nbCalls: number) => {

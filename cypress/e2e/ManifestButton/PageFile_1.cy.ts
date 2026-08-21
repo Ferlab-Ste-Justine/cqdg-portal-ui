@@ -6,7 +6,7 @@ describe('Page d\'un fichier - Bouton Manifest', () => {
     cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
 
     cy.login();
-    cy.visitFileEntity('FH0004562');
+    cy.visitFileEntity('FH0002090');
     cy.get('[data-cy="FileManifest_Button"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
   };
 

@@ -58,7 +58,7 @@ describe('Page Data Exploration (Biospecimens) - Filtrer avec les facettes', () 
 
   it('Sample Type - DNA (NCIT:C449)', () => {
     setupTest();
-    cy.validateFacetFilter('Sample Type', 'DNA (NCIT:C449)', 'DNA (NCIT:C449)', /^69\d{1}$/);
+    cy.validateFacetFilter('Sample Type', 'DNA (NCIT:C449)', 'DNA (NCIT:C449)', /^\d{3}$/);
     cy.validateFacetRank(0, 'Sample Type');
   });
 

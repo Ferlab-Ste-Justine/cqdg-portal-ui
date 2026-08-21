@@ -26,7 +26,7 @@ describe('Page d\'un fichier - Télécharger le manifest (checkbox)', () => {
     cy.validateFileHeaders('DownloadManifestFamily.json');
   });
 
-  it('Valider le contenu du fichier', () => {
+  it('Valider le contenu du fichier [CQDG-1529]', () => {
     setupTest();
     cy.validateFileContent('DownloadManifestFamily.json');
   });

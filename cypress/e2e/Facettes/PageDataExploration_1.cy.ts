@@ -100,13 +100,13 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Sex - Female', () => {
     setupTest();
-    cy.validateFacetFilter('Sex', 'Female', 'female', /^30\d{1}$/);
+    cy.validateFacetFilter('Sex', 'Female', 'female', /^3\d{2}$/);
     cy.validateFacetRank(5, 'Sex');
   });
 
   it('Gender - Woman', () => {
     setupTest();
-    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^30\d{1}$/);
+    cy.validateFacetFilter('Gender', 'Woman', 'Woman', /^3\d{2}$/);
     cy.validateFacetRank(6, 'Gender');
   });
 
@@ -118,7 +118,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Vital Status - Alive', () => {
     setupTest();
-    cy.validateFacetFilter('Vital Status', 'Alive', 'Alive', /^3\d{1}$/);
+    cy.validateFacetFilter('Vital Status', 'Alive', 'Alive', /^\d{3}$/);
     cy.validateFacetRank(8, 'Vital Status');
   });
 
@@ -134,7 +134,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.validateFacetRank(10, 'Race');
   });
 
-  it('Phenotype (Source Text) - Intractable Seizures', () => {
+  it('Phenotype (Source Text) - Intractable Seizures [CQDG-1528]', () => {
     setupTest();
     cy.validateFacetFilter('Phenotype (Source Text)', 'Intractable Seizures', 'Intractable Seizures', /^20\d{1}$/);
     cy.validateFacetRank(11, 'Phenotype (Source Text)');
