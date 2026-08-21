@@ -19,6 +19,7 @@ import { WrapperApi } from 'services/api/wrapper';
 import { ArrangerColumnStateResults } from 'services/api/wrapper/models';
 import { globalActions } from 'store/global';
 
+import { withExportJsonPath } from './exportColumns';
 import { TFetchTSVArgs } from './types';
 
 export const SUPPORT_EMAIL = EnvironmentVariables.configFor('SUPPORT_EMAIL') || 'support@cqdg.ca';
@@ -259,10 +260,12 @@ const fetchTsxReport = async (
   const tsvColumnsConfig = data!.data[args.index].columnsState.state.columns.filter(({ field }) =>
     colStates.find(({ key }) => key === field),
   );
-  const tsvColumnsConfigWithHeader = tsvColumnsConfig.map((column) => ({
-    ...column,
-    Header: getTitleFromColumns(args.columns, column.field),
-  }));
+  const tsvColumnsConfigWithHeader = tsvColumnsConfig.map((column) =>
+    withExportJsonPath({
+      ...column,
+      Header: getTitleFromColumns(args.columns, column.field),
+    }),
+  );
 
   const orderedTsvColumns = tsvColumnsConfigWithHeader.sort((a, b) =>
     columnKeyOrdered.indexOf(a.field) > columnKeyOrdered.indexOf(b.field) ? 1 : -1,
