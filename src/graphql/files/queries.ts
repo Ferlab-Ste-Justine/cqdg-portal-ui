@@ -56,14 +56,18 @@ export const GET_FILES = gql`
             data_type
             dataset
             sequencing_experiment {
-              experimental_strategy
-              experimental_strategy_1 {
+              experimental_strategies
+              experimental_strategies_1 {
                 code
                 display
               }
+              profiling_resolutions
               type_of_sequencing
               read_length
-              platform
+              platforms
+              instrument_models
+              pore_type
+              is_imputed
               capture_kit
               target_capture_kit
               sequencer_id

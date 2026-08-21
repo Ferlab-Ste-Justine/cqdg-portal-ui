@@ -41,7 +41,7 @@ export const GET_PARTICIPANTS = gql`
                     file_id
                     data_type
                     sequencing_experiment {
-                      experimental_strategy
+                      experimental_strategies
                       type_of_sequencing
                     }
                   }

@@ -92,13 +92,13 @@ export const GET_QUICK_FILTER_EXPLO = (lang: LANG) => {
               doc_count
             }
           }
-          observed_phenotype_tagged__source_text {
+          phenotypes_tagged__source_text {
             buckets {
               key
               doc_count
             }
           }
-          mondo_tagged__source_text {
+          diagnoses__diagnosis_source_text {
             buckets {
               key
               doc_count
@@ -148,7 +148,7 @@ export const GET_QUICK_FILTER_EXPLO = (lang: LANG) => {
               doc_count
             }
           }
-          files__sequencing_experiment__experimental_strategy {
+          files__sequencing_experiment__experimental_strategies {
             buckets {
               key
               doc_count

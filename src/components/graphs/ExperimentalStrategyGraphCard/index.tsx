@@ -42,7 +42,8 @@ const ExperimentalStrategyGraphCard = ({
   });
 
   const data = aggregationToChartData(
-    result?.Participant?.aggregations?.files__sequencing_experiment__experimental_strategy.buckets,
+    result?.Participant?.aggregations?.files__sequencing_experiment__experimental_strategies
+      ?.buckets,
     result?.Participant?.hits?.total,
   );
 
@@ -62,7 +63,7 @@ const ExperimentalStrategyGraphCard = ({
           data={data}
           onClick={(datum) =>
             isPlayable &&
-            addToQuery('sequencing_experiment.experimental_strategy', datum.id as string, queryId)
+            addToQuery('sequencing_experiment.experimental_strategies', datum.id as string, queryId)
           }
           colors={colors}
           {...graphModalSettings}
@@ -76,7 +77,11 @@ const ExperimentalStrategyGraphCard = ({
             data={data}
             onClick={(datum) =>
               isPlayable &&
-              addToQuery('sequencing_experiment.experimental_strategy', datum.id as string, queryId)
+              addToQuery(
+                'sequencing_experiment.experimental_strategies',
+                datum.id as string,
+                queryId,
+              )
             }
             colors={colors}
             {...graphSetting}

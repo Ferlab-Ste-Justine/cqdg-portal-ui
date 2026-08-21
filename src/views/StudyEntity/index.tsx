@@ -11,6 +11,7 @@ import { INDEXES } from 'graphql/constants';
 import useFileResolvedSqon from 'graphql/files/useFileResolvedSqon';
 import useParticipantResolvedSqon from 'graphql/participants/useParticipantResolvedSqon';
 import { useStudy } from 'graphql/studies/actions';
+import { Security } from 'graphql/studies/models';
 import { pageId, queryId } from 'views/StudyEntity/utils/constant';
 
 import { MAX_ITEMS_QUERY } from 'common/constants';
@@ -46,7 +47,7 @@ const StudyEntity = () => {
   });
 
   const hasTooManyFiles = (study?.file_count || 0) > MAX_ITEMS_QUERY;
-  const isRestricted = study ? study.security === 'R' : true;
+  const isRestricted = study ? study.security === Security.R : true;
   const hasFamily = !!study?.family_count;
 
   enum SectionId {

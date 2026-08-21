@@ -18,6 +18,7 @@ interface IDataType {
   id: string;
   data_type: string;
   participant_count: number;
+  file_count: number;
 }
 
 export interface IDataCategory {
@@ -36,7 +37,7 @@ export interface IDataSet {
   participant_count: number;
 }
 
-enum Security {
+export enum Security {
   R = 'R',
 }
 

@@ -18,8 +18,8 @@ const FilesTable = ({ id, study, loading, setLoginModalUri }: IFilesTableProps) 
       ...node,
       key: node.data_type,
       value: node.data_type,
-      nb_files: node.participant_count,
-      proportion_of_files: (node.participant_count / (total || 1)) * 100,
+      nb_files: node.file_count,
+      proportion_of_files: (node.file_count / (total || 1)) * 100,
     })) || [];
   const experimental_strategies =
     study?.experimental_strategies?.hits?.edges?.map(({ node }) => ({
