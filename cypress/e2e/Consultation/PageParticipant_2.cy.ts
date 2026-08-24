@@ -126,7 +126,7 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="diagnosis"] td[class="ant-table-cell"]').eq(5).contains(/21\d{1}/).should('exist');
   });
   
-  it('Panneau Phenotypes [CQDG-1528]', () => {
+  it('Panneau Phenotypes', () => {
     setupTest();
     cy.resetColumns('phenotype');
     cy.get('[id="phenotype"] [class*="EntityTable_title"]').contains('Phenotype').should('exist');
@@ -137,13 +137,13 @@ describe('Page d\'un participant - Vérifier les informations affichées', () =>
     cy.get('[id="phenotype"] thead th[class="ant-table-cell"]').eq(2).contains('Interpretation').should('exist');
     cy.get('[id="phenotype"] thead th[class="ant-table-cell"]').eq(3).contains('Age').should('exist');
     cy.get('[id="phenotype"] thead th[class="ant-table-cell"]').eq(4).contains('HPO Term').should('exist');
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(0).contains('Seizure').should('exist');
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(0).contains('HP').should('exist');
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(0).contains('0001250').should('exist');
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(1).contains('Intractable Seizures').should('exist');
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(2).contains('Observed').should('exist');
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(3).contains('Neonatal').should('exist');
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(4).contains('206').should('exist');
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(0).contains('Seizure').should('exist');
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(0).contains('HP').should('exist');
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(0).contains('0001250').should('exist');
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(1).contains('Intractable seizures').should('exist');
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(2).contains('Observed').should('exist');
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(3).contains('Neonatal').should('exist');
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(4).contains('206').should('exist');
   });
   
   it('Panneau Biospecimens', () => {

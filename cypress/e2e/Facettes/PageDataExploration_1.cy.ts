@@ -134,9 +134,9 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
     cy.validateFacetRank(10, 'Race');
   });
 
-  it('Phenotype (Source Text) - Intractable Seizures [CQDG-1528]', () => {
+  it('Phenotype (Source Text) - Intractable Seizures', () => {
     setupTest();
-    cy.validateFacetFilter('Phenotype (Source Text)', 'Intractable Seizures', 'Intractable Seizures', /^20\d{1}$/);
+    cy.validateFacetFilter('Phenotype (Source Text)', 'Intractable seizures', 'Intractable seizures', /^20\d{1}$/);
     cy.validateFacetRank(11, 'Phenotype (Source Text)');
   });
 
