@@ -23,6 +23,35 @@ import { TFetchTSVArgs } from './types';
 
 export const SUPPORT_EMAIL = EnvironmentVariables.configFor('SUPPORT_EMAIL') || 'support@cqdg.ca';
 
+const TSV_BOOLEAN_FIELDS = ['sequencing_experiment.is_imputed'];
+
+const formatTsvBooleans = (tsv: string, fields: string[]) => {
+  const indexes = fields.reduce(
+    (acc: number[], field, index) => (TSV_BOOLEAN_FIELDS.includes(field) ? [...acc, index] : acc),
+    [],
+  );
+
+  if (!indexes.length) return tsv;
+
+  const [header, ...rows] = tsv.split('\n');
+
+  return [
+    header,
+    ...rows.map((row) => {
+      if (!row.trim()) return row;
+
+      const cells = row.split('\t');
+      indexes.forEach((index) => {
+        if (index >= cells.length) return;
+        const carriageReturn = cells[index].endsWith('\r') ? '\r' : '';
+        const isTrue = cells[index].trim() === 'true';
+        cells[index] = intl.get(isTrue ? 'global.yes' : 'global.no') + carriageReturn;
+      });
+      return cells.join('\t');
+    }),
+  ].join('\n');
+};
+
 const showErrorReportNotif = (thunkApi: any) =>
   thunkApi.dispatch(
     globalActions.displayNotification({
@@ -109,7 +138,11 @@ const fetchTsvReport = createAsyncThunk<void, TFetchTSVArgs, { rejectValue: stri
         return thunkAPI.rejectWithValue(error?.message);
       }
 
-      const { downloadData, downloadError } = await fetchTsxReport(args, data!, formattedFileName);
+      const { downloadData, downloadError, fields } = await fetchTsxReport(
+        args,
+        data!,
+        formattedFileName,
+      );
 
       thunkAPI.dispatch(globalActions.destroyMessages([messageKey]));
 
@@ -127,7 +160,7 @@ const fetchTsvReport = createAsyncThunk<void, TFetchTSVArgs, { rejectValue: stri
       );
 
       saveAs(
-        new Blob([downloadData], {
+        new Blob([formatTsvBooleans(downloadData, fields)], {
           type: getDefaultContentType('text'),
         }),
         formattedFileName,
@@ -231,6 +264,10 @@ const fetchTsxReport = async (
     Header: getTitleFromColumns(args.columns, column.field),
   }));
 
+  const orderedTsvColumns = tsvColumnsConfigWithHeader.sort((a, b) =>
+    columnKeyOrdered.indexOf(a.field) > columnKeyOrdered.indexOf(b.field) ? 1 : -1,
+  );
+
   const sortIdField = idField(args.index);
 
   const params = new URLSearchParams({
@@ -242,9 +279,7 @@ const fetchTsxReport = async (
           sqon: args.sqon,
           sort: sortIdField ? [{ field: sortIdField, order: 'asc' }] : [],
           index: args.index,
-          columns: tsvColumnsConfigWithHeader.sort((a, b) =>
-            columnKeyOrdered.indexOf(a.field) > columnKeyOrdered.indexOf(b.field) ? 1 : -1,
-          ),
+          columns: orderedTsvColumns,
         },
       ],
     }),
@@ -259,6 +294,7 @@ const fetchTsxReport = async (
   return {
     downloadData,
     downloadError,
+    fields: orderedTsvColumns.map(({ field }) => field),
   };
 };
 
