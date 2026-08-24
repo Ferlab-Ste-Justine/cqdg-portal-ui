@@ -27,7 +27,7 @@ describe('Page Data Exploration (Data Files) - Télécharger le manifest (checkb
     cy.validateFileHeaders('DownloadManifestFamily.json');
   });
 
-  it('Valider le contenu du fichier [CQDG-1529]', () => {
+  it('Valider le contenu du fichier', () => {
     setupTest();
     cy.validateFileContent('DownloadManifestFamily.json');
   });

@@ -75,15 +75,15 @@ describe('Page d\'un participant - Valider les liens disponibles', () => {
     cy.validateTableResultsCount(/^21\d{1}$/);
   });
 
-  it('Lien HPO du panneau Phenotypes [CQDG-1528]', () => {
+  it('Lien HPO du panneau Phenotypes', () => {
     setupTest();
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(0).find('[href]')
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(0).find('[href]')
       .should('have.attr', 'href', 'http://purl.obolibrary.org/obo/HP_0001250');
   });
 
-  it('Lien HPO Term du panneau Phenotypes [CQDG-1528]', () => {
+  it('Lien HPO Term du panneau Phenotypes', () => {
     setupTest();
-    cy.get('[data-row-key="PH0000069"] td[class="ant-table-cell"]').eq(4).find('[href]').clickAndWait({force: true});
+    cy.get('[data-row-key="PH0000417"] td[class="ant-table-cell"]').eq(4).find('[href]').clickAndWait({force: true});
     cy.get('[data-cy="ProTable_Participants"]').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryPill_field"]').contains('Phenotype').should('exist');
     cy.get('[class*="QueryBar_selected"] [class*="QueryValues_value"]').contains('Seizure (HP:0001250)').should('exist');
