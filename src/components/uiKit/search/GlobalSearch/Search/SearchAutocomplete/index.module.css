@@ -1,5 +1,8 @@
+.container :global(.ant-select-selection-overflow-item) {
+  line-height: 0;
+}
 .container .tag {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background-color: var(--blue-8);
   color: var(--gray-1);
