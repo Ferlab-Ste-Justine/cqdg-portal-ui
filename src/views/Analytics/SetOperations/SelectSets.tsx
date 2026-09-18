@@ -6,6 +6,7 @@ import { Button, Select, Space, Tag, Tooltip, Typography } from 'antd';
 import cx from 'classnames';
 
 import logo from 'components/assets/analytics/newsletterWidget1.svg';
+import { maxTagPlaceholder } from 'components/uiKit/select/utils';
 import { IUserSetOutput, SetType } from 'services/api/savedSet/models';
 import { STATIC_ROUTES } from 'utils/routes';
 
@@ -151,6 +152,7 @@ const SelectSets = ({
               onClear={() => setSetIdsSelected([])}
               placeholder={intl.get('screen.analytics.setOperations.selectSet.sets.placeholder')}
               maxTagCount="responsive"
+              maxTagPlaceholder={maxTagPlaceholder}
               value={setIdsSelected}
               onSelect={(value: string) => {
                 setSetIdsSelected([...setIdsSelected, value]);
@@ -175,6 +177,7 @@ const SelectSets = ({
                     value={option.id}
                     className={cx(styles.option, isDisabled && styles.disabledOption)}
                     disabled={isDisabled}
+                    title=""
                   >
                     {`${option.tag} (${option.size})`}
                   </Select.Option>

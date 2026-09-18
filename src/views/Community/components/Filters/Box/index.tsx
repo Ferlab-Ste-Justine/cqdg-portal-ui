@@ -6,6 +6,7 @@ import { Button, Input, Select, Space, Tag, Typography } from 'antd';
 import { AxiosRequestConfig } from 'axios';
 import { sortOptionsLabelsByName } from 'views/ProfileSettings/cards/utils';
 
+import { maxTagPlaceholder } from 'components/uiKit/select/utils';
 import useApi from 'hooks/useApi';
 import { USERS_API_URL } from 'services/api/user';
 import { IUserOptions } from 'services/api/user/models';
@@ -83,6 +84,7 @@ const FiltersBox = ({
               onClear={() => setRoleFilter([])}
               placeholder={intl.get('screen.community.search.selectPlaceholder')}
               maxTagCount={1}
+              maxTagPlaceholder={maxTagPlaceholder}
               value={roleFilter}
               onSelect={(value: string) => setRoleFilter([...roleFilter, value])}
               onDeselect={(value: string) =>
@@ -112,6 +114,7 @@ const FiltersBox = ({
               onClear={() => setResearchDomainFilter([])}
               placeholder={intl.get('screen.community.search.selectPlaceholder')}
               maxTagCount={1}
+              maxTagPlaceholder={maxTagPlaceholder}
               value={researchDomainFilter}
               onSelect={(value: string) =>
                 setResearchDomainFilter([...researchDomainFilter, value])
