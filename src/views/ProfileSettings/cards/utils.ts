@@ -31,4 +31,5 @@ export const sortOptionsLabelsByName = (options: IOption[], optionsName = '') =>
   ].map((option) => ({
     value: option.value,
     label: intl.get(`screen.profileSettings.${optionsName}.${option.value}`) || option.label,
+    title: '',
   }));

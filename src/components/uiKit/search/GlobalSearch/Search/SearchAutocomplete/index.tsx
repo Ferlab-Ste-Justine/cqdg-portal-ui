@@ -5,6 +5,7 @@ import debounce from 'lodash/debounce';
 import take from 'lodash/take';
 
 import SearchLabel from 'components/uiKit/search/SearchLabel';
+import { maxTagPlaceholder } from 'components/uiKit/select/utils';
 
 import styles from './index.module.css';
 
@@ -62,6 +63,7 @@ const SearchAutocomplete = ({
         className={styles.search}
         filterOption={false}
         maxTagCount="responsive"
+        maxTagPlaceholder={maxTagPlaceholder}
         mode="multiple"
         onChange={(values: string[]) => {
           onSelect(values);

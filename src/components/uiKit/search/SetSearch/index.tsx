@@ -11,6 +11,7 @@ import { Select, Tag } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import intersection from 'lodash/intersection';
 
+import { maxTagPlaceholder } from 'components/uiKit/select/utils';
 import { SetType } from 'services/api/savedSet/models';
 import { useSavedSet } from 'store/savedSet';
 import { getIdFieldByType } from 'utils/fieldMapper';
@@ -22,6 +23,7 @@ import styles from './index.module.css';
 interface OptionsType {
   value: string;
   label: string;
+  title: string;
 }
 
 const getDefaultValues = (field: string, sqon: ISqonGroupFilter) => {
@@ -68,6 +70,7 @@ const SetSearch = ({
     getTypedSets().map((set) => ({
       label: set.tag,
       value: set.id,
+      title: '',
     }));
 
   useEffect(() => {
@@ -97,6 +100,7 @@ const SetSearch = ({
         placeholder={placeholder}
         mode="multiple"
         maxTagCount={1}
+        maxTagPlaceholder={maxTagPlaceholder}
         value={values}
         options={options}
         onChange={(values: string[]) => {
