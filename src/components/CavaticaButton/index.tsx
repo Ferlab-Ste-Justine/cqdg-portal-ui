@@ -22,22 +22,19 @@ const CavaticaButton = ({
 }: IDownloadFileManifestProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isCavaticaDisabled: boolean = EnvVariables.configFor('CAVATICA_ENABLED') === 'false';
-  const disabled: boolean = isDisabled || isCavaticaDisabled;
+
+  if (isCavaticaDisabled) return null;
 
   return (
     <Tooltip
-      title={
-        isCavaticaDisabled
-          ? intl.get('screen.dataExploration.comingSoon')
-          : intl.get('screen.dataExploration.youMustSelect')
-      }
-      trigger={disabled ? 'hover' : 'none'}
+      title={intl.get('screen.dataExploration.youMustSelect')}
+      trigger={isDisabled ? 'hover' : 'none'}
     >
       <Button
         icon={<CloudUploadOutlined />}
         onClick={() => setIsModalOpen(true)}
         type={buttonType}
-        disabled={disabled}
+        disabled={isDisabled}
         data-cy="Cavatica_Button"
       >
         {intl.get('screen.cavatica.analyseModal.title')}

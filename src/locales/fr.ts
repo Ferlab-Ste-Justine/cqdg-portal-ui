@@ -1499,7 +1499,6 @@ const fr = {
       set: 'Ensemble',
       chooseSet: 'Choisissez un ensemble',
       youMustSelect: 'Sélectionnez au moins un élément',
-      comingSoon: 'Bientôt disponible !',
     },
     cavatica: {
       title: 'Connecter à Cavatica',
