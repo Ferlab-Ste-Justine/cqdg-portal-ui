@@ -1474,7 +1474,6 @@ const en = {
       set: 'Set',
       chooseSet: 'Choose a set',
       youMustSelect: 'You must select at least 1 item',
-      comingSoon: 'Coming soon!',
     },
     cavatica: {
       title: 'Connect to Cavatica',
