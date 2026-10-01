@@ -50,7 +50,7 @@ const en = {
       principal_investigators: 'Principal Investigators',
       contact_names: 'Contact Persons',
       contact_institutions: 'Affiliated Institutions',
-      contact_emails: 'Contact Email',
+      contacts: 'Contact Persons',
       website: 'Website',
       funding_sources: 'Funding Sources',
       citation_statement: 'Citation Statement',
