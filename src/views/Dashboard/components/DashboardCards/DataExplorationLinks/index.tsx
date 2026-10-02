@@ -11,13 +11,12 @@ import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import { numberFormat } from '@ferlab/ui/core/utils/numberUtils';
 import GridCard from '@ferlab/ui/core/view/v2/GridCard';
 import { Button, Col, Row } from 'antd';
-import EnvVariables from 'helpers/EnvVariables';
 import CardHeader from 'views/Dashboard/components/CardHeader';
 
 import ExternalLinkIcon from 'components/Icons/ExternalLinkIcon';
 import { useGlobals } from 'store/global';
 import { fetchStats } from 'store/global/thunks';
-import { getDocLang } from 'utils/doc';
+import { getDocUrl } from 'utils/doc';
 import { STATIC_ROUTES } from 'utils/routes';
 
 import LinkBox from './LinkBox';
@@ -43,9 +42,7 @@ const DataExplorationLinks = () => {
           title={intl.get('components.dataRelease.dataExploration')}
           extra={[
             <ExternalLink
-              href={`${EnvVariables.configFor(
-                'CQDG_DOCUMENTATION',
-              )}/changelog/données-cqdg-version-20${getDocLang()}`}
+              href={getDocUrl('versions/donnees-cqdg-version-2.0/')}
               key="data-release"
               data-cy="ExternalLink_DataRelease"
             >

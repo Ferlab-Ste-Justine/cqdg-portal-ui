@@ -8,21 +8,17 @@ import { Modal, Tag, Typography } from 'antd';
 import { useDataFiles } from 'graphql/files/actions';
 import { GET_FILES_CAVATICA } from 'graphql/files/queries';
 import { IStudyEntity } from 'graphql/studies/models';
-import EnvVariables from 'helpers/EnvVariables';
 
 import { MAX_ITEMS_QUERY } from 'common/constants';
 import TooMuchFilesAlert from 'components/reports/TooMuchFilesAlert';
 import { fetchCavaticaManifest } from 'store/report/thunks';
+import { getDocUrl } from 'utils/doc';
 
 import FilesTable from './FilesTable';
 
 import styles from './index.module.css';
 
 const { Text } = Typography;
-
-const docHref = `${EnvVariables.configFor(
-  'CQDG_DOCUMENTATION',
-)}/docs/faire-une-demande-daccès-aux-données-du-cqdg`;
 
 interface ICavaticaModalProps {
   sqon: ISyntheticSqon;
@@ -41,6 +37,7 @@ const CavaticaModal = ({
   setIsOpen,
 }: ICavaticaModalProps) => {
   const dispatch = useDispatch();
+  const docHref = getDocUrl('acces-aux-donnees/faire-une-demande-dacces-aux-donnees-du-cqdg/');
 
   const { data: files = [] } = useDataFiles(
     {

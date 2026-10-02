@@ -6,12 +6,11 @@ import { EntityTitle } from '@ferlab/ui/core/pages/EntityPage';
 import { Popover, Space } from 'antd';
 import { INDEXES } from 'graphql/constants';
 import { IFileEntity } from 'graphql/files/models';
-import EnvVariables from 'helpers/EnvVariables';
 import { generateSelectionSqon } from 'views/DataExploration/utils/selectionSqon';
 
 import CavaticaButton from 'components/CavaticaButton';
 import DownloadFileManifestModal from 'components/reports/DownloadFileManifestModal';
-import { getDocLang } from 'utils/doc';
+import { getDocUrl } from 'utils/doc';
 
 import styles from './index.module.css';
 
@@ -25,9 +24,7 @@ const FileEntityTitle = ({ file, loading }: IFileEntityTitleProps) => {
   const hasAccess = !!file?.user_authorized;
   const getCurrentSqon = (): any =>
     generateSelectionSqon(INDEXES.FILE, [file?.stable_file_id || '']);
-  const docHref = `${EnvVariables.configFor(
-    'CQDG_DOCUMENTATION',
-  )}/docs/faire-une-demande-daccès-aux-données-du-cqdg${getDocLang()}`;
+  const docHref = getDocUrl('acces-aux-donnees/faire-une-demande-dacces-aux-donnees-du-cqdg/');
 
   const title = {
     text: file?.stable_file_id,

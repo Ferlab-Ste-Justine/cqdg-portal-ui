@@ -32,7 +32,7 @@ import { SUPPORT_EMAIL } from 'store/report/thunks';
 import { useUser } from 'store/user';
 import { userActions } from 'store/user/slice';
 import { updateUser } from 'store/user/thunks';
-import { getDocLang } from 'utils/doc';
+import { getDocUrl } from 'utils/doc';
 import { STATIC_ROUTES } from 'utils/routes';
 
 import styles from './index.module.css';
@@ -93,10 +93,7 @@ const Header = () => {
       {
         key: 'documentation',
         label: (
-          <ExternalLink
-            href={EnvVariables.configFor('CQDG_DOCUMENTATION') + getDocLang()}
-            data-cy="HeaderLink_Documentation"
-          >
+          <ExternalLink href={getDocUrl()} data-cy="HeaderLink_Documentation">
             <Space>
               <ExternalLinkIcon {...iconSize} />
               {intl.get('layout.main.menu.documentation')}

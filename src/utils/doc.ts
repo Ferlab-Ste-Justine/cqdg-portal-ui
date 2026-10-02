@@ -1,16 +1,20 @@
+import EnvVariables from 'helpers/EnvVariables';
+
 import { LANG } from 'common/constants';
 import getStoreConfig from 'store';
 
-export const getDocLang = () => {
+const getDocLangPrefix = () => {
   const { store } = getStoreConfig();
   const locale = store.getState().global.lang;
 
   switch (locale) {
-    case LANG.FR:
-      return '?ljs=fr';
     case LANG.EN:
-      return '?ljs=en-CA';
+      return '/en/';
+    case LANG.FR:
     default:
-      return '';
+      return '/';
   }
 };
+
+export const getDocUrl = (path = '') =>
+  `${EnvVariables.configFor('CQDG_DOCUMENTATION')}${getDocLangPrefix()}${path}`;

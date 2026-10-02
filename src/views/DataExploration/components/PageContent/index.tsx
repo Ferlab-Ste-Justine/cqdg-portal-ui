@@ -25,7 +25,6 @@ import { useTotalDataFiles } from 'graphql/files/actions';
 import { useTotalParticipants } from 'graphql/participants/actions';
 import { IParticipantResultTree } from 'graphql/participants/models';
 import { GET_PARTICIPANTS_COUNT } from 'graphql/participants/queries';
-import EnvVariables from 'helpers/EnvVariables';
 import get from 'lodash/get';
 import DataFilesTabs from 'views/DataExploration/components/PageContent/tabs/DataFiles';
 import ParticipantsTab from 'views/DataExploration/components/PageContent/tabs/Participants';
@@ -51,7 +50,7 @@ import {
 } from 'store/savedFilter/thunks';
 import { useSavedSet } from 'store/savedSet';
 import { fetchVennData } from 'store/venn/thunks';
-import { getDocLang } from 'utils/doc';
+import { getDocUrl } from 'utils/doc';
 import {
   combineExtendedMappings,
   mapFilterForBiospecimen,
@@ -240,9 +239,7 @@ const PageContent = ({
           <ExternalLink
             className={styles.docExternalLink}
             hasIcon
-            href={`${EnvVariables.configFor(
-              'CQDG_DOCUMENTATION',
-            )}/docs/fonctionnalités-générales-du-portail${getDocLang()}`}
+            href={getDocUrl('guides-du-portail/fonctionnalites-generales-du-portail/')}
           >
             {intl.get('layout.main.menu.documentation')}
           </ExternalLink>
