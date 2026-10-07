@@ -48,7 +48,7 @@ describe('Navigation', () => {
     cy.visitDashboard();
     cy.get('[data-cy="Resources"]').clickAndWait({force: true});
     cy.get('[data-cy="HeaderLink_Documentation"]')
-      .should('have.attr', 'href', 'https://docs.cqdg.ca?ljs=en-CA');
+      .should('have.attr', 'href', 'https://docs.qa.juno.cqdg.ferlab.bio/en/');
   });
 
   it('Lien externe de la header - Download tool', () => {
@@ -82,7 +82,7 @@ describe('Navigation', () => {
     cy.visitDashboard();
     cy.get('[data-cy="Resources"]').clickAndWait({force: true});
     cy.get('[data-cy="ExternalLink_DataRelease"]')
-      .should('have.attr', 'href', 'https://docs.cqdg.ca/changelog/données-cqdg-version-20?ljs=en-CA');
+      .should('have.attr', 'href', 'https://docs.qa.juno.cqdg.ferlab.bio/en/versions/donnees-cqdg-version-2.0/');
   });
 
   it('Redirections de la page Dashboard', () => {

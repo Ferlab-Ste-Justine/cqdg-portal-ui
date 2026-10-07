@@ -25,6 +25,6 @@ describe('Page Dashboard - Widget Saved Sets', () => {
         cy.wrap($el).find('[class*="CardHeader_infoIcon"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
       }
     });
-    cy.get('[href*="https://docs.cqdg.ca/docs/filtres?ljs="]').should('exist');
+    cy.get('[href*="https://docs.qa.juno.cqdg.ferlab.bio/en/guides-du-portail/filtres-et-ensemble-de-donnees/"]').should('exist');
   });
 });

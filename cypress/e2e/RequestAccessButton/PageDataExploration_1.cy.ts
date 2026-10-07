@@ -32,7 +32,7 @@ describe('Page Data Exploration (Data Files) - Bouton Request Access', () => {
 
   it('Valider les liens disponibles - Lien Documentation', () => {
     setupTest();
-    cy.get('[class="ant-modal-body"] a').should('have.attr', 'href', 'https://docs.cqdg.ca/docs/faire-une-demande-daccès-aux-données-du-cqdg?ljs=en-CA');
+    cy.get('[class="ant-modal-body"] a').should('have.attr', 'href', 'https://docs.qa.juno.cqdg.ferlab.bio/en/acces-aux-donnees/faire-une-demande-dacces-aux-donnees-du-cqdg/');
   });
 
   it('Valider les fonctionnalités - Bouton Cancel', () => {

@@ -20,6 +20,6 @@ describe('Page d\'une étude - Bouton Manifest', () => {
 
   it('Valider les liens disponibles - Tooltip', () => {
     setupTest();
-    cy.get('div[class="ant-tooltip-inner"] [class*="DownloadFileManifestModal_externalLinkFerload"]').should('have.attr', 'href', 'https://docs.cqdg.ca/docs/comment-utiliser-le-client-ferload?ljs=en-CA');
+    cy.get('div[class="ant-tooltip-inner"] [class*="DownloadFileManifestModal_externalLinkFerload"]').should('have.attr', 'href', 'https://docs.qa.juno.cqdg.ferlab.bio/en/acces-aux-donnees/telechargement-des-donnees/');
   });
 });
