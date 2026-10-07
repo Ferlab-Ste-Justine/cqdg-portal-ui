@@ -59,7 +59,7 @@ describe('Page Data Exploration (Data Files) - Bouton Manifest', () => {
   it('Valider les liens disponibles - Tooltip du bouton Copy manifest ID', () => {
     setupTest();
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"] [class*="anticon-copy"]').trigger('mouseover', {eventConstructor: 'MouseEvent', force: true});
-    cy.get('div[class="ant-tooltip-inner"] [class*="DownloadFileManifestModal_externalLinkFerload"]').should('have.attr', 'href', 'https://docs.cqdg.ca/docs/comment-utiliser-le-client-ferload?ljs=en-CA');
+    cy.get('div[class="ant-tooltip-inner"] [class*="DownloadFileManifestModal_externalLinkFerload"]').should('have.attr', 'href', 'https://docs.qa.juno.cqdg.ferlab.bio/en/acces-aux-donnees/telechargement-des-donnees/');
   });
 
   it('Valider les fonctionnalités - Bouton Download', () => {

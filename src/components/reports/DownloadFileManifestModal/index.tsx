@@ -6,7 +6,6 @@ import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import { ISqonGroupFilter, ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
 import { Button, Checkbox, Modal, Tooltip, Typography } from 'antd';
 import { INDEXES } from 'graphql/constants';
-import EnvVariables from 'helpers/EnvVariables';
 
 import TooMuchFilesAlert from 'components/reports/TooMuchFilesAlert';
 import { ReportType } from 'services/api/reports/models';
@@ -14,7 +13,7 @@ import { globalActions } from 'store/global';
 import { fetchReport } from 'store/report/thunks';
 import { PROJECT_ID, useSavedSet } from 'store/savedSet';
 import { createSavedSetPhantomManifest } from 'store/savedSet/thunks';
-import { getDocLang } from 'utils/doc';
+import { getDocUrl } from 'utils/doc';
 import { getIdFieldByType } from 'utils/fieldMapper';
 import { STATIC_ROUTES } from 'utils/routes';
 
@@ -82,9 +81,7 @@ const DownloadFileManifestModal = ({
         <ExternalLink
           className={styles.externalLinkFerload}
           hasIcon
-          href={`${EnvVariables.configFor(
-            'CQDG_DOCUMENTATION',
-          )}/docs/comment-utiliser-le-client-ferload${getDocLang()}`}
+          href={getDocUrl('acces-aux-donnees/telechargement-des-donnees/')}
         >
           {intl.get('global.ferload')}
         </ExternalLink>
@@ -172,9 +169,7 @@ const DownloadFileManifestModal = ({
                 <ExternalLink
                   className={styles.externalLinkFerload}
                   hasIcon
-                  href={`${EnvVariables.configFor(
-                    'CQDG_DOCUMENTATION',
-                  )}/docs/comment-utiliser-le-client-ferload${getDocLang()}`}
+                  href={getDocUrl('acces-aux-donnees/telechargement-des-donnees/')}
                 >
                   {intl.get('global.ferload')}
                 </ExternalLink>

@@ -6,14 +6,13 @@ import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
 import { Button, Checkbox, Modal, Tooltip, Typography } from 'antd';
 import { IStudyEntity } from 'graphql/studies/models';
-import EnvVariables from 'helpers/EnvVariables';
 
 import RestrictedStudyAlert from 'components/reports/RestrictedStudyAlert';
 import TooMuchFilesAlert from 'components/reports/TooMuchFilesAlert';
 import ExternalMailToLink from 'components/utils/ExternalMailToLink';
 import { ReportType } from 'services/api/reports/models';
 import { fetchReport } from 'store/report/thunks';
-import { getDocLang } from 'utils/doc';
+import { getDocUrl } from 'utils/doc';
 
 import FilesTable from './FilesTable';
 
@@ -45,9 +44,7 @@ const DownloadRequestAccessModal = ({
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isFamilyChecked, setIsFamilyChecked] = useState(false);
 
-  const docHref = `${EnvVariables.configFor(
-    'CQDG_DOCUMENTATION',
-  )}/docs/faire-une-demande-daccès-aux-données-du-cqdg${getDocLang()}`;
+  const docHref = getDocUrl('acces-aux-donnees/faire-une-demande-dacces-aux-donnees-du-cqdg/');
 
   const Content = () =>
     study ? (
