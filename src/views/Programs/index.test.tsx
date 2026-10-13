@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { render, screen, within } from '@testing-library/react';
 import { GET_PROGRAMS } from 'graphql/programs/queries';
+import EnvVariables from 'helpers/EnvVariables';
 import locales from 'locales';
 
 import { LANG } from 'common/constants';
@@ -20,6 +21,7 @@ const buildProgram = (
   nameEn: string,
   studyCodes: string[],
   participantsCount: number,
+  logoUrl = '',
 ) => ({
   __typename: 'Program',
   id: programId,
@@ -30,7 +32,7 @@ const buildProgram = (
   description_fr: `${nameEn} description (FR)`,
   website: '',
   citation_statement: '',
-  logo_url: '',
+  logo_url: logoUrl,
   contacts: [],
   managers: [],
   partners: [],
@@ -45,10 +47,12 @@ const programs = [
   buildProgram('PROG-C', 'Gamma', ['S1', 'S2'], 10),
   buildProgram('PROG-A', 'Alpha', ['S1'], 100),
   buildProgram('PROG-D', 'Delta', ['S1'], 500),
+  buildProgram('PROG-Z', 'Zulu', ['S1'], 100),
+  buildProgram('PROG-F', 'Foxtrot', ['S1'], 20),
 ];
 
 // Response to GET_PROGRAMS, in the Arranger shape (Program.hits.edges[].node).
-const programsMock: MockedResponse = {
+const buildProgramsMock = (nodes: ReturnType<typeof buildProgram>[]): MockedResponse => ({
   request: { query: GET_PROGRAMS },
   result: {
     data: {
@@ -56,17 +60,17 @@ const programsMock: MockedResponse = {
         __typename: 'Program',
         hits: {
           __typename: 'ProgramConnection',
-          total: programs.length,
-          edges: programs.map((node) => ({ __typename: 'ProgramEdge', node })),
+          total: nodes.length,
+          edges: nodes.map((node) => ({ __typename: 'ProgramEdge', node })),
         },
       },
     },
   },
-};
+});
 
-const renderPage = () =>
+const renderPage = (nodes = programs) =>
   render(
-    <MockedProvider mocks={[programsMock]} addTypename={false}>
+    <MockedProvider mocks={[buildProgramsMock(nodes)]} addTypename={false}>
       <MemoryRouter>
         <ProgramsPage />
       </MemoryRouter>
@@ -97,8 +101,22 @@ describe('ProgramsPage', () => {
 
     const titles = screen.getAllByRole('heading', { level: 5 }).map((h) => h.textContent);
     // Gamma: 2 studies. Delta: 1 study, 500 participants.
-    // Alpha and Beta: 1 study, 100 participants, so alphabetical order.
-    expect(titles).toEqual(['Gamma', 'Delta', 'Alpha', 'Beta']);
+    // Alpha, Beta and Zulu: 1 study, 100 participants, so alphabetical order.
+    // Foxtrot: 1 study, 20 participants, so last despite its name.
+    expect(titles).toEqual(['Gamma', 'Delta', 'Alpha', 'Beta', 'Zulu', 'Foxtrot']);
+  });
+
+  it('keeps the API order for programs that are equal on every sort criterion', async () => {
+    // Same study count, participants and English name: the comparator returns 0,
+    // and Array.prototype.sort is stable, so the API order is preserved.
+    renderPage([
+      buildProgram('PROG-E2', 'Echo', ['S1'], 50),
+      buildProgram('PROG-E1', 'Echo', ['S1'], 50),
+    ]);
+    await screen.findAllByText('Echo');
+
+    const links = screen.getAllByRole('link').map((link) => link.getAttribute('href'));
+    expect(links).toEqual(['/programs/PROG-E2', '/programs/PROG-E1']);
   });
 
   it('shows the study count and links to the program page', async () => {
@@ -108,6 +126,18 @@ describe('ProgramsPage', () => {
     const card = title.closest('.ant-card') as HTMLElement;
     expect(within(card).getByText('2 studies')).toBeInTheDocument();
     expect(within(card).getByRole('link')).toHaveAttribute('href', '/programs/PROG-C');
+  });
+
+  it('shows the program logo from the S3 assets URL when one is set', async () => {
+    // Stub the env var so the expected URL does not depend on the local .env file.
+    const configFor = jest
+      .spyOn(EnvVariables, 'configFor')
+      .mockImplementation((key) => (key === 'S3_ASSETS_URL' ? 'https://assets.example.test/' : ''));
+    renderPage([buildProgram('PROG-L', 'Lima', ['S1'], 1, 'programs/lima.png')]);
+
+    const logo = await screen.findByRole('img', { name: 'PROG-L' });
+    expect(logo).toHaveAttribute('src', 'https://assets.example.test/programs/lima.png');
+    configFor.mockRestore();
   });
 
   it('displays French names when the language is French', async () => {
