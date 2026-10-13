@@ -128,6 +128,44 @@ describe('mapFilterFor*', () => {
   });
 });
 
+describe('mapFilterFor* with unexpected filters', () => {
+  it('leaves fields of an unknown index unchanged', () => {
+    const sqon: ISqonGroupFilter = { op: 'and', content: [valueFilter('Unknown', 'field_a')] };
+
+    expect(fieldsOf(mapFilterForParticipant(sqon))).toEqual(['field_a']);
+  });
+
+  it('leaves a filter without index unchanged', () => {
+    const sqon = {
+      op: 'and',
+      content: [{ op: 'in', content: { field: 'sex', value: ['female'] } }],
+    } as ISqonGroupFilter;
+
+    expect(mapFilterForParticipant(sqon)).toEqual(sqon);
+  });
+
+  it('maps range filters like any other operator', () => {
+    const sqon = {
+      op: 'and',
+      content: [{ op: 'between', content: { field: 'size', value: [1, 5], index: INDEXES.FILE } }],
+    } as ISqonGroupFilter;
+
+    expect(fieldsOf(mapFilterForParticipant(sqon))).toEqual(['files.size']);
+  });
+
+  it('maps a single filter that is not wrapped in a boolean operator', () => {
+    const sqon = valueFilter(INDEXES.FILE, 'data_type') as unknown as ISqonGroupFilter;
+
+    expect((mapFilterForParticipant(sqon).content as any).field).toBe('files.data_type');
+  });
+
+  it('returns an empty object unchanged', () => {
+    const empty = {} as ISqonGroupFilter;
+
+    expect(mapFilterForParticipant(empty)).toBe(empty);
+  });
+});
+
 describe('combineExtendedMappings', () => {
   const mapping = (field: string) => ({
     active: true,
@@ -169,5 +207,13 @@ describe('getIdFieldByType', () => {
   it('returns an empty string for an index without id field', () => {
     expect(getIdFieldByType(INDEXES.GENE)).toBe('');
     expect(getIdFieldByType('unknown')).toBe('');
+  });
+
+  it('returns an empty string for a missing type', () => {
+    expect(getIdFieldByType(undefined as unknown as string)).toBe('');
+  });
+
+  it('matches index names case-sensitively', () => {
+    expect(getIdFieldByType('participant')).toBe('');
   });
 });

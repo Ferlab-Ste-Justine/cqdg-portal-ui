@@ -52,6 +52,47 @@ describe('resolveSyntheticSqonWithReferences', () => {
     expect(resolveSyntheticSqonWithReferences([q1, emptyQuery], combined)).toEqual(EMPTY_QUERY);
   });
 
+  it('resolves chains of references', () => {
+    // Q3 references Q2, which references Q1.
+    const q2ReferencingQ1: ISyntheticSqon = { op: 'or', content: [0] };
+    const q3: ISyntheticSqon = { op: 'and', content: [1] };
+
+    expect(resolveSyntheticSqonWithReferences([q1, q2ReferencingQ1], q3)).toEqual({
+      op: 'and',
+      content: [{ op: 'or', content: [q1] }],
+    });
+  });
+
+  it('returns an empty query when the query list is not loaded yet', () => {
+    const combined: ISyntheticSqon = { op: 'and', content: [0] };
+
+    expect(
+      resolveSyntheticSqonWithReferences(undefined as unknown as ISyntheticSqon[], combined),
+    ).toEqual(EMPTY_QUERY);
+  });
+
+  it.each([
+    ['past the end of the list', 5],
+    ['negative', -1],
+  ])('returns an empty query for a reference %s', (_label, reference) => {
+    const combined: ISyntheticSqon = { op: 'and', content: [reference] };
+
+    expect(resolveSyntheticSqonWithReferences([q1], combined)).toEqual(EMPTY_QUERY);
+  });
+
+  it('returns an empty query for a reference to an empty slot of the list', () => {
+    const combined: ISyntheticSqon = { op: 'and', content: [0, 1] };
+    const listWithHole = [undefined, q1] as unknown as ISyntheticSqon[];
+
+    expect(resolveSyntheticSqonWithReferences(listWithHole, combined)).toEqual(EMPTY_QUERY);
+  });
+
+  it('returns an empty query for a query without content', () => {
+    const noContent = { op: 'and' } as ISyntheticSqon;
+
+    expect(resolveSyntheticSqonWithReferences([q1], noContent)).toEqual(EMPTY_QUERY);
+  });
+
   it('returns an empty query when there is no query', () => {
     expect(resolveSyntheticSqonWithReferences([], undefined as unknown as ISyntheticSqon)).toEqual(
       EMPTY_QUERY,
