@@ -33,6 +33,7 @@ export const GET_PROGRAMS = gql`
               rank
             }
             study_codes
+            participants_count
             studies {
               study_code
               name
