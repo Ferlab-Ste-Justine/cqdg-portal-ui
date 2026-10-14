@@ -50,6 +50,13 @@ describe('Display variant frequencies (toExponentialNotation, formatQuotient*)',
       expect(formatQuotientOrElse(3, 0)).toBe('');
     });
   });
+
+  // Known bug CQDG-1604: 0 is treated as a missing value and displayed as ''.
+  // Remove .skip once fixed.
+  it.skip('formats a frequency of 0 instead of hiding it', () => {
+    expect(toExponentialNotation(0)).toBe('0.00e+0');
+    expect(formatQuotientToExponentialOrElse(0, 120, '-')).toBe('0.00e+0');
+  });
 });
 
 // antd tables report the sorted column(s); the API expects { field, order }.
@@ -82,6 +89,12 @@ describe('Sort data tables (formatQuerySortList)', () => {
   ])('returns no sort for %s', (_label, sorter) => {
     expect(formatQuerySortList(sorter as any)).toEqual([]);
   });
+
+  // Known bug CQDG-1602: clearing the sort of a column (third click in antd)
+  // sends a descending sort instead of no sort. Remove .skip once fixed.
+  it.skip('returns no sort when the user clears the sort of a column', () => {
+    expect(formatQuerySortList({ columnKey: 'age', order: undefined })).toEqual([]);
+  });
 });
 
 // The Dashboard lets users reorder its cards; the order is saved in their config.
@@ -94,6 +107,26 @@ describe('Order dashboard cards (orderCardIfNeeded)', () => {
 
   it('keeps the default order when the user has no saved order', () => {
     expect(orderCardIfNeeded(cards(), undefined).map((c) => c.id)).toEqual(['a', 'b', 'c']);
+  });
+
+  // Known bug CQDG-1605: cards missing from the saved order are not handled.
+  // Remove .skip once fixed.
+  describe.skip('with an empty or partial saved order', () => {
+    it('keeps the default order when the saved order is empty', () => {
+      expect(orderCardIfNeeded(cards(), []).map((c) => c.id)).toEqual(['a', 'b', 'c']);
+    });
+
+    it('puts cards missing from the saved order last, in their default order', () => {
+      expect(orderCardIfNeeded(cards(), ['c']).map((c) => c.id)).toEqual(['c', 'a', 'b']);
+    });
+
+    it('does not modify the list it receives', () => {
+      const list = cards();
+
+      orderCardIfNeeded(list, ['c', 'b', 'a']);
+
+      expect(list.map((c) => c.id)).toEqual(['a', 'b', 'c']);
+    });
   });
 });
 
@@ -110,6 +143,18 @@ describe('Recognize email addresses (EMAIL_REGEX)', () => {
     ['without domain extension', 'john@chusj'],
   ])('rejects an address %s', (_label, email) => {
     expect(EMAIL_REGEX.test(email)).toBe(false);
+  });
+
+  // Known bug CQDG-1603: valid addresses are rejected and some invalid ones
+  // accepted. Remove .skip once fixed.
+  describe.skip('with less common addresses', () => {
+    it.each(['info@cqdg.quebec', 'john+cqdg@gmail.com'])('accepts %s', (email) => {
+      expect(EMAIL_REGEX.test(email)).toBe(true);
+    });
+
+    it.each(['.john@chusj.ca', 'john..doe@chusj.ca'])('rejects %s', (email) => {
+      expect(EMAIL_REGEX.test(email)).toBe(false);
+    });
   });
 });
 

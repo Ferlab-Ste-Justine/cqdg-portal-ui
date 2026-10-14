@@ -61,6 +61,18 @@ describe('Save user preferences (mergeDeep)', () => {
     ])('leaves %s unchanged', (_label, target, source, expected) => {
       expect(mergeDeep(target, source)).toEqual(expected);
     });
+
+    // Known bug CQDG-1606: a "__proto__" key (e.g. from JSON.parse) is merged
+    // into Object.prototype. Remove .skip once fixed.
+    it.skip('ignores a __proto__ key instead of polluting every object', () => {
+      try {
+        mergeDeep({}, JSON.parse('{"__proto__": {"polluted": "yes"}}'));
+
+        expect(({} as any).polluted).toBeUndefined();
+      } finally {
+        delete (Object.prototype as any).polluted;
+      }
+    });
   });
 });
 

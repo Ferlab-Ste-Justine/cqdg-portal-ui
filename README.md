@@ -57,6 +57,9 @@ Tested use cases:
 
 When adding a test file, add its use case to this table.
 
+Tests marked with `.skip` describe the expected behavior for a known bug. Each one references its Jira
+ticket in a comment; remove `.skip` when the bug is fixed.
+
 ### End-to-end tests (Cypress)
 
 Specs are in `cypress/e2e/`, grouped by feature (Consultation, Facettes, Telechargement…). They run nightly
