@@ -50,7 +50,7 @@ const fr = {
       principal_investigators: 'Chercheurs principaux',
       contact_names: 'Personnes contact',
       contact_institutions: 'Institutions affiliées',
-      contact_emails: 'Contact Email',
+      contacts: 'Personnes contact',
       website: 'Site web',
       funding_sources: 'Sources de financement',
       citation_statement: 'Déclaration de citation',

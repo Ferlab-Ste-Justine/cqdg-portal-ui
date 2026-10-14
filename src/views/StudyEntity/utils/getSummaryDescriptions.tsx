@@ -2,7 +2,7 @@ import intl from 'react-intl-universal';
 import { Link } from 'react-router-dom';
 import ExternalLink from '@ferlab/ui/core/components/ExternalLink/index';
 import { IEntityDescriptionsItem } from '@ferlab/ui/core/pages/EntityPage';
-import { Tag } from 'antd';
+import { Space, Tag } from 'antd';
 import { IStudyEntity } from 'graphql/studies/models';
 import EnvVariables from 'helpers/EnvVariables';
 import capitalize from 'lodash/capitalize';
@@ -11,12 +11,19 @@ import { LANG } from 'common/constants';
 import getStoreConfig from 'store';
 import { STATIC_ROUTES } from 'utils/routes';
 
+import { combineContacts } from './combineContacts';
+
 import styles from '../index.module.css';
 
 const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[] => {
   const { store } = getStoreConfig();
   const lang = store.getState().global.lang;
   const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
+  const contacts = combineContacts(
+    study?.contact_names,
+    study?.contact_emails,
+    study?.contact_institutions,
+  );
 
   const summaryDescriptions = [
     {
@@ -94,12 +101,8 @@ const getSummaryDescriptions = (study?: IStudyEntity): IEntityDescriptionsItem[]
       value: study?.principal_investigators?.map((e) => e).join(', '),
     },
     {
-      label: intl.get('entities.study.contact_names'),
-      value: study?.contact_names?.map((e) => e).join(', '),
-    },
-    {
-      label: intl.get('entities.study.contact_institutions'),
-      value: study?.contact_institutions?.map((e) => e).join(', '),
+      label: intl.get('entities.study.contacts'),
+      value: contacts.length > 0 && <Space direction="vertical">{contacts}</Space>,
     },
     {
       label: intl.get('entities.study.website'),

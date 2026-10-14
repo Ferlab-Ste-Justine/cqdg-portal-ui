@@ -56,14 +56,13 @@ describe('Page d\'une étude - Vérifier les informations affichées', () => {
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(10).contains('Toto').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(11).contains('Contact Persons').should('exist');
     cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(11).contains('Tata').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(12).contains('Affiliated Institutions').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(12).contains('Toto Institution').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(13).contains('Website').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(13).contains('https://www.t_dee.com/').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(14).contains('Funding Sources').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(14).contains('fund_source1').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(15).contains('Citation Statement').should('exist');
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(15).contains('Toto T, Tata T. Developmental and epileptic encephalopathies. https://www.t_dee.com/ (2024).').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(11).contains('Toto Institution').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(12).contains('Website').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(12).contains('https://www.t_dee.com/').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(13).contains('Funding Sources').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(13).contains('fund_source1').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-label"]').eq(14).contains('Citation Statement').should('exist');
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(14).contains('Toto T, Tata T. Developmental and epileptic encephalopathies. https://www.t_dee.com/ (2024).').should('exist');
   });
 
   it('Panneau Data Access', () => {
