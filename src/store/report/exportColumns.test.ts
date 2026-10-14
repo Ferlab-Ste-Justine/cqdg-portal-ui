@@ -23,6 +23,9 @@ describe('withExportJsonPath', () => {
   });
 });
 
+// Tests which fields the TSV export requests for the visible table columns.
+// Expected: the `contacts` key is replaced, at the same position, by `contact_names`,
+// `contact_institutions` and `contact_emails`; every other key is kept as is.
 describe('expandBundleColumnKeys', () => {
   it('replaces the contacts column by its three fields, at the same position', () => {
     expect(expandBundleColumnKeys(['study_code', 'contacts', 'domain'])).toEqual([
@@ -39,6 +42,9 @@ describe('expandBundleColumnKeys', () => {
   });
 });
 
+// Tests the TSV header given to each field exported in place of the `contacts` column.
+// Expected: each contact field returns its own translation key; any other field returns
+// undefined, so its header keeps coming from the table column title.
 describe('getBundledFieldTitle', () => {
   it('returns the title of each bundled contact field', () => {
     expect(getBundledFieldTitle('contact_names')).toBe('entities.study.contact_names');
