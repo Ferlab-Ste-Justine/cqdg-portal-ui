@@ -6,10 +6,16 @@ describe('Page d\'une étude - Valider les liens disponibles', () => {
     cy.login();
     cy.visitStudyEntity('T-DEE', 1);
   };
+
+  it('Lien de Contact Person du panneau Summary', () => {
+    setupTest();
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(11).find('[href]')
+      .should('have.attr', 'href', 'mailto:tata@hotmail.com');
+  });
   
   it('Lien du Website du panneau Summary', () => {
     setupTest();
-    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(13).find('[href]')
+    cy.get('[id="summary"] [class="ant-descriptions-item-content"]').eq(12).find('[href]')
       .should('have.attr', 'href', 'https://www.t_dee.com/');
   });
 
