@@ -13,6 +13,7 @@
               "Principal Investigators",
               "Contact Persons",
               "Affiliated Institutions",
+              "Contact Email",
               "Inclusion and Exclusion Criteria"],
   "content": ["T-DEE",
               "Developmental and epileptic encephalopathies",
@@ -30,5 +31,6 @@
               "Toto",
               "Tata",
               "Toto Institution",
+              "tata@hotmail.com",
               "Children with a diagnosis of intractable seizures"]
 }

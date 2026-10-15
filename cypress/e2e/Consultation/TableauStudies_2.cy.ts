@@ -14,7 +14,6 @@ describe('Page des études - Valider les liens disponibles', () => {
     cy.showColumn('Data Collection Method');
     cy.showColumn('Principal Investigators');
     cy.showColumn('Contact Persons');
-    cy.showColumn('Affiliated Institutions');
     cy.showColumn('Inclusion and Exclusion Criteria');
     cy.showColumn('Description');
   };
@@ -65,5 +64,11 @@ describe('Page des études - Valider les liens disponibles', () => {
   it('Lien \'See more\' de l\'Access Requirement du tableau', () => {
     setupTest();
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(13).find('a[class*="ExpandableCell_fuiExpandableCellBtn"]').contains('See more').should('exist');
+  });
+
+  it('Lien Contact Persons du tableau', () => {
+    setupTest();
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).find('[href]')
+      .should('have.attr', 'href', 'mailto:tata@hotmail.com');
   });
 });

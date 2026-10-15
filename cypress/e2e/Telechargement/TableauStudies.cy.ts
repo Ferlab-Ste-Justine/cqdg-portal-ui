@@ -19,7 +19,6 @@ describe('Page des études - Exporter les études en TSV', () => {
     cy.showColumn('Data Collection Method');
     cy.showColumn('Principal Investigators');
     cy.showColumn('Contact Persons');
-    cy.showColumn('Affiliated Institutions');
     cy.showColumn('Inclusion and Exclusion Criteria');
     cy.showColumn('Description');
     cy.wait(1000);

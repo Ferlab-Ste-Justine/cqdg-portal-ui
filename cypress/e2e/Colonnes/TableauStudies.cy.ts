@@ -115,15 +115,9 @@ describe('Page des études - Colonnes du tableau', () => {
       .contains('Contact Persons').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
-      .contains('Affiliated Institutions').should('not.exist');
-    cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(20)
-      .contains('Affiliated Institutions').should('exist');
-
-    cy.get('thead[class="ant-table-thead"]')
       .contains('Inclusion and Exclusion Criteria').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(21)
+      .find('div[class="ant-space-item"]').eq(20)
       .contains('Inclusion and Exclusion Criteria').should('exist');
   });
 

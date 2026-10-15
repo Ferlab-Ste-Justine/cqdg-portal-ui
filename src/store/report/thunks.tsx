@@ -19,7 +19,7 @@ import { WrapperApi } from 'services/api/wrapper';
 import { ArrangerColumnStateResults } from 'services/api/wrapper/models';
 import { globalActions } from 'store/global';
 
-import { withExportJsonPath } from './exportColumns';
+import { expandBundleColumnKeys, getBundledFieldTitle, withExportJsonPath } from './exportColumns';
 import { TFetchTSVArgs } from './types';
 
 export const SUPPORT_EMAIL = EnvironmentVariables.configFor('SUPPORT_EMAIL') || 'support@cqdg.ca';
@@ -256,14 +256,16 @@ const fetchTsxReport = async (
       }));
   colStates = colStates.filter(({ visible }) => !!visible);
 
-  const columnKeyOrdered = [...colStates].sort((a, b) => a.index - b.index).map(({ key }) => key);
+  const columnKeyOrdered = expandBundleColumnKeys(
+    [...colStates].sort((a, b) => a.index - b.index).map(({ key }) => key),
+  );
   const tsvColumnsConfig = data!.data[args.index].columnsState.state.columns.filter(({ field }) =>
-    colStates.find(({ key }) => key === field),
+    columnKeyOrdered.includes(field),
   );
   const tsvColumnsConfigWithHeader = tsvColumnsConfig.map((column) =>
     withExportJsonPath({
       ...column,
-      Header: getTitleFromColumns(args.columns, column.field),
+      Header: getBundledFieldTitle(column.field) ?? getTitleFromColumns(args.columns, column.field),
     }),
   );
 

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import intl from 'react-intl-universal';
 import { Link } from 'react-router-dom';
 import { CheckOutlined } from '@ant-design/icons';
@@ -21,6 +22,7 @@ import {
 import EnvVariables from 'helpers/EnvVariables';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 import { extractDuoTitleAndCode } from 'views/DataExploration/utils/helper';
+import { combineContacts } from 'views/StudyEntity/utils/combineContacts';
 
 import { STATIC_ROUTES } from 'utils/routes';
 import { truncateString } from 'utils/string';
@@ -341,31 +343,17 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
     ),
   },
   {
-    dataIndex: 'contact_names',
-    key: 'contact_names',
-    title: intl.get('entities.study.contact_names'),
+    key: 'contacts',
+    title: intl.get('entities.study.contacts'),
     defaultHidden: true,
-    render: (contact_names: string[]) => (
-      <ExpandableCell
+    render: (_, record: ITableStudyEntity) => (
+      <ExpandableCell<ReactNode>
         nOfElementsWhenCollapsed={1}
-        dataSource={contact_names || []}
-        renderItem={(item, index) => <div key={index}>{item}</div>}
-        dictionnary={{
-          'see.less': intl.get('global.seeLess'),
-          'see.more': intl.get('global.seeMore'),
-        }}
-      />
-    ),
-  },
-  {
-    dataIndex: 'contact_institutions',
-    key: 'contact_institutions',
-    title: intl.get('entities.study.contact_institutions'),
-    defaultHidden: true,
-    render: (contact_institutions: string[]) => (
-      <ExpandableCell
-        nOfElementsWhenCollapsed={1}
-        dataSource={contact_institutions || []}
+        dataSource={combineContacts(
+          record.contact_names,
+          record.contact_emails,
+          record.contact_institutions,
+        )}
         renderItem={(item, index) => <div key={index}>{item}</div>}
         dictionnary={{
           'see.less': intl.get('global.seeLess'),

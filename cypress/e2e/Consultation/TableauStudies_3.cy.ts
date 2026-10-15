@@ -13,7 +13,6 @@ describe('Page des études - Valider les fonctionnalités du tableau', () => {
     cy.showColumn('Data Collection Method');
     cy.showColumn('Principal Investigators');
     cy.showColumn('Contact Persons');
-    cy.showColumn('Affiliated Institutions');
     cy.showColumn('Inclusion and Exclusion Criteria');
     cy.showColumn('Description');
   };
