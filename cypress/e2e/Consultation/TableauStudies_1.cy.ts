@@ -14,7 +14,6 @@ describe('Page des études - Vérifier les informations affichées', () => {
     cy.showColumn('Data Collection Method');
     cy.showColumn('Principal Investigators');
     cy.showColumn('Contact Persons');
-    cy.showColumn('Affiliated Institutions');
     cy.showColumn('Inclusion and Exclusion Criteria');
     cy.showColumn('Description');
   };
@@ -49,8 +48,9 @@ describe('Page des études - Vérifier les informations affichées', () => {
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(16).contains('Investigator Assessment').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(17).contains('Toto').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).contains('Tata').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(19).contains('Toto Institution').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(20).contains('Children with a diagnosis of intractable seizures').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).contains('tata@hotmail.com').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).contains('Toto Institution').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(19).contains('Children with a diagnosis of intractable seizures').should('exist');
   });
 
   it('Summary', () => {
