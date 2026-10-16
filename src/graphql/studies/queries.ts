@@ -100,10 +100,8 @@ export const GET_STUDIES = gql`
             restricted_number_files
             principal_investigators
             contact_names
-            contact_extensions
             contact_institutions
             contact_emails
-            telecom
             websites
             funding_sources
             citation_statement
