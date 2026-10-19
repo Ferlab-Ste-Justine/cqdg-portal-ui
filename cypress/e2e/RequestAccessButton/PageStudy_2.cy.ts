@@ -13,8 +13,26 @@ describe('Page d\'une étude - Télécharger le Request Access', () => {
     cy.waitUntilFile(oneMinute);
   };
 
+  const extractAccessTsv = () => {
+    const downloadsFolder = Cypress.config('downloadsFolder');
+    cy.exec(`tar -xzf "${downloadsFolder}/CQDG-access-request.tar.gz" -C "${downloadsFolder}" access.tsv`);
+    cy.exec(`/bin/rm "${downloadsFolder}/CQDG-access-request.tar.gz"`);
+  };
+
   it('Valider le nom du fichier', () => {
     setupTest();
     cy.validateFileName('CQDG-access-request.tar.gz');
+  });
+
+  it('Valider les en-têtes du fichier access.tsv', () => {
+    setupTest();
+    extractAccessTsv();
+    cy.validateFileHeaders('DownloadRequestAccessStudy.json');
+  });
+
+  it('Valider le contenu du fichier access.tsv', () => {
+    setupTest();
+    extractAccessTsv();
+    cy.validateFileContent('DownloadRequestAccessStudy.json');
   });
 });

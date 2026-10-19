@@ -1,0 +1,10 @@
+{
+  "headers": ["Study Name",
+              "Access Limitations",
+              "Access Requirements",
+              "Access Authority"],
+  "content": ["Developmental and epileptic encephalopathies",
+              "health or medical or biomedical research (DUO:0000006)",
+              "genetic studies only (DUO:0000016), ethics approval required (DUO:0000021), user specific restriction (DUO:0000026)",
+              "toto@gov.org"]
+}
