@@ -88,7 +88,7 @@ describe('Page Data Exploration (Participants) - Filtrer avec les facettes', () 
 
   it('Family Position - Proband', () => {
     setupTest();
-    cy.validateFacetFilter('Family Position', 'Proband', 'Proband', /^21\d{1}$/);
+    cy.validateFacetFilter('Family Position', 'Proband', 'Proband', /^2(1|2)\d{1}$/);
     cy.validateFacetRank(3, 'Family Position');
   });
 

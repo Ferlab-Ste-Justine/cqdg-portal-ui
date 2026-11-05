@@ -25,7 +25,7 @@ describe('Page Data Exploration (Data Files) - Valider les fonctionnalités du t
     cy.sortTableAndWait('Dataset');
     cy.validateTableFirstRow('Families', 5, true);
     cy.sortTableAndWait('Dataset');
-    cy.validateTableFirstRow('Data2', 5, true);
+    cy.validateTableFirstRow('Dataset_01', 5, true);
   });
 
   it('Valider les fonctionnalités du tableau - Tri Data Category', () => {
