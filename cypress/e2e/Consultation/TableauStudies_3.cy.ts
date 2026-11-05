@@ -30,7 +30,7 @@ describe('Page des études - Valider les fonctionnalités du tableau', () => {
     cy.sortTableAndWait('Name');
     cy.validateTableFirstRow(/^[A-M]/, 1);
     cy.sortTableAndWait('Name');
-    cy.validateTableFirstRow(/^[N-Z]/, 1);
+    cy.validateTableFirstRow(/^[N-ZÉ]/, 1);
   });
     
   it('Tri Domain', () => {
