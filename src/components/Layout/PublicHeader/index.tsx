@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, matchPath, useLocation } from 'react-router-dom';
 import {
   DotChartOutlined,
   DownOutlined,
@@ -29,7 +29,7 @@ import { globalActions, useLang } from 'store/global';
 import { SUPPORT_EMAIL } from 'store/report/thunks';
 import { updateUser } from 'store/user/thunks';
 import { getDocUrl } from 'utils/doc';
-import { STATIC_ROUTES } from 'utils/routes';
+import { DYNAMIC_ROUTES, STATIC_ROUTES } from 'utils/routes';
 
 import HeaderLink from '../Header/HeaderLink';
 
@@ -71,10 +71,13 @@ const PublicHeader = () => {
   };
 
   const handleSignin = async () => {
+    const isStudyPage = !!matchPath(DYNAMIC_ROUTES.STUDY_ENTITY, currentPathName);
+    const redirectPath =
+      query.get(REDIRECT_URI_KEY) ||
+      (isStudyPage ? `${currentPathName}${location.search}` : STATIC_ROUTES.STUDIES);
+
     const url = keycloak.createLoginUrl({
-      redirectUri: `${window.location.origin}/${
-        query.get(REDIRECT_URI_KEY) || STATIC_ROUTES.STUDIES
-      }`,
+      redirectUri: `${window.location.origin}/${redirectPath.replace(/^\/+/, '')}`,
       locale: intl.getInitOptions().currentLocale,
     });
     window.location.assign(url);
