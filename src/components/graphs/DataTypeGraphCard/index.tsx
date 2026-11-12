@@ -55,6 +55,8 @@ const DataTypeBarChart = ({
     return () => observer.disconnect();
   }, []);
 
+  // Nivo draws the first item at the bottom in horizontal layout: reverse so the largest is on top
+  const chartData = [...data].reverse();
   const chartHeight = getChartHeight(data.length);
   // Only scroll when the chart really doesn't fit (1px tolerance for sub-pixel rounding)
   const needsScroll = availableHeight > 0 && chartHeight > availableHeight + 1;
@@ -71,7 +73,7 @@ const DataTypeBarChart = ({
           style={{ height: needsScroll ? chartHeight : '100%' }}
         >
           <BarChart
-            data={data}
+            data={chartData}
             axisLeft={{
               legend: intl.get('entities.file.data_type'),
               legendPosition: 'middle',
@@ -114,7 +116,7 @@ const DataTypeGraphCard = ({
   const data = aggregationToChartData(
     result?.Participant?.aggregations?.files__data_type.buckets,
     result?.Participant?.hits?.total,
-  );
+  ).sort((a, b) => b.value - a.value || a.id.localeCompare(b.id));
 
   return (
     <ResizableGridCard
