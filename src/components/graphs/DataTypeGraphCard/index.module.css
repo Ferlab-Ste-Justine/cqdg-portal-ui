@@ -1,0 +1,17 @@
+.scrollWrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* Absolute positioning prevents the chart's height from stretching the card */
+.scrollWrapper .scrollContent {
+  position: absolute;
+  inset: 0;
+  overflow-x: hidden;
+}
+
+.scrollWrapper .chartContainer {
+  min-height: 100%;
+  width: 100%;
+}
