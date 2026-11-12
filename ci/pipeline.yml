@@ -73,6 +73,25 @@ resources:
     paths: [ci]
     private_key: ((git.ssh-key))
 
+# Test dashboard: the tool (main) and the branch the results are pushed to (results)
+- name: test-dashboard
+  type: git
+  icon: github
+  check_every: 1h
+  source:
+    uri: git@github.com:Ferlab-Ste-Justine/test-dashboard.git
+    branch: main
+    private_key: ((test-dashboard.ssh-key))
+
+- name: test-dashboard-results
+  type: git
+  icon: github
+  check_every: 1h
+  source:
+    uri: git@github.com:Ferlab-Ste-Justine/test-dashboard.git
+    branch: results
+    private_key: ((test-dashboard.ssh-key))
+
 jobs:
 - name: run-cypress-tests
   plan:
@@ -249,6 +268,42 @@ jobs:
   - put: slack-alert-cypress
     params:
       attachments_file: slack-data/attachments.json
+
+  # Publish the run to the test dashboard. Runs after the Slack alert, so a failure here
+  # never delays it, but still turns the build red.
+  - in_parallel:
+    - get: test-dashboard
+    - get: test-dashboard-results
+
+  - task: publish-test-dashboard
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: node
+          tag: 22-bookworm
+      inputs:
+        - name: git-portal-ui
+        - name: test-results
+        - name: test-dashboard
+        - name: test-dashboard-results
+      outputs:
+        - name: test-dashboard-results
+      params:
+        SUITE: cqdg
+        CHECKOUT: git-portal-ui
+        RESULTS: test-dashboard-results
+        JUNIT: test-results/merged-results-*.xml
+        JOB_URL: https://build.qa.juno.cqdg.ferlab.bio/teams/main/pipelines/cqdg-portal-ui/jobs/run-cypress-tests
+      run:
+        path: bash
+        args: [test-dashboard/ci/publish.sh]
+
+  - put: test-dashboard-results
+    params:
+      repository: test-dashboard-results
+      rebase: true
 
 - name: update-pipeline
   plan:
