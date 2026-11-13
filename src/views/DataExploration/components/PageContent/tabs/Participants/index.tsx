@@ -31,7 +31,6 @@ import {
   IPhenotype,
   ITableParticipantEntity,
 } from 'graphql/participants/models';
-import { IProgramEntity } from 'graphql/programs/models';
 import { IStudyEntity } from 'graphql/studies/models';
 import EnvVariables from 'helpers/EnvVariables';
 import capitalize from 'lodash/capitalize';
@@ -373,8 +372,9 @@ const getDefaultColumns = (): ProColumnType[] => [
           title: intl.get('entities.program.program'),
           defaultHidden: true,
           render: (study: IStudyEntity) => {
-            const programs: ArrangerResultsTree<IProgramEntity> = study?.programs;
-            return programs?.hits?.edges?.map(({ node }) => (
+            const edges = study?.programs?.hits?.edges;
+            if (!edges?.length) return TABLE_EMPTY_PLACE_HOLDER;
+            return edges.map(({ node }) => (
               <div key={node.program_id}>
                 <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
               </div>
