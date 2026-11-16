@@ -11,6 +11,11 @@ import { normalizeSexGender } from '../../DataExploration/utils/helper';
 
 import styles from 'views/FileEntity/index.module.css';
 
+// A living participant can't have death data: any value received is ignored
+// so the profile never shows a stray age or cause of death.
+export const isAlive = (vitalStatus?: string): boolean =>
+  vitalStatus?.trim().toLowerCase() === 'alive';
+
 const getProfileDescriptions = (participant?: IParticipantEntity): IEntityDescriptionsItem[] => [
   {
     label: intl.get('entities.participant.sex'),
@@ -51,6 +56,7 @@ const getProfileDescriptions = (participant?: IParticipantEntity): IEntityDescri
   {
     label: intl.get('entities.participant.age_of_death'),
     value: (() => {
+      if (isAlive(participant?.vital_status)) return TABLE_EMPTY_PLACE_HOLDER;
       const category = ageCategories.find((cat) => cat.key === participant?.age_of_death);
       if (!category) return TABLE_EMPTY_PLACE_HOLDER;
       return `${category.label} (${category.tooltip})`;
@@ -58,7 +64,9 @@ const getProfileDescriptions = (participant?: IParticipantEntity): IEntityDescri
   },
   {
     label: intl.get('entities.participant.cause_of_death'),
-    value: participant?.cause_of_death || TABLE_EMPTY_PLACE_HOLDER,
+    value: isAlive(participant?.vital_status)
+      ? TABLE_EMPTY_PLACE_HOLDER
+      : participant?.cause_of_death || TABLE_EMPTY_PLACE_HOLDER,
   },
 ];
 
