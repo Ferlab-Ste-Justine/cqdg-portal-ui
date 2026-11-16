@@ -66,7 +66,7 @@ import styles from './index.module.css';
 
 const isProgramsEnabled: boolean = EnvVariables.configFor('PROGRAMS_ENABLED') === 'true';
 
-const getDefaultColumns = (): ProColumnType[] => [
+export const getDefaultColumns = (): ProColumnType[] => [
   {
     key: 'participant_id',
     title: intl.get('entities.participant.participant_id'),
