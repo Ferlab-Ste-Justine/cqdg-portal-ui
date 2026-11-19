@@ -8,24 +8,10 @@ import { useUser } from 'store/user';
 import { updateUserConfig } from 'store/user/thunks';
 import { getResizableGridDictionary } from 'utils/translation';
 
-import getSummaryLayout, { SUMMARY_LAYOUTS_VERSION, UID } from './getSummaryLayout';
+import getSummaryLayout, { UID } from './getSummaryLayout';
+import { getUserLayouts, SUMMARY_LAYOUTS_VERSION } from './utils';
 
 import styles from './index.module.css';
-
-/**
- * Saved layouts contain the positions of every breakpoint, so they override the defaults.
- * When the default layout changes (new version), outdated positions are dropped
- * and only the visibility (hidden cards) chosen by the user is kept.
- */
-const getUserLayouts = (
-  layouts?: TSerializedResizableGridLayoutConfig[],
-  version?: number,
-): TSerializedResizableGridLayoutConfig[] | undefined => {
-  if (!layouts || version === SUMMARY_LAYOUTS_VERSION) return layouts;
-
-  // Without breakpoint keys, ResizableGridLayout falls back on the default positions
-  return layouts.map(({ id, title, base, hidden }) => ({ id, title, base, hidden }));
-};
 
 const SummaryTab = () => {
   const dispatch = useDispatch();

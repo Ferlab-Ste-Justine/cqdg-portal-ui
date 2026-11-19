@@ -12,8 +12,6 @@ import StudyPopulationGraphCard from 'components/graphs/StudyPopulationGraphCard
 import SunburstGraphCard from 'components/graphs/SunburstGraphCard';
 
 export const UID = 'summaryLayout';
-// Increment when the default positions change, to discard outdated layouts saved in user config
-export const SUMMARY_LAYOUTS_VERSION = 1;
 const OBSERVED_PHENOTYPE_ID = 'observed_phenotype';
 const MONDO_ID = 'mondo';
 const SEX_GRAPH_CARD_ID = 'sex-graph-card';
