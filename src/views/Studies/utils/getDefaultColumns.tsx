@@ -55,7 +55,9 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
           dataIndex: 'programs',
           title: intl.get('entities.program.program'),
           render: (programs: ArrangerResultsTree<IProgramEntity>) => {
-            return programs?.hits?.edges?.map(({ node }) => (
+            const edges = programs?.hits?.edges;
+            if (!edges?.length) return TABLE_EMPTY_PLACE_HOLDER;
+            return edges.map(({ node }) => (
               <div key={node.program_id}>
                 <Link to={`${STATIC_ROUTES.PROGRAMS}/${node.program_id}`}>{node.program_id}</Link>
               </div>
