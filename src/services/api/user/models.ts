@@ -44,6 +44,7 @@ export type TUserConfig = {
     };
     summary?: {
       layouts?: TSerializedResizableGridLayoutConfig[];
+      layoutsVersion?: number;
     };
   };
   studies?: {
