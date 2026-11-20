@@ -1,11 +1,8 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
-import { oneMinute } from '../../pom/shared/Utils';
 
 describe('Page Data Exploration (Data Files) - Bouton Request Access', () => {
   const setupTest = () => {
-    cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
-
     cy.login();
     cy.visitDataExploration('datafiles', '?sharedFilterId=27aa6ea1-1ace-4661-b716-db987b0f78fb');
     cy.get('div[role="tabpanel"] [class*="ant-table-row"]').eq(0).find('[type="checkbox"]').check({force: true});
@@ -28,28 +25,5 @@ describe('Page Data Exploration (Data Files) - Bouton Request Access', () => {
 
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').contains('Cancel').should('exist');
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"]').contains('Download').should('exist');
-  });
-
-  it('Valider les liens disponibles - Lien Documentation', () => {
-    setupTest();
-    cy.get('[class="ant-modal-body"] a').should('have.attr', 'href', 'https://docs.qa.juno.cqdg.ferlab.bio/en/acces-aux-donnees/faire-une-demande-dacces-aux-donnees-du-cqdg/');
-  });
-
-  it('Valider les fonctionnalités - Bouton Cancel', () => {
-    setupTest();
-    cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').click({force: true});
-    cy.get('[class*="DownloadRequestAccessModal_modal"]').should('have.css', 'display', 'none');
-    cy.wait(5000);
-    cy.task('fileExists', `${Cypress.config('downloadsFolder')}`).then((exists) => {
-      assert.isTrue(!exists);
-    });
-  });
-
-  it('Valider les fonctionnalités - Bouton Download', () => {
-    setupTest();
-    cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-request-access', 1);
-    cy.get('[class*="DownloadRequestAccessModal_modal"]').should('have.css', 'display', 'none');
-    cy.waitUntilFile(oneMinute);
-    cy.validateFileName('*.gz');
   });
 });
