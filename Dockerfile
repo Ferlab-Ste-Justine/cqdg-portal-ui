@@ -12,7 +12,7 @@ COPY ./ /app/
 RUN npm run theme
 RUN npm run build
 
-FROM nginx:1.24
+FROM nginx:1.30-alpine
 
 COPY --from=build-stage /app/build/ /usr/share/nginx/html
 
