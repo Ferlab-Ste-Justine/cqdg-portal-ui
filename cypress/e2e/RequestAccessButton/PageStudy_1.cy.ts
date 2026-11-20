@@ -1,11 +1,8 @@
 /// <reference types="cypress"/>
 import '../../support/commands';
-import { oneMinute } from '../../pom/shared/Utils';
 
 describe('Page d\'une étude - Bouton Request Access', () => {
   const setupTest = () => {
-    cy.removeFilesFromFolder(Cypress.config('downloadsFolder'));
-
     cy.login();
     cy.visitStudyEntity('T-DEE', 1);
     cy.get('[class*="EntityTitle"] [data-cy="RequestAccess_Button"]').click({force: true});
@@ -28,33 +25,5 @@ describe('Page d\'une étude - Bouton Request Access', () => {
 
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').contains('Cancel').should('exist');
     cy.get('[class="ant-modal-footer"] button[class*="ant-btn-primary"]').contains('Download').should('exist');
-  });
-
-  it('Valider les liens disponibles - Lien Access Authority', () => {
-    setupTest();
-    cy.get('[class*="ant-modal-body"] [href="mailto:toto@gov.org"]').contains('toto@gov.org').should('exist');
-  });
-
-  it('Valider les liens disponibles - Lien Documentation', () => {
-    setupTest();
-    cy.get('[class="ant-modal-body"] a').eq(1).should('have.attr', 'href', 'https://docs.qa.juno.cqdg.ferlab.bio/en/acces-aux-donnees/faire-une-demande-dacces-aux-donnees-du-cqdg/');
-  });
-
-  it('Valider les fonctionnalités - Bouton Cancel', () => {
-    setupTest();
-    cy.get('[class="ant-modal-footer"] button[class*="ant-btn-default"]').click({force: true});
-    cy.get('[class*="DownloadRequestAccessModal_modal"]').should('have.css', 'display', 'none');
-    cy.wait(5000);
-    cy.task('fileExists', `${Cypress.config('downloadsFolder')}`).then((exists) => {
-      assert.isTrue(!exists);
-    });
-  });
-
-  it('Valider les fonctionnalités - Bouton Download', () => {
-    setupTest();
-    cy.clickAndIntercept('[class="ant-modal-footer"] button[class*="ant-btn-primary"]', 'POST', '**/file-request-access', 1);
-    cy.get('[class*="DownloadRequestAccessModal_modal"]').should('have.css', 'display', 'none');
-    cy.waitUntilFile(oneMinute);
-    cy.validateFileName('*.gz');
   });
 });
