@@ -25,25 +25,25 @@ describe('getDocUrl', () => {
     jest.restoreAllMocks();
   });
 
-  it('prefixes the path with /en/ when the language is English', () => {
+  it("préfixe le chemin par /en/ quand la langue est l'anglais", () => {
     mockLang = LANG.EN;
 
     expect(getDocUrl('acces-aux-donnees/')).toBe('https://docs.example.test/en/acces-aux-donnees/');
   });
 
-  it('uses the root path when the language is French', () => {
+  it('utilise la racine quand la langue est le français', () => {
     mockLang = LANG.FR;
 
     expect(getDocUrl('acces-aux-donnees/')).toBe('https://docs.example.test/acces-aux-donnees/');
   });
 
-  it('falls back to the French root for an unknown language', () => {
+  it('utilise la racine française pour une langue inconnue', () => {
     mockLang = 'de';
 
     expect(getDocUrl('acces-aux-donnees/')).toBe('https://docs.example.test/acces-aux-donnees/');
   });
 
-  it('points to the documentation home when no path is given', () => {
+  it("pointe vers l'accueil de la documentation sans chemin", () => {
     mockLang = LANG.EN;
 
     expect(getDocUrl()).toBe('https://docs.example.test/en/');

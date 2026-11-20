@@ -26,7 +26,7 @@ describe('FilesTable', () => {
     intl.init({ currentLocale: LANG.EN, locales, warningHandler: () => '' });
   });
 
-  it('asks the stats endpoint for the files of the selection', () => {
+  it('demande au endpoint de statistiques les fichiers de la sélection', () => {
     (useApi as jest.Mock).mockReturnValue({ loading: false, result: [] });
 
     render(<FilesTable sqon={sqon} />);
@@ -38,7 +38,7 @@ describe('FilesTable', () => {
     expect(config.data).toHaveProperty('projectId');
   });
 
-  it('shows one row per study', () => {
+  it('affiche une ligne par étude', () => {
     (useApi as jest.Mock).mockReturnValue({
       loading: false,
       result: [
@@ -53,7 +53,7 @@ describe('FilesTable', () => {
     expect(rowCells('STUDY-B')).toEqual(['Study Beta', 'STUDY-B', '3']);
   });
 
-  it('shows a placeholder for missing values', () => {
+  it('affiche un tiret pour les valeurs manquantes', () => {
     (useApi as jest.Mock).mockReturnValue({
       loading: false,
       result: [{ key: 'STUDY-C', study_name: '', nb_files: 0 }],
@@ -68,7 +68,7 @@ describe('FilesTable', () => {
     ]);
   });
 
-  it('shows the empty state when the API returns nothing', () => {
+  it("affiche l'état vide quand l'API ne retourne rien", () => {
     (useApi as jest.Mock).mockReturnValue({ loading: false, result: undefined });
 
     render(<FilesTable sqon={sqon} />);
