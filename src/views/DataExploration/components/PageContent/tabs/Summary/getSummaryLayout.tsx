@@ -34,10 +34,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
         queryId={DATA_EXPLORATION_QB_ID}
       />
     ),
-    base: { h: 4, w: 6, x: 0, y: 0, minH: 4, minW: 5, isResizable: true },
+    base: { h: 4, w: 8, x: 0, y: 0, minH: 4, minW: 5, isResizable: true },
+    lg: { h: 4, w: 8, x: 0, y: 0 },
     md: { h: 4, w: 6, x: 0, y: 0 },
-    sm: { h: 4, w: 6, x: 0, y: 0 },
+    sm: { h: 4, w: 5, x: 0, y: 0 },
     xs: { h: 4, w: 6, x: 0, y: 0 },
+    xxs: { h: 4, w: 4, x: 0, y: 0 },
   },
   {
     title: intl.get('screen.dataExploration.tabs.summary.mondo.cardTitle'),
@@ -50,10 +52,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
         queryId={DATA_EXPLORATION_QB_ID}
       />
     ),
-    base: { h: 4, w: 6, x: 6, y: 0, minH: 4, minW: 5, isResizable: true },
+    base: { h: 4, w: 8, x: 8, y: 0, minH: 4, minW: 5, isResizable: true },
+    lg: { h: 4, w: 8, x: 8, y: 0 },
     md: { h: 4, w: 6, x: 6, y: 0 },
-    sm: { h: 4, w: 6, x: 0, y: 4 },
+    sm: { h: 4, w: 5, x: 5, y: 0 },
     xs: { h: 4, w: 6, x: 0, y: 4 },
+    xxs: { h: 4, w: 4, x: 0, y: 4 },
   },
   {
     title: intl.get('entities.participant.participantsBySex'),
@@ -61,10 +65,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
     component: (
       <SexGraphCard gridUID={UID} id={SEX_GRAPH_CARD_ID} queryId={DATA_EXPLORATION_QB_ID} />
     ),
-    base: { h: 2, w: 2, x: 0, y: 4, minH: 2, minW: 2, isResizable: true },
-    md: { h: 2, w: 2, x: 0, y: 4, minH: 2, minW: 2 },
-    sm: { h: 2, w: 2, x: 0, y: 4, minH: 2, minW: 2 },
-    xs: { h: 2, w: 2, x: 0, y: 4, minH: 2, minW: 2 },
+    base: { h: 2, w: 4, x: 0, y: 4, minH: 2, minW: 2, isResizable: true },
+    lg: { h: 2, w: 4, x: 0, y: 4 },
+    md: { h: 2, w: 3, x: 0, y: 4 },
+    sm: { h: 2, w: 2, x: 0, y: 4 },
+    xs: { h: 2, w: 3, x: 0, y: 8 },
+    xxs: { h: 2, w: 4, x: 0, y: 8 },
   },
   {
     title: intl.get('entities.participant.participantsByRace'),
@@ -76,10 +82,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
         queryId={DATA_EXPLORATION_QB_ID}
       />
     ),
-    base: { h: 2, w: 2, x: 2, y: 4, minH: 2, minW: 2, isResizable: true },
-    md: { h: 2, w: 2, x: 2, y: 4, minH: 2, minW: 2 },
-    sm: { h: 2, w: 2, x: 2, y: 4, minH: 2, minW: 2 },
-    xs: { h: 2, w: 2, x: 2, y: 4, minH: 2, minW: 2 },
+    base: { h: 2, w: 4, x: 4, y: 4, minH: 2, minW: 2, isResizable: true },
+    lg: { h: 2, w: 4, x: 4, y: 4 },
+    md: { h: 2, w: 3, x: 3, y: 4 },
+    sm: { h: 2, w: 2, x: 2, y: 4 },
+    xs: { h: 2, w: 3, x: 3, y: 8 },
+    xxs: { h: 2, w: 4, x: 0, y: 10 },
   },
   {
     title: intl.get('entities.participant.participantsByStudy'),
@@ -91,10 +99,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
         queryId={DATA_EXPLORATION_QB_ID}
       />
     ),
-    base: { h: 2, w: 2, x: 4, y: 4, minH: 2, minW: 2, isResizable: true },
-    md: { h: 2, w: 2, x: 4, y: 4, minH: 2, minW: 2 },
-    sm: { h: 2, w: 2, x: 4, y: 4, minH: 2, minW: 2 },
-    xs: { h: 2, w: 2, x: 4, y: 4, minH: 2, minW: 2 },
+    base: { h: 2, w: 4, x: 8, y: 4, minH: 2, minW: 2, isResizable: true },
+    lg: { h: 2, w: 4, x: 8, y: 4 },
+    md: { h: 2, w: 3, x: 6, y: 4 },
+    sm: { h: 2, w: 2, x: 4, y: 4 },
+    xs: { h: 2, w: 3, x: 0, y: 10 },
+    xxs: { h: 2, w: 4, x: 0, y: 12 },
   },
   {
     title: intl.get('entities.participant.participantsByDomain'),
@@ -106,10 +116,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
         queryId={DATA_EXPLORATION_QB_ID}
       />
     ),
-    base: { h: 2, w: 2, x: 6, y: 4, minH: 2, minW: 2, isResizable: true },
-    md: { h: 2, w: 2, x: 6, y: 4, minH: 2, minW: 2 },
-    sm: { h: 2, w: 2, x: 0, y: 6, minH: 2, minW: 2 },
-    xs: { h: 2, w: 2, x: 0, y: 6, minH: 2, minW: 2 },
+    base: { h: 2, w: 4, x: 12, y: 4, minH: 2, minW: 2, isResizable: true },
+    lg: { h: 2, w: 4, x: 12, y: 4 },
+    md: { h: 2, w: 3, x: 9, y: 4 },
+    sm: { h: 2, w: 2, x: 6, y: 4 },
+    xs: { h: 2, w: 3, x: 3, y: 10 },
+    xxs: { h: 2, w: 4, x: 0, y: 14 },
   },
   {
     title: intl.get('entities.participant.participantsByPopulation'),
@@ -121,10 +133,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
         queryId={DATA_EXPLORATION_QB_ID}
       />
     ),
-    base: { h: 2, w: 2, x: 8, y: 4, minH: 2, minW: 2, isResizable: true },
-    md: { h: 2, w: 2, x: 8, y: 4, minH: 2, minW: 2 },
-    sm: { h: 2, w: 2, x: 2, y: 6, minH: 2, minW: 2 },
-    xs: { h: 2, w: 2, x: 2, y: 6, minH: 2, minW: 2 },
+    base: { h: 3, w: 4, x: 0, y: 6, minH: 2, minW: 2, isResizable: true },
+    lg: { h: 3, w: 4, x: 0, y: 6 },
+    md: { h: 3, w: 3, x: 0, y: 6 },
+    sm: { h: 2, w: 2, x: 8, y: 4 },
+    xs: { h: 2, w: 3, x: 0, y: 12 },
+    xxs: { h: 2, w: 4, x: 0, y: 16 },
   },
   {
     title: intl.get('entities.participant.participantsByStrategy'),
@@ -136,10 +150,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
         queryId={DATA_EXPLORATION_QB_ID}
       />
     ),
-    base: { h: 2, w: 2, x: 10, y: 4, minH: 2, minW: 2, isResizable: true },
-    md: { h: 2, w: 2, x: 10, y: 4, minH: 2, minW: 2 },
-    sm: { h: 2, w: 2, x: 4, y: 4, minH: 2, minW: 2 },
-    xs: { h: 2, w: 2, x: 4, y: 6, minH: 2, minW: 2 },
+    base: { h: 3, w: 4, x: 4, y: 6, minH: 2, minW: 2, isResizable: true },
+    lg: { h: 3, w: 4, x: 4, y: 6 },
+    md: { h: 3, w: 3, x: 3, y: 6 },
+    sm: { h: 3, w: 4, x: 0, y: 6 },
+    xs: { h: 2, w: 3, x: 3, y: 12 },
+    xxs: { h: 2, w: 4, x: 0, y: 18 },
   },
   {
     title: intl.get('entities.participant.participantsByDataType'),
@@ -151,10 +167,12 @@ const getSummaryLayout = (): IResizableGridLayoutConfig[] => [
         queryId={DATA_EXPLORATION_QB_ID}
       />
     ),
-    base: { h: 3, w: 6, x: 0, y: 6, minH: 3, minW: 6, isResizable: true },
-    md: { h: 3, w: 6, x: 0, y: 10 },
-    sm: { h: 3, w: 6, x: 0, y: 10 },
-    xs: { h: 3, w: 6, x: 0, y: 10 },
+    base: { h: 3, w: 8, x: 8, y: 6, minH: 3, minW: 6, isResizable: true },
+    lg: { h: 3, w: 8, x: 8, y: 6 },
+    md: { h: 3, w: 6, x: 6, y: 6 },
+    sm: { h: 3, w: 6, x: 4, y: 6 },
+    xs: { h: 3, w: 6, x: 0, y: 14 },
+    xxs: { h: 3, w: 4, x: 0, y: 20 },
   },
 ];
 

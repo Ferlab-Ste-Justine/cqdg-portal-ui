@@ -1,5 +1,4 @@
 import { TSortableItems } from '@ferlab/ui/core/layout/SortableGrid/SortableItem';
-import cx from 'classnames';
 
 import SavedFilters from './SavedFilters';
 import SavedSets from './SavedSets';
@@ -19,16 +18,12 @@ export const getDashboardCards = (): TSortableItems[] => [
     id: '3',
     xs: 24,
     md: 12,
-    xxl: 8,
-    className: cx(styles.cardColxxl6, styles.cardColxxl5),
     component: <SavedFilters id="3" className={styles.dashboardCard} />,
   },
   {
     id: '4',
     xs: 24,
     md: 12,
-    xxl: 8,
-    className: cx(styles.cardColxxl6, styles.cardColxxl5),
     component: <SavedSets id="4" className={styles.dashboardCard} />,
   },
 ];
