@@ -111,7 +111,13 @@ const getDefaultColumns = (): ProColumnType[] => [
     dataIndex: 'dataset',
     defaultHidden: true,
     sorter: { multiple: 1 },
-    render: (dataset) => (dataset ? capitalize(dataset) : TABLE_EMPTY_PLACE_HOLDER),
+    // TODO CQDG-1680: dataset is moving from a string to an array; support both until the backend is migrated
+    render: (dataset?: string | string[]) => {
+      const datasets = ([] as string[]).concat(dataset ?? []).filter(Boolean);
+      return datasets.length
+        ? datasets.map((d) => capitalize(d)).join(', ')
+        : TABLE_EMPTY_PLACE_HOLDER;
+    },
   },
   {
     key: 'data_category',

@@ -54,6 +54,7 @@ export interface IFileEntity {
   participants: ArrangerResultsTree<IParticipantEntity>;
   data_category: string;
   data_type: string;
+  dataset?: string | string[];
   file_format: string;
   score: number;
   data_access: string;
