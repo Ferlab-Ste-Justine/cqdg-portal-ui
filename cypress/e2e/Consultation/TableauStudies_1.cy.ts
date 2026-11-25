@@ -43,14 +43,14 @@ describe('Page des études - Vérifier les informations affichées', () => {
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(13).contains('genetic studies only').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(13).contains('DUO:').should('exist');
     cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(13).contains('0000016').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(14).contains('Case-parent trio stu').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(15).contains('Case only').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(16).contains('Investigator Assessment').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(17).contains('Toto').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).contains('Tata').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).contains('tata@hotmail.com').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).contains('Toto Institution').should('exist');
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(19).contains('Children with a diagnosis of intractable seizures').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(14).contains('Case only').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(15).contains('Investigator Assessment').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(16).contains('Toto').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(17).contains('Tata').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(17).contains('tata@hotmail.com').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(17).contains('Toto Institution').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).contains('Children with a diagnosis of intractable seizures').should('exist');
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(19).contains('Case-parent trio stu').should('exist');
   });
 
   it('Summary', () => {

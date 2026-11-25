@@ -68,7 +68,7 @@ describe('Page des études - Valider les liens disponibles', () => {
 
   it('Lien Contact Persons du tableau', () => {
     setupTest();
-    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(18).find('[href]')
+    cy.get('tr[data-row-key="T-DEE"] [class="ant-table-cell"]').eq(17).find('[href]')
       .should('have.attr', 'href', 'mailto:tata@hotmail.com');
   });
 });

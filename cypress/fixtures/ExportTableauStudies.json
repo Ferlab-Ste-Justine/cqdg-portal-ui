@@ -7,14 +7,14 @@
               "Families",
               "Biospecimens",
               "Files",
-              "Description",
               "Overall Design",
               "Data Collection Method",
               "Principal Investigators",
               "Contact Persons",
               "Affiliated Institutions",
               "Contact Email",
-              "Inclusion and Exclusion Criteria"],
+              "Inclusion and Exclusion Criteria",
+              "Description"],
   "content": ["T-DEE",
               "Developmental and epileptic encephalopathies",
               "--",
@@ -23,7 +23,6 @@
               "588",
               "196",
               "3136",
-              "Case-parent trio study on developmental and epileptic encephalopaties (DEE)| Un étude de cas-parent trio sur les encéphalopathies épileptiques développementales (DEE)",
               "Case only",
               "Case-control",
               "Investigator Assessment",
@@ -32,5 +31,6 @@
               "Tata",
               "Toto Institution",
               "tata@hotmail.com",
-              "Children with a diagnosis of intractable seizures"]
+              "Children with a diagnosis of intractable seizures",
+              "Case-parent trio study on developmental and epileptic encephalopaties (DEE)| Un étude de cas-parent trio sur les encéphalopathies épileptiques développementales (DEE)"]
 }
