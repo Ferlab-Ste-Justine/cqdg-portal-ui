@@ -82,16 +82,6 @@ const getPublicDefaultColumns = (
     ),
   },
   {
-    key: 'description',
-    title: intl.get('screen.studies.description'),
-    dataIndex: 'description',
-    render: (description: string) => (
-      <Popover content={description} trigger="hover">
-        {truncateString(description, 20) || TABLE_EMPTY_PLACE_HOLDER}
-      </Popover>
-    ),
-  },
-  {
     key: 'participant_count',
     title: intl.get('screen.studies.participants'),
     render: (study: IStudyEntity) => {
@@ -162,6 +152,16 @@ const getPublicDefaultColumns = (
       );
       return elem?.node?.participant_count ? <CheckOutlined /> : TABLE_EMPTY_PLACE_HOLDER;
     },
+  },
+  {
+    key: 'description',
+    title: intl.get('screen.studies.description'),
+    dataIndex: 'description',
+    render: (description: string) => (
+      <Popover content={description} trigger="hover">
+        {truncateString(description, 20) || TABLE_EMPTY_PLACE_HOLDER}
+      </Popover>
+    ),
   },
 ];
 

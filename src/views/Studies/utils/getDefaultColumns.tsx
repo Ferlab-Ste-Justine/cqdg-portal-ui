@@ -283,17 +283,6 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
     ),
   },
   {
-    key: 'description',
-    title: intl.get('screen.studies.description'),
-    dataIndex: 'description',
-    defaultHidden: true,
-    render: (description: string) => (
-      <Popover content={description} trigger="hover">
-        {truncateString(description, 20) || TABLE_EMPTY_PLACE_HOLDER}
-      </Popover>
-    ),
-  },
-  {
     dataIndex: 'study_designs',
     key: 'study_designs',
     title: intl.get('entities.study.design'),
@@ -379,6 +368,17 @@ const getDefaultColumns = (): ProColumnType<ITableStudyEntity>[] => [
           'see.more': intl.get('global.seeMore'),
         }}
       />
+    ),
+  },
+  {
+    key: 'description',
+    title: intl.get('screen.studies.description'),
+    dataIndex: 'description',
+    defaultHidden: true,
+    render: (description: string) => (
+      <Popover content={description} trigger="hover">
+        {truncateString(description, 20) || TABLE_EMPTY_PLACE_HOLDER}
+      </Popover>
     ),
   },
 ];

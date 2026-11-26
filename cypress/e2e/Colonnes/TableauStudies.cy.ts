@@ -85,40 +85,40 @@ describe('Page des études - Colonnes du tableau', () => {
       .contains('Access Requirement').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
-      .contains('Description').should('not.exist');
-    cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(15)
-      .contains('Description').should('exist');
-  
-    cy.get('thead[class="ant-table-thead"]')
       .contains('Overall Design').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(16)
+      .find('div[class="ant-space-item"]').eq(15)
       .contains('Overall Design').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Data Collection Method').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(17)
+      .find('div[class="ant-space-item"]').eq(16)
       .contains('Data Collection Method').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Principal Investigators').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(18)
+      .find('div[class="ant-space-item"]').eq(17)
       .contains('Principal Investigators').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Contact Persons').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(19)
+      .find('div[class="ant-space-item"]').eq(18)
       .contains('Contact Persons').should('exist');
 
     cy.get('thead[class="ant-table-thead"]')
       .contains('Inclusion and Exclusion Criteria').should('not.exist');
     cy.get('div[class="ant-popover-inner"]')
-      .find('div[class="ant-space-item"]').eq(20)
+      .find('div[class="ant-space-item"]').eq(19)
       .contains('Inclusion and Exclusion Criteria').should('exist');
+
+    cy.get('thead[class="ant-table-thead"]')
+      .contains('Description').should('not.exist');
+    cy.get('div[class="ant-popover-inner"]')
+      .find('div[class="ant-space-item"]').eq(20)
+      .contains('Description').should('exist');
   });
 
   it('Masquer une colonne affichée', () => {
