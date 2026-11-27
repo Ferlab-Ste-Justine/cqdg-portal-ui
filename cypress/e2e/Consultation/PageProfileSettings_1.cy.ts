@@ -9,7 +9,7 @@ describe('Page Profile Settings - Vérifier les informations affichées', () => 
 
   it('Titre', () => {
     setupTest();
-    cy.get('[class*="Settings_profileSettingsHeader"]').contains('Profile settings');
+    cy.get('[class*="Settings_profileSettingsHeader"]').contains('Profile Settings');
   });
 
   it('Section Identification - Bannière', () => {
